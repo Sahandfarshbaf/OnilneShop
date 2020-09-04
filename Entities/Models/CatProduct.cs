@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text.Json.Serialization;
 
 namespace Entities.Models
 {
@@ -31,6 +32,7 @@ namespace Entities.Models
 
         public virtual CatProduct P { get; set; }
         public virtual ICollection<CatProductParameters> CatProductParameters { get; set; }
+        [JsonIgnore]
         public virtual ICollection<CatProduct> InverseP { get; set; }
         public virtual ICollection<Product> Product { get; set; }
         public virtual ICollection<SellerCatProduct> SellerCatProduct { get; set; }

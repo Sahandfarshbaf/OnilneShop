@@ -16,6 +16,9 @@ namespace OnlineShop
             CreateMap<UserRegistrationModel, User>()
                 .ForMember(u => u.UserName, opt => opt.MapFrom(x => x.Email));
 
+            CreateMap<ProductImage, ProductImageDto>()
+                .ForMember(u => u.ProductImageId, opt => opt.MapFrom(x => x.Id));
+
 
         }
     }
