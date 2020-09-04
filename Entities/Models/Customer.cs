@@ -14,7 +14,7 @@ namespace Entities.Models
         }
 
         public long Id { get; set; }
-        public long? UserId { get; set; }
+        public string UserId { get; set; }
         public string Name { get; set; }
         public string Fname { get; set; }
         public long? MelliCode { get; set; }
@@ -27,13 +27,13 @@ namespace Entities.Models
         public long? PostalCode { get; set; }
         public string Address { get; set; }
         public long? FinalStatusId { get; set; }
-        public long? CuserId { get; set; }
+        public string CuserId { get; set; }
         public long? Cdate { get; set; }
-        public long? DuserId { get; set; }
+        public string DuserId { get; set; }
         public long? Ddate { get; set; }
-        public long? MuserId { get; set; }
+        public string MuserId { get; set; }
         public long? Mdate { get; set; }
-        public long? DaUserId { get; set; }
+        public string DaUserId { get; set; }
         public long? DaDate { get; set; }
 
         public virtual Status FinalStatus { get; set; }

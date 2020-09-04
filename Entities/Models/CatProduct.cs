@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text.Json.Serialization;
 
 namespace Entities.Models
 {
@@ -21,18 +20,17 @@ namespace Entities.Models
         public long? Rkey { get; set; }
         public string Icon { get; set; }
         public string Url { get; set; }
-        public long? CuserId { get; set; }
+        public string CuserId { get; set; }
         public long? Cdate { get; set; }
-        public long? DuserId { get; set; }
+        public string DuserId { get; set; }
         public long? Ddate { get; set; }
-        public long? MuserId { get; set; }
+        public string MuserId { get; set; }
         public long? Mdate { get; set; }
-        public long? DaUserId { get; set; }
+        public string DaUserId { get; set; }
         public long? DaDate { get; set; }
 
         public virtual CatProduct P { get; set; }
         public virtual ICollection<CatProductParameters> CatProductParameters { get; set; }
-        [JsonIgnore]
         public virtual ICollection<CatProduct> InverseP { get; set; }
         public virtual ICollection<Product> Product { get; set; }
         public virtual ICollection<SellerCatProduct> SellerCatProduct { get; set; }

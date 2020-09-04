@@ -9,13 +9,13 @@ namespace Entities.Models
         public long? CustomerId { get; set; }
         public long? ProductId { get; set; }
         public int? Rate { get; set; }
-        public long? CuserId { get; set; }
+        public string CuserId { get; set; }
         public long? Cdate { get; set; }
-        public long? DuserId { get; set; }
+        public string DuserId { get; set; }
         public long? Ddate { get; set; }
-        public long? MuserId { get; set; }
+        public string MuserId { get; set; }
         public long? Mdate { get; set; }
-        public long? DaUserId { get; set; }
+        public string DaUserId { get; set; }
         public long? DaDate { get; set; }
 
         public virtual Customer Customer { get; set; }

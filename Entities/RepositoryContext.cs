@@ -46,6 +46,7 @@ namespace Entities
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+
             modelBuilder.Entity<CatProduct>(entity =>
             {
                 entity.HasIndex(e => e.Pid);
@@ -54,19 +55,27 @@ namespace Entities
 
                 entity.Property(e => e.Cdate).HasColumnName("CDate");
 
-                entity.Property(e => e.CuserId).HasColumnName("CUserID");
+                entity.Property(e => e.CuserId)
+                    .HasColumnName("CUserID")
+                    .HasMaxLength(450);
 
-                entity.Property(e => e.DaUserId).HasColumnName("DaUserID");
+                entity.Property(e => e.DaUserId)
+                    .HasColumnName("DaUserID")
+                    .HasMaxLength(450);
 
                 entity.Property(e => e.Ddate).HasColumnName("DDate");
 
-                entity.Property(e => e.DuserId).HasColumnName("DUserID");
+                entity.Property(e => e.DuserId)
+                    .HasColumnName("DUserID")
+                    .HasMaxLength(450);
 
                 entity.Property(e => e.Icon).HasMaxLength(256);
 
                 entity.Property(e => e.Mdate).HasColumnName("MDate");
 
-                entity.Property(e => e.MuserId).HasColumnName("MUserID");
+                entity.Property(e => e.MuserId)
+                    .HasColumnName("MUserID")
+                    .HasMaxLength(450);
 
                 entity.Property(e => e.Name).HasMaxLength(256);
 
@@ -94,17 +103,25 @@ namespace Entities
 
                 entity.Property(e => e.Cdate).HasColumnName("CDate");
 
-                entity.Property(e => e.CuserId).HasColumnName("CUserID");
+                entity.Property(e => e.CuserId)
+                    .HasColumnName("CUserID")
+                    .HasMaxLength(450);
 
-                entity.Property(e => e.DaUserId).HasColumnName("DaUserID");
+                entity.Property(e => e.DaUserId)
+                    .HasColumnName("DaUserID")
+                    .HasMaxLength(450);
 
                 entity.Property(e => e.Ddate).HasColumnName("DDate");
 
-                entity.Property(e => e.DuserId).HasColumnName("DUserID");
+                entity.Property(e => e.DuserId)
+                    .HasColumnName("DUserID")
+                    .HasMaxLength(450);
 
                 entity.Property(e => e.Mdate).HasColumnName("MDate");
 
-                entity.Property(e => e.MuserId).HasColumnName("MUserID");
+                entity.Property(e => e.MuserId)
+                    .HasColumnName("MUserID")
+                    .HasMaxLength(450);
 
                 entity.Property(e => e.ParametersId).HasColumnName("ParametersID");
 
@@ -127,17 +144,25 @@ namespace Entities
 
                 entity.Property(e => e.Color).HasMaxLength(64);
 
-                entity.Property(e => e.CuserId).HasColumnName("CUserID");
+                entity.Property(e => e.CuserId)
+                    .HasColumnName("CUserID")
+                    .HasMaxLength(450);
 
-                entity.Property(e => e.DaUserId).HasColumnName("DaUserID");
+                entity.Property(e => e.DaUserId)
+                    .HasColumnName("DaUserID")
+                    .HasMaxLength(450);
 
                 entity.Property(e => e.Ddate).HasColumnName("DDate");
 
-                entity.Property(e => e.DuserId).HasColumnName("DUserID");
+                entity.Property(e => e.DuserId)
+                    .HasColumnName("DUserID")
+                    .HasMaxLength(450);
 
                 entity.Property(e => e.Mdate).HasColumnName("MDate");
 
-                entity.Property(e => e.MuserId).HasColumnName("MUserID");
+                entity.Property(e => e.MuserId)
+                    .HasColumnName("MUserID")
+                    .HasMaxLength(450);
 
                 entity.Property(e => e.Name).HasMaxLength(64);
             });
@@ -150,17 +175,25 @@ namespace Entities
 
                 entity.Property(e => e.ColorCode).HasMaxLength(32);
 
-                entity.Property(e => e.CuserId).HasColumnName("CUserID");
+                entity.Property(e => e.CuserId)
+                    .HasColumnName("CUserID")
+                    .HasMaxLength(450);
 
-                entity.Property(e => e.DaUserId).HasColumnName("DaUserID");
+                entity.Property(e => e.DaUserId)
+                    .HasColumnName("DaUserID")
+                    .HasMaxLength(450);
 
                 entity.Property(e => e.Ddate).HasColumnName("DDate");
 
-                entity.Property(e => e.DuserId).HasColumnName("DUserID");
+                entity.Property(e => e.DuserId)
+                    .HasColumnName("DUserID")
+                    .HasMaxLength(450);
 
                 entity.Property(e => e.Mdate).HasColumnName("MDate");
 
-                entity.Property(e => e.MuserId).HasColumnName("MUserID");
+                entity.Property(e => e.MuserId)
+                    .HasColumnName("MUserID")
+                    .HasMaxLength(450);
 
                 entity.Property(e => e.Name).HasMaxLength(64);
             });
@@ -179,13 +212,19 @@ namespace Entities
 
                 entity.Property(e => e.Cdate).HasColumnName("CDate");
 
-                entity.Property(e => e.CuserId).HasColumnName("CUserID");
+                entity.Property(e => e.CuserId)
+                    .HasColumnName("CUserID")
+                    .HasMaxLength(450);
 
-                entity.Property(e => e.DaUserId).HasColumnName("DaUserID");
+                entity.Property(e => e.DaUserId)
+                    .HasColumnName("DaUserID")
+                    .HasMaxLength(450);
 
                 entity.Property(e => e.Ddate).HasColumnName("DDate");
 
-                entity.Property(e => e.DuserId).HasColumnName("DUserID");
+                entity.Property(e => e.DuserId)
+                    .HasColumnName("DUserID")
+                    .HasMaxLength(450);
 
                 entity.Property(e => e.Email).HasMaxLength(64);
 
@@ -197,7 +236,9 @@ namespace Entities
 
                 entity.Property(e => e.Mdate).HasColumnName("MDate");
 
-                entity.Property(e => e.MuserId).HasColumnName("MUserID");
+                entity.Property(e => e.MuserId)
+                    .HasColumnName("MUserID")
+                    .HasMaxLength(450);
 
                 entity.Property(e => e.Name).HasMaxLength(32);
 
@@ -209,7 +250,9 @@ namespace Entities
                     .HasColumnName("ProfileImageURL")
                     .HasMaxLength(512);
 
-                entity.Property(e => e.UserId).HasColumnName("UserID");
+                entity.Property(e => e.UserId)
+                    .HasColumnName("UserID")
+                    .HasMaxLength(450);
 
                 entity.HasOne(d => d.FinalStatus)
                     .WithMany(p => p.Customer)
@@ -230,19 +273,27 @@ namespace Entities
 
                 entity.Property(e => e.Cdate).HasColumnName("CDate");
 
-                entity.Property(e => e.CuserId).HasColumnName("CUserID");
+                entity.Property(e => e.CuserId)
+                    .HasColumnName("CUserID")
+                    .HasMaxLength(450);
 
                 entity.Property(e => e.CustomerId).HasColumnName("CustomerID");
 
-                entity.Property(e => e.DaUserId).HasColumnName("DaUserID");
+                entity.Property(e => e.DaUserId)
+                    .HasColumnName("DaUserID")
+                    .HasMaxLength(450);
 
                 entity.Property(e => e.Ddate).HasColumnName("DDate");
 
-                entity.Property(e => e.DuserId).HasColumnName("DUserID");
+                entity.Property(e => e.DuserId)
+                    .HasColumnName("DUserID")
+                    .HasMaxLength(450);
 
                 entity.Property(e => e.Mdate).HasColumnName("MDate");
 
-                entity.Property(e => e.MuserId).HasColumnName("MUserID");
+                entity.Property(e => e.MuserId)
+                    .HasColumnName("MUserID")
+                    .HasMaxLength(450);
 
                 entity.HasOne(d => d.Customer)
                     .WithMany(p => p.CustomerActivation)
@@ -260,19 +311,27 @@ namespace Entities
 
                 entity.Property(e => e.Cdate).HasColumnName("CDate");
 
-                entity.Property(e => e.CuserId).HasColumnName("CUserID");
+                entity.Property(e => e.CuserId)
+                    .HasColumnName("CUserID")
+                    .HasMaxLength(450);
 
                 entity.Property(e => e.CustomerId).HasColumnName("CustomerID");
 
-                entity.Property(e => e.DaUserId).HasColumnName("DaUserID");
+                entity.Property(e => e.DaUserId)
+                    .HasColumnName("DaUserID")
+                    .HasMaxLength(450);
 
                 entity.Property(e => e.Ddate).HasColumnName("DDate");
 
-                entity.Property(e => e.DuserId).HasColumnName("DUserID");
+                entity.Property(e => e.DuserId)
+                    .HasColumnName("DUserID")
+                    .HasMaxLength(450);
 
                 entity.Property(e => e.Mdate).HasColumnName("MDate");
 
-                entity.Property(e => e.MuserId).HasColumnName("MUserID");
+                entity.Property(e => e.MuserId)
+                    .HasColumnName("MUserID")
+                    .HasMaxLength(450);
 
                 entity.Property(e => e.Name).HasMaxLength(256);
 
@@ -305,19 +364,27 @@ namespace Entities
 
                 entity.Property(e => e.CountryId).HasColumnName("CountryID");
 
-                entity.Property(e => e.CuserId).HasColumnName("CUserID");
+                entity.Property(e => e.CuserId)
+                    .HasColumnName("CUserID")
+                    .HasMaxLength(450);
 
-                entity.Property(e => e.DaUserId).HasColumnName("DaUserID");
+                entity.Property(e => e.DaUserId)
+                    .HasColumnName("DaUserID")
+                    .HasMaxLength(450);
 
                 entity.Property(e => e.Ddate).HasColumnName("DDate");
 
-                entity.Property(e => e.DuserId).HasColumnName("DUserID");
+                entity.Property(e => e.DuserId)
+                    .HasColumnName("DUserID")
+                    .HasMaxLength(450);
 
                 entity.Property(e => e.EnName).HasMaxLength(64);
 
                 entity.Property(e => e.Mdate).HasColumnName("MDate");
 
-                entity.Property(e => e.MuserId).HasColumnName("MUserID");
+                entity.Property(e => e.MuserId)
+                    .HasColumnName("MUserID")
+                    .HasMaxLength(450);
 
                 entity.Property(e => e.Name).HasMaxLength(64);
 
@@ -347,17 +414,25 @@ namespace Entities
 
                 entity.Property(e => e.Cdate).HasColumnName("CDate");
 
-                entity.Property(e => e.CuserId).HasColumnName("CUserID");
+                entity.Property(e => e.CuserId)
+                    .HasColumnName("CUserID")
+                    .HasMaxLength(450);
 
-                entity.Property(e => e.DaUserId).HasColumnName("DaUserID");
+                entity.Property(e => e.DaUserId)
+                    .HasColumnName("DaUserID")
+                    .HasMaxLength(450);
 
                 entity.Property(e => e.Ddate).HasColumnName("DDate");
 
-                entity.Property(e => e.DuserId).HasColumnName("DUserID");
+                entity.Property(e => e.DuserId)
+                    .HasColumnName("DUserID")
+                    .HasMaxLength(450);
 
                 entity.Property(e => e.Mdate).HasColumnName("MDate");
 
-                entity.Property(e => e.MuserId).HasColumnName("MUserID");
+                entity.Property(e => e.MuserId)
+                    .HasColumnName("MUserID")
+                    .HasMaxLength(450);
 
                 entity.Property(e => e.Name).HasMaxLength(256);
             });
@@ -370,17 +445,25 @@ namespace Entities
 
                 entity.Property(e => e.Cdate).HasColumnName("CDate");
 
-                entity.Property(e => e.CuserId).HasColumnName("CUserID");
+                entity.Property(e => e.CuserId)
+                    .HasColumnName("CUserID")
+                    .HasMaxLength(450);
 
-                entity.Property(e => e.DaUserId).HasColumnName("DaUserID");
+                entity.Property(e => e.DaUserId)
+                    .HasColumnName("DaUserID")
+                    .HasMaxLength(450);
 
                 entity.Property(e => e.Ddate).HasColumnName("DDate");
 
-                entity.Property(e => e.DuserId).HasColumnName("DUserID");
+                entity.Property(e => e.DuserId)
+                    .HasColumnName("DUserID")
+                    .HasMaxLength(450);
 
                 entity.Property(e => e.Mdate).HasColumnName("MDate");
 
-                entity.Property(e => e.MuserId).HasColumnName("MUserID");
+                entity.Property(e => e.MuserId)
+                    .HasColumnName("MUserID")
+                    .HasMaxLength(450);
 
                 entity.Property(e => e.Name).HasMaxLength(256);
 
@@ -400,17 +483,25 @@ namespace Entities
 
                 entity.Property(e => e.Cdate).HasColumnName("CDate");
 
-                entity.Property(e => e.CuserId).HasColumnName("CUserID");
+                entity.Property(e => e.CuserId)
+                    .HasColumnName("CUserID")
+                    .HasMaxLength(450);
 
-                entity.Property(e => e.DaUserId).HasColumnName("DaUserID");
+                entity.Property(e => e.DaUserId)
+                    .HasColumnName("DaUserID")
+                    .HasMaxLength(450);
 
                 entity.Property(e => e.Ddate).HasColumnName("DDate");
 
-                entity.Property(e => e.DuserId).HasColumnName("DUserID");
+                entity.Property(e => e.DuserId)
+                    .HasColumnName("DUserID")
+                    .HasMaxLength(450);
 
                 entity.Property(e => e.Mdate).HasColumnName("MDate");
 
-                entity.Property(e => e.MuserId).HasColumnName("MUserID");
+                entity.Property(e => e.MuserId)
+                    .HasColumnName("MUserID")
+                    .HasMaxLength(450);
 
                 entity.Property(e => e.Name).HasMaxLength(512);
 
@@ -446,13 +537,19 @@ namespace Entities
                     .HasColumnName("CoverImageURL")
                     .HasMaxLength(512);
 
-                entity.Property(e => e.CuserId).HasColumnName("CUserID");
+                entity.Property(e => e.CuserId)
+                    .HasColumnName("CUserID")
+                    .HasMaxLength(450);
 
-                entity.Property(e => e.DaUserId).HasColumnName("DaUserID");
+                entity.Property(e => e.DaUserId)
+                    .HasColumnName("DaUserID")
+                    .HasMaxLength(450);
 
                 entity.Property(e => e.Ddate).HasColumnName("DDate");
 
-                entity.Property(e => e.DuserId).HasColumnName("DUserID");
+                entity.Property(e => e.DuserId)
+                    .HasColumnName("DUserID")
+                    .HasMaxLength(450);
 
                 entity.Property(e => e.EnName).HasMaxLength(256);
 
@@ -460,7 +557,9 @@ namespace Entities
 
                 entity.Property(e => e.Mdate).HasColumnName("MDate");
 
-                entity.Property(e => e.MuserId).HasColumnName("MUserID");
+                entity.Property(e => e.MuserId)
+                    .HasColumnName("MUserID")
+                    .HasMaxLength(450);
 
                 entity.Property(e => e.Name).HasMaxLength(256);
 
@@ -499,19 +598,27 @@ namespace Entities
 
                 entity.Property(e => e.Cdate).HasColumnName("CDate");
 
-                entity.Property(e => e.CuserId).HasColumnName("CUserID");
+                entity.Property(e => e.CuserId)
+                    .HasColumnName("CUserID")
+                    .HasMaxLength(450);
 
                 entity.Property(e => e.CustomerId).HasColumnName("CustomerID");
 
-                entity.Property(e => e.DaUserId).HasColumnName("DaUserID");
+                entity.Property(e => e.DaUserId)
+                    .HasColumnName("DaUserID")
+                    .HasMaxLength(450);
 
                 entity.Property(e => e.Ddate).HasColumnName("DDate");
 
-                entity.Property(e => e.DuserId).HasColumnName("DUserID");
+                entity.Property(e => e.DuserId)
+                    .HasColumnName("DUserID")
+                    .HasMaxLength(450);
 
                 entity.Property(e => e.Mdate).HasColumnName("MDate");
 
-                entity.Property(e => e.MuserId).HasColumnName("MUserID");
+                entity.Property(e => e.MuserId)
+                    .HasColumnName("MUserID")
+                    .HasMaxLength(450);
 
                 entity.Property(e => e.ProductId).HasColumnName("ProductID");
 
@@ -536,19 +643,27 @@ namespace Entities
 
                 entity.Property(e => e.Cdate).HasColumnName("CDate");
 
-                entity.Property(e => e.CuserId).HasColumnName("CUserID");
+                entity.Property(e => e.CuserId)
+                    .HasColumnName("CUserID")
+                    .HasMaxLength(450);
 
                 entity.Property(e => e.CustomerId).HasColumnName("CustomerID");
 
-                entity.Property(e => e.DaUserId).HasColumnName("DaUserID");
+                entity.Property(e => e.DaUserId)
+                    .HasColumnName("DaUserID")
+                    .HasMaxLength(450);
 
                 entity.Property(e => e.Ddate).HasColumnName("DDate");
 
-                entity.Property(e => e.DuserId).HasColumnName("DUserID");
+                entity.Property(e => e.DuserId)
+                    .HasColumnName("DUserID")
+                    .HasMaxLength(450);
 
                 entity.Property(e => e.Mdate).HasColumnName("MDate");
 
-                entity.Property(e => e.MuserId).HasColumnName("MUserID");
+                entity.Property(e => e.MuserId)
+                    .HasColumnName("MUserID")
+                    .HasMaxLength(450);
 
                 entity.Property(e => e.ProductId).HasColumnName("ProductID");
 
@@ -575,13 +690,19 @@ namespace Entities
 
                 entity.Property(e => e.ColorId).HasColumnName("ColorID");
 
-                entity.Property(e => e.CuserId).HasColumnName("CUserID");
+                entity.Property(e => e.CuserId)
+                    .HasColumnName("CUserID")
+                    .HasMaxLength(450);
 
-                entity.Property(e => e.DaUserId).HasColumnName("DaUserID");
+                entity.Property(e => e.DaUserId)
+                    .HasColumnName("DaUserID")
+                    .HasMaxLength(450);
 
                 entity.Property(e => e.Ddate).HasColumnName("DDate");
 
-                entity.Property(e => e.DuserId).HasColumnName("DUserID");
+                entity.Property(e => e.DuserId)
+                    .HasColumnName("DUserID")
+                    .HasMaxLength(450);
 
                 entity.Property(e => e.ImageHurl)
                     .HasColumnName("ImageHURL")
@@ -593,7 +714,9 @@ namespace Entities
 
                 entity.Property(e => e.Mdate).HasColumnName("MDate");
 
-                entity.Property(e => e.MuserId).HasColumnName("MUserID");
+                entity.Property(e => e.MuserId)
+                    .HasColumnName("MUserID")
+                    .HasMaxLength(450);
 
                 entity.Property(e => e.ProductId).HasColumnName("ProductID");
 
@@ -614,17 +737,25 @@ namespace Entities
 
                 entity.Property(e => e.Cdate).HasColumnName("CDate");
 
-                entity.Property(e => e.CuserId).HasColumnName("CUserID");
+                entity.Property(e => e.CuserId)
+                    .HasColumnName("CUserID")
+                    .HasMaxLength(450);
 
-                entity.Property(e => e.DaUserId).HasColumnName("DaUserID");
+                entity.Property(e => e.DaUserId)
+                    .HasColumnName("DaUserID")
+                    .HasMaxLength(450);
 
                 entity.Property(e => e.Ddate).HasColumnName("DDate");
 
-                entity.Property(e => e.DuserId).HasColumnName("DUserID");
+                entity.Property(e => e.DuserId)
+                    .HasColumnName("DUserID")
+                    .HasMaxLength(450);
 
                 entity.Property(e => e.Mdate).HasColumnName("MDate");
 
-                entity.Property(e => e.MuserId).HasColumnName("MUserID");
+                entity.Property(e => e.MuserId)
+                    .HasColumnName("MUserID")
+                    .HasMaxLength(450);
 
                 entity.Property(e => e.Name).HasMaxLength(128);
             });
@@ -639,17 +770,25 @@ namespace Entities
 
                 entity.Property(e => e.Cdate).HasColumnName("CDate");
 
-                entity.Property(e => e.CuserId).HasColumnName("CUserID");
+                entity.Property(e => e.CuserId)
+                    .HasColumnName("CUserID")
+                    .HasMaxLength(450);
 
-                entity.Property(e => e.DaUserId).HasColumnName("DaUserID");
+                entity.Property(e => e.DaUserId)
+                    .HasColumnName("DaUserID")
+                    .HasMaxLength(450);
 
                 entity.Property(e => e.Ddate).HasColumnName("DDate");
 
-                entity.Property(e => e.DuserId).HasColumnName("DUserID");
+                entity.Property(e => e.DuserId)
+                    .HasColumnName("DUserID")
+                    .HasMaxLength(450);
 
                 entity.Property(e => e.Mdate).HasColumnName("MDate");
 
-                entity.Property(e => e.MuserId).HasColumnName("MUserID");
+                entity.Property(e => e.MuserId)
+                    .HasColumnName("MUserID")
+                    .HasMaxLength(450);
 
                 entity.Property(e => e.OfferCode).HasMaxLength(32);
 
@@ -678,17 +817,25 @@ namespace Entities
 
                 entity.Property(e => e.Cdate).HasColumnName("CDate");
 
-                entity.Property(e => e.CuserId).HasColumnName("CUserID");
+                entity.Property(e => e.CuserId)
+                    .HasColumnName("CUserID")
+                    .HasMaxLength(450);
 
-                entity.Property(e => e.DaUserId).HasColumnName("DaUserID");
+                entity.Property(e => e.DaUserId)
+                    .HasColumnName("DaUserID")
+                    .HasMaxLength(450);
 
                 entity.Property(e => e.Ddate).HasColumnName("DDate");
 
-                entity.Property(e => e.DuserId).HasColumnName("DUserID");
+                entity.Property(e => e.DuserId)
+                    .HasColumnName("DUserID")
+                    .HasMaxLength(450);
 
                 entity.Property(e => e.Mdate).HasColumnName("MDate");
 
-                entity.Property(e => e.MuserId).HasColumnName("MUserID");
+                entity.Property(e => e.MuserId)
+                    .HasColumnName("MUserID")
+                    .HasMaxLength(450);
 
                 entity.Property(e => e.ProductId).HasColumnName("ProductID");
 
@@ -717,13 +864,19 @@ namespace Entities
 
                 entity.Property(e => e.Cdate).HasColumnName("CDate");
 
-                entity.Property(e => e.CuserId).HasColumnName("CUserID");
+                entity.Property(e => e.CuserId)
+                    .HasColumnName("CUserID")
+                    .HasMaxLength(450);
 
-                entity.Property(e => e.DaUserId).HasColumnName("DaUserID");
+                entity.Property(e => e.DaUserId)
+                    .HasColumnName("DaUserID")
+                    .HasMaxLength(450);
 
                 entity.Property(e => e.Ddate).HasColumnName("DDate");
 
-                entity.Property(e => e.DuserId).HasColumnName("DUserID");
+                entity.Property(e => e.DuserId)
+                    .HasColumnName("DUserID")
+                    .HasMaxLength(450);
 
                 entity.Property(e => e.Email).HasMaxLength(64);
 
@@ -735,7 +888,9 @@ namespace Entities
 
                 entity.Property(e => e.Mdate).HasColumnName("MDate");
 
-                entity.Property(e => e.MuserId).HasColumnName("MUserID");
+                entity.Property(e => e.MuserId)
+                    .HasColumnName("MUserID")
+                    .HasMaxLength(450);
 
                 entity.Property(e => e.Name).HasMaxLength(32);
 
@@ -747,7 +902,9 @@ namespace Entities
                     .HasColumnName("ProfileImageURL")
                     .HasMaxLength(512);
 
-                entity.Property(e => e.UserId).HasColumnName("UserID");
+                entity.Property(e => e.UserId)
+                    .HasColumnName("UserID")
+                    .HasMaxLength(450);
 
                 entity.HasOne(d => d.FinalStatus)
                     .WithMany(p => p.Seller)
@@ -767,17 +924,25 @@ namespace Entities
 
                 entity.Property(e => e.Cdate).HasColumnName("CDate");
 
-                entity.Property(e => e.CuserId).HasColumnName("CUserID");
+                entity.Property(e => e.CuserId)
+                    .HasColumnName("CUserID")
+                    .HasMaxLength(450);
 
-                entity.Property(e => e.DaUserId).HasColumnName("DaUserID");
+                entity.Property(e => e.DaUserId)
+                    .HasColumnName("DaUserID")
+                    .HasMaxLength(450);
 
                 entity.Property(e => e.Ddate).HasColumnName("DDate");
 
-                entity.Property(e => e.DuserId).HasColumnName("DUserID");
+                entity.Property(e => e.DuserId)
+                    .HasColumnName("DUserID")
+                    .HasMaxLength(450);
 
                 entity.Property(e => e.Mdate).HasColumnName("MDate");
 
-                entity.Property(e => e.MuserId).HasColumnName("MUserID");
+                entity.Property(e => e.MuserId)
+                    .HasColumnName("MUserID")
+                    .HasMaxLength(450);
 
                 entity.Property(e => e.SellerId).HasColumnName("SellerID");
 
@@ -806,17 +971,25 @@ namespace Entities
 
                 entity.Property(e => e.Color).HasMaxLength(64);
 
-                entity.Property(e => e.CuserId).HasColumnName("CUserID");
+                entity.Property(e => e.CuserId)
+                    .HasColumnName("CUserID")
+                    .HasMaxLength(450);
 
-                entity.Property(e => e.DaUserId).HasColumnName("DaUserID");
+                entity.Property(e => e.DaUserId)
+                    .HasColumnName("DaUserID")
+                    .HasMaxLength(450);
 
                 entity.Property(e => e.Ddate).HasColumnName("DDate");
 
-                entity.Property(e => e.DuserId).HasColumnName("DUserID");
+                entity.Property(e => e.DuserId)
+                    .HasColumnName("DUserID")
+                    .HasMaxLength(450);
 
                 entity.Property(e => e.Mdate).HasColumnName("MDate");
 
-                entity.Property(e => e.MuserId).HasColumnName("MUserID");
+                entity.Property(e => e.MuserId)
+                    .HasColumnName("MUserID")
+                    .HasMaxLength(450);
 
                 entity.Property(e => e.Name).HasMaxLength(64);
 
@@ -841,17 +1014,25 @@ namespace Entities
 
                 entity.Property(e => e.Cdate).HasColumnName("CDate");
 
-                entity.Property(e => e.CuserId).HasColumnName("CUserID");
+                entity.Property(e => e.CuserId)
+                    .HasColumnName("CUserID")
+                    .HasMaxLength(450);
 
-                entity.Property(e => e.DaUserId).HasColumnName("DaUserID");
+                entity.Property(e => e.DaUserId)
+                    .HasColumnName("DaUserID")
+                    .HasMaxLength(450);
 
                 entity.Property(e => e.Ddate).HasColumnName("DDate");
 
-                entity.Property(e => e.DuserId).HasColumnName("DUserID");
+                entity.Property(e => e.DuserId)
+                    .HasColumnName("DUserID")
+                    .HasMaxLength(450);
 
                 entity.Property(e => e.Mdate).HasColumnName("MDate");
 
-                entity.Property(e => e.MuserId).HasColumnName("MUserID");
+                entity.Property(e => e.MuserId)
+                    .HasColumnName("MUserID")
+                    .HasMaxLength(450);
 
                 entity.Property(e => e.Name).HasMaxLength(64);
             });
@@ -862,17 +1043,25 @@ namespace Entities
 
                 entity.Property(e => e.Cdate).HasColumnName("CDate");
 
-                entity.Property(e => e.CuserId).HasColumnName("CUserID");
+                entity.Property(e => e.CuserId)
+                    .HasColumnName("CUserID")
+                    .HasMaxLength(450);
 
-                entity.Property(e => e.DaUserId).HasColumnName("DaUserID");
+                entity.Property(e => e.DaUserId)
+                    .HasColumnName("DaUserID")
+                    .HasMaxLength(450);
 
                 entity.Property(e => e.Ddate).HasColumnName("DDate");
 
-                entity.Property(e => e.DuserId).HasColumnName("DUserID");
+                entity.Property(e => e.DuserId)
+                    .HasColumnName("DUserID")
+                    .HasMaxLength(450);
 
                 entity.Property(e => e.Mdate).HasColumnName("MDate");
 
-                entity.Property(e => e.MuserId).HasColumnName("MUserID");
+                entity.Property(e => e.MuserId)
+                    .HasColumnName("MUserID")
+                    .HasMaxLength(450);
 
                 entity.Property(e => e.Name).HasMaxLength(128);
             });
@@ -889,17 +1078,25 @@ namespace Entities
 
                 entity.Property(e => e.Cdate).HasColumnName("CDate");
 
-                entity.Property(e => e.CuserId).HasColumnName("CUserID");
+                entity.Property(e => e.CuserId)
+                    .HasColumnName("CUserID")
+                    .HasMaxLength(450);
 
-                entity.Property(e => e.DaUserId).HasColumnName("DaUserID");
+                entity.Property(e => e.DaUserId)
+                    .HasColumnName("DaUserID")
+                    .HasMaxLength(450);
 
                 entity.Property(e => e.Ddate).HasColumnName("DDate");
 
-                entity.Property(e => e.DuserId).HasColumnName("DUserID");
+                entity.Property(e => e.DuserId)
+                    .HasColumnName("DUserID")
+                    .HasMaxLength(450);
 
                 entity.Property(e => e.Mdate).HasColumnName("MDate");
 
-                entity.Property(e => e.MuserId).HasColumnName("MUserID");
+                entity.Property(e => e.MuserId)
+                    .HasColumnName("MUserID")
+                    .HasMaxLength(450);
 
                 entity.Property(e => e.Name).HasMaxLength(64);
 
@@ -916,7 +1113,7 @@ namespace Entities
                     .HasConstraintName("FK_Tables_Systems");
             });
 
-           
+
         }
 
        

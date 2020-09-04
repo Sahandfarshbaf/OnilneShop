@@ -12,13 +12,13 @@ namespace Entities.Models
         public long? CommentDesc { get; set; }
         public int? LikeCount { get; set; }
         public int? DislikeCount { get; set; }
-        public long? CuserId { get; set; }
+        public string CuserId { get; set; }
         public long? Cdate { get; set; }
-        public long? DuserId { get; set; }
+        public string DuserId { get; set; }
         public long? Ddate { get; set; }
-        public long? MuserId { get; set; }
+        public string MuserId { get; set; }
         public long? Mdate { get; set; }
-        public long? DaUserId { get; set; }
+        public string DaUserId { get; set; }
         public long? DaDate { get; set; }
 
         public virtual Customer Customer { get; set; }
