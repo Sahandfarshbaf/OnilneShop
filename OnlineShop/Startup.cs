@@ -39,6 +39,8 @@ namespace OnlineShop
             services.AddAutoMapper(typeof(Startup));
             services.ConfigureApplicationCookie(o => o.LoginPath = "/Authentication/Login");
             services.AddScoped<IUserClaimsPrincipalFactory<User>, CustomClaimsFactory>();
+            services.AddRazorPages()
+                .AddRazorRuntimeCompilation();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -59,14 +61,28 @@ namespace OnlineShop
                 ForwardedHeaders = ForwardedHeaders.All
             });
 
+            app.UseHttpsRedirection();
+            app.UseStaticFiles();
+
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+                endpoints.MapAreaControllerRoute(
+                    "admin",
+                    "admin",
+                    "Admin/{controller=Home}/{action=Index}/{id?}");
+                endpoints.MapControllerRoute(
+                    "default", "{controller=Home}/{action=Index}/{id?}");
+                endpoints.MapRazorPages();
             });
+
+
+           
         }
     }
 }

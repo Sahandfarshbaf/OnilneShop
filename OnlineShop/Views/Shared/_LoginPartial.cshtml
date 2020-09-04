@@ -1,0 +1,27 @@
+﻿
+@using Entities.Models
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<User> SignInManager
+@inject UserManager<User> UserManager
+
+
+    @if (SignInManager.IsSignedIn(User))
+    {
+
+      
+    }
+    else
+    {
+       
+            <a class="nav-link text-dark" asp-controller="Account"
+               asp-action="Login">
+
+                <img src="/images/icons/icon-header-01.png"
+                     class="header-icon1"
+                     alt="ICON" />
+            </a>
+     
+
+    }
+
+
