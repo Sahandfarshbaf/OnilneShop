@@ -156,5 +156,34 @@ namespace OnlineShop.Controllers.ApiControllers
 
 
         }
+
+        [HttpDelete]
+        [Route("Product/DeleteProduct")]
+        public IActionResult DeleteProduct(long productId) {
+
+            try
+            {
+                var product=_repository.Product.FindByCondition(c => c.Id.Equals(productId)).FirstOrDefault();
+                if (product == null) {
+                    _logger.LogError($"Product with id: {productId}, hasn't been found in db.");
+                    return NotFound();
+
+                }
+                product.Ddate = timeTick;
+                product.DuserId = userid;
+                _repository.Product.Update(product);
+                _repository.Save();
+                _logger.LogInfo($"Delete Product In database ById={productId}");
+                return Ok("");
+
+
+            }
+            catch (Exception e)
+            {
+
+                _logger.LogError($"Something went wrong Delete Product To database: {e.Message}");
+                return BadRequest("Internal server error");
+            }
+        }
     }
 }
