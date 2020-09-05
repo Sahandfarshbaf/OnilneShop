@@ -37,7 +37,7 @@ namespace OnlineShop.Controllers.ApiControllers
         {
             try
             {
-                var imagelist = _repository.ProductImage.GetProductImageWithDetails(productId).ToList();
+                var imagelist = _repository.ProductImage.GetProductImageWithDetails(productId).Where(c=>!string.IsNullOrWhiteSpace(c.DaUserId) && !string.IsNullOrWhiteSpace(c.DuserId)).ToList();
                 if (imagelist.Count == 0)
                 {
                     _logger.LogError($"ProductImage with id: {productId}, hasn't been found in db.");
@@ -98,6 +98,59 @@ namespace OnlineShop.Controllers.ApiControllers
             }
            
             
+        }
+
+        [HttpGet]
+        [Route("ProductImage/GetProductImageById")]
+        public IActionResult GetProductImageById(long productImageId)
+        {
+            try
+            {
+                var image = _repository.ProductImage.FindByCondition(p=>p.Id.Equals(productImageId)).FirstOrDefault();
+                if (image == null)
+                {
+                    _logger.LogError($"ProductImage with id: {productImageId}, hasn't been found in db.");
+                    return NotFound();
+                }
+
+              
+                _logger.LogInfo($"Returned Image with id: {productImageId}");
+                return Ok(image.ImageUrl);
+            }
+            catch (Exception e)
+            {
+                _logger.LogError($"Something went wrong inside GetProductImageById action: {e.Message}");
+                return BadRequest("Internal server error");
+            }
+
+        }
+
+        [HttpDelete]
+        [Route("ProductImage/DeleteProductImageById")]
+        public IActionResult DeleteProductImageById(long productImageId)
+        {
+            try
+            {
+                var image = _repository.ProductImage.FindByCondition(p => p.Id.Equals(productImageId)).FirstOrDefault();
+                if (image == null)
+                {
+                    _logger.LogError($"ProductImage with id: {productImageId}, hasn't been found in db.");
+                    return NotFound();
+                }
+
+                image.DuserId = userid;
+                image.Ddate = timeTick;
+                _repository.ProductImage.Update(image);
+                _repository.Save();
+                _logger.LogInfo($"Delete ProductImage with id: {productImageId}");
+                return Ok(image.ImageUrl);
+            }
+            catch (Exception e)
+            {
+                _logger.LogError($"Something went wrong inside DeleteProductImageById action: {e.Message}");
+                return BadRequest("Internal server error");
+            }
+
         }
     }
 }

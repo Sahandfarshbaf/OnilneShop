@@ -12,6 +12,7 @@ namespace Contracts
         ISellerRepository Seller { get; }
         IProductImageRepository ProductImage { get; }
         IColorRepository Color { get; }
+        IProductMeterRepository ProductMeter { get; }
 
         void Save();
     }

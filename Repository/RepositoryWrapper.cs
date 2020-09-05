@@ -14,6 +14,7 @@ namespace Repository
         private ISellerRepository _seller;
         private IProductImageRepository _productImage;
         private IColorRepository _color;
+        private IProductMeterRepository _productMeter;
 
 
         public ICatProductRepository CatProduct
@@ -74,6 +75,19 @@ namespace Repository
                 }
 
                 return _color;
+            }
+        }
+
+        public IProductMeterRepository ProductMeter
+        {
+            get
+            {
+                if (_productMeter == null)
+                {
+                    _productMeter = new ProductMeterRepository(_repoContext);
+                }
+
+                return _productMeter;
             }
         }
 
