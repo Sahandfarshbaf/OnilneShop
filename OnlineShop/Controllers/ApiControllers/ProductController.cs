@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
+using System.Text.Json;
 using System.Threading.Tasks;
 using AutoMapper;
 using Contracts;
@@ -33,9 +34,10 @@ namespace OnlineShop.Controllers.ApiControllers
         }
 
         [HttpPost]
-        [Route("Product/Insert")]
-        public IActionResult Insert(Product _product)
+        [Route("Product/InsertProduct")]
+        public IActionResult InsertProduct()
         {
+            Product _product = JsonSerializer.Deserialize<Product>(HttpContext.Request.Form["Product"]);
             var coverImageUrl = HttpContext.Request.Form.Files[0];
 
             FileManeger.UploadFileStatus uploadFileStatus = FileManeger.FileUploader(coverImageUrl, 1, "ProductImages");
@@ -66,7 +68,90 @@ namespace OnlineShop.Controllers.ApiControllers
             {
 
                 _logger.LogError($"Something went wrong Insert Product To database: {uploadFileStatus.Path}");
-                return BadRequest(uploadFileStatus.Path);
+                return BadRequest("Internal server error");
+            }
+
+
+        }
+
+        [HttpPut]
+        [Route("Product/EditProduct")]
+        public IActionResult EditProduct(long productId)
+        {
+
+
+            Product _product = JsonSerializer.Deserialize<Product>(HttpContext.Request.Form["Product"]);
+            var product = _repository.Product.FindByCondition(c => c.Id.Equals(productId)).FirstOrDefault();
+            if (product == null)
+            {
+                _logger.LogError($"Product with id: {productId}, hasn't been found in db.");
+                return NotFound();
+            }
+
+            if (HttpContext.Request.Form.Files.Count > 0)
+            {
+                var coverImageUrl = HttpContext.Request.Form.Files[0];
+                var deletedFile = product.CoverImageUrl;
+                FileManeger.UploadFileStatus uploadFileStatus = FileManeger.FileUploader(coverImageUrl, 1, "ProductImages");
+                if (uploadFileStatus.Status == 200)
+                {
+
+                    product.Name = _product.Name;
+                    product.EnName = _product.EnName;
+                    product.CatProductId = _product.CatProductId;
+                    product.Coding = _product.Coding;
+                    product.Price = _product.Price;
+                    product.FirstCount = _product.FirstCount;
+                    product.ProductMeterId = _product.ProductMeterId;
+                    product.CoverImageUrl = uploadFileStatus.Path;
+                    _repository.Product.Update(product);
+                    try
+                    {
+                        _repository.Save();
+                        FileManeger.FileRemover(new List<string> { deletedFile });
+                        _logger.LogInfo($"Update Product In database ById={productId}");
+                        return Ok("");
+                    }
+                    catch (Exception e)
+                    {
+
+                        _logger.LogError($"Something went wrong Update Product To database: {e.Message}");
+                        FileManeger.FileRemover(new List<string> { uploadFileStatus.Path });
+                        return BadRequest("Internal server error");
+                    }
+
+                }
+                else
+                {
+                    _logger.LogError($"Something went wrong Update Product To database: {uploadFileStatus.Path}");
+                    return BadRequest("Internal server error");
+                }
+            }
+            else
+            {
+
+                product.Name = _product.Name;
+                product.EnName = _product.EnName;
+                product.CatProductId = _product.CatProductId;
+                product.Coding = _product.Coding;
+                product.Price = _product.Price;
+                product.FirstCount = _product.FirstCount;
+                product.ProductMeterId = _product.ProductMeterId;
+                _repository.Product.Update(product);
+                try
+                {
+                    _repository.Save();
+                    _logger.LogInfo($"Update Product In database ById={productId}");
+                    return Ok("");
+                }
+                catch (Exception e)
+                {
+
+                    _logger.LogError($"Something went wrong Update Product To database: {e.Message}");
+                    return BadRequest("Internal server error");
+                }
+
+
             }
 
 

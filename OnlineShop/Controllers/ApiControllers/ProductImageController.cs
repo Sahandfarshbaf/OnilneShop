@@ -9,6 +9,7 @@ using Entities.DataTransferObjects;
 using Entities.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Synapse.Tools;
 
 namespace OnlineShop.Controllers.ApiControllers
 {
@@ -53,6 +54,50 @@ namespace OnlineShop.Controllers.ApiControllers
                 return BadRequest("Internal server error");
             }
 
+        }
+
+        [HttpPost]
+        [Route("ProductImage/InsertProductImage")]
+        public IActionResult InsertProductImage(long productId, long colorId)
+        {
+            try
+            {
+                var productImageUrl = HttpContext.Request.Form.Files[0];
+                FileManeger.UploadFileStatus uploadFileStatus = FileManeger.FileUploader(productImageUrl, 1, "ProductImages");
+                if (uploadFileStatus.Status == 200)
+                {
+
+                    ProductImage productImage = new ProductImage
+                    {
+
+                        ImageUrl = uploadFileStatus.Path,
+                        ColorId = colorId,
+                        ProductId = productId,
+                        //CuserId= userid
+                        DaDate = timeTick
+
+                    };
+
+                    _repository.ProductImage.Create(productImage);
+                    _repository.Save();
+                    _logger.LogInfo($"Insert ProductImage To database.");
+                    return Ok("");
+                }
+                else
+                {
+
+                    _logger.LogError($"Something went wrong inside InsertProductImage action: {uploadFileStatus.Path}");
+                    return BadRequest("Internal server error");
+                }
+            }
+            catch (Exception e)
+            {
+
+                _logger.LogError($"Something went wrong inside InsertProductImage action: {e.Message}");
+                return BadRequest("Internal server error");
+            }
+           
+            
         }
     }
 }
