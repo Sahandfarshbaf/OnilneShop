@@ -15,6 +15,12 @@ namespace Repository
         private IProductImageRepository _productImage;
         private IColorRepository _color;
         private IProductMeterRepository _productMeter;
+        private IProductOfferRepository _productOffer;
+        private IProductCustomerCommentsRepository _productCustmerComments;
+        private IProductCustomerRateRepositry _productCustomerRateRepositry;
+        private IProductParametersRepository _productParametersRepository;
+
+
 
 
         public ICatProductRepository CatProduct
@@ -77,7 +83,6 @@ namespace Repository
                 return _color;
             }
         }
-
         public IProductMeterRepository ProductMeter
         {
             get
@@ -90,6 +95,56 @@ namespace Repository
                 return _productMeter;
             }
         }
+        public IProductOfferRepository ProductOffer
+        {
+            get
+            {
+                if (_productOffer == null)
+                {
+                    _productOffer = new ProductOfferRepository(_repoContext);
+                }
+
+                return _productOffer;
+            }
+        }
+        public IProductCustomerCommentsRepository ProductCustomerComments
+        {
+            get
+            {
+                if (_productCustmerComments == null)
+                {
+                    _productCustmerComments = new ProductCustomerCommentsRepository(_repoContext);
+                }
+
+                return _productCustmerComments;
+            }
+        }
+        public IProductCustomerRateRepositry ProductCustomerRate
+        {
+            get
+            {
+                if (_productCustomerRateRepositry == null)
+                {
+                    _productCustomerRateRepositry = new ProductCustomerRateRepository(_repoContext);
+                }
+
+                return _productCustomerRateRepositry;
+            }
+        }
+        public IProductParametersRepository ProductParameters
+        {
+            get
+            {
+                if (_productParametersRepository == null)
+                {
+                    _productParametersRepository = new ProductParametersRepository(_repoContext);
+                }
+
+                return _productParametersRepository;
+            }
+        }
+
+
 
         public RepositoryWrapper(RepositoryContext repositoryContext)
         {

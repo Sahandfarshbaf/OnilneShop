@@ -13,6 +13,10 @@ namespace Contracts
         IProductImageRepository ProductImage { get; }
         IColorRepository Color { get; }
         IProductMeterRepository ProductMeter { get; }
+        IProductOfferRepository ProductOffer { get; }
+        IProductCustomerCommentsRepository ProductCustomerComments { get; }
+
+
 
         void Save();
     }
