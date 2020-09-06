@@ -36,7 +36,8 @@ namespace Entities.Models
         public long? Mdate { get; set; }
         public string DaUserId { get; set; }
         public long? DaDate { get; set; }
-
+        public long SeenCount { get; set; }
+        public long LastSeenDate { get; set; }
         public virtual CatProduct CatProduct { get; set; }
         public virtual Status FinalStatus { get; set; }
         public virtual ProductMeter ProductMeter { get; set; }

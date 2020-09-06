@@ -15,7 +15,14 @@ namespace Contracts
         IProductMeterRepository ProductMeter { get; }
         IProductOfferRepository ProductOffer { get; }
         IProductCustomerCommentsRepository ProductCustomerComments { get; }
-
+        IProductCustomerRateRepositry ProductCustomerRate { get; }
+        IProductParametersRepository ProductParameters { get; }
+        ISellerCatProductRepository SellerCatProduct { get; }
+        IStatusRepository Status { get; }
+        IStatusTypeRepository StatusType { get; }
+        ISystemsRepository Systems { get; }
+        ITablesRepository Tables { get; }
+        ICatProductParametersRepository CatProductParameters { get; }
 
 
         void Save();

@@ -27,6 +27,7 @@ namespace Entities.Models
         public long? PostalCode { get; set; }
         public string Address { get; set; }
         public long? FinalStatusId { get; set; }
+        public bool SendNews { get; set; }
         public string CuserId { get; set; }
         public long? Cdate { get; set; }
         public string DuserId { get; set; }
