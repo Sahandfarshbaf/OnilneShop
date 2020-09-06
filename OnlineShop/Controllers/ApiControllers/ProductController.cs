@@ -185,5 +185,24 @@ namespace OnlineShop.Controllers.ApiControllers
                 return BadRequest("Internal server error");
             }
         }
+
+        //[HttpGet]
+        //[Route("Product/GetProductList")]
+        //public IActionResult GetProductList() {
+
+        //    try
+        //    {
+        //        var sellerId = _repository.Seller.FindByCondition(s => s.UserId.Equals(userid)).Select(c=>c.Id).FirstOrDefault();
+        //        var result = _repository.Product.GetSellerProductList(sellerId);
+        //    }
+        //    catch (Exception)
+        //    {
+
+        //        throw;
+        //    }
+
+        //}
+
+
     }
 }
