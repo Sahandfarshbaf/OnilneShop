@@ -159,12 +159,14 @@ namespace OnlineShop.Controllers.ApiControllers
 
         [HttpDelete]
         [Route("Product/DeleteProduct")]
-        public IActionResult DeleteProduct(long productId) {
+        public IActionResult DeleteProduct(long productId)
+        {
 
             try
             {
-                var product=_repository.Product.FindByCondition(c => c.Id.Equals(productId)).FirstOrDefault();
-                if (product == null) {
+                var product = _repository.Product.FindByCondition(c => c.Id.Equals(productId)).FirstOrDefault();
+                if (product == null)
+                {
                     _logger.LogError($"Product with id: {productId}, hasn't been found in db.");
                     return NotFound();
 
@@ -185,5 +187,77 @@ namespace OnlineShop.Controllers.ApiControllers
                 return BadRequest("Internal server error");
             }
         }
+
+        [HttpGet]
+        [Route("Product/GetSellerProductList")]
+        public IActionResult GetSellerProductList(long? sellerId)
+        {
+            try
+            {
+                long _sellerId;
+                if (!sellerId.Equals(null))
+                {
+                    _sellerId = sellerId.Value;
+                }
+                else
+                {
+
+                    _sellerId = _repository.Seller.FindByCondition(s => s.UserId.Equals(userid)).Select(c => c.Id).FirstOrDefault();
+                }
+
+                var result = _repository.Product.GetSellerProductList(_sellerId).Select(c => new { c.Id, CatProduct = c.CatProduct.Name, c.Name, c.Price, c.FirstCount, c.Count, c.CoverImageUrl }).ToList();
+                _logger.LogInfo($"All Seller Product List Return  ById={_sellerId}");
+                return Ok(result);
+            }
+            catch (Exception e)
+            {
+
+                _logger.LogError($"Something went in Action GetSellerProductList : {e.Message}");
+                return BadRequest("Internal server error");
+            }
+
+        }
+
+        [HttpGet]
+        [Route("Product/GetProductById")]
+        public IActionResult GetProductById(long productId)
+        {
+            try
+            {
+                var result = _repository.Product.FindByCondition(c => c.Id.Equals(productId)).FirstOrDefault();
+                if (result.Equals(null))
+                {
+                    _logger.LogError($"Product with id: {productId}, hasn't been found in db.");
+                    return NotFound();
+                }
+                _logger.LogInfo($"Returned product with id: {productId}");
+                return Ok(result);
+            }
+            catch (Exception e)
+            {
+
+                _logger.LogError($"Something went wrong inside GetProductById action: {e.Message}");
+                return BadRequest("Internal server error");
+            }
+        
+        }
+
+        //[HttpGet]
+        //[Route("Product/GetTopProductListWithRate")]
+        //public IActionResult GetTopProductListWithRate() {
+
+        //    try
+        //    {
+        //        var result=_repository.Product.GetTopProductListWithRate().Select()
+        //    }
+        //    catch (Exception e)
+        //    {
+
+        //        throw;
+        //    }
+        
+        //}
+
+
     }
 }

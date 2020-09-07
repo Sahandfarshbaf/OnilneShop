@@ -28,6 +28,8 @@ namespace Entities.Models
         public long? Count { get; set; }
         public string CoverImageUrl { get; set; }
         public string CoverImageHurl { get; set; }
+        public string Description { get; set; }
+        public string AparatURL { get; set; }
         public string CuserId { get; set; }
         public long? Cdate { get; set; }
         public string DuserId { get; set; }
