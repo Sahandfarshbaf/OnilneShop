@@ -28,7 +28,7 @@ namespace OnlineShop.Controllers.ApiControllers
             _logger = logger;
             _repository = repository;
             _mapper = mapper;
-            userid = User.Claims.Where(c => c.Type == ClaimTypes.NameIdentifier).Select(x => x.Value).SingleOrDefault();
+            //userid =User.Claims.Where(c => c.Type == ClaimTypes.NameIdentifier).Select(x => x.Value).SingleOrDefault();
             timeTick = DateTime.Now.Ticks;
 
         }

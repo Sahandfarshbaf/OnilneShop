@@ -17,15 +17,17 @@ function GetAllProduct() {
                   </tr>
                </thead>
              <tbody>`;
+    alert("1")
     jQuery.ajax({
-        type: "post",
-        url: "/api/Product/GetAllProduct",
+        type: "Get",
+        url: "/api/Product/GetSellerProductList?SellerID=1",
         data: "",
         async: false,
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         success: function (response) {
-
+            alert("2")
+            console.log(response);
             
 let Id = 0;
 
@@ -568,7 +570,7 @@ $(document).ready(() => {
 
 
 
-   // GetAllProduct();
+   GetAllProduct();
 
     $(document.body).on('click', '#btnJadid', () => {
 
