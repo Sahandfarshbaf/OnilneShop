@@ -16,6 +16,14 @@ namespace OnlineShop.Controllers
         {
             return View();
         }
+     public IActionResult product()
+        {
+            return View();
+        }
+  public IActionResult category()
+        {
+            return View();
+        }
         public IActionResult login()
         {
             return View();
