@@ -570,7 +570,7 @@ $(document).ready(() => {
 
 
 
-   GetAllProduct();
+   //GetAllProduct();
 
     $(document.body).on('click', '#btnJadid', () => {
 
