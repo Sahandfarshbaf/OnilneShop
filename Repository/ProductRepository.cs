@@ -28,7 +28,7 @@ namespace Repository
         public List<Product> GetSellerProductList(long sellerId)
         {
             return FindByCondition(p=>p.SellerId.Equals(sellerId))
-                .Include(p => p.CatProduct.Name)
+                .Include(p => p.CatProduct)
                 .OrderByDescending(p=>p.Id)
                 .ToList();
         }
