@@ -227,16 +227,16 @@ namespace OnlineShop.Controllers.ApiControllers
                 var result = _repository.Product.FindByCondition(c => c.Id.Equals(productId)).FirstOrDefault();
                 if (result.Equals(null))
                 {
-                  //  _logger.LogError($"Product with id: {productId}, hasn't been found in db.");
+                   _logger.LogError($"Product with id: {productId}, hasn't been found in db.");
                     return NotFound();
                 }
-              //  _logger.LogInfo($"Returned product with id: {productId}");
+               _logger.LogInfo($"Returned product with id: {productId}");
                 return Ok(result);
             }
             catch (Exception e)
             {
 
-              //  _logger.LogError($"Something went wrong inside GetProductById action: {e.Message}");
+               _logger.LogError($"Something went wrong inside GetProductById action: {e.Message}");
                 return BadRequest("Internal server error");
             }
         
