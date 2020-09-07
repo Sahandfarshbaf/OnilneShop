@@ -18,6 +18,8 @@ namespace OnlineShop
 
             CreateMap<ProductImage, ProductImageDto>()
                 .ForMember(u => u.ProductImageId, opt => opt.MapFrom(x => x.Id));
+            CreateMap<Product, ProductDto>()
+                .ForMember(u => u.CatProductName, opt => opt.MapFrom(x => x.CatProduct.Name));
 
 
         }

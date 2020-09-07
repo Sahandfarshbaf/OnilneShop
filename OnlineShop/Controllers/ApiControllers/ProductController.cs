@@ -6,6 +6,7 @@ using System.Text.Json;
 using System.Threading.Tasks;
 using AutoMapper;
 using Contracts;
+using Entities.DataTransferObjects;
 using Entities.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -189,6 +190,30 @@ namespace OnlineShop.Controllers.ApiControllers
         }
 
         [HttpGet]
+        [Route("Product/GetProductById")]
+        public IActionResult GetProductById(long productId)
+        {
+            try
+            {
+                var result = _repository.Product.FindByCondition(c => c.Id.Equals(productId)).FirstOrDefault();
+                if (result.Equals(null))
+                {
+                    _logger.LogError($"Product with id: {productId}, hasn't been found in db.");
+                    return NotFound();
+                }
+                _logger.LogInfo($"Returned product with id: {productId}");
+                return Ok(result);
+            }
+            catch (Exception e)
+            {
+
+                _logger.LogError($"Something went wrong inside GetProductById action: {e.Message}");
+                return BadRequest("Internal server error");
+            }
+
+        }
+
+        [HttpGet]
         [Route("Product/GetSellerProductList")]
         public IActionResult GetSellerProductList(long? sellerId)
         {
@@ -205,7 +230,8 @@ namespace OnlineShop.Controllers.ApiControllers
                     _sellerId = _repository.Seller.FindByCondition(s => s.UserId.Equals(userid)).Select(c => c.Id).FirstOrDefault();
                 }
 
-                var result = _repository.Product.GetSellerProductList(_sellerId).Select(c => new { c.Id, CatProduct = c.CatProduct.Name, c.Name, c.Price, c.FirstCount, c.Count, c.CoverImageUrl }).ToList();
+                var productList = _repository.Product.GetSellerProductList(_sellerId).ToList();
+                var result = _mapper.Map<List<ProductDto>>(productList);
                 _logger.LogInfo($"All Seller Product List Return  ById={_sellerId}");
                 return Ok(result);
             }
@@ -218,45 +244,104 @@ namespace OnlineShop.Controllers.ApiControllers
 
         }
 
-        [HttpGet]
-        [Route("Product/GetProductById")]
-        public IActionResult GetProductById(long productId)
+        [HttpGet] //محولاتی که بیشترین امتیاز را دارند
+        [Route("Product/GetTopProductListWithRate")]
+        public IActionResult GetTopProductListWithRate()
         {
+
             try
             {
-                var result = _repository.Product.FindByCondition(c => c.Id.Equals(productId)).FirstOrDefault();
-                if (result.Equals(null))
-                {
-                   _logger.LogError($"Product with id: {productId}, hasn't been found in db.");
-                    return NotFound();
-                }
-               _logger.LogInfo($"Returned product with id: {productId}");
+                var result = _repository.Product.GetTopProductListWithRate()
+                    .Select(c => new { c.Id, CatProduct = c.CatProduct.Name, c.Name, c.Price, c.FirstCount, c.Count, c.CoverImageUrl })
+                    .ToList();
                 return Ok(result);
             }
             catch (Exception e)
             {
 
-               _logger.LogError($"Something went wrong inside GetProductById action: {e.Message}");
-                return BadRequest("Internal server error");
+                throw;
             }
-        
+
         }
 
-        //[HttpGet]
-        //[Route("Product/GetTopProductListWithRate")]
-        //public IActionResult GetTopProductListWithRate() {
+        [HttpGet] // آخرین محصولات
+        [Route("Product/GetLatestProductList")]
+        public IActionResult GetLatestProductList()
+        {
+            try
+            {
+                var productList = _repository.Product.GetProductListWithDetail().OrderByDescending(p => p.Id).Take(10)
+                    .ToList();
+                var result = _mapper.Map<List<ProductDto>>(productList);
+                _logger.LogInfo($"Latest Product List Return");
+                return Ok(result);
+            }
+            catch (Exception e)
+            {
+                _logger.LogError($"Something went wrong inside GetLatestProductList action: {e.Message}");
+                return BadRequest("Internal server error");
+            }
+        }
 
-        //    try
-        //    {
-        //        var result=_repository.Product.GetTopProductListWithRate().Select()
-        //    }
-        //    catch (Exception e)
-        //    {
+        [HttpGet] // محصولاتی که بیشترین بازدید را دارند
+        [Route("Product/GetMostSeenProductList")]
+        public IActionResult GetMostSeenProductList()
+        {
+            try
+            {
+                var productList = _repository.Product.FindAll().OrderByDescending(p => p.SeenCount).Take(10)
+                    .ToList();
+                var result = _mapper.Map<List<ProductDto>>(productList);
+                _logger.LogInfo($"Latest Product List Return");
+                return Ok(result);
+            }
+            catch (Exception e)
+            {
+                _logger.LogError($"Something went wrong inside GetLatestProductList action: {e.Message}");
+                return BadRequest("Internal server error");
+            }
+        }
 
-        //        throw;
-        //    }
-        
-        //}
+        [HttpGet]
+        [Route("Product/GetProductInfoById")]
+        public IActionResult GetProductInfoById(long producId)
+        {
+            try
+            {
+                var product = _repository.Product.FindByCondition(c => c.Id.Equals(producId)).FirstOrDefault();
+                var result = _mapper.Map<ProductDto>(product);
+                product.SeenCount = product.SeenCount + 1;
+                product.LastSeenDate = timeTick;
+                _repository.Product.Update(product);
+                _repository.Save();
+                _logger.LogInfo($"Product Info Return by id={producId} && lastSeen Info Updated");
+                return Ok(result);
+            }
+            catch (Exception e)
+            {
+                _logger.LogError($"Something went wrong inside GetProductInfoById action: {e.Message}");
+                return BadRequest("Internal server error");
+            }
+        }
+
+        [HttpGet] // محصولاتی که اخیرا بازدید شده اند  
+        [Route("Product/GetLatestSeenProductList")]
+        public IActionResult GetLatestSeenProductList()
+        {
+            try
+            {
+                var productList = _repository.Product.FindAll().OrderByDescending(p => p.LastSeenDate).Take(10)
+                    .ToList();
+                var result = _mapper.Map<List<ProductDto>>(productList);
+                _logger.LogInfo($"Latest Seen Product List Return");
+                return Ok(result);
+            }
+            catch (Exception e)
+            {
+                _logger.LogError($"Something went wrong inside GetLatestSeenProductList action: {e.Message}");
+                return BadRequest("Internal server error");
+            }
+        }
 
 
     }

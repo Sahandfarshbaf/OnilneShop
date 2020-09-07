@@ -9,30 +9,36 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Repository
 {
-   public class ProductRepository : RepositoryBase<Product>, IProductRepository
+    public class ProductRepository : RepositoryBase<Product>, IProductRepository
     {
         public ProductRepository(RepositoryContext repositoryContext)
             : base(repositoryContext)
         {
-            
+
         }
         public List<Product> GetTopProductListWithRate()
         {
             return FindAll()
                 .Include(p => p.ProductCustomerRate)
-                .OrderByDescending(p=>p.ProductCustomerRate.Average(r=>r.Rate))
+                .OrderByDescending(p => p.ProductCustomerRate.Average(r => r.Rate))
                 .Take(10)
                 .ToList();
         }
 
         public List<Product> GetSellerProductList(long sellerId)
         {
-            return FindByCondition(p=>p.SellerId.Equals(sellerId))
+            return FindByCondition(p => p.SellerId.Equals(sellerId))
                 .Include(p => p.CatProduct)
-                .OrderByDescending(p=>p.Id)
+                .OrderByDescending(p => p.Id)
                 .ToList();
         }
 
-       
+        public List<Product> GetProductListWithDetail()
+        {
+            return FindAll().Include(p => p.CatProduct)
+                .Include(p => p.ProductCustomerRate)
+                .Include(p => p.ProductOffer)
+                .ToList();
+        }
     }
 }
