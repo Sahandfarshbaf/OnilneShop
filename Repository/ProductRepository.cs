@@ -16,11 +16,12 @@ namespace Repository
         {
             
         }
-        public List<Product> GetProductWithRateAndOffer()
+        public List<Product> GetTopProductListWithRate()
         {
             return FindAll()
-                .Include(p=>p.ProductOffer)
                 .Include(p => p.ProductCustomerRate)
+                .OrderByDescending(p=>p.ProductCustomerRate.Average(r=>r.Rate))
+                .Take(10)
                 .ToList();
         }
 
@@ -31,5 +32,7 @@ namespace Repository
                 .OrderByDescending(p=>p.Id)
                 .ToList();
         }
+
+       
     }
 }
