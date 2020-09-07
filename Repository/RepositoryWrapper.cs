@@ -17,9 +17,14 @@ namespace Repository
         private IProductMeterRepository _productMeter;
         private IProductOfferRepository _productOffer;
         private IProductCustomerCommentsRepository _productCustmerComments;
-        private IProductCustomerRateRepositry _productCustomerRateRepositry;
-        private IProductParametersRepository _productParametersRepository;
-
+        private IProductCustomerRateRepositry _productCustomerRate;
+        private IProductParametersRepository _productParameters;
+        private ISellerCatProductRepository _sellerCatProduct;
+        private IStatusRepository _status;
+        private IStatusTypeRepository _statusType;
+        private ISystemsRepository _systems;
+        private ITablesRepository _tables;
+        private ICatProductParametersRepository _catProductParameters;
 
 
 
@@ -123,24 +128,96 @@ namespace Repository
         {
             get
             {
-                if (_productCustomerRateRepositry == null)
+                if (_productCustomerRate == null)
                 {
-                    _productCustomerRateRepositry = new ProductCustomerRateRepository(_repoContext);
+                    _productCustomerRate = new ProductCustomerRateRepository(_repoContext);
                 }
 
-                return _productCustomerRateRepositry;
+                return _productCustomerRate;
             }
         }
         public IProductParametersRepository ProductParameters
         {
             get
             {
-                if (_productParametersRepository == null)
+                if (_productParameters == null)
                 {
-                    _productParametersRepository = new ProductParametersRepository(_repoContext);
+                    _productParameters = new ProductParametersRepository(_repoContext);
                 }
 
-                return _productParametersRepository;
+                return _productParameters;
+            }
+        }
+        public ISellerCatProductRepository SellerCatProduct
+        {
+            get
+            {
+                if (_sellerCatProduct == null)
+                {
+                    _sellerCatProduct = new SellerCatProductRepository(_repoContext);
+                }
+
+                return _sellerCatProduct;
+            }
+        }
+        public IStatusRepository Status
+        {
+            get
+            {
+                if (_status == null)
+                {
+                    _status = new StatusRepository(_repoContext);
+                }
+
+                return _status;
+            }
+        }
+        public IStatusTypeRepository StatusType
+        {
+            get
+            {
+                if (_statusType == null)
+                {
+                    _statusType = new StatusTypeRepository(_repoContext);
+                }
+
+                return _statusType;
+            }
+        }
+        public ISystemsRepository Systems
+        {
+            get
+            {
+                if (_systems == null)
+                {
+                    _systems = new SystemsRepository(_repoContext);
+                }
+
+                return _systems;
+            }
+        }
+        public ITablesRepository Tables
+        {
+            get
+            {
+                if (_tables == null)
+                {
+                    _tables = new TablesRepository(_repoContext);
+                }
+
+                return _tables;
+            }
+        }
+        public ICatProductParametersRepository CatProductParameters
+        {
+            get
+            {
+                if (_catProductParameters == null)
+                {
+                    _catProductParameters = new CatProductParametersRepository(_repoContext);
+                }
+
+                return _catProductParameters;
             }
         }
 
