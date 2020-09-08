@@ -27,5 +27,25 @@ namespace OnlineShop.Controllers.ApiControllers
             //userid = User.Claims.Where(c => c.Type == ClaimTypes.NameIdentifier).Select(x => x.Value).SingleOrDefault();
             timeTick = DateTime.Now.Ticks;
         }
+        [HttpGet]
+        [Route("ProductMeter/GetProductMeterList")]
+        public IActionResult GetProductMeterList()
+        {
+
+            try
+            {
+                var result = _repository.ProductMeter.FindByCondition(c => string.IsNullOrWhiteSpace(c.DaUserId) && string.IsNullOrWhiteSpace(c.DuserId)).Select(p => new { p.Id, p.Name }).ToList();
+                _logger.LogInfo($"All ProductMeter List Returned");
+                return Ok(result);
+
+            }
+            catch (Exception e)
+            {
+
+                _logger.LogError($"Something went in Action GetProductMeterList : {e.Message}");
+                return BadRequest("Internal server error");
+            }
+
+        }
     }
 }
