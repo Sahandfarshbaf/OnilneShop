@@ -83,11 +83,63 @@ function GetAllProduct() {
     });
 }
 
+function InsertEmploye() {
 
+    let Employe = {
+        Id: 0,
+        Name: $('#txtName').val(),
+        Skills: $('#txtSkill').val(),
+        Degree: $('#txtDegree').val(),
+        Description: $('#txtTozihat').val()
+    }
+
+    var myfile = $("#exampleInputFile");
+    console.log(myfile);
+
+    var formData = new FormData();
+
+
+
+    formData.append('ImageFile', myfile[0].files[0]);
+    formData.append('Employee', JSON.stringify(Employe))
+
+
+    jQuery.ajax({
+        type: "Post",
+        url: "/api/Employe/InsertEmploye",
+        data: formData,
+        contentType: false,
+        processData: false,
+        success: function (response) {
+
+            Swal.fire(
+                'ثبت شد !',
+                'همکار با موفقیت ثبت شد',
+                'success'
+            );
+            GetAllEmploye();
+            $('#txtName').val('');
+            $('#txtSkill').val('');
+            $('#txtDegree').val('');
+            $('#txtTozihat').val('');
+            $('#exampleModal').modal('hide');
+
+
+        },
+        error: function (response) {
+
+            console.log(response);
+
+        },
+        complete: function () {
+
+        }
+    });
+}
 
 function AddProduct() {
 
-    alert(parseInt($('#cmbCategory').val()))
+    //alert(parseInt($('#cmbCategory').val()))
     $('#txtOnvaneProduct').val('');
     $('#txtEnProduct').val('');
     $('#txtCodeProduct').val('');
@@ -96,6 +148,9 @@ function AddProduct() {
     $('#elm1').val('');
     $('#txtLinkAparat').val('');
 
+   
+
+    alert("11")
 
     let Product = {
  
@@ -109,8 +164,16 @@ function AddProduct() {
         ProductMeterId: parseInt($('#cmbVahed').val()),
         MatneProduct: tinyMCE.activeEditor.getContent()
     }
+    var myfile = $("#filesImage");
+    console.log(myfile);
+    alert("22")
+    var formData = new FormData();
 
-    alert("2")
+
+
+    formData.append('ImageFile', myfile[0].files[0]);
+    formData.append('Employee', JSON.stringify(Product))
+    alert("33")
 
     jQuery.ajax({
         type: "Post",
