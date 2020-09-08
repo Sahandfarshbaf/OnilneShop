@@ -7,10 +7,10 @@ namespace Entities.BusinessModel
 {
     public class UserLoginModel
     {
-        [Required]
+        [Required(ErrorMessage = "آدرس ایمیل الزامی می باشد")]
         [EmailAddress]
         public string Email { get; set; }
-        [Required]
+        [Required(ErrorMessage = "رمز عبور الزامی می باشد")]
         [DataType(DataType.Password)]
         public string Password { get; set; }
         [Display(Name = "Remember me?")]

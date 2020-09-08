@@ -19,5 +19,6 @@ namespace Entities.Models
         public long BirthDate { get; set; }
 
 
+
     }
 }
