@@ -41,8 +41,10 @@ namespace Entities
         public virtual DbSet<StatusType> StatusType { get; set; }
         public virtual DbSet<Systems> Systems { get; set; }
         public virtual DbSet<Tables> Tables { get; set; }
+        public virtual DbSet<Slider> Slider { get; set; }
+        public virtual DbSet<SliderPlaceType> SliderPlaceType { get; set; }
 
-        
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
@@ -852,15 +854,11 @@ namespace Entities
                     .HasConstraintName("FK_ProductParameters_Product");
             });
 
-            modelBuilder.Entity<Seller>(entity =>
+            modelBuilder.Entity<Slider>(entity =>
             {
-                entity.HasIndex(e => e.FinalStatusId);
-
-                entity.Property(e => e.Id).HasColumnName("ID");
-
-                entity.Property(e => e.Address).HasMaxLength(1024);
-
-                entity.Property(e => e.Bdate).HasColumnName("BDate");
+                entity.Property(e => e.Id)
+                    .HasColumnName("ID")
+                    .ValueGeneratedNever();
 
                 entity.Property(e => e.Cdate).HasColumnName("CDate");
 
@@ -878,49 +876,43 @@ namespace Entities
                     .HasColumnName("DUserID")
                     .HasMaxLength(450);
 
-                entity.Property(e => e.Email).HasMaxLength(64);
-
-                entity.Property(e => e.FinalStatusId).HasColumnName("FinalStatusID");
-
-                entity.Property(e => e.Fname).HasMaxLength(32);
-
-                entity.Property(e => e.LocationId).HasColumnName("LocationID");
-
-                entity.Property(e => e.Mdate).HasColumnName("MDate");
-
-                entity.Property(e => e.MuserId)
-                    .HasColumnName("MUserID")
-                    .HasMaxLength(450);
-
-                entity.Property(e => e.Name).HasMaxLength(32);
-
-                entity.Property(e => e.ProfileImageHurl)
-                    .HasColumnName("ProfileImageHURL")
+                entity.Property(e => e.ImageHurl)
+                    .HasColumnName("ImageHURL")
                     .HasMaxLength(514);
 
-                entity.Property(e => e.ProfileImageUrl)
-                    .HasColumnName("ProfileImageURL")
+                entity.Property(e => e.ImageUrl)
+                    .HasColumnName("ImageURL")
                     .HasMaxLength(512);
 
-                entity.Property(e => e.UserId)
-                    .HasColumnName("UserID")
+                entity.Property(e => e.LinkUrl)
+                    .HasColumnName("LinkURL")
+                    .HasMaxLength(256);
+
+                entity.Property(e => e.Mdate).HasColumnName("MDate");
+
+                entity.Property(e => e.MuserId)
+                    .HasColumnName("MUserID")
                     .HasMaxLength(450);
 
-                entity.HasOne(d => d.FinalStatus)
-                    .WithMany(p => p.Seller)
-                    .HasForeignKey(d => d.FinalStatusId)
-                    .HasConstraintName("FK_Seller_Status");
+                entity.Property(e => e.Rorder).HasColumnName("ROrder");
+
+                entity.Property(e => e.SliderPlaceTypeId).HasColumnName("SliderPlaceTypeID");
+
+                entity.Property(e => e.Title).HasMaxLength(512);
+
+                entity.HasOne(d => d.SliderPlaceType)
+                    .WithMany(p => p.Slider)
+                    .HasForeignKey(d => d.SliderPlaceTypeId)
+                    .HasConstraintName("FK_Slider_SliderPlaceType");
             });
 
-            modelBuilder.Entity<SellerCatProduct>(entity =>
+            modelBuilder.Entity<SliderPlaceType>(entity =>
             {
-                entity.HasIndex(e => e.CatProductId);
-
-                entity.HasIndex(e => e.SellerId);
+                entity.HasIndex(e => e.Rkey)
+                    .HasName("IX_SliderPlaceType")
+                    .IsUnique();
 
                 entity.Property(e => e.Id).HasColumnName("ID");
-
-                entity.Property(e => e.CatProductId).HasColumnName("CatProductID");
 
                 entity.Property(e => e.Cdate).HasColumnName("CDate");
 
@@ -944,17 +936,7 @@ namespace Entities
                     .HasColumnName("MUserID")
                     .HasMaxLength(450);
 
-                entity.Property(e => e.SellerId).HasColumnName("SellerID");
-
-                entity.HasOne(d => d.CatProduct)
-                    .WithMany(p => p.SellerCatProduct)
-                    .HasForeignKey(d => d.CatProductId)
-                    .HasConstraintName("FK_SellerCatProduct_CatProduct");
-
-                entity.HasOne(d => d.Seller)
-                    .WithMany(p => p.SellerCatProduct)
-                    .HasForeignKey(d => d.SellerId)
-                    .HasConstraintName("FK_SellerCatProduct_Seller");
+                entity.Property(e => e.Name).HasMaxLength(128);
             });
 
             modelBuilder.Entity<Status>(entity =>
@@ -1111,6 +1093,87 @@ namespace Entities
                     .WithMany(p => p.Tables)
                     .HasForeignKey(d => d.SystemId)
                     .HasConstraintName("FK_Tables_Systems");
+            });
+
+            modelBuilder.Entity<Slider>(entity =>
+            {
+                entity.Property(e => e.Id)
+                    .HasColumnName("ID")
+                    .ValueGeneratedNever();
+
+                entity.Property(e => e.Cdate).HasColumnName("CDate");
+
+                entity.Property(e => e.CuserId)
+                    .HasColumnName("CUserID")
+                    .HasMaxLength(450);
+
+                entity.Property(e => e.DaUserId)
+                    .HasColumnName("DaUserID")
+                    .HasMaxLength(450);
+
+                entity.Property(e => e.Ddate).HasColumnName("DDate");
+
+                entity.Property(e => e.DuserId)
+                    .HasColumnName("DUserID")
+                    .HasMaxLength(450);
+
+                entity.Property(e => e.ImageHurl)
+                    .HasColumnName("ImageHURL")
+                    .HasMaxLength(514);
+
+                entity.Property(e => e.ImageUrl)
+                    .HasColumnName("ImageURL")
+                    .HasMaxLength(512);
+
+                entity.Property(e => e.LinkUrl)
+                    .HasColumnName("LinkURL")
+                    .HasMaxLength(256);
+
+                entity.Property(e => e.Mdate).HasColumnName("MDate");
+
+                entity.Property(e => e.MuserId)
+                    .HasColumnName("MUserID")
+                    .HasMaxLength(450);
+
+                entity.Property(e => e.Rorder).HasColumnName("ROrder");
+
+                entity.Property(e => e.SliderPlaceTypeId).HasColumnName("SliderPlaceTypeID");
+
+                entity.Property(e => e.Title).HasMaxLength(512);
+
+                entity.HasOne(d => d.SliderPlaceType)
+                    .WithMany(p => p.Slider)
+                    .HasForeignKey(d => d.SliderPlaceTypeId)
+                    .HasConstraintName("FK_Slider_SliderPlaceType");
+            });
+
+            modelBuilder.Entity<SliderPlaceType>(entity =>
+            {
+                entity.Property(e => e.Id).HasColumnName("ID");
+
+                entity.Property(e => e.Cdate).HasColumnName("CDate");
+
+                entity.Property(e => e.CuserId)
+                    .HasColumnName("CUserID")
+                    .HasMaxLength(450);
+
+                entity.Property(e => e.DaUserId)
+                    .HasColumnName("DaUserID")
+                    .HasMaxLength(450);
+
+                entity.Property(e => e.Ddate).HasColumnName("DDate");
+
+                entity.Property(e => e.DuserId)
+                    .HasColumnName("DUserID")
+                    .HasMaxLength(450);
+
+                entity.Property(e => e.Mdate).HasColumnName("MDate");
+
+                entity.Property(e => e.MuserId)
+                    .HasColumnName("MUserID")
+                    .HasMaxLength(450);
+
+                entity.Property(e => e.Name).HasMaxLength(128);
             });
 
 
