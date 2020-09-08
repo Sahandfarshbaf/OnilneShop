@@ -25,6 +25,8 @@ namespace Repository
         private ISystemsRepository _systems;
         private ITablesRepository _tables;
         private ICatProductParametersRepository _catProductParameters;
+        private ISliderPlaceTypeRepository _sliderPlaceType;
+        private ISliderRepository _slider;
 
 
 
@@ -218,6 +220,30 @@ namespace Repository
                 }
 
                 return _catProductParameters;
+            }
+        }
+        public ISliderPlaceTypeRepository SliderPlaceType
+        {
+            get
+            {
+                if (_sliderPlaceType == null)
+                {
+                    _sliderPlaceType = new SliderPlaceTypeRepository(_repoContext);
+                }
+
+                return _sliderPlaceType;
+            }
+        }
+        public ISliderRepository Slider
+        {
+            get
+            {
+                if (_slider == null)
+                {
+                    _slider = new SliderRepository(_repoContext);
+                }
+
+                return _slider;
             }
         }
 

@@ -105,6 +105,7 @@ namespace OnlineShop.Controllers.ApiControllers
                     product.FirstCount = _product.FirstCount;
                     product.ProductMeterId = _product.ProductMeterId;
                     product.CoverImageUrl = uploadFileStatus.Path;
+                    product.Weight = _product.Weight;
                     _repository.Product.Update(product);
                     try
                     {
@@ -138,6 +139,7 @@ namespace OnlineShop.Controllers.ApiControllers
                 product.Price = _product.Price;
                 product.FirstCount = _product.FirstCount;
                 product.ProductMeterId = _product.ProductMeterId;
+                product.Weight = _product.Weight;
                 _repository.Product.Update(product);
                 try
                 {
@@ -254,12 +256,14 @@ namespace OnlineShop.Controllers.ApiControllers
                 var result = _repository.Product.GetTopProductListWithRate()
                     .Select(c => new { c.Id, CatProduct = c.CatProduct.Name, c.Name, c.Price, c.FirstCount, c.Count, c.CoverImageUrl })
                     .ToList();
+                _logger.LogInfo($"Most Rated Product List Return");
                 return Ok(result);
             }
             catch (Exception e)
             {
 
-                throw;
+                _logger.LogError($"Something went wrong inside GetTopProductListWithRate action: {e.Message}");
+                return BadRequest("Internal server error");
             }
 
         }

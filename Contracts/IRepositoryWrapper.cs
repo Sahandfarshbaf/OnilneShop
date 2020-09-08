@@ -23,6 +23,9 @@ namespace Contracts
         ISystemsRepository Systems { get; }
         ITablesRepository Tables { get; }
         ICatProductParametersRepository CatProductParameters { get; }
+        ISliderPlaceTypeRepository SliderPlaceType { get; }
+        ISliderRepository Slider { get; }
+
 
 
         void Save();

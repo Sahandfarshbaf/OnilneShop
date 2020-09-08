@@ -30,6 +30,7 @@ namespace Entities.Models
         public string CoverImageHurl { get; set; }
         public string Description { get; set; }
         public string AparatURL { get; set; }
+        public long? Weight { get; set; }
         public string CuserId { get; set; }
         public long? Cdate { get; set; }
         public string DuserId { get; set; }
