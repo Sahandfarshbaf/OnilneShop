@@ -2,41 +2,29 @@
 let Id = 0;
 function Bind_cmbVahedKala() {
 
-    var Html_Dg = ''
-
+    var Html_Dg = ''  
     $.ajax({
         type: "Get",
         async: false,
-        url: "/api/Sabet/BindOstanUser?OstanUser=0",
+        url: "/api/ProductMeter/GetProductMeterList",
         data: "",
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         success: function (result) {
-
-            var a = jQuery.parseJSON(result);
+            var a = result;;
             Html_Dg += ' <option class="lbl" value="-1">انتخاب کنید</option>'
-
             jQuery.each(a, function (i, item) {
-
-                Html_Dg += ' <option class="lbl" value="' + item.OstanID + '">' + item.NameOstan + '</option>'
-
+                Html_Dg += ' <option class="lbl" value="' + item.id + '">' + item.name + '</option>'
             });
-
-            //Html_Dg += ' </select>';
-
-            jQuery('#cmbOstan').html(Html_Dg);
-            jQuery('#cmbFillOstan').html(Html_Dg);
-
-
+            Html_Dg += ' </select>';           
+            jQuery('#cmbVahed').html(Html_Dg); 
         },
         failure: function (result) {
 
         },
         complete: function () {
-            jQuery('#cmbOstan').selectpicker('refresh');
-            jQuery('#cmbFillOstan').selectpicker('refresh');
-            drow_cmbFillShahr();
-            drow_cmbShahr();
+            jQuery('#cmbVahed').selectpicker('refresh');            
+ 
         }
     });
 
@@ -59,7 +47,7 @@ function GetAllProduct() {
                   </tr>
                </thead>
              <tbody>`;
-    alert("1")
+
     jQuery.ajax({
         type: "Get",
         url: "/api/Product/GetSellerProductList?SellerID=1",
@@ -236,12 +224,10 @@ function UpdateProduct() {
 $(document).ready(() => {
   
 
-
-
-   GetAllProduct();
+    Bind_cmbVahedKala();
+    GetAllProduct();
 
     $(document.body).on('click', '#btnJadid', () => {
-
         Id = 0;
         $('#txtOnvaneProduct').val('');
         $('#txtEnProduct').val('');

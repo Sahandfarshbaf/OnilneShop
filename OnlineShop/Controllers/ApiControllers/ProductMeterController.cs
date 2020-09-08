@@ -34,7 +34,7 @@ namespace OnlineShop.Controllers.ApiControllers
 
             try
             {
-                var result = _repository.ProductMeter.FindByCondition(c => !string.IsNullOrWhiteSpace(c.DaUserId) && !string.IsNullOrWhiteSpace(c.DuserId)).Select(p => new { p.Id, p.Name }).ToList();
+                var result = _repository.ProductMeter.FindByCondition(c => string.IsNullOrWhiteSpace(c.DaUserId) && string.IsNullOrWhiteSpace(c.DuserId)).Select(p => new { p.Id, p.Name }).ToList();
                 _logger.LogInfo($"All ProductMeter List Returned");
                 return Ok(result);
 
