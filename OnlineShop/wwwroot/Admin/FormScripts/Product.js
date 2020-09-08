@@ -1,5 +1,47 @@
 ﻿
 let Id = 0;
+function Bind_cmbVahedKala() {
+
+    var Html_Dg = ''
+
+    $.ajax({
+        type: "Get",
+        async: false,
+        url: "/api/Sabet/BindOstanUser?OstanUser=0",
+        data: "",
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        success: function (result) {
+
+            var a = jQuery.parseJSON(result);
+            Html_Dg += ' <option class="lbl" value="-1">انتخاب کنید</option>'
+
+            jQuery.each(a, function (i, item) {
+
+                Html_Dg += ' <option class="lbl" value="' + item.OstanID + '">' + item.NameOstan + '</option>'
+
+            });
+
+            //Html_Dg += ' </select>';
+
+            jQuery('#cmbOstan').html(Html_Dg);
+            jQuery('#cmbFillOstan').html(Html_Dg);
+
+
+        },
+        failure: function (result) {
+
+        },
+        complete: function () {
+            jQuery('#cmbOstan').selectpicker('refresh');
+            jQuery('#cmbFillOstan').selectpicker('refresh');
+            drow_cmbFillShahr();
+            drow_cmbShahr();
+        }
+    });
+
+
+};
 
 function GetAllProduct() {
     let Html = `<table id="example2" class="table">
