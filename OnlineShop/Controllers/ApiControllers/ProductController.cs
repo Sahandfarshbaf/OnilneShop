@@ -252,7 +252,7 @@ namespace OnlineShop.Controllers.ApiControllers
         {
 
             try
-            {
+            { 
                 var result = _repository.Product.GetTopProductListWithRate()
                     .Select(c => new { c.Id, CatProduct = c.CatProduct.Name, c.Name, c.Price, c.FirstCount, c.Count, c.CoverImageUrl })
                     .ToList();
