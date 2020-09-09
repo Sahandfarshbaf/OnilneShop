@@ -19,6 +19,7 @@ namespace Repository
         public List<Product> GetTopProductListWithRate()
         {
             return FindAll()
+                .Include(p => p.CatProduct)
                 .Include(p => p.ProductCustomerRate)
                 .OrderByDescending(p => p.ProductCustomerRate.Average(r => r.Rate))
                 .Take(10)

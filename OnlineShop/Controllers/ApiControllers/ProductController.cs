@@ -252,9 +252,9 @@ namespace OnlineShop.Controllers.ApiControllers
         {
 
             try
-            { 
+            {
                 var result = _repository.Product.GetTopProductListWithRate()
-                    .Select(c => new { c.Id, CatProduct = c.CatProduct.Name, c.Name, c.Price, c.FirstCount, c.Count, c.CoverImageUrl })
+                    .Select(c => new { c.Id, CatProduct = c.CatProduct.Name, c.Name, c.Price, c.FirstCount, c.Count, c.CoverImageUrl, rate = c.ProductCustomerRate.Average(o => o.Rate).GetValueOrDefault() })
                     .ToList();
                 _logger.LogInfo($"Most Rated Product List Return");
                 return Ok(result);
