@@ -82,58 +82,24 @@ function GetAllProduct() {
 
     });
 }
-
-function InsertEmploye() {
-
-    let Employe = {
-        Id: 0,
-        Name: $('#txtName').val(),
-        Skills: $('#txtSkill').val(),
-        Degree: $('#txtDegree').val(),
-        Description: $('#txtTozihat').val()
-    }
-
-    var myfile = $("#exampleInputFile");
-    console.log(myfile);
-
-    var formData = new FormData();
-
-
-
-    formData.append('ImageFile', myfile[0].files[0]);
-    formData.append('Employee', JSON.stringify(Employe))
-
-
+function GetAllCatProduct() {
+  
     jQuery.ajax({
-        type: "Post",
-        url: "/api/Employe/InsertEmploye",
-        data: formData,
-        contentType: false,
-        processData: false,
+        type: "Get",
+        url: "/api/CatProduct/GetCatProductList",
+        data: "",
+        async: false,
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
         success: function (response) {
-
-            Swal.fire(
-                'ثبت شد !',
-                'همکار با موفقیت ثبت شد',
-                'success'
-            );
-            GetAllEmploye();
-            $('#txtName').val('');
-            $('#txtSkill').val('');
-            $('#txtDegree').val('');
-            $('#txtTozihat').val('');
-            $('#exampleModal').modal('hide');
-
-
-        },
-        error: function (response) {
-
+            alert("2")
             console.log(response);
+            let Id = 0;
+
 
         },
-        complete: function () {
 
-        }
+
     });
 }
 
@@ -153,7 +119,7 @@ function AddProduct() {
     alert("11")
 
     let Product = {
- 
+        Id: 0,
         Name: $('#txtOnvaneProduct').val(),
         EnName: $('#txtEnProduct').val(),
         CatProductId: 1,
@@ -164,7 +130,7 @@ function AddProduct() {
         ProductMeterId: parseInt($('#cmbVahed').val()),
         MatneProduct: tinyMCE.activeEditor.getContent()
     }
-    var myfile = $("#filesImage");
+    var myfile = $("#FaileZamime");
     console.log(myfile);
     alert("22")
     var formData = new FormData();
@@ -172,7 +138,7 @@ function AddProduct() {
 
 
     formData.append('ImageFile', myfile[0].files[0]);
-    formData.append('Employee', JSON.stringify(Product))
+    formData.append('Product', JSON.stringify(Product))
     alert("33")
 
     jQuery.ajax({
@@ -286,7 +252,7 @@ function UpdateProduct() {
 
 $(document).ready(() => {
   
-
+    GetAllCatProduct();
     Bind_cmbVahedKala();
     GetAllProduct();
 
