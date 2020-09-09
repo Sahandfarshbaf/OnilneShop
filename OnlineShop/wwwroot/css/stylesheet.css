@@ -51,15 +51,19 @@
 20. Extra
 -------------------------------------------------------------------------------------*/
 @font-face{
-   font-family:'WYekan';
-      src:url('persian-fonts/WYekan.eot?#') format('eot'),
-          url('persian-fonts/WYekan.ttf') format('truetype');
+   font-family:'iransans';
+      src:url('persian-fonts/iransans.eot?#') format('eot'),
+          url('persian-fonts/iransans.ttf') format('truetype');
 }
 @font-face{
-    font-family:'BKoodakBold';
-      src:url('persian-fonts/BKoodakBold.eot?#') format('eot'),
-          url('persian-fonts/BKoodakBold.woff') format('woff'),
-          url('persian-fonts/BKoodakBold.ttf') format('truetype');
+    font-family:'iransans';
+      src:url('persian-fonts/iransans.eot?#') format('eot'),
+          url('persian-fonts/iransans.woff') format('woff'),
+          url('persian-fonts/iransans.ttf') format('truetype');
+}
+@font-face {
+	font-family: 'iransans';
+	src: url('../iransans5_5/iransans/iransans.ttf') format('truetype');
 }
 /*===================================================================================*/
 /*  1. General Styles
@@ -71,9 +75,12 @@ html {
 	-webkit-font-smoothing: antialiased;
 }
 body {
-	background:#dcdbdb;
-	color:#222;
-	font-family:'WYekan', sans-serif;
+	background: #dcdbdb;
+	color: #222;
+	font-family: 'iransans', sans-serif;
+
+
+
 	line-height: 22px;
 }
 body {font-size: 16px;}
@@ -117,7 +124,7 @@ a:focus { outline:none; }
 	font-size:300px;
 	font-weight:bold;
 	line-height: 1em;
-	font-family:BKoodakBold, Helvetica, sans-serif;
+	font-family:iransans, Helvetica, sans-serif;
 }
 /*===================================================================================*/
 /*  2. Layout
@@ -660,7 +667,7 @@ a:focus { outline:none; }
 	font-size: 16px;
 	border-bottom:1px solid #ddd;
 	margin-bottom:5px;
-	font-family: BKoodakBold;
+	font-family: iransans;
 }
 #menu .nav > li.mega-menu > div > .column > a, #menu .nav > li.mega-menu > div > .column > div > ul > li > a {
 	padding:4px 0;
@@ -731,7 +738,7 @@ a:focus { outline:none; }
 	text-transform:uppercase;
 	line-height:normal;
 	margin:0;
-	font-family: BKoodakBold;
+	font-family: iransans;
 }
 .custom-feature-box .feature-box p {
 	color:#888;
@@ -858,7 +865,7 @@ border-color:#eae9e9;
 	font-size:11px;
 	height:auto;
 	text-transform:uppercase;
-	font-family:BKoodakBold, Helvetica, sans-serif;
+	font-family:iransans, Helvetica, sans-serif;
 	line-height:normal;
 }
 .product-thumb .button-group .add-to-links button {
@@ -1605,7 +1612,7 @@ visibility:hidden;
 	margin:0px 0 15px 0;
 	padding:0px 0px 7px 0px;
 	font-weight:normal;
-	font-family: BKoodakBold;
+	font-family: iransans;
 }
 #footer .column ul li { list-style-type:none; }
 #footer .column a {

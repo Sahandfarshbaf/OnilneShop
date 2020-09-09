@@ -71,7 +71,7 @@ function GetProductTopSel() {
                 ss += `<div class="product-thumb clearfix">
                         <div class="image"><a href="Home\Product"><img src="` + item.coverImageUrl + `" alt="` + item.name + `" title="` + item.name + `" class="img-responsive" /></a></div>
                         <div class="caption">
-                            <h4><a href="Home\Product">آیفون 7</a></h4>
+                            <h4><a href="Home\Product">` + item.name + ` </a></h4>
                             <p class="price">` + item.price + ` </p>
                             <div class="rating"> <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span> </div>
                         </div>
