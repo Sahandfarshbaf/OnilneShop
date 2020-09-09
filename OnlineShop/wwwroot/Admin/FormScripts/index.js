@@ -17,22 +17,22 @@ function GetProductVige() {
             let Id = 0;
 
             jQuery.each(response, function (i, item) {
-
+                alert("5555");
                 Html += `<div class="product-thumb clearfix vighe">
                             <div class="image">
-                                <a href="Home\Product?` + + `">
-                                       <img src="` + + `" alt="` + + `" title="` + + `" class="img-responsive" /></a>
+                                <a href="Home\Product?` + item.id + `">
+                                       <img src="` + item.coverImageUrl + `" alt="` + item.name + `" title="` + item.name + `" class="img-responsive" /></a>
                             </div>
                             <div class="caption">
-                                 <h4><a href="Home\Product">` + + `</a></h4>
+                                 <h4><a href="Home\Product">` + item.id + `</a></h4>
                                  <p class="price">
-                                    <span class="price-new">` + + `</span> 
-                                    <span class="price-old">` + + `</span> 
-                                    <span class="saving">` + + `</span> 
+                                    <span class="price-new">` + item.price + `</span> 
+                                    <span class="price-old">` + item.price + `</span> 
+                                    <span class="saving">0</span> 
                                  </p>
                             </div>
                         </div>`;
-            });       
+            });           
 
             $('.vighe').html(Html);
 
@@ -60,20 +60,20 @@ function GetProductTopSel() {
 
                 Html += `<div class="product-thumb clearfix vighe">
                             <div class="image">
-                                <a href="Home\Product?` + + `">
-                                       <img src="` + + `" alt="` + + `" title="` + + `" class="img-responsive" /></a>
+                                <a href="Home\Product?` + item.id + `">
+                                       <img src="` + item.coverImageUrl + `" alt="` + item.name + `" title="` + item.name  + `" class="img-responsive" /></a>
                             </div>
                             <div class="caption">
-                                 <h4><a href="Home\Product">` + + `</a></h4>
+                                 <h4><a href="Home\Product">` + item.id  + `</a></h4>
                                  <p class="price">
-                                    <span class="price-new">` + + `</span> 
-                                    <span class="price-old">` + + `</span> 
-                                    <span class="saving">` + + `</span> 
+                                    <span class="price-new">` + item.price + `</span> 
+                                    <span class="price-old">` + item.price + `</span> 
+                                    <span class="saving">0</span> 
                                  </p>
                             </div>
                         </div>`;
             });       
-
+             
             $('.vighe').html(Html);
 
         },
@@ -91,7 +91,7 @@ $(document).ready(() => {
 
     GetProductVige();
 
-    GetProductTopSel();
+    //GetProductTopSel();
 
 
   
