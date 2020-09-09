@@ -50,11 +50,6 @@ function GetProductVige() {
     });
 }
 
-
-
-
-
-
 function GetProductTopSel() {
     let ss = ``;
  
@@ -66,7 +61,7 @@ function GetProductTopSel() {
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         success: function (response) {
-            
+            console.log(response);
             jQuery.each(response, function (i, item) {
                 ss += `<div class="product-thumb clearfix">
                         <div class="image"><a href="Home\Product"><img src="` + item.coverImageUrl + `" alt="` + item.name + `" title="` + item.name + `" class="img-responsive" /></a></div>
@@ -83,13 +78,28 @@ function GetProductTopSel() {
                             </div>
                         </div>
                     </div>`;
+
             });
 
 
-
-            $('.vigehasl').html(ss);
+           
+            $('#DivMahsulatBartar').html(ss);
 
         },
+        error: function (response) {
+
+            console.log(response);
+        },
+        complete: function () {
+            $(".owl-carousel.product_carousel, .owl-carousel.latest_category_carousel, .owl-carousel.latest_brands_carousel, .owl-carousel.related_pro").owlCarousel({
+                itemsCustom: [[320, 1], [600, 2], [768, 3], [992, 5], [1199, 5]],
+                lazyLoad: true,
+                navigation: true,
+                navigationText: ['<i class="fa fa-angle-left"></i>', '<i class="fa fa-angle-right"></i>'],
+                scrollPerPage: true
+            }); 
+
+        }
 
 
 
@@ -106,7 +116,6 @@ $(document).ready(() => {
     GetProductVige();
 
     GetProductTopSel();
-
 
 
 });
