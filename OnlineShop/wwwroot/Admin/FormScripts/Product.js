@@ -114,9 +114,6 @@ function AddProduct() {
     $('#elm1').val('');
     $('#txtLinkAparat').val('');
 
-   
-
-    alert("11")
 
     let Product = {
         Id: 0,
@@ -131,26 +128,23 @@ function AddProduct() {
         MatneProduct: tinyMCE.activeEditor.getContent()
     }
     var myfile = $("#FaileZamime");
-    console.log(myfile);
-    alert("22")
     var formData = new FormData();
 
 
 
     formData.append('ImageFile', myfile[0].files[0]);
-    formData.append('Product', JSON.stringify(Product))
-    alert("33")
+    formData.append('Product', JSON.stringify(Product));
+
 
     jQuery.ajax({
         type: "Post",
         url: "/api/Product/InsertProduct",
-        data: JSON.stringify(Product),
-        async: false,
-        contentType: "application/json; charset=utf-8",
-        dataType: "json",
+        data: formData,
+        contentType: false,
+        processData: false,
         success: function (response) {
-            //EndLoader();
-            alert("3")
+   
+
             GetAllProduct();
             $('#InsertModal').hide();
             $('#PnlList').show();
@@ -161,7 +155,7 @@ function AddProduct() {
             );
         },
         error: function (response) {
-            alert(response)
+
             console.log(response);
         },
         complete: function () {
