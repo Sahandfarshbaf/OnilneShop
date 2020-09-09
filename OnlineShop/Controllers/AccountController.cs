@@ -30,7 +30,6 @@ namespace OnlineShop.Controllers
             _signInManager = signInManager;
         }
 
-        [Authorize]
         [HttpGet]
         public IActionResult Register()
         {
