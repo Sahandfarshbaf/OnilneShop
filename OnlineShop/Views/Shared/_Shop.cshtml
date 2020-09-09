@@ -114,8 +114,8 @@
                 <div class="container">
                     <div class="table-container">
                         <!-- Logo Start -->
-                        <div class="col-table-cell col-lg-6 col-md-6 col-sm-12 col-xs-12 inner"> 
-                            <div id="logo"><a href="home/index1"><img class="img-responsive" src="~/image/88.png" title="صنایع دستی" alt="صنایع دستی"  /></a></div>
+                        <div class="col-table-cell col-lg-6 col-md-6 col-sm-12 col-xs-12 inner">
+                            <div id="logo"><a href="home/index1"><img class="img-responsive" src="~/image/88.png" title="صنایع دستی" alt="صنایع دستی" /></a></div>
                         </div>
                         <!-- Logo End -->
                         <!-- Mini Cart Start-->
@@ -499,21 +499,13 @@
                 </div>
             </div>
             <div id="fb-root"></div>
-            <script>
-                (function (d, s, id) {
-                    var js, fjs = d.getElementsByTagName(s)[0];
-                    if (d.getElementById(id)) return;
-                    js = d.createElement(s); js.id = id;
-                    js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.4";
-                    fjs.parentNode.insertBefore(js, fjs);
-                }(document, 'script', 'facebook-jssdk'));</script>
         </div>
         <!-- Facebook Side Block End -->
         <!-- Twitter Side Block Start -->
         <div id="twitter_footer" class="twit-left sort-order-2">
             <div class="twitter_icon"><i class="fa fa-twitter"></i></div>
             <a class="twitter-timeline" href="https://twitter.com/barishsesi" data-chrome="nofooter noscrollbar transparent" data-theme="light" data-tweet-limit="2" data-related="twitterapi,twitter" data-aria-polite="assertive" data-widget-id="347621595801608192"> https://twitter.com/barishsesi</a>
-            <script>!function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https'; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = p + "://platform.twitter.com/widgets.js"; fjs.parentNode.insertBefore(js, fjs); } }(document, "script", "twitter-wjs");</script>
+
         </div>
         <!-- Twitter Side Block End -->
         <!-- Video Side Block Start -->
@@ -551,9 +543,12 @@
     <script type="text/javascript" src="~/js/bootstrap/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="~/js/jquery.easing-1.3.min.js"></script>
     <script type="text/javascript" src="~/js/jquery.dcjqaccordion.min.js"></script>
-
-    <script type="text/javascript" src="~/js/custom.js"></script>
     <script type="text/javascript" src="~/js/owl.carousel.min.js"></script>
+    <script type="text/javascript" src="~/js/custom.js"></script>
+
+
+
+
     @RenderSection("Scripts", required: false)
 
     <!-- JS Part End-->
