@@ -56,7 +56,7 @@ function GetProductVige() {
 
 
 function GetProductTopSel() {
-    let Html = ``;
+    let ss = ``;
  
     jQuery.ajax({
         type: "Get",
@@ -68,11 +68,11 @@ function GetProductTopSel() {
         success: function (response) {
             
             jQuery.each(response, function (i, item) {
-                Html += `<div class="product-thumb clearfix">
-                        <div class="image"><a href="Home\Product"><img src="~/image/product/iphone_1-200x200.jpg" alt="آیفون 7" title="آیفون 7" class="img-responsive" /></a></div>
+                ss += `<div class="product-thumb clearfix">
+                        <div class="image"><a href="Home\Product"><img src="` + item.coverImageUrl + `" alt="` + item.name + `" title="` + item.name + `" class="img-responsive" /></a></div>
                         <div class="caption">
                             <h4><a href="Home\Product">آیفون 7</a></h4>
-                            <p class="price"> 2200000 تومان </p>
+                            <p class="price">` + item.price + ` </p>
                             <div class="rating"> <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span> </div>
                         </div>
                         <div class="button-group">
@@ -87,7 +87,7 @@ function GetProductTopSel() {
 
 
 
-            $('.vigehasl').html(Html);
+            $('.vigehasl').html(ss);
 
         },
 
