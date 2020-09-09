@@ -163,7 +163,7 @@ function AddProduct() {
     });
 }
 function GetProductById() {
-    alert("2");
+
     jQuery.ajax({
         type: "Get",
         url: `/api/Product/GetProductById?id=${Id}`,
@@ -184,13 +184,13 @@ function GetProductById() {
 
         },
         error: function (response) {
-            alert("13");
+      
             console.log(response);
 
         },
         complete: function () {
 
-            alert("4");
+    
         }
     });
 }
