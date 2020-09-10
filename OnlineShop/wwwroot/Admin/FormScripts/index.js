@@ -210,7 +210,47 @@ function GetProductTopBazdid() {
 
     });
 }
+function GetProductTopTaze() {
+    let Bazdid = ``;
 
+    jQuery.ajax({
+        type: "Get",
+        url: "/api/Product/GetMostSeenProductList",
+        data: "",
+        async: false,
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        success: function (response) {
+            console.log(response);
+            jQuery.each(response, function (i, item) {
+                Bazdid += `                      <div class="product-thumb clearfix">
+                <div class="image"><a href="Home\Product"><img src="` + item.coverImageUrl + `" alt="` + item.name + `" title="` + item.name + `" class="img-responsive" /></a></div>
+                <div class="caption">
+                    <h4><a href="Home\Product">` + item.name + `</a></h4>
+                    <p class="price"> ` + item.price + ` تومان </p>
+                    <div class="rating"> <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span> </div>
+                </div>
+            </div>`;
+
+            });
+
+
+
+
+            console.log(Bazdid);
+
+            $('#DivMahsolatTaze').html(Bazdid);
+
+        },
+        error: function (response) {
+
+            console.log(response);
+        },
+      
+
+
+    });
+}
 $(document).ready(() => {
 
     GetProductVige();
@@ -218,7 +258,7 @@ $(document).ready(() => {
     GetProductTopSel();
     GetProductTopNew();
     GetProductTopBazdid();
-
+    GetProductTopTaze();
 
 
     $('.slideshow').owlCarousel({
