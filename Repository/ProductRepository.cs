@@ -21,6 +21,7 @@ namespace Repository
             return FindAll()
                 .Include(p => p.CatProduct)
                 .Include(p => p.ProductCustomerRate)
+                .Include(p => p.ProductOffer)
                 .OrderByDescending(p => p.ProductCustomerRate.Average(r => r.Rate))
                 .Take(10)
                 .ToList();
@@ -30,6 +31,8 @@ namespace Repository
         {
             return FindByCondition(p => p.SellerId.Equals(sellerId))
                 .Include(p => p.CatProduct)
+                .Include(p => p.ProductOffer)
+                .Include(p => p.ProductCustomerRate)
                 .OrderByDescending(p => p.Id)
                 .ToList();
         }
