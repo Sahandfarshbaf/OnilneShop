@@ -9,7 +9,7 @@
 ===================================================================================
  
 1. General Styles
-2.  Layout
+2.  Layoutfont-size: 14px;
 3.  Header
      3.1. Language & Currency
      3.2. Top Links
@@ -83,7 +83,7 @@ body {
 
 	line-height: 22px;
 }
-body {font-size: 16px;}
+body {font-size: 14px;}
 legend {
 	font-size: 18px;
 	padding: 7px 0px
@@ -629,7 +629,7 @@ a:focus { outline:none; }
 #menu .nav > li > div > ul { position:relative; }
 #menu .nav > li > div > ul li + li { border-top:1px solid #eee; }
 #menu .nav > li div > ul > li > a {
-	font-size: 16px;
+	font-size: 14px;
 	padding:7px 20px 7px 10px;
 	display:block;
 	color:#444;
@@ -664,7 +664,7 @@ a:focus { outline:none; }
 }
 #menu .nav > li.mega-menu > div > .column > a {
 	font-weight:bold;
-	font-size: 16px;
+	font-size: 14px;
 	border-bottom:1px solid #ddd;
 	margin-bottom:5px;
 	font-family: iransans;
@@ -734,7 +734,7 @@ a:focus { outline:none; }
 }
 .custom-feature-box .feature-box .title {
 	color:#555;
-	font-size: 19px;
+	font-size: 15px;
 	text-transform:uppercase;
 	line-height:normal;
 	margin:0;
@@ -742,7 +742,7 @@ a:focus { outline:none; }
 }
 .custom-feature-box .feature-box p {
 	color:#888;
-	font-size: 15px;
+	font-size: 12px;
 	margin:0;
 	line-height:normal;
 }
@@ -849,7 +849,7 @@ border-color:#eae9e9;
 	padding-bottom:0px;
 }
 .product-thumb h4 a {
-	font-size: 16px;
+	font-size: 12px;
 	line-height:18px;
 	text-decoration: none;
 	display:inline-block;
@@ -1187,13 +1187,13 @@ visibility:hidden;
 }
 #column-right .side-item .product-thumb h4, #column-left .side-item .product-thumb h4 { margin-bottom:2px; }
 #column-right .side-item .product-thumb h4 a, #column-left .side-item .product-thumb h4 a {
-	font-size: 16px;
+	font-size: 12px;
 	display:block;
 }
 #column-right .side-item .product-thumb .price, #column-left .side-item .product-thumb .price {
 	padding:0;
 	margin:0px 0 2px 0;
-	font-size: 14px;
+	font-size: 11px;
 }
 #column-right .side-item .product-thumb .saving, #column-left .side-item .product-thumb .saving {
 	position:relative;
@@ -1203,7 +1203,7 @@ visibility:hidden;
 	height:auto;
 	top:0px;
 	left:0px;
-	font-size:11px;
+	font-size:9px;
 	border-radius:0px;
 	display:inline-block;
 }
@@ -1620,7 +1620,7 @@ visibility:hidden;
 	display:block;
 	padding:3px 0px;
 	line-height:18px;
-	font-size: 16px;
+	font-size: 14px;
 	-webkit-transition: all 0.3s ease-in-out;
 	-moz-transition: all 0.3s ease-in-out;
 	-o-transition: all 0.3s ease-in-out;
@@ -1636,7 +1636,7 @@ visibility:hidden;
 }
 /**===== 16.2. Contact Block =====**/
 #footer .contact ul li {
-	font-size: 16px;
+	font-size: 14px;
 	list-style-type:none;
 	line-height:20px;
 }
@@ -1924,7 +1924,7 @@ visibility:hidden;
 	line-height: 1em;
 	margin: 0px 0px 0 5px;
 }
-blockquote {font-size: 16px;}
+blockquote {font-size: 14px;}
 h4.panel-title { padding:0 }
 .alert {
 	padding-left:50px;
