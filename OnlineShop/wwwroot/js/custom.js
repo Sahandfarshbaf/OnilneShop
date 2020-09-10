@@ -29,13 +29,13 @@ $('.banner').owlCarousel({
      Product Slider (with owl-carousel)
 ----------------------------------------------------- */
 
-$(".owl-carousel.product_carousel, .owl-carousel.latest_category_carousel, .owl-carousel.latest_brands_carousel, .owl-carousel.related_pro").owlCarousel({
-		itemsCustom : [[320, 1],[600, 2],[768, 3],[992, 5],[1199, 5]],											   
-		lazyLoad : true,
-		navigation : true,
-		navigationText: ['<i class="fa fa-angle-left"></i>', '<i class="fa fa-angle-right"></i>'],
-		scrollPerPage : true
-    }); 
+//$(".owl-carousel.product_carousel, .owl-carousel.latest_category_carousel, .owl-carousel.latest_brands_carousel, .owl-carousel.related_pro").owlCarousel({
+//		itemsCustom : [[320, 1],[600, 2],[768, 3],[992, 5],[1199, 5]],											   
+//		lazyLoad : true,
+//		navigation : true,
+//		navigationText: ['<i class="fa fa-angle-left"></i>', '<i class="fa fa-angle-right"></i>'],
+//		scrollPerPage : true
+//    }); 
 
 /*---------------------------------------------------
      Product Carousel Slider with Tab

@@ -15,7 +15,7 @@ function GetProductVige() {
 
 
             let Id = 0;
-            var image ="/Files/ProductImages/Capture.JPG"
+            var image = "/Files/ProductImages/Capture.JPG"
 
             jQuery.each(response, function (i, item) {
                 Html += `<div class="product-thumb clearfix vighe">
@@ -36,7 +36,7 @@ function GetProductVige() {
             });
 
             $('.vighe').html(Html);
-       
+
 
         },
         error: function (response) {
@@ -52,7 +52,7 @@ function GetProductVige() {
 
 function GetProductTopSel() {
     let ss = ``;
- 
+
     jQuery.ajax({
         type: "Get",
         url: "/api/Product/GetTopProductListWithRate",
@@ -82,7 +82,7 @@ function GetProductTopSel() {
             });
 
 
-           
+
             $('#DivMahsulatBartar').html(ss);
 
         },
@@ -91,14 +91,14 @@ function GetProductTopSel() {
             console.log(response);
         },
         complete: function () {
+
             $(".owl-carousel.product_carousel, .owl-carousel.latest_category_carousel, .owl-carousel.latest_brands_carousel, .owl-carousel.related_pro").owlCarousel({
                 itemsCustom: [[320, 1], [600, 2], [768, 3], [992, 5], [1199, 5]],
                 lazyLoad: true,
                 navigation: true,
                 navigationText: ['<i class="fa fa-angle-left"></i>', '<i class="fa fa-angle-right"></i>'],
                 scrollPerPage: true
-            }); 
-
+            });
         }
 
 
@@ -116,6 +116,18 @@ $(document).ready(() => {
     GetProductVige();
 
     GetProductTopSel();
+
+    $('.slideshow').owlCarousel({
+        items: 6,
+        autoPlay: 3000,
+        singleItem: true,
+        navigation: true,
+        navigationText: ['<i class="fa fa-chevron-left"></i>', '<i class="fa fa-chevron-right"></i>'],
+        pagination: true
+    });
+
+    
+
 
 
 });
