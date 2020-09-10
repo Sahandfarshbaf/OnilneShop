@@ -253,9 +253,11 @@ namespace OnlineShop.Controllers.ApiControllers
 
             try
             {
-                var result = _repository.Product.GetTopProductListWithRate()
-                    .Select(c => new { c.Id, CatProduct = c.CatProduct.Name, c.Name, c.Price, c.FirstCount, c.Count, c.CoverImageUrl, rate = c.ProductCustomerRate.Average(o => o.Rate).GetValueOrDefault() })
-                    .ToList();
+                var productList = _repository.Product.GetTopProductListWithRate()
+                             .ToList();
+
+                var result = _mapper.Map<List<ProductByOfferRate>>(productList);
+
                 _logger.LogInfo($"Most Rated Product List Return");
                 return Ok(result);
             }
@@ -276,7 +278,8 @@ namespace OnlineShop.Controllers.ApiControllers
             {
                 var productList = _repository.Product.GetProductListWithDetail().OrderByDescending(p => p.Id).Take(10)
                     .ToList();
-                var result = _mapper.Map<List<ProductDto>>(productList);
+                var result = _mapper.Map<List<ProductByOfferRate>>(productList);
+
                 _logger.LogInfo($"Latest Product List Return");
                 return Ok(result);
             }
@@ -295,7 +298,8 @@ namespace OnlineShop.Controllers.ApiControllers
             {
                 var productList = _repository.Product.FindAll().OrderByDescending(p => p.SeenCount).Take(10)
                     .ToList();
-                var result = _mapper.Map<List<ProductDto>>(productList);
+                var result = _mapper.Map<List<ProductByOfferRate>>(productList);
+
                 _logger.LogInfo($"Latest Product List Return");
                 return Ok(result);
             }
