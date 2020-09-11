@@ -260,8 +260,6 @@ function GetProductTopTaze() {
     });
 }
 
-
-
 function Getsubcat() {
     let subcat = ``;
 
@@ -416,6 +414,7 @@ $(document).ready(() => {
     GetProductTopTaze();
     Getsubcat();
     Getsubcatid();
+
     $('.slideshow').owlCarousel({
         items: 6,
         autoPlay: 3000,
