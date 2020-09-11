@@ -35,7 +35,7 @@ namespace OnlineShop.Controllers.ApiControllers
 
         [HttpPost]
         [Route("CustomerOrder/InsertCustomerOrder")]
-        public IActionResult InsertCustomerOrder(CustomerOrder customerOrder, List<CustomerOrderProduct> customerOrderProductList)
+        public IActionResult InsertCustomerOrder(CustomerOrder customerOrder)
         {
             try
             {
@@ -46,7 +46,7 @@ namespace OnlineShop.Controllers.ApiControllers
                 customerOrder.CustomerId = _customerId;
                 customerOrder.OrderDate = timeTick;
                 customerOrder.OrderNo = timeTick;
-
+                var customerOrderProductList = customerOrder.CustomerOrderProduct.ToList();
                 customerOrderProductList.ForEach(x =>
                 {
                     x.Cdate = timeTick;

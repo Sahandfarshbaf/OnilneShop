@@ -5,23 +5,29 @@
 @inject UserManager<User> UserManager
 
 
-    @if (SignInManager.IsSignedIn(User))
-    {
+@if (SignInManager.IsSignedIn(User))
+{
 
-      
-    }
-    else
-    {
-       
-            <a class="nav-link text-dark" asp-controller="Account"
-               asp-action="Login">
+    var firstname = User.Claims.Where(c => c.Type == "firstname").Select(x => x.Value).SingleOrDefault();
+    var lastname = User.Claims.Where(c => c.Type == "lastname").Select(x => x.Value).SingleOrDefault();
+    var name = firstname + " " + lastname;
 
-                <img src="/images/icons/icon-header-01.png"
-                     class="header-icon1"
-                     alt="ICON" />
-            </a>
-     
 
-    }
+    <form class="form-inline hidden" asp-controller="Account" asp-action="Logout">
+        <button id="btnlogout" type="submit" class="hidden"></button>
+    </form>
+    <ul>
+        <li><a onclick="$('#btnlogout').click();">خروج</a></li>
+        <li><a asp-controller="Account" asp-action="Login">@name</a></li>
+    </ul>
+}
+else
+{
+    <ul>
+        <li><a asp-controller="Account" asp-action="Login">ورود</a></li>
+        <li><a asp-controller="Account" asp-action="Register">ثبت نام</a></li>
+
+    </ul>
+}
 
 

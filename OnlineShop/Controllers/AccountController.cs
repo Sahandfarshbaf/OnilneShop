@@ -82,6 +82,8 @@ namespace OnlineShop.Controllers
                 var identity = new ClaimsIdentity(IdentityConstants.ApplicationScheme);
                 identity.AddClaim(new Claim(ClaimTypes.NameIdentifier, user.Id));
                 identity.AddClaim(new Claim(ClaimTypes.Name, user.UserName));
+                identity.AddClaim(new Claim("firstname", user.FirstName));
+                identity.AddClaim(new Claim("lastname", user.LastName));
                 await HttpContext.SignInAsync(IdentityConstants.ApplicationScheme,
                     new ClaimsPrincipal(identity));
                 return RedirectToAction(nameof(HomeController.Index), "Home");
