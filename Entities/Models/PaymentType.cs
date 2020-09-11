@@ -14,6 +14,7 @@ namespace Entities.Models
         public string Title { get; set; }
         public string Description { get; set; }
         public long? Rkey { get; set; }
+        public string Icon { get; set; }
         public string CuserId { get; set; }
         public long? Cdate { get; set; }
         public string DuserId { get; set; }
