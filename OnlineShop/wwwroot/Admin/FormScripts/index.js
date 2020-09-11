@@ -1,12 +1,6 @@
 ﻿
 let Id = 0;
-let cat1 = 0;
-let cat2 = 0;
-let cat3 = 0;
-let cat4 = 0;
-let cat5 = 0;
-let cat6 = 0;
-let cat7 = 0;
+
 
 
 
@@ -68,7 +62,7 @@ function GetProductTopSel() {
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         success: function (response) {
-            
+
             jQuery.each(response, function (i, item) {
                 ss += `<div class="product-thumb clearfix">
                         <div class="image"><a href="Home/Product/` + item.id + `"><img src="` + item.coverImageUrl + `" alt="` + item.name + `" title="` + item.name + `" class="img-responsive" /></a></div>
@@ -99,7 +93,7 @@ function GetProductTopSel() {
         },
         complete: function () {
 
-           
+
         }
 
 
@@ -118,7 +112,7 @@ function GetProductTopNew() {
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         success: function (response) {
-           
+
             jQuery.each(response, function (i, item) {
                 newpro += `<div class="product-thumb clearfix">
                         <div class="image"><a href="Home/Product/` + item.id + `"><img src="` + item.coverImageUrl + `" alt="` + item.name + `" title="` + item.name + `" class="img-responsive" /></a></div>
@@ -136,8 +130,8 @@ function GetProductTopNew() {
                     </div>`;
 
             });
-         
-           
+
+
 
             $('#DivMahsulatjadid').html(newpro);
 
@@ -148,7 +142,7 @@ function GetProductTopNew() {
         },
         complete: function () {
 
-          
+
         }
 
 
@@ -167,7 +161,7 @@ function GetProductTopBazdid() {
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         success: function (response) {
-        
+
             jQuery.each(response, function (i, item) {
                 Bazdid += `            <div class="product-thumb">
                 <div class="image"><a href="Home/Product/` + item.id + `"><img src="` + item.coverImageUrl + `" alt="` + item.name + `" title="` + item.name + `" class="img-responsive" /></a></div>
@@ -190,7 +184,7 @@ function GetProductTopBazdid() {
 
 
 
-          
+
 
             $('#DivMahsulatTopBazdid').html(Bazdid);
 
@@ -201,9 +195,9 @@ function GetProductTopBazdid() {
         },
         complete: function () {
 
-           
+
         }
-      
+
 
 
     });
@@ -220,7 +214,7 @@ function GetProductTopTaze() {
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         success: function (response) {
-         
+
             jQuery.each(response, function (i, item) {
                 Bazdid += `                      <div class="product-thumb clearfix">
                 <div class="image"><a href="Home/Product/` + item.id + `"><img src="` + item.coverImageUrl + `" alt="` + item.name + `" title="` + item.name + `" class="img-responsive" /></a></div>
@@ -233,9 +227,9 @@ function GetProductTopTaze() {
             });
 
 
-            
 
-       
+
+
             $('#DivMahsolatTaze').html(Bazdid);
 
         },
@@ -253,14 +247,16 @@ function GetProductTopTaze() {
                 scrollPerPage: true
             });
         }
-      
+
 
 
     });
 }
 
 function Getsubcat() {
-    let subcat = ``;
+ 
+    let tabs = ' <ul id="sub-cat" class="tabs" >';
+
 
     jQuery.ajax({
         type: "Get",
@@ -270,63 +266,51 @@ function Getsubcat() {
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         success: function (response) {
-            console.log(response);
+
             jQuery.each(response, function (i, item) {
 
-
-                if (i === 1) {
-                    subcat += ` <li><a href="#tab-cat1">` + item.name + `</a></li>`;
-                    let cat1 = item.id;
-                    console.log(cat1);
-                } else if(i === 2)  {
-                    subcat += ` <li><a href="#tab-cat2">` + item.name + `</a></li>`;
-                    let cat2 = item.id;
-                    console.log(cat2);
-
-                } else if (i === 3) {
-                    subcat += ` <li><a href="#tab-cat3">` + item.name + `</a></li>`;
-                    let cat3 = item.id;
-                    console.log(cat3);
-
-                } else if (i === 4) {
-                    subcat += ` <li><a href="#tab-cat4">` + item.name + `</a></li>`;
-                    let cat4 = item.id;
-
-                } else if (i === 5) {
-                    subcat += ` <li><a href="#tab-cat5">` + item.name + `</a></li>`;
-                    let cat5 = item.id;
-
-                } else if (i === 6) {
-                    subcat += ` <li><a href="#tab-cat6">` + item.name + `</a></li>`;
-                    let cat6 = item.id;
-
-                } else if (i === 7) {
-                    subcat += ` <li><a href="#tab-cat7">` + item.name + `</a></li>`;
-                    let cat7 = item.id;
-
-                }
-               
+                tabs += ` <li><a href="#tab-cat${item.id}">` + item.name + `</a></li>`;
 
             });
+            tabs += '</ul>';
 
+            $('#DivCategory').html(tabs);
 
-            $('#sub-cat').html(subcat);
+            jQuery.each(response, function (i, item) {
+
+                Getsubcatid(item.id);
+            });
+            
 
         },
         error: function (response) {
 
             console.log(response);
         },
-        //complete: function () {
+        complete: function () {
 
-        //    $(".tabs").owlCarousel({
-        //        itemsCustom: [[320, 1], [600, 2], [768, 3], [992, 5], [1199, 5]],
-        //        lazyLoad: true,
-        //        navigation: true,
-        //        //navigationText: ['<i class="fa fa-angle-left"></i>', '<i class="fa fa-angle-right"></i>'],
-        //        scrollPerPage: true
-        //    });
-        //}
+            $("#latest_category .owl-carousel.latest_category_tabs").owlCarousel({
+                itemsCustom: [[320, 1], [600, 2], [768, 3], [992, 5], [1199, 5]],
+                lazyLoad: true,
+                navigation: true,
+                navigationText: ['<i class="fa fa-angle-left"></i>', '<i class="fa fa-angle-right"></i>'],
+                scrollPerPage: true,
+            });
+            $("#latest_category .tab_content").addClass("deactive");
+            $("#latest_category .tab_content:first").show();
+            //Default Action
+            $("#latest_category ul#sub-cat li:first").addClass("active").show(); //Activate first tab
+            //On Click Event
+            $("#latest_category ul#sub-cat li").on("click", function () {
+                $("#latest_category ul#sub-cat li").removeClass("active"); //Remove any "active" class
+                $(this).addClass("active"); //Add "active" class to selected tab
+                $("#latest_category .tab_content").hide();
+                var activeTab = $(this).find("a").attr("href"); //Find the rel attribute value to identify the active tab + content
+                $(activeTab).fadeIn(); //Fade in the active content
+                return false;
+            });
+
+        }
 
 
 
@@ -337,24 +321,23 @@ function Getsubcat() {
 
 }
 
-function Getsubcatid() {
-    console.log(cat1);
-    let subcat = `<div class="owl-carousel latest_category_tabs"  >`;
+function Getsubcatid(catidd) {
+
+    let subcat = `<div id="tab-cat${catidd}" class="tab_content">
+                    <div class="owl-carousel latest_category_tabs">`;
 
     jQuery.ajax({
-        type: "Get",    
-        //url: `/api/Product/GetProductByCatId?catId=${cat1}
-        url: `/api/Product/GetProductByCatId?catId=22`,
+        type: "Get",
+        url: `/api/Product/GetProductByCatId?catId=${catidd}`,
         data: "",
         async: false,
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         success: function (response) {
-            console.log(response);
+
             jQuery.each(response, function (i, item) {
 
- 
-                    subcat += ` <div class="product-thumb">
+                subcat += ` <div class="product-thumb">
                                     <div class="image">
                                         <a href="Home/Product/` + item.id + `"><img src="` + item.coverImageUrl + `" alt="` + item.name + `" title="` + item.name + `" class="img-responsive" /></a>
                                     </div>
@@ -371,36 +354,29 @@ function Getsubcatid() {
                                         </div>
                                     </div>
                                 </div>`;
-               
-               
+
+
 
             });
-            subcat += `   </div>`;
 
-            $('#tab-cat1').html(subcat);
+            subcat += `</div></div>`;
 
+
+            $('#DivCategory').append(subcat);
+            console.log(catidd);
         },
         error: function (response) {
 
             console.log(response);
         },
-        //complete: function () {
+        complete: function () {
 
-        //    $(".tabs").owlCarousel({
-        //        itemsCustom: [[320, 1], [600, 2], [768, 3], [992, 5], [1199, 5]],
-        //        lazyLoad: true,
-        //        navigation: true,
-        //        //navigationText: ['<i class="fa fa-angle-left"></i>', '<i class="fa fa-angle-right"></i>'],
-        //        scrollPerPage: true
-        //    });
-        //}
+        }
 
 
 
     });
 }
-
-
 
 
 
@@ -412,7 +388,7 @@ $(document).ready(() => {
     GetProductTopBazdid();
     GetProductTopTaze();
     Getsubcat();
-    Getsubcatid();
+
 
     $('.slideshow').owlCarousel({
         items: 6,
@@ -423,7 +399,7 @@ $(document).ready(() => {
         pagination: true
     });
 
-    
+
 
 
 
