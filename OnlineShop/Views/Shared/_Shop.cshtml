@@ -404,17 +404,17 @@
                                         <li><a href="elements.html">عناصر</a></li>
                                         <li><a href="faq.html">سوالات متداول</a></li>
                                         <li><a href="sitemap.html">نقشه سایت</a></li>
-                                        <li><a href="contact-us.html">تماس با ما</a></li>
+                                        <li><a asp-controller="Home" asp-action="ContactUS">تماس با ما</a></li>
                                     </ul>
                                 </div>
                             </li>
-                            <li class="contact-link"><a href="contact-us.html">تماس با ما</a></li>
+                            <li class="contact-link"><a asp-controller="Home" asp-action="ContactUS">تماس با ما</a></li>
                             <li class="custom-link-right"><a href="#" target="_blank"> </a></li>
                         </ul>
                     </div>
                 </nav>
             </div>
-            <!-- Main آقایانu End-->
+            <!-- Main End-->
         </div>
         @RenderBody()
         <!--Footer Start-->
@@ -427,7 +427,7 @@
                         <ul>
                             <li class="address"><i class="fa fa-map-marker"></i>تبریز - خیابان علامه طباطبایی(چایکنار)- نرسیده به بیمه تامین اجتماعی کوی امیر - پلاک 2</li>
                             <li class="mobile"><i class="fa fa-phone"></i>041-33251200</li>
-                            <li class="email"><i class="fa fa-envelope"></i>برقراری ارتباط از طریق <a href="contact-us.html">تماس با ما</a>
+                            <li class="email"><i class="fa fa-envelope"></i>برقراری ارتباط از طریق <a asp-controller="Home" asp-action="ContactUS">تماس با ما</a>
                         </ul>
                     </div>
                     <div class="column col-lg-2 col-md-2 col-sm-3 col-xs-12">
@@ -442,7 +442,8 @@
                     <div class="column col-lg-2 col-md-2 col-sm-3 col-xs-12">
                         <h5>خدمات مشتریان</h5>
                         <ul>
-                            <li><a href="contact-us.html">تماس با ما</a></li>
+                            
+                            <li><a asp-controller="Home" asp-action="ContactUS">تماس با ما</a></li>
                             <li><a href="#">بازگشت</a></li>
                             <li><a href="sitemap.html">نقشه سایت</a></li>
                         </ul>

@@ -27,8 +27,9 @@ namespace Contracts
         ISliderRepository Slider { get; }
         ICustomerRepository Customer { get; }
         ICustomerOrderRepository CustomerOrder { get; }
-
-
+        ICustomerOrderProductRepository CustomerOrderProduct { get; }
+        ICustomerOfferRepository CustomerOffer { get; }
+        IPostTypeRepository PostType { get; }
 
         void Save();
     }

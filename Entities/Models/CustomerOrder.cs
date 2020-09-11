@@ -20,6 +20,7 @@ namespace Entities.Models
         public long? DeliveryDate { get; set; }
         public long? Weight { get; set; }
         public long? PostTypeId { get; set; }
+        public long? PostPrice { get; set; }
         public double? TaxValue { get; set; }
         public long? TaxPrice { get; set; }
         public int? OfferValue { get; set; }
