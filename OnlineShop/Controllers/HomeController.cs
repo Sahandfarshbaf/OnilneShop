@@ -36,7 +36,10 @@ namespace OnlineShop.Controllers
         {
             return View();
         }
-
+        public IActionResult abouat()
+        {
+            return View();
+        }
         public IActionResult Cart()
         {
             return View();
