@@ -10,5 +10,6 @@ namespace Contracts
         List<Product> GetSellerProductList(long sellerId);
         List<Product> GetTopProductListWithRate();
         List<Product> GetProductListWithDetail();
+        List<Product> GetProductListByCatId(long catId);
     }
 }
