@@ -10,6 +10,7 @@ using Entities.DataTransferObjects;
 using Entities.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Synapse.Tools;
 
 namespace OnlineShop.Controllers.ApiControllers
@@ -316,7 +317,7 @@ namespace OnlineShop.Controllers.ApiControllers
         {
             try
             {
-                var product = _repository.Product.FindByCondition(c => c.Id.Equals(producId)).FirstOrDefault();
+                var product = _repository.Product.FindByCondition(c => c.Id.Equals(producId)).Include(p => p.CatProduct).FirstOrDefault();
                 var result = _mapper.Map<ProductDto>(product);
                 product.SeenCount = product.SeenCount + 1;
                 product.LastSeenDate = timeTick;
