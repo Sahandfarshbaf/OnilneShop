@@ -17,7 +17,7 @@ function RenderCart() {
                             <td class="text-left"><a href="product.html">${item.Name}</a></td>
                             <td class="text-right">1 عدد</td>
                             <td class="text-right">${item.Price} تومان</td>
-                            <td class="text-center"><button class="btn btn-danger btn-xs remove" title="حذف" onclick="" type="button"><i class="fa fa-times"></i></button></td>
+                            <td class="text-center"><button class="btn btn-danger btn-xs remove RemoveCartItem" productid="${item.ProductId}" title="حذف"  type="button"><i class="fa fa-times"></i></button></td>
                         </tr>`;
         totalPrice += item.Price;
 
@@ -80,6 +80,20 @@ function AddToCart() {
     });
 }
 
+function RemoveFromCart() {
+
+    var CartList = new Array();
+    var list = Cookies.get('CartItems');
+    if (list != undefined) {
+        CartList = JSON.parse(list);
+    }
+
+    CartList = CartList.filter(x => x.ProductId != productId);
+    Cookies.set('CartItems', JSON.stringify(CartList));
+
+    RenderCart();
+}
+
 
 
 $(document).ready(() => {
@@ -90,6 +104,13 @@ $(document).ready(() => {
 
         productId = parseInt($(this).attr('productid'));
         AddToCart();
+
+    });
+
+    $(document.body).on('click', '.RemoveCartItem', function () {
+
+        productId = parseInt($(this).attr('productid'));
+        RemoveFromCart();
 
     });
 
