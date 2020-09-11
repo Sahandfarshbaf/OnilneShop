@@ -9,6 +9,7 @@ using Contracts;
 using Entities.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace OnlineShop.Controllers.ApiControllers
 {
@@ -51,8 +52,7 @@ namespace OnlineShop.Controllers.ApiControllers
                 {
                     x.Cdate = timeTick;
                     x.CuserId = userid;
-                    x.Weight = x.Product.Weight;
-                    x.ProductCode = x.Product.Coding;
+
                 });
 
                 customerOrder.CustomerOrderProduct = customerOrderProductList;
@@ -67,6 +67,65 @@ namespace OnlineShop.Controllers.ApiControllers
                 return BadRequest("Internal server error");
             }
 
+        }
+
+
+        [HttpPut]
+        [Route("CustomerOrder/FinalOrderInsert")]
+        public IActionResult FinalOrderInsert(long customerOrderId, long postTypeId, long paymentTypeId, string customerDescription, string offerCode)
+        {
+            try
+            {
+
+
+                var _costumerOrderProduct = _repository.CustomerOrderProduct
+                    .FindByCondition(c => c.CustomerOrderId.Equals(customerOrderId)).ToList();
+                _costumerOrderProduct.ForEach(c =>
+                {
+                    c.ProductPrice = c.Product.Price;
+                    c.ProductOfferValue = c.Product.ProductOffer
+                        .Where(x => x.FromDate <= timeTick && timeTick <= x.ToDate).Select(x => x.Value)
+                        .DefaultIfEmpty(0).FirstOrDefault();
+                    c.ProductOfferCode = c.Product.ProductOffer
+                        .Where(x => x.FromDate <= timeTick && timeTick <= x.ToDate).Select(x => x.OfferCode)
+                        .FirstOrDefault();
+                    c.ProductOfferPrice = (long?)(c.ProductPrice - ((c.ProductOfferValue / 100) * c.ProductPrice));
+                    c.Weight = c.Product.Weight;
+                    c.ProductCode = c.Product.Coding;
+                });
+
+                var _costumerOrder = _repository.CustomerOrder.FindByCondition(c => c.Id.Equals(customerOrderId)).FirstOrDefault();
+                _costumerOrder.PaymentTypeId = paymentTypeId;
+                _costumerOrder.PostTypeId = postTypeId;
+                _costumerOrder.CustomerDescription = customerDescription;
+                _costumerOrder.CustomerOrderProduct = _costumerOrderProduct;
+
+                _costumerOrder.Weight = _costumerOrderProduct.Sum(c => (c.Weight * c.OrderCount));
+                _costumerOrder.TaxValue = 9;
+                _costumerOrder.OrderPrice = _costumerOrderProduct.Sum(c => (c.OrderCount * c.ProductPrice));
+                _costumerOrder.TaxPrice = (long?)_costumerOrderProduct.Sum(c => ((c.ProductPrice * 0.09) * c.OrderCount));
+                _costumerOrder.OfferValue = (int?)_repository.CustomerOffer
+                    .FindByCondition(c =>
+                        c.CustomerId == _costumerOrder.CustomerId && c.FromDate <= timeTick && timeTick <= c.ToDate &&
+                        c.OfferCode == offerCode).Select(x => x.Value).DefaultIfEmpty(0).FirstOrDefault();
+                _costumerOrder.OfferPrice = (_costumerOrder.OrderPrice + _costumerOrder.TaxPrice) *
+                                            (_costumerOrder.OfferValue / 100);
+                _costumerOrder.OrderPrice =
+                    _costumerOrder.CustomerOrderProduct.Where(c => c.Ddate.Equals(null)).Sum(c => (c.ProductPrice * c.OrderCount));
+                _costumerOrder.PostPrice = _repository.PostType.FindByCondition(c => c.Rkey.Equals(postTypeId))
+                    .Select(c => c.Price).DefaultIfEmpty(0).FirstOrDefault();
+                _costumerOrder.FinalPrice =
+                    (_costumerOrder.OrderPrice + _costumerOrder.TaxPrice + _costumerOrder.PostPrice) - _costumerOrder.OfferPrice;
+
+                _repository.CustomerOrder.Update(_costumerOrder);
+                _repository.Save();
+                return Ok("");
+            }
+            catch (Exception e)
+            {
+                _logger.LogError($"Something went wrong inside FinalOrderInsert  To database: {e.Message}");
+                return BadRequest("Internal server error");
+            }
         }
 
     }
