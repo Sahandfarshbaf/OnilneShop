@@ -1,5 +1,15 @@
 ﻿
 let Id = 0;
+let cat1 = 0;
+let cat2 = 0;
+let cat3 = 0;
+let cat4 = 0;
+let cat5 = 0;
+let cat6 = 0;
+let cat7 = 0;
+
+
+
 
 function GetProductVige() {
     let Html = ``;
@@ -252,9 +262,141 @@ function GetProductTopTaze() {
 
 
 
+function Getsubcat() {
+    let subcat = ``;
+
+    jQuery.ajax({
+        type: "Get",
+        url: "/api/CatProduct/GetTopCatProductList",
+        data: "",
+        async: false,
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        success: function (response) {
+            console.log(response);
+            jQuery.each(response, function (i, item) {
+
+
+                if (i === 1) {
+                    subcat += ` <li><a href="#tab-cat1">` + item.name + `</a></li>`;
+                    let cat1 = item.id;
+                    console.log(cat1);
+                } else if(i === 2)  {
+                    subcat += ` <li><a href="#tab-cat2">` + item.name + `</a></li>`;
+                    let cat2 = item.id;
+                    console.log(cat2);
+
+                } else if (i === 3) {
+                    subcat += ` <li><a href="#tab-cat3">` + item.name + `</a></li>`;
+                    let cat3 = item.id;
+                    console.log(cat3);
+
+                } else if (i === 4) {
+                    subcat += ` <li><a href="#tab-cat4">` + item.name + `</a></li>`;
+                    let cat4 = item.id;
+
+                } else if (i === 5) {
+                    subcat += ` <li><a href="#tab-cat5">` + item.name + `</a></li>`;
+                    let cat5 = item.id;
+
+                } else if (i === 6) {
+                    subcat += ` <li><a href="#tab-cat6">` + item.name + `</a></li>`;
+                    let cat6 = item.id;
+
+                } else if (i === 7) {
+                    subcat += ` <li><a href="#tab-cat7">` + item.name + `</a></li>`;
+                    let cat7 = item.id;
+
+                }
+               
+
+            });
+
+
+            $('#sub-cat').html(subcat);
+
+        },
+        error: function (response) {
+
+            console.log(response);
+        },
+        //complete: function () {
+
+        //    $(".tabs").owlCarousel({
+        //        itemsCustom: [[320, 1], [600, 2], [768, 3], [992, 5], [1199, 5]],
+        //        lazyLoad: true,
+        //        navigation: true,
+        //        //navigationText: ['<i class="fa fa-angle-left"></i>', '<i class="fa fa-angle-right"></i>'],
+        //        scrollPerPage: true
+        //    });
+        //}
 
 
 
+    });
+}
+
+function Getsubcatid() {
+    let subcat = `<div class="owl-carousel latest_category_tabs"  >`;
+
+    jQuery.ajax({
+        type: "Get",        
+        url: `/api/Product/GetProductByCatId?catId=22`,
+        data: "",
+        async: false,
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        success: function (response) {
+            console.log(response);
+            jQuery.each(response, function (i, item) {
+
+ 
+                    subcat += ` <div class="product-thumb">
+                                    <div class="image">
+                                        <a href="Home\Product">
+                                        <img src="~/image/product/samsung_tab_1-200x200.jpg" alt="تبلت ایسر" title="تبلت ایسر" class="img-responsive" /></a>
+                                    </div>
+                                    <div class="caption">
+                                        <h4><a href="Home\Product">تبلت ایسر</a></h4>
+                                        <p class="price"> <span class="price-new">98000 تومان</span> <span class="price-old">240000 تومان</span> <span class="saving">-5%</span> </p>
+                                        <div class="rating"> <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span> </div>
+                                    </div>
+                                    <div class="button-group">
+                                        <button class="btn-primary" type="button" onClick=""><span>افزودن به سبد</span></button>
+                                        <div class="add-to-links">
+                                            <button type="button" data-toggle="tooltip" title="افزودن به علاقه مندی" onClick=""><i class="fa fa-heart"></i></button>
+                                            <button type="button" data-toggle="tooltip" title="افزودن به مقایسه" onClick=""><i class="fa fa-exchange"></i></button>
+                                        </div>
+                                    </div>
+                                </div>`;
+               
+               
+
+            });
+            subcat += `   </div>`;
+
+            $('#tab-cat1').html(subcat);
+
+        },
+        error: function (response) {
+
+            console.log(response);
+        },
+        //complete: function () {
+
+        //    $(".tabs").owlCarousel({
+        //        itemsCustom: [[320, 1], [600, 2], [768, 3], [992, 5], [1199, 5]],
+        //        lazyLoad: true,
+        //        navigation: true,
+        //        //navigationText: ['<i class="fa fa-angle-left"></i>', '<i class="fa fa-angle-right"></i>'],
+        //        scrollPerPage: true
+        //    });
+        //}
+
+
+
+    });
+}
 
 
 
@@ -267,8 +409,8 @@ $(document).ready(() => {
     GetProductTopNew();
     GetProductTopBazdid();
     GetProductTopTaze();
-
-
+    Getsubcat();
+    Getsubcatid();
     $('.slideshow').owlCarousel({
         items: 6,
         autoPlay: 3000,
