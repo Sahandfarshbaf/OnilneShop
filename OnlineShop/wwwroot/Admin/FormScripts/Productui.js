@@ -26,8 +26,7 @@ function GetProductVige() {
                                  <h4><a href="Home\Product?` + item.id + `">` + item.name + `</a></h4>
                                  <p class="price">
                                     <span class="price-new">` + item.price + ` تومان</span> 
-                                    //<span class="price-old">` + item.price + `تومان</span> 
-                                    <span class="saving">0</span> 
+                                   
                                  </p>
                             </div>
                         </div>`;
@@ -202,7 +201,8 @@ function GetProductTopSel() {
 $(document).ready(() => {
     
     GetProductVige();
-    Product();
+    GetProductTopSel();
+    Product();   
     GetProductdescription();
-    GetProductTopSel()
+
 });
