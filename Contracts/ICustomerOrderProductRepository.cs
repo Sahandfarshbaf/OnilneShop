@@ -6,6 +6,7 @@ using Entities.Models;
 namespace Contracts
 {
    public interface ICustomerOrderProductRepository:IRepositoryBase<CustomerOrderProduct>
-    {
-    }
+   {
+       List<CustomerOrderProduct> GetCustomerOrderProductFullInfoByCustomerOrderId(long customerOrderId);
+   }
 }

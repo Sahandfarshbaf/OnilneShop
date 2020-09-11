@@ -20,15 +20,15 @@ namespace OnlineShop.Controllers.ApiControllers
         private ILoggerManager _logger;
         private IRepositoryWrapper _repository;
         private IMapper _mapper;
-        private string userid;
-        private long timeTick;
+        private readonly string userid;
+        private readonly long timeTick;
 
         public CustomerOrderController(ILoggerManager logger, IRepositoryWrapper repository, IMapper mapper)
         {
             _logger = logger;
             _repository = repository;
             _mapper = mapper;
-            userid = User.Claims.Where(c => c.Type == ClaimTypes.NameIdentifier).Select(x => x.Value).SingleOrDefault();
+            // userid = User.Claims.Where(c => c.Type == ClaimTypes.NameIdentifier).Select(x => x.Value).SingleOrDefault();
             timeTick = DateTime.Now.Ticks;
 
         }
@@ -78,9 +78,11 @@ namespace OnlineShop.Controllers.ApiControllers
             {
 
 
-                var _costumerOrderProduct = _repository.CustomerOrderProduct
-                    .FindByCondition(c => c.CustomerOrderId.Equals(customerOrderId)).ToList();
-                _costumerOrderProduct.ForEach(c =>
+                var custumerOrderProduct =
+                    _repository.CustomerOrderProduct.GetCustomerOrderProductFullInfoByCustomerOrderId(customerOrderId);
+
+
+                custumerOrderProduct.ForEach(c =>
                 {
                     c.ProductPrice = c.Product.Price;
                     c.ProductOfferValue = c.Product.ProductOffer
@@ -94,30 +96,38 @@ namespace OnlineShop.Controllers.ApiControllers
                     c.ProductCode = c.Product.Coding;
                 });
 
-                var _costumerOrder = _repository.CustomerOrder.FindByCondition(c => c.Id.Equals(customerOrderId)).FirstOrDefault();
-                _costumerOrder.PaymentTypeId = paymentTypeId;
-                _costumerOrder.PostTypeId = postTypeId;
-                _costumerOrder.CustomerDescription = customerDescription;
-                _costumerOrder.CustomerOrderProduct = _costumerOrderProduct;
+                var custumerOrder = _repository.CustomerOrder.FindByCondition(c => c.Id.Equals(customerOrderId)).FirstOrDefault();
+                var costomerId = custumerOrder.CustomerId.Value;
+                custumerOrder.PaymentTypeId = paymentTypeId;
+                custumerOrder.PostTypeId = postTypeId;
+                custumerOrder.CustomerDescription = customerDescription;
+                custumerOrder.CustomerOrderProduct = custumerOrderProduct;
 
-                _costumerOrder.Weight = _costumerOrderProduct.Sum(c => (c.Weight * c.OrderCount));
-                _costumerOrder.TaxValue = 9;
-                _costumerOrder.OrderPrice = _costumerOrderProduct.Sum(c => (c.OrderCount * c.ProductPrice));
-                _costumerOrder.TaxPrice = (long?)_costumerOrderProduct.Sum(c => ((c.ProductPrice * 0.09) * c.OrderCount));
-                _costumerOrder.OfferValue = (int?)_repository.CustomerOffer
-                    .FindByCondition(c =>
-                        c.CustomerId == _costumerOrder.CustomerId && c.FromDate <= timeTick && timeTick <= c.ToDate &&
-                        c.OfferCode == offerCode).Select(x => x.Value).DefaultIfEmpty(0).FirstOrDefault();
-                _costumerOrder.OfferPrice = (_costumerOrder.OrderPrice + _costumerOrder.TaxPrice) *
-                                            (_costumerOrder.OfferValue / 100);
-                _costumerOrder.OrderPrice =
-                    _costumerOrder.CustomerOrderProduct.Where(c => c.Ddate.Equals(null)).Sum(c => (c.ProductPrice * c.OrderCount));
-                _costumerOrder.PostPrice = _repository.PostType.FindByCondition(c => c.Rkey.Equals(postTypeId))
-                    .Select(c => c.Price).DefaultIfEmpty(0).FirstOrDefault();
-                _costumerOrder.FinalPrice =
-                    (_costumerOrder.OrderPrice + _costumerOrder.TaxPrice + _costumerOrder.PostPrice) - _costumerOrder.OfferPrice;
+                custumerOrder.Weight = custumerOrderProduct.Sum(c => (c.Weight * c.OrderCount));
+                custumerOrder.TaxValue = 9;
+                custumerOrder.OrderPrice = custumerOrderProduct.Sum(c => (c.OrderCount * c.ProductPrice));
+                custumerOrder.TaxPrice = (long?)custumerOrderProduct.Sum(c => ((c.ProductPrice * 0.09) * c.OrderCount));
 
-                _repository.CustomerOrder.Update(_costumerOrder);
+
+                var a = _repository.CustomerOffer
+                    .FindByCondition(c => c.CustomerId == costomerId && c.FromDate <= timeTick && timeTick <= c.ToDate)
+                    .FirstOrDefault();
+                custumerOrder.OfferValue = a != null ? (int?)a.Value : 0;
+
+                custumerOrder.OfferPrice = (custumerOrder.OrderPrice + custumerOrder.TaxPrice) *
+                                           (custumerOrder.OfferValue / 100);
+                custumerOrder.OrderPrice =
+                    custumerOrder.CustomerOrderProduct.Where(c => c.Ddate.Equals(null)).Sum(c => (c.ProductPrice * c.OrderCount));
+                var b = _repository.PostType.FindByCondition(c => c.Rkey.Equals(postTypeId)).FirstOrDefault();
+                custumerOrder.PostPrice = b != null ? b.Price : 0;
+
+
+
+
+                custumerOrder.FinalPrice =
+                    (custumerOrder.OrderPrice + custumerOrder.TaxPrice + custumerOrder.PostPrice) - custumerOrder.OfferPrice;
+
+                _repository.CustomerOrder.Update(custumerOrder);
                 _repository.Save();
                 return Ok("");
             }

@@ -25,6 +25,7 @@ namespace Entities
         public virtual DbSet<CustomerActivation> CustomerActivation { get; set; }
         public virtual DbSet<CustomerOffer> CustomerOffer { get; set; }
         public virtual DbSet<CustomerOrder> CustomerOrder { get; set; }
+        public virtual DbSet<CustomerOrderPayment> CustomerOrderPayment { get; set; }
         public virtual DbSet<CustomerOrderProduct> CustomerOrderProduct { get; set; }
         public virtual DbSet<Location> Location { get; set; }
         public virtual DbSet<OfferType> OfferType { get; set; }
@@ -370,7 +371,9 @@ namespace Entities
 
                 entity.Property(e => e.CustomerDescription).HasMaxLength(2048);
 
-                entity.Property(e => e.CustomerId).HasColumnName("CustomerID");
+                entity.Property(e => e.CustomerId)
+                    .HasColumnName("CustomerID")
+                    .HasComment("کد مشتری");
 
                 entity.Property(e => e.DaUserId)
                     .HasColumnName("DaUserID")
@@ -378,11 +381,17 @@ namespace Entities
 
                 entity.Property(e => e.Ddate).HasColumnName("DDate");
 
+                entity.Property(e => e.DeliveryDate).HasComment("فعلا خالی");
+
                 entity.Property(e => e.DuserId)
                     .HasColumnName("DUserID")
                     .HasMaxLength(450);
 
-                entity.Property(e => e.FinalStatusId).HasColumnName("FinalStatusID");
+                entity.Property(e => e.FinalPrice).HasComment("Order Price - Offer Price + Tax Price");
+
+                entity.Property(e => e.FinalStatusId)
+                    .HasColumnName("FinalStatusID")
+                    .HasComment("فعلا خالی");
 
                 entity.Property(e => e.Mdate).HasColumnName("MDate");
 
@@ -390,13 +399,37 @@ namespace Entities
                     .HasColumnName("MUserID")
                     .HasMaxLength(450);
 
-                entity.Property(e => e.PaymentTypeId).HasColumnName("PaymentTypeID");
+                entity.Property(e => e.OfferPrice).HasComment("order Price * Offer value");
 
-                entity.Property(e => e.PostTackingCode).HasMaxLength(128);
+                entity.Property(e => e.OfferValue).HasComment("اگر کد تخفیف داشت از جدول Offer پیدا میکنیم و مقدارش رو در اینجا ثبت می کنیم");
 
-                entity.Property(e => e.PostTypeId).HasColumnName("PostTypeID");
+                entity.Property(e => e.OrderDate).HasComment("تاریخ سفارش");
+
+                entity.Property(e => e.OrderNo).HasComment("شماره سفارش ( کد مشتری + تاریخ +سه رقم سریال ) ");
+
+                entity.Property(e => e.OrderPrice).HasComment("جمع کل تمامی قیمت محصولات موجود در سفارش ( قیمت با تخفیف )");
+
+                entity.Property(e => e.PaymentTypeId)
+                    .HasColumnName("PaymentTypeID")
+                    .HasComment("نحوه پرداخت از یو آی خواهد آمد.");
+
+                entity.Property(e => e.PostTackingCode)
+                    .HasMaxLength(128)
+                    .HasComment("فعلا خالی");
+
+                entity.Property(e => e.PostTypeId)
+                    .HasColumnName("PostTypeID")
+                    .HasComment("نحوه ارسال پستی ( از یو آی خواهد آمد ) در نهایی سازی سفارش");
 
                 entity.Property(e => e.SellerDescription).HasMaxLength(2048);
+
+                entity.Property(e => e.SendDate).HasComment("فعلا خالی");
+
+                entity.Property(e => e.TaxPrice).HasComment("(Order Price - Offer Price ) * 9%");
+
+                entity.Property(e => e.TaxValue).HasComment("9% همیشه");
+
+                entity.Property(e => e.Weight).HasComment("جمع وزن تمامی محصولات سفارش  ( تعداد * وزن محصول از جدول Product) ");
 
                 entity.HasOne(d => d.Customer)
                     .WithMany(p => p.CustomerOrder)
@@ -417,6 +450,59 @@ namespace Entities
                     .WithMany(p => p.CustomerOrder)
                     .HasForeignKey(d => d.PostTypeId)
                     .HasConstraintName("FK_CustomerOrder_PostType");
+            });
+
+            modelBuilder.Entity<CustomerOrderPayment>(entity =>
+            {
+                entity.Property(e => e.Id).HasColumnName("ID");
+
+                entity.Property(e => e.Cdate).HasColumnName("CDate");
+
+                entity.Property(e => e.CuserId)
+                    .HasColumnName("CUserID")
+                    .HasMaxLength(450);
+
+                entity.Property(e => e.CustomerOrderId).HasColumnName("CustomerOrderID");
+
+                entity.Property(e => e.DaUserId)
+                    .HasColumnName("DaUserID")
+                    .HasMaxLength(450);
+
+                entity.Property(e => e.Ddate).HasColumnName("DDate");
+
+                entity.Property(e => e.DuserId)
+                    .HasColumnName("DUserID")
+                    .HasMaxLength(450);
+
+                entity.Property(e => e.FinalStatusId).HasColumnName("FinalStatusID");
+
+                entity.Property(e => e.Mdate).HasColumnName("MDate");
+
+                entity.Property(e => e.MuserId)
+                    .HasColumnName("MUserID")
+                    .HasMaxLength(450);
+
+                entity.Property(e => e.OrderNo).HasMaxLength(128);
+
+                entity.Property(e => e.RefNum).HasMaxLength(128);
+
+                entity.Property(e => e.ResNum)
+                    .HasMaxLength(128)
+                    .HasComment("شماره یکتای سفارش ( از طرف سایت تولید می شود )");
+
+                entity.Property(e => e.SystemTraceNo).HasComment("شماره مرجع");
+
+                entity.Property(e => e.TerminalNo).HasComment("شماره ترمینال");
+
+                entity.Property(e => e.TraceNo).HasMaxLength(128);
+
+                entity.Property(e => e.TrackingCode)
+                    .HasMaxLength(128)
+                    .HasComment("کد رهگیری");
+
+                entity.Property(e => e.TransactionDate).HasComment("تاریخ تراکنش");
+
+                entity.Property(e => e.TransactionPrice).HasComment("مبلغ تراکنش");
             });
 
             modelBuilder.Entity<CustomerOrderProduct>(entity =>
@@ -443,7 +529,9 @@ namespace Entities
                     .HasColumnName("DUserID")
                     .HasMaxLength(450);
 
-                entity.Property(e => e.FinalStatusId).HasColumnName("FinalStatusID");
+                entity.Property(e => e.FinalStatusId)
+                    .HasColumnName("FinalStatusID")
+                    .HasComment("فعلا خالی");
 
                 entity.Property(e => e.Mdate).HasColumnName("MDate");
 
@@ -451,13 +539,29 @@ namespace Entities
                     .HasColumnName("MUserID")
                     .HasMaxLength(450);
 
-                entity.Property(e => e.ProductColorId).HasColumnName("ProductColorID");
+                entity.Property(e => e.OrderCount).HasComment("از یو آی");
+
+                entity.Property(e => e.ProductCode).HasComment("از جدول محصولات");
+
+                entity.Property(e => e.ProductColorId)
+                    .HasColumnName("ProductColorID")
+                    .HasComment("فعلا خالی");
 
                 entity.Property(e => e.ProductId).HasColumnName("ProductID");
 
                 entity.Property(e => e.ProductName).HasMaxLength(256);
 
-                entity.Property(e => e.ProductOfferCode).HasMaxLength(32);
+                entity.Property(e => e.ProductOfferCode)
+                    .HasMaxLength(32)
+                    .HasComment("از جدول ProductOffer");
+
+                entity.Property(e => e.ProductOfferPrice).HasComment("محاسبه خواهد شد.");
+
+                entity.Property(e => e.ProductOfferValue).HasComment("از جدول ProductOffer");
+
+                entity.Property(e => e.ProductPrice).HasComment("از جدول Product");
+
+                entity.Property(e => e.Weight).HasComment("از جدول محصولات ( فقط وزن یک محصول نه تمامی آنها )");
 
                 entity.HasOne(d => d.CustomerOrder)
                     .WithMany(p => p.CustomerOrderProduct)
@@ -664,6 +768,8 @@ namespace Entities
                     .HasColumnName("DUserID")
                     .HasMaxLength(450);
 
+                entity.Property(e => e.Icon).HasMaxLength(64);
+
                 entity.Property(e => e.Mdate).HasColumnName("MDate");
 
                 entity.Property(e => e.MuserId)
@@ -698,6 +804,8 @@ namespace Entities
                 entity.Property(e => e.DuserId)
                     .HasColumnName("DUserID")
                     .HasMaxLength(450);
+
+                entity.Property(e => e.Icon).HasMaxLength(64);
 
                 entity.Property(e => e.Mdate).HasColumnName("MDate");
 
