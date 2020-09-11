@@ -40,26 +40,26 @@ $('.banner').owlCarousel({
 /*---------------------------------------------------
      Product Carousel Slider with Tab
 ----------------------------------------------------- */
-$("#latest_category .owl-carousel.latest_category_tabs").owlCarousel({
-		itemsCustom : [[320, 1],[600, 2],[768, 3],[992, 5],[1199, 5]],											   
-		lazyLoad : true,
-		navigation : true,
-		navigationText: ['<i class="fa fa-angle-left"></i>', '<i class="fa fa-angle-right"></i>'],
-		scrollPerPage : true,
-});
-$("#latest_category .tab_content").addClass("deactive");
-$("#latest_category .tab_content:first").show();
-	//Default Action
-    $("#latest_category ul#sub-cat li:first").addClass("active").show(); //Activate first tab
-    //On Click Event
-    $("#latest_category ul#sub-cat li").on("click", function() {
-        $("#latest_category ul#sub-cat li").removeClass("active"); //Remove any "active" class
-        $(this).addClass("active"); //Add "active" class to selected tab
-		$("#latest_category .tab_content").hide(); 
-        var activeTab = $(this).find("a").attr("href"); //Find the rel attribute value to identify the active tab + content
-        $(activeTab).fadeIn(); //Fade in the active content
-        return false;
-    });
+//$("#latest_category .owl-carousel.latest_category_tabs").owlCarousel({
+//		itemsCustom : [[320, 1],[600, 2],[768, 3],[992, 5],[1199, 5]],											   
+//		lazyLoad : true,
+//		navigation : true,
+//		navigationText: ['<i class="fa fa-angle-left"></i>', '<i class="fa fa-angle-right"></i>'],
+//		scrollPerPage : true,
+//});
+//$("#latest_category .tab_content").addClass("deactive");
+//$("#latest_category .tab_content:first").show();
+//	//Default Action
+//    $("#latest_category ul#sub-cat li:first").addClass("active").show(); //Activate first tab
+//    //On Click Event
+//    $("#latest_category ul#sub-cat li").on("click", function() {
+//        $("#latest_category ul#sub-cat li").removeClass("active"); //Remove any "active" class
+//        $(this).addClass("active"); //Add "active" class to selected tab
+//		$("#latest_category .tab_content").hide(); 
+//        var activeTab = $(this).find("a").attr("href"); //Find the rel attribute value to identify the active tab + content
+//        $(activeTab).fadeIn(); //Fade in the active content
+//        return false;
+//    });
 	
 
 /*---------------------------------------------------

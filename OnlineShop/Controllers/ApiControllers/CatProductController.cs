@@ -43,7 +43,7 @@ namespace OnlineShop.Controllers.ApiControllers
             {
                 var catProduct = _repository.CatProduct.FindAll()
                     .OrderByDescending(c => c.Product.Count)
-                    .Select(c => new { c.Id, c.Name }).ToList().Take(10);
+                    .Select(c => new { c.Id, c.Name }).ToList().Take(7);
                 _logger.LogInfo($"Returned all CatProduct from database.");
                 return Ok(catProduct);
             }

@@ -102,6 +102,7 @@ $(document).ready(() => {
 
 
     RenderCart();
+
     $(document.body).on('click', '.cartt', function () {
 
         productId = parseInt($(this).attr('productid'));
