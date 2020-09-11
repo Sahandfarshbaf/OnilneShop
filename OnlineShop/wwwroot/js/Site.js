@@ -59,6 +59,7 @@ function AddToCart() {
                 ProductId: response.id,
                 Name: response.name,
                 Price: response.price,
+                Count:1,
                 CoverImageURL: response.coverImageUrl
             }
 
