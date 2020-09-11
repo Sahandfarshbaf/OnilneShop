@@ -17,7 +17,7 @@ function GetProductVige() {
             jQuery.each(response, function (i, item) {
                 Html += `<div class="product-thumb clearfix vighe">
                             <div class="image">
-                                <a href="Home\Product?` + item.id + `">
+                                <a href="Home/Product/` + item.id + `">
                                        <img src="` + item.coverImageUrl + `" alt="` + item.name + `" title="` + item.name + `" class="img-responsive" />
                                 </a>
                             </div>
@@ -61,7 +61,7 @@ function GetProductTopSel() {
             
             jQuery.each(response, function (i, item) {
                 ss += `<div class="product-thumb clearfix">
-                        <div class="image"><a href="Home\Product"><img src="` + item.coverImageUrl + `" alt="` + item.name + `" title="` + item.name + `" class="img-responsive" /></a></div>
+                        <div class="image"><a href="Home/Product/` + item.id + `"><img src="` + item.coverImageUrl + `" alt="` + item.name + `" title="` + item.name + `" class="img-responsive" /></a></div>
                         <div class="caption">
                             <h4><a href="Home\Product">` + item.name + ` </a></h4>
                             <p class="price">` + item.price + ` </p>
@@ -111,7 +111,7 @@ function GetProductTopNew() {
            
             jQuery.each(response, function (i, item) {
                 newpro += `<div class="product-thumb clearfix">
-                        <div class="image"><a href="Home\Product"><img src="` + item.coverImageUrl + `" alt="` + item.name + `" title="` + item.name + `" class="img-responsive" /></a></div>
+                        <div class="image"><a href="Home/Product/` + item.id + `"><img src="` + item.coverImageUrl + `" alt="` + item.name + `" title="` + item.name + `" class="img-responsive" /></a></div>
                         <div class="caption">
                             <h4><a href="Home\Product">` + item.name + ` </a></h4>
                             <p class="price">` + item.price + ` </p>
@@ -160,7 +160,7 @@ function GetProductTopBazdid() {
         
             jQuery.each(response, function (i, item) {
                 Bazdid += `            <div class="product-thumb">
-                <div class="image"><a href="Home\Product"><img src="` + item.coverImageUrl + `" alt="` + item.name + `" title="` + item.name + `" class="img-responsive" /></a></div>
+                <div class="image"><a href="Home/Product/` + item.id + `"><img src="` + item.coverImageUrl + `" alt="` + item.name + `" title="` + item.name + `" class="img-responsive" /></a></div>
                 <div class="caption">
                     <h4><a href="Home\Product">` + item.name + ` </a></h4>
                     <p class="price">` + item.price + `  تومان </p>
