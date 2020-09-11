@@ -1,13 +1,22 @@
 ﻿
 var productId;
 
-function RenderCart() {
-
+function GetCartItems() {
     var CartList = new Array();
     var list = Cookies.get('CartItems');
     if (list != undefined) {
         CartList = JSON.parse(list);
     }
+    return CartList;
+}
+
+function RenderCart() {
+
+    var CartList = GetCartItems();
+    //var list = Cookies.get('CartItems');
+    //if (list != undefined) {
+    //    CartList = JSON.parse(list);
+    //}
     let totalPrice = 0;
     let html = '';
     jQuery.each(CartList, function (i, item) {
@@ -49,11 +58,7 @@ function AddToCart() {
         dataType: "json",
         success: function (response) {
 
-            var CartList = new Array();
-            var list = Cookies.get('CartItems');
-            if (list != undefined) {
-                CartList = JSON.parse(list);
-            }
+            var CartList = GetCartItems();
 
             var item = {
                 ProductId: response.id,
@@ -83,11 +88,7 @@ function AddToCart() {
 
 function RemoveFromCart() {
 
-    var CartList = new Array();
-    var list = Cookies.get('CartItems');
-    if (list != undefined) {
-        CartList = JSON.parse(list);
-    }
+    var CartList = GetCartItems();
 
     CartList = CartList.filter(x => x.ProductId != productId);
     Cookies.set('CartItems', JSON.stringify(CartList));
