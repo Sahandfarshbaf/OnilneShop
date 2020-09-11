@@ -8,6 +8,8 @@ namespace Entities.Models
         public Status()
         {
             Customer = new HashSet<Customer>();
+            CustomerOrder = new HashSet<CustomerOrder>();
+            CustomerOrderProduct = new HashSet<CustomerOrderProduct>();
             Product = new HashSet<Product>();
             Seller = new HashSet<Seller>();
         }
@@ -31,6 +33,8 @@ namespace Entities.Models
         public virtual CatStatus CatStatus { get; set; }
         public virtual StatusType StatusType { get; set; }
         public virtual ICollection<Customer> Customer { get; set; }
+        public virtual ICollection<CustomerOrder> CustomerOrder { get; set; }
+        public virtual ICollection<CustomerOrderProduct> CustomerOrderProduct { get; set; }
         public virtual ICollection<Product> Product { get; set; }
         public virtual ICollection<Seller> Seller { get; set; }
     }

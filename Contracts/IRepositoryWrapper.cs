@@ -25,6 +25,8 @@ namespace Contracts
         ICatProductParametersRepository CatProductParameters { get; }
         ISliderPlaceTypeRepository SliderPlaceType { get; }
         ISliderRepository Slider { get; }
+        ICustomerRepository Customer { get; }
+        ICustomerOrderRepository CustomerOrder { get; }
 
 
 

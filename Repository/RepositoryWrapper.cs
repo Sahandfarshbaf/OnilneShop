@@ -27,6 +27,8 @@ namespace Repository
         private ICatProductParametersRepository _catProductParameters;
         private ISliderPlaceTypeRepository _sliderPlaceType;
         private ISliderRepository _slider;
+        private ICustomerRepository _customer;
+        private ICustomerOrderRepository _customerOrder;
 
 
 
@@ -244,6 +246,30 @@ namespace Repository
                 }
 
                 return _slider;
+            }
+        }
+        public ICustomerRepository Customer
+        {
+            get
+            {
+                if (_customer == null)
+                {
+                    _customer = new CustomerRepository(_repoContext);
+                }
+
+                return _customer;
+            }
+        }
+        public ICustomerOrderRepository CustomerOrder
+        {
+            get
+            {
+                if (_customerOrder == null)
+                {
+                    _customerOrder = new CustomerOrderRepository(_repoContext);
+                }
+
+                return _customerOrder;
             }
         }
 

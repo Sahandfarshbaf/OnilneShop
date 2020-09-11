@@ -9,6 +9,7 @@ namespace Entities.Models
         {
             CustomerActivation = new HashSet<CustomerActivation>();
             CustomerOffer = new HashSet<CustomerOffer>();
+            CustomerOrder = new HashSet<CustomerOrder>();
             ProductCustomerComments = new HashSet<ProductCustomerComments>();
             ProductCustomerRate = new HashSet<ProductCustomerRate>();
         }
@@ -27,7 +28,7 @@ namespace Entities.Models
         public long? PostalCode { get; set; }
         public string Address { get; set; }
         public long? FinalStatusId { get; set; }
-        public bool SendNews { get; set; }
+        public bool? SendNews { get; set; }
         public string CuserId { get; set; }
         public long? Cdate { get; set; }
         public string DuserId { get; set; }
@@ -41,6 +42,7 @@ namespace Entities.Models
         public virtual Location Location { get; set; }
         public virtual ICollection<CustomerActivation> CustomerActivation { get; set; }
         public virtual ICollection<CustomerOffer> CustomerOffer { get; set; }
+        public virtual ICollection<CustomerOrder> CustomerOrder { get; set; }
         public virtual ICollection<ProductCustomerComments> ProductCustomerComments { get; set; }
         public virtual ICollection<ProductCustomerRate> ProductCustomerRate { get; set; }
     }

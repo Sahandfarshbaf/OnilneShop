@@ -7,6 +7,7 @@ namespace Entities.Models
     {
         public Product()
         {
+            CustomerOrderProduct = new HashSet<CustomerOrderProduct>();
             ProductCustomerComments = new HashSet<ProductCustomerComments>();
             ProductCustomerRate = new HashSet<ProductCustomerRate>();
             ProductImage = new HashSet<ProductImage>();
@@ -28,8 +29,10 @@ namespace Entities.Models
         public long? Count { get; set; }
         public string CoverImageUrl { get; set; }
         public string CoverImageHurl { get; set; }
+        public long? SeenCount { get; set; }
+        public long? LastSeenDate { get; set; }
         public string Description { get; set; }
-        public string AparatURL { get; set; }
+        public string AparatUrl { get; set; }
         public long? Weight { get; set; }
         public string CuserId { get; set; }
         public long? Cdate { get; set; }
@@ -39,12 +42,12 @@ namespace Entities.Models
         public long? Mdate { get; set; }
         public string DaUserId { get; set; }
         public long? DaDate { get; set; }
-        public long? SeenCount { get; set; }
-        public long? LastSeenDate { get; set; }
+
         public virtual CatProduct CatProduct { get; set; }
         public virtual Status FinalStatus { get; set; }
         public virtual ProductMeter ProductMeter { get; set; }
         public virtual Seller Seller { get; set; }
+        public virtual ICollection<CustomerOrderProduct> CustomerOrderProduct { get; set; }
         public virtual ICollection<ProductCustomerComments> ProductCustomerComments { get; set; }
         public virtual ICollection<ProductCustomerRate> ProductCustomerRate { get; set; }
         public virtual ICollection<ProductImage> ProductImage { get; set; }

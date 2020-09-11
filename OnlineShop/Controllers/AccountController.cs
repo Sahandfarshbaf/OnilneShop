@@ -54,7 +54,7 @@ namespace OnlineShop.Controllers
                 }
                 return View(userModel);
             }
-            await _userManager.AddToRoleAsync(user, "Visitor");
+            await _userManager.AddToRoleAsync(user, "CUSTOMER");
             return RedirectToAction(nameof(HomeController.Index), "Home");
         }
 
