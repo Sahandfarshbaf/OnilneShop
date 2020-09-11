@@ -334,13 +334,19 @@ function Getsubcat() {
 
 
     });
+
+
+
+
 }
 
 function Getsubcatid() {
+    console.log(cat1);
     let subcat = `<div class="owl-carousel latest_category_tabs"  >`;
 
     jQuery.ajax({
-        type: "Get",        
+        type: "Get",    
+        //url: `/api/Product/GetProductByCatId?catId=${cat1}
         url: `/api/Product/GetProductByCatId?catId=22`,
         data: "",
         async: false,
@@ -353,12 +359,11 @@ function Getsubcatid() {
  
                     subcat += ` <div class="product-thumb">
                                     <div class="image">
-                                        <a href="Home\Product">
-                                        <img src="~/image/product/samsung_tab_1-200x200.jpg" alt="تبلت ایسر" title="تبلت ایسر" class="img-responsive" /></a>
+                                        <a href="Home/Product/` + item.id + `"><img src="` + item.coverImageUrl + `" alt="` + item.name + `" title="` + item.name + `" class="img-responsive" /></a>
                                     </div>
                                     <div class="caption">
-                                        <h4><a href="Home\Product">تبلت ایسر</a></h4>
-                                        <p class="price"> <span class="price-new">98000 تومان</span> <span class="price-old">240000 تومان</span> <span class="saving">-5%</span> </p>
+                                        <h4><a href="Home\Product">` + item.name + `</a></h4>
+                                        <p class="price"> <span class="price-new">` + item.price + ` تومان</span> <span class="price-old">` + item.price + ` تومان</span> <span class="saving">` + item.offerValue + `%</span> </p>
                                         <div class="rating"> <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span> </div>
                                     </div>
                                     <div class="button-group">
