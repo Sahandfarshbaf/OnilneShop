@@ -23277,3 +23277,677 @@
    at NLog.Internal.FileAppenders.RetryingMultiProcessFileAppender.Write(Byte[] bytes, Int32 offset, Int32 count)
    at NLog.Targets.FileTarget.WriteToFile(String fileName, ArraySegment`1 bytes, Boolean initializedNewFile)
 2020-09-12 15:51:44.4240 Debug FileAppender Closing Invalidate - C:/Users/Sahand/source/repos/AccountOwnerServer/AccountOwnerServer/logs/2020-09-12_logfile.txt
+2020-09-12 15:54:27.7886 Debug ScanAssembly('NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c')
+2020-09-12 15:54:28.0289 Debug Found assembly location directory: 'C:\project\OnilneShop\OnlineShop\bin\Debug\netcoreapp3.1' (NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c)
+2020-09-12 15:54:28.0514 Debug Search for auto loading files in location: C:\project\OnilneShop\OnlineShop\bin\Debug\netcoreapp3.1
+2020-09-12 15:54:28.0689 Debug Start auto loading, location: C:\project\OnilneShop\OnlineShop\bin\Debug\netcoreapp3.1
+2020-09-12 15:54:28.0689 Info Auto loading assembly file: C:\project\OnilneShop\OnlineShop\bin\Debug\netcoreapp3.1\NLog.Extensions.Logging.dll
+2020-09-12 15:54:28.0887 Info Loading assembly file: C:\project\OnilneShop\OnlineShop\bin\Debug\netcoreapp3.1\NLog.Extensions.Logging.dll
+2020-09-12 15:54:28.1197 Info NLog.Extensions.Logging, Version=1.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 1.6.5.1409. Product version: 1.6.5+c05b105d8cd52581a50da2af91ebacf8d4bc8f0d. GlobalAssemblyCache: False
+2020-09-12 15:54:28.1279 Debug ScanAssembly('NLog.Extensions.Logging, Version=1.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c')
+2020-09-12 15:54:28.1279 Info Auto loading assembly file: C:\project\OnilneShop\OnlineShop\bin\Debug\netcoreapp3.1\NLog.Extensions.Logging.dll succeeded!
+2020-09-12 15:54:28.1496 Trace Assembly 'Microsoft.Extensions.Logging, Version=3.1.8.0, Culture=neutral, PublicKeyToken=adb9793829ddae60' will be hidden in callsite stacktrace
+2020-09-12 15:54:28.1496 Trace Assembly 'Microsoft.Extensions.Logging.Abstractions, Version=3.1.8.0, Culture=neutral, PublicKeyToken=adb9793829ddae60' will be hidden in callsite stacktrace
+2020-09-12 15:54:28.1666 Trace Assembly 'NLog.Extensions.Logging, Version=1.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c' will be hidden in callsite stacktrace
+2020-09-12 15:54:28.1738 Debug Auto loading done
+2020-09-12 15:54:28.1738 Info Message Template Auto Format enabled
+2020-09-12 15:54:28.2149 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2020-09-12 15:54:28.2259 Trace Scanning LongDateLayoutRenderer 'Layout Renderer: ${longdate}'
+2020-09-12 15:54:28.2461 Debug Setting 'NLog.LayoutRenderers.Wrappers.UppercaseLayoutRendererWrapper.uppercase' to 'true'
+2020-09-12 15:54:28.2559 Trace Wrapping NLog.LayoutRenderers.LevelLayoutRenderer with NLog.LayoutRenderers.Wrappers.UppercaseLayoutRendererWrapper
+2020-09-12 15:54:28.2559 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2020-09-12 15:54:28.2708 Trace Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2020-09-12 15:54:28.2708 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2020-09-12 15:54:28.2889 Trace Scanning UppercaseLayoutRendererWrapper 'Layout Renderer: ${uppercase}'
+2020-09-12 15:54:28.3010 Trace  Scanning Property Inner 'SimpleLayout=Layout Renderer: ${level}' NLog.Layouts
+2020-09-12 15:54:28.3010 Trace  Scanning SimpleLayout 'SimpleLayout=Layout Renderer: ${level}'
+2020-09-12 15:54:28.3160 Trace   Scanning Property Renderers 'System.Collections.ObjectModel.ReadOnlyCollection`1[NLog.LayoutRenderers.LayoutRenderer]' System.Collections.ObjectModel
+2020-09-12 15:54:28.3160 Trace   Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2020-09-12 15:54:28.3346 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2020-09-12 15:54:28.3346 Trace Scanning LoggerNameLayoutRenderer 'Layout Renderer: ${logger}'
+2020-09-12 15:54:28.3491 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2020-09-12 15:54:28.3491 Trace Scanning MessageLayoutRenderer 'Layout Renderer: ${message}'
+2020-09-12 15:54:28.3794 Debug Setting 'NLog.Targets.FileTarget.name' to 'logfile'
+2020-09-12 15:54:28.3794 Debug Setting 'NLog.Targets.FileTarget.fileName' to 'C:/Users/Sahand/source/repos/AccountOwnerServer/AccountOwnerServer/logs/${shortdate}_logfile.txt'
+2020-09-12 15:54:28.3971 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2020-09-12 15:54:28.3971 Trace Scanning ShortDateLayoutRenderer 'Layout Renderer: ${shortdate}'
+2020-09-12 15:54:28.4134 Debug Setting 'NLog.Targets.FileTarget.layout' to '${longdate} ${level:uppercase=true} ${message}'
+2020-09-12 15:54:28.4257 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2020-09-12 15:54:28.4257 Trace Scanning LongDateLayoutRenderer 'Layout Renderer: ${longdate}'
+2020-09-12 15:54:28.4444 Debug Setting 'NLog.LayoutRenderers.Wrappers.UppercaseLayoutRendererWrapper.uppercase' to 'true'
+2020-09-12 15:54:28.4444 Trace Wrapping NLog.LayoutRenderers.LevelLayoutRenderer with NLog.LayoutRenderers.Wrappers.UppercaseLayoutRendererWrapper
+2020-09-12 15:54:28.4593 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2020-09-12 15:54:28.4706 Trace Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2020-09-12 15:54:28.4706 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2020-09-12 15:54:28.4866 Trace Scanning UppercaseLayoutRendererWrapper 'Layout Renderer: ${uppercase}'
+2020-09-12 15:54:28.4866 Trace  Scanning Property Inner 'SimpleLayout=Layout Renderer: ${level}' NLog.Layouts
+2020-09-12 15:54:28.5034 Trace  Scanning SimpleLayout 'SimpleLayout=Layout Renderer: ${level}'
+2020-09-12 15:54:28.5034 Trace   Scanning Property Renderers 'System.Collections.ObjectModel.ReadOnlyCollection`1[NLog.LayoutRenderers.LayoutRenderer]' System.Collections.ObjectModel
+2020-09-12 15:54:28.5182 Trace   Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2020-09-12 15:54:28.5182 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2020-09-12 15:54:28.5342 Trace Scanning MessageLayoutRenderer 'Layout Renderer: ${message}'
+2020-09-12 15:54:28.5342 Info Adding target FileTarget(Name=logfile)
+2020-09-12 15:54:28.5499 Debug Registered target logfile: NLog.Targets.FileTarget
+2020-09-12 15:54:28.5499 Trace ParseRulesElement
+2020-09-12 15:54:28.5889 Debug Watching path 'C:\project\OnilneShop\OnlineShop' filter 'nlog.config' for changes.
+2020-09-12 15:54:28.6004 Debug --- NLog configuration dump ---
+2020-09-12 15:54:28.6004 Debug Targets:
+2020-09-12 15:54:28.6174 Debug File Target[logfile]
+2020-09-12 15:54:28.6174 Debug Rules:
+2020-09-12 15:54:28.6371 Debug logNamePattern: (:All) levels: [ Debug Info Warn Error Fatal ] appendTo: [ logfile ]
+2020-09-12 15:54:28.6440 Debug --- End of NLog configuration dump ---
+2020-09-12 15:54:28.6440 Trace FindReachableObject<System.Object>:
+2020-09-12 15:54:28.6651 Trace Scanning LoggingRule 'logNamePattern: (:All) levels: [ Debug Info Warn Error Fatal ] appendTo: [ logfile ]'
+2020-09-12 15:54:28.6651 Trace  Scanning Property Targets 'System.Collections.Generic.List`1[NLog.Targets.Target]' System.Collections.Generic
+2020-09-12 15:54:28.6794 Trace  Scanning FileTarget 'File Target[logfile]'
+2020-09-12 15:54:28.6794 Trace   Scanning Property FileName ''C:/Users/Sahand/source/repos/AccountOwnerServer/AccountOwnerServer/logs/${shortdate}_logfile.txt'' NLog.Layouts
+2020-09-12 15:54:28.6960 Trace   Scanning SimpleLayout ''C:/Users/Sahand/source/repos/AccountOwnerServer/AccountOwnerServer/logs/${shortdate}_logfile.txt''
+2020-09-12 15:54:28.6960 Trace    Scanning Property Renderers 'System.Collections.ObjectModel.ReadOnlyCollection`1[NLog.LayoutRenderers.LayoutRenderer]' System.Collections.ObjectModel
+2020-09-12 15:54:28.7118 Trace    Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2020-09-12 15:54:28.7118 Trace    Scanning ShortDateLayoutRenderer 'Layout Renderer: ${shortdate}'
+2020-09-12 15:54:28.7259 Trace    Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2020-09-12 15:54:28.7259 Trace   Scanning Property Layout ''${longdate} ${level:uppercase=true} ${message}'' NLog.Layouts
+2020-09-12 15:54:28.7428 Trace   Scanning SimpleLayout ''${longdate} ${level:uppercase=true} ${message}''
+2020-09-12 15:54:28.7428 Trace    Scanning Property Renderers 'System.Collections.ObjectModel.ReadOnlyCollection`1[NLog.LayoutRenderers.LayoutRenderer]' System.Collections.ObjectModel
+2020-09-12 15:54:28.7577 Trace    Scanning LongDateLayoutRenderer 'Layout Renderer: ${longdate}'
+2020-09-12 15:54:28.7577 Trace    Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2020-09-12 15:54:28.7751 Trace    Scanning UppercaseLayoutRendererWrapper 'Layout Renderer: ${uppercase}'
+2020-09-12 15:54:28.7751 Trace     Scanning Property Inner 'SimpleLayout=Layout Renderer: ${level}' NLog.Layouts
+2020-09-12 15:54:28.7900 Trace     Scanning SimpleLayout 'SimpleLayout=Layout Renderer: ${level}'
+2020-09-12 15:54:28.7900 Trace      Scanning Property Renderers 'System.Collections.ObjectModel.ReadOnlyCollection`1[NLog.LayoutRenderers.LayoutRenderer]' System.Collections.ObjectModel
+2020-09-12 15:54:28.8055 Trace      Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2020-09-12 15:54:28.8055 Trace    Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2020-09-12 15:54:28.8204 Trace    Scanning MessageLayoutRenderer 'Layout Renderer: ${message}'
+2020-09-12 15:54:28.8204 Trace   Scanning Property LineEnding 'Default' NLog.Targets
+2020-09-12 15:54:28.8378 Trace  Scanning Property ChildRules 'System.Collections.Generic.List`1[NLog.Config.LoggingRule]' System.Collections.Generic
+2020-09-12 15:54:28.8378 Trace  Scanning Property Filters 'System.Collections.Generic.List`1[NLog.Filters.Filter]' System.Collections.Generic
+2020-09-12 15:54:28.8550 Info Validating config: TargetNames=logfile, ConfigItems=14, FilePath=C:\project\OnilneShop\OnlineShop/nlog.config
+2020-09-12 15:54:28.8668 Debug Unused target checking is started... Rule Count: 1, Target Count: 1
+2020-09-12 15:54:28.8814 Debug Unused target checking is completed. Total Rule Count: 1, Total Target Count: 1, Unused Target Count: 0
+2020-09-12 15:54:28.8814 Trace Initializing Layout Renderer: ${message}
+2020-09-12 15:54:28.9000 Trace Initializing Layout Renderer: ${literal}
+2020-09-12 15:54:28.9084 Trace Initializing Layout Renderer: ${level}
+2020-09-12 15:54:28.9084 Trace Initializing SimpleLayout=Layout Renderer: ${level}
+2020-09-12 15:54:28.9281 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2020-09-12 15:54:28.9281 Trace Scanning SimpleLayout 'SimpleLayout=Layout Renderer: ${level}'
+2020-09-12 15:54:28.9445 Trace  Scanning Property Renderers 'System.Collections.ObjectModel.ReadOnlyCollection`1[NLog.LayoutRenderers.LayoutRenderer]' System.Collections.ObjectModel
+2020-09-12 15:54:28.9445 Trace  Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2020-09-12 15:54:28.9633 Trace Initializing Layout Renderer: ${uppercase}
+2020-09-12 15:54:28.9741 Trace Initializing Layout Renderer: ${literal}
+2020-09-12 15:54:28.9741 Trace Initializing Layout Renderer: ${longdate}
+2020-09-12 15:54:29.0015 Trace Initializing '${longdate} ${level:uppercase=true} ${message}'
+2020-09-12 15:54:29.0101 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2020-09-12 15:54:29.0176 Trace Scanning SimpleLayout ''${longdate} ${level:uppercase=true} ${message}''
+2020-09-12 15:54:29.0339 Trace  Scanning Property Renderers 'System.Collections.ObjectModel.ReadOnlyCollection`1[NLog.LayoutRenderers.LayoutRenderer]' System.Collections.ObjectModel
+2020-09-12 15:54:29.0339 Trace  Scanning LongDateLayoutRenderer 'Layout Renderer: ${longdate}'
+2020-09-12 15:54:29.0534 Trace  Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2020-09-12 15:54:29.0773 Trace  Scanning UppercaseLayoutRendererWrapper 'Layout Renderer: ${uppercase}'
+2020-09-12 15:54:29.0848 Trace   Scanning Property Inner 'SimpleLayout=Layout Renderer: ${level}' NLog.Layouts
+2020-09-12 15:54:29.0848 Trace   Scanning SimpleLayout 'SimpleLayout=Layout Renderer: ${level}'
+2020-09-12 15:54:29.0999 Trace    Scanning Property Renderers 'System.Collections.ObjectModel.ReadOnlyCollection`1[NLog.LayoutRenderers.LayoutRenderer]' System.Collections.ObjectModel
+2020-09-12 15:54:29.0999 Trace    Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2020-09-12 15:54:29.1138 Trace  Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2020-09-12 15:54:29.1138 Trace  Scanning MessageLayoutRenderer 'Layout Renderer: ${message}'
+2020-09-12 15:54:29.1326 Trace Initializing Layout Renderer: ${literal}
+2020-09-12 15:54:29.1326 Trace Initializing Layout Renderer: ${shortdate}
+2020-09-12 15:54:29.1474 Trace Initializing Layout Renderer: ${literal}
+2020-09-12 15:54:29.1474 Trace Initializing 'C:/Users/Sahand/source/repos/AccountOwnerServer/AccountOwnerServer/logs/${shortdate}_logfile.txt'
+2020-09-12 15:54:29.1611 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2020-09-12 15:54:29.1611 Trace Scanning SimpleLayout ''C:/Users/Sahand/source/repos/AccountOwnerServer/AccountOwnerServer/logs/${shortdate}_logfile.txt''
+2020-09-12 15:54:29.1778 Trace  Scanning Property Renderers 'System.Collections.ObjectModel.ReadOnlyCollection`1[NLog.LayoutRenderers.LayoutRenderer]' System.Collections.ObjectModel
+2020-09-12 15:54:29.1778 Trace  Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2020-09-12 15:54:29.1930 Trace  Scanning ShortDateLayoutRenderer 'Layout Renderer: ${shortdate}'
+2020-09-12 15:54:29.1930 Trace  Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2020-09-12 15:54:29.2082 Trace Initializing File Target[logfile]
+2020-09-12 15:54:29.2082 Trace FindReachableObject<NLog.Layouts.Layout>:
+2020-09-12 15:54:29.2245 Trace Scanning FileTarget 'File Target[logfile]'
+2020-09-12 15:54:29.2245 Trace  Scanning Property FileName ''C:/Users/Sahand/source/repos/AccountOwnerServer/AccountOwnerServer/logs/${shortdate}_logfile.txt'' NLog.Layouts
+2020-09-12 15:54:29.2428 Trace  Scanning SimpleLayout ''C:/Users/Sahand/source/repos/AccountOwnerServer/AccountOwnerServer/logs/${shortdate}_logfile.txt''
+2020-09-12 15:54:29.2428 Trace  Scanning Property Layout ''${longdate} ${level:uppercase=true} ${message}'' NLog.Layouts
+2020-09-12 15:54:29.2571 Trace  Scanning SimpleLayout ''${longdate} ${level:uppercase=true} ${message}''
+2020-09-12 15:54:29.2687 Trace  Scanning Property LineEnding 'Default' NLog.Targets
+2020-09-12 15:54:29.2687 Trace File Target[logfile] has 2 layouts
+2020-09-12 15:54:29.2894 Trace FileTarget(Name=logfile): Using appenderFactory: NLog.Internal.FileAppenders.RetryingMultiProcessFileAppender+Factory
+2020-09-12 15:54:37.1660 Debug Targets for LoggerService.LoggerManager by level:
+2020-09-12 15:54:37.2069 Debug Trace =>
+2020-09-12 15:54:37.2069 Debug Debug => logfile
+2020-09-12 15:54:37.2231 Debug Info => logfile
+2020-09-12 15:54:37.2231 Debug Warn => logfile
+2020-09-12 15:54:37.2433 Debug Error => logfile
+2020-09-12 15:54:37.2559 Debug Fatal => logfile
+2020-09-12 15:54:37.3014 Debug FileTarget(Name=logfile): Preparing for new file 'C:/Users/Sahand/source/repos/AccountOwnerServer/AccountOwnerServer/logs/2020-09-12_logfile.txt'
+2020-09-12 15:54:37.3543 Debug Creating file appender: C:/Users/Sahand/source/repos/AccountOwnerServer/AccountOwnerServer/logs/2020-09-12_logfile.txt
+2020-09-12 15:54:37.3729 Trace Opening C:/Users/Sahand/source/repos/AccountOwnerServer/AccountOwnerServer/logs/2020-09-12_logfile.txt with allowFileSharedWriting=False
+2020-09-12 15:54:37.3999 Error FileTarget(Name=logfile): Failed write to file 'C:/Users/Sahand/source/repos/AccountOwnerServer/AccountOwnerServer/logs/2020-09-12_logfile.txt'. Exception: System.UnauthorizedAccessException: Access to the path 'C:\Users\Sahand\source\repos\AccountOwnerServer\AccountOwnerServer\logs' is denied.
+   at System.IO.FileSystem.CreateDirectory(String fullPath, Byte[] securityDescriptor)
+   at System.IO.Directory.CreateDirectory(String path)
+   at NLog.Internal.FileAppenders.BaseFileAppender.CreateFileStream(Boolean allowFileSharedWriting, Int32 overrideBufferSize)
+   at NLog.Internal.FileAppenders.RetryingMultiProcessFileAppender.Write(Byte[] bytes, Int32 offset, Int32 count)
+   at NLog.Targets.FileTarget.WriteToFile(String fileName, ArraySegment`1 bytes, Boolean initializedNewFile)
+2020-09-12 15:54:37.4900 Debug FileAppender Closing Invalidate - C:/Users/Sahand/source/repos/AccountOwnerServer/AccountOwnerServer/logs/2020-09-12_logfile.txt
+2020-09-12 15:54:37.7258 Debug Creating file appender: C:/Users/Sahand/source/repos/AccountOwnerServer/AccountOwnerServer/logs/2020-09-12_logfile.txt
+2020-09-12 15:54:37.7433 Trace Opening C:/Users/Sahand/source/repos/AccountOwnerServer/AccountOwnerServer/logs/2020-09-12_logfile.txt with allowFileSharedWriting=False
+2020-09-12 15:54:37.7597 Error FileTarget(Name=logfile): Failed write to file 'C:/Users/Sahand/source/repos/AccountOwnerServer/AccountOwnerServer/logs/2020-09-12_logfile.txt'. Exception: System.UnauthorizedAccessException: Access to the path 'C:\Users\Sahand\source\repos\AccountOwnerServer\AccountOwnerServer\logs' is denied.
+   at System.IO.FileSystem.CreateDirectory(String fullPath, Byte[] securityDescriptor)
+   at System.IO.Directory.CreateDirectory(String path)
+   at NLog.Internal.FileAppenders.BaseFileAppender.CreateFileStream(Boolean allowFileSharedWriting, Int32 overrideBufferSize)
+   at NLog.Internal.FileAppenders.RetryingMultiProcessFileAppender.Write(Byte[] bytes, Int32 offset, Int32 count)
+   at NLog.Targets.FileTarget.WriteToFile(String fileName, ArraySegment`1 bytes, Boolean initializedNewFile)
+2020-09-12 15:54:37.7763 Debug FileAppender Closing Invalidate - C:/Users/Sahand/source/repos/AccountOwnerServer/AccountOwnerServer/logs/2020-09-12_logfile.txt
+2020-09-12 15:54:37.9202 Debug Creating file appender: C:/Users/Sahand/source/repos/AccountOwnerServer/AccountOwnerServer/logs/2020-09-12_logfile.txt
+2020-09-12 15:54:37.9290 Trace Opening C:/Users/Sahand/source/repos/AccountOwnerServer/AccountOwnerServer/logs/2020-09-12_logfile.txt with allowFileSharedWriting=False
+2020-09-12 15:54:37.9700 Error FileTarget(Name=logfile): Failed write to file 'C:/Users/Sahand/source/repos/AccountOwnerServer/AccountOwnerServer/logs/2020-09-12_logfile.txt'. Exception: System.UnauthorizedAccessException: Access to the path 'C:\Users\Sahand\source\repos\AccountOwnerServer\AccountOwnerServer\logs' is denied.
+   at System.IO.FileSystem.CreateDirectory(String fullPath, Byte[] securityDescriptor)
+   at System.IO.Directory.CreateDirectory(String path)
+   at NLog.Internal.FileAppenders.BaseFileAppender.CreateFileStream(Boolean allowFileSharedWriting, Int32 overrideBufferSize)
+   at NLog.Internal.FileAppenders.RetryingMultiProcessFileAppender.Write(Byte[] bytes, Int32 offset, Int32 count)
+   at NLog.Targets.FileTarget.WriteToFile(String fileName, ArraySegment`1 bytes, Boolean initializedNewFile)
+2020-09-12 15:54:37.9785 Debug FileAppender Closing Invalidate - C:/Users/Sahand/source/repos/AccountOwnerServer/AccountOwnerServer/logs/2020-09-12_logfile.txt
+2020-09-12 15:54:38.0584 Debug Creating file appender: C:/Users/Sahand/source/repos/AccountOwnerServer/AccountOwnerServer/logs/2020-09-12_logfile.txt
+2020-09-12 15:54:38.0691 Trace Opening C:/Users/Sahand/source/repos/AccountOwnerServer/AccountOwnerServer/logs/2020-09-12_logfile.txt with allowFileSharedWriting=False
+2020-09-12 15:54:38.0691 Error FileTarget(Name=logfile): Failed write to file 'C:/Users/Sahand/source/repos/AccountOwnerServer/AccountOwnerServer/logs/2020-09-12_logfile.txt'. Exception: System.UnauthorizedAccessException: Access to the path 'C:\Users\Sahand\source\repos\AccountOwnerServer\AccountOwnerServer\logs' is denied.
+   at System.IO.FileSystem.CreateDirectory(String fullPath, Byte[] securityDescriptor)
+   at System.IO.Directory.CreateDirectory(String path)
+   at NLog.Internal.FileAppenders.BaseFileAppender.CreateFileStream(Boolean allowFileSharedWriting, Int32 overrideBufferSize)
+   at NLog.Internal.FileAppenders.RetryingMultiProcessFileAppender.Write(Byte[] bytes, Int32 offset, Int32 count)
+   at NLog.Targets.FileTarget.WriteToFile(String fileName, ArraySegment`1 bytes, Boolean initializedNewFile)
+2020-09-12 15:54:38.0885 Debug FileAppender Closing Invalidate - C:/Users/Sahand/source/repos/AccountOwnerServer/AccountOwnerServer/logs/2020-09-12_logfile.txt
+2020-09-12 15:54:38.1163 Debug Creating file appender: C:/Users/Sahand/source/repos/AccountOwnerServer/AccountOwnerServer/logs/2020-09-12_logfile.txt
+2020-09-12 15:54:38.1163 Trace Opening C:/Users/Sahand/source/repos/AccountOwnerServer/AccountOwnerServer/logs/2020-09-12_logfile.txt with allowFileSharedWriting=False
+2020-09-12 15:54:38.1373 Error FileTarget(Name=logfile): Failed write to file 'C:/Users/Sahand/source/repos/AccountOwnerServer/AccountOwnerServer/logs/2020-09-12_logfile.txt'. Exception: System.UnauthorizedAccessException: Access to the path 'C:\Users\Sahand\source\repos\AccountOwnerServer\AccountOwnerServer\logs' is denied.
+   at System.IO.FileSystem.CreateDirectory(String fullPath, Byte[] securityDescriptor)
+   at System.IO.Directory.CreateDirectory(String path)
+   at NLog.Internal.FileAppenders.BaseFileAppender.CreateFileStream(Boolean allowFileSharedWriting, Int32 overrideBufferSize)
+   at NLog.Internal.FileAppenders.RetryingMultiProcessFileAppender.Write(Byte[] bytes, Int32 offset, Int32 count)
+   at NLog.Targets.FileTarget.WriteToFile(String fileName, ArraySegment`1 bytes, Boolean initializedNewFile)
+2020-09-12 15:54:38.1450 Debug FileAppender Closing Invalidate - C:/Users/Sahand/source/repos/AccountOwnerServer/AccountOwnerServer/logs/2020-09-12_logfile.txt
+2020-09-12 15:54:38.3273 Debug Creating file appender: C:/Users/Sahand/source/repos/AccountOwnerServer/AccountOwnerServer/logs/2020-09-12_logfile.txt
+2020-09-12 15:54:38.3369 Trace Opening C:/Users/Sahand/source/repos/AccountOwnerServer/AccountOwnerServer/logs/2020-09-12_logfile.txt with allowFileSharedWriting=False
+2020-09-12 15:54:38.3481 Error FileTarget(Name=logfile): Failed write to file 'C:/Users/Sahand/source/repos/AccountOwnerServer/AccountOwnerServer/logs/2020-09-12_logfile.txt'. Exception: System.UnauthorizedAccessException: Access to the path 'C:\Users\Sahand\source\repos\AccountOwnerServer\AccountOwnerServer\logs' is denied.
+   at System.IO.FileSystem.CreateDirectory(String fullPath, Byte[] securityDescriptor)
+   at System.IO.Directory.CreateDirectory(String path)
+   at NLog.Internal.FileAppenders.BaseFileAppender.CreateFileStream(Boolean allowFileSharedWriting, Int32 overrideBufferSize)
+   at NLog.Internal.FileAppenders.RetryingMultiProcessFileAppender.Write(Byte[] bytes, Int32 offset, Int32 count)
+   at NLog.Targets.FileTarget.WriteToFile(String fileName, ArraySegment`1 bytes, Boolean initializedNewFile)
+2020-09-12 15:54:38.3481 Debug FileAppender Closing Invalidate - C:/Users/Sahand/source/repos/AccountOwnerServer/AccountOwnerServer/logs/2020-09-12_logfile.txt
+2020-09-12 15:54:38.4842 Debug Creating file appender: C:/Users/Sahand/source/repos/AccountOwnerServer/AccountOwnerServer/logs/2020-09-12_logfile.txt
+2020-09-12 15:54:38.4910 Trace Opening C:/Users/Sahand/source/repos/AccountOwnerServer/AccountOwnerServer/logs/2020-09-12_logfile.txt with allowFileSharedWriting=False
+2020-09-12 15:54:38.5025 Error FileTarget(Name=logfile): Failed write to file 'C:/Users/Sahand/source/repos/AccountOwnerServer/AccountOwnerServer/logs/2020-09-12_logfile.txt'. Exception: System.UnauthorizedAccessException: Access to the path 'C:\Users\Sahand\source\repos\AccountOwnerServer\AccountOwnerServer\logs' is denied.
+   at System.IO.FileSystem.CreateDirectory(String fullPath, Byte[] securityDescriptor)
+   at System.IO.Directory.CreateDirectory(String path)
+   at NLog.Internal.FileAppenders.BaseFileAppender.CreateFileStream(Boolean allowFileSharedWriting, Int32 overrideBufferSize)
+   at NLog.Internal.FileAppenders.RetryingMultiProcessFileAppender.Write(Byte[] bytes, Int32 offset, Int32 count)
+   at NLog.Targets.FileTarget.WriteToFile(String fileName, ArraySegment`1 bytes, Boolean initializedNewFile)
+2020-09-12 15:54:38.5025 Debug FileAppender Closing Invalidate - C:/Users/Sahand/source/repos/AccountOwnerServer/AccountOwnerServer/logs/2020-09-12_logfile.txt
+2020-09-12 15:54:38.5415 Debug Creating file appender: C:/Users/Sahand/source/repos/AccountOwnerServer/AccountOwnerServer/logs/2020-09-12_logfile.txt
+2020-09-12 15:54:38.5518 Trace Opening C:/Users/Sahand/source/repos/AccountOwnerServer/AccountOwnerServer/logs/2020-09-12_logfile.txt with allowFileSharedWriting=False
+2020-09-12 15:54:38.5665 Error FileTarget(Name=logfile): Failed write to file 'C:/Users/Sahand/source/repos/AccountOwnerServer/AccountOwnerServer/logs/2020-09-12_logfile.txt'. Exception: System.UnauthorizedAccessException: Access to the path 'C:\Users\Sahand\source\repos\AccountOwnerServer\AccountOwnerServer\logs' is denied.
+   at System.IO.FileSystem.CreateDirectory(String fullPath, Byte[] securityDescriptor)
+   at System.IO.Directory.CreateDirectory(String path)
+   at NLog.Internal.FileAppenders.BaseFileAppender.CreateFileStream(Boolean allowFileSharedWriting, Int32 overrideBufferSize)
+   at NLog.Internal.FileAppenders.RetryingMultiProcessFileAppender.Write(Byte[] bytes, Int32 offset, Int32 count)
+   at NLog.Targets.FileTarget.WriteToFile(String fileName, ArraySegment`1 bytes, Boolean initializedNewFile)
+2020-09-12 15:54:38.5665 Debug FileAppender Closing Invalidate - C:/Users/Sahand/source/repos/AccountOwnerServer/AccountOwnerServer/logs/2020-09-12_logfile.txt
+2020-09-12 15:54:38.6605 Debug Creating file appender: C:/Users/Sahand/source/repos/AccountOwnerServer/AccountOwnerServer/logs/2020-09-12_logfile.txt
+2020-09-12 15:54:38.6605 Trace Opening C:/Users/Sahand/source/repos/AccountOwnerServer/AccountOwnerServer/logs/2020-09-12_logfile.txt with allowFileSharedWriting=False
+2020-09-12 15:54:38.6864 Error FileTarget(Name=logfile): Failed write to file 'C:/Users/Sahand/source/repos/AccountOwnerServer/AccountOwnerServer/logs/2020-09-12_logfile.txt'. Exception: System.UnauthorizedAccessException: Access to the path 'C:\Users\Sahand\source\repos\AccountOwnerServer\AccountOwnerServer\logs' is denied.
+   at System.IO.FileSystem.CreateDirectory(String fullPath, Byte[] securityDescriptor)
+   at System.IO.Directory.CreateDirectory(String path)
+   at NLog.Internal.FileAppenders.BaseFileAppender.CreateFileStream(Boolean allowFileSharedWriting, Int32 overrideBufferSize)
+   at NLog.Internal.FileAppenders.RetryingMultiProcessFileAppender.Write(Byte[] bytes, Int32 offset, Int32 count)
+   at NLog.Targets.FileTarget.WriteToFile(String fileName, ArraySegment`1 bytes, Boolean initializedNewFile)
+2020-09-12 15:54:38.6945 Debug FileAppender Closing Invalidate - C:/Users/Sahand/source/repos/AccountOwnerServer/AccountOwnerServer/logs/2020-09-12_logfile.txt
+2020-09-12 15:54:38.7377 Debug Creating file appender: C:/Users/Sahand/source/repos/AccountOwnerServer/AccountOwnerServer/logs/2020-09-12_logfile.txt
+2020-09-12 15:54:38.7377 Trace Opening C:/Users/Sahand/source/repos/AccountOwnerServer/AccountOwnerServer/logs/2020-09-12_logfile.txt with allowFileSharedWriting=False
+2020-09-12 15:54:38.7629 Error FileTarget(Name=logfile): Failed write to file 'C:/Users/Sahand/source/repos/AccountOwnerServer/AccountOwnerServer/logs/2020-09-12_logfile.txt'. Exception: System.UnauthorizedAccessException: Access to the path 'C:\Users\Sahand\source\repos\AccountOwnerServer\AccountOwnerServer\logs' is denied.
+   at System.IO.FileSystem.CreateDirectory(String fullPath, Byte[] securityDescriptor)
+   at System.IO.Directory.CreateDirectory(String path)
+   at NLog.Internal.FileAppenders.BaseFileAppender.CreateFileStream(Boolean allowFileSharedWriting, Int32 overrideBufferSize)
+   at NLog.Internal.FileAppenders.RetryingMultiProcessFileAppender.Write(Byte[] bytes, Int32 offset, Int32 count)
+   at NLog.Targets.FileTarget.WriteToFile(String fileName, ArraySegment`1 bytes, Boolean initializedNewFile)
+2020-09-12 15:54:38.7748 Debug FileAppender Closing Invalidate - C:/Users/Sahand/source/repos/AccountOwnerServer/AccountOwnerServer/logs/2020-09-12_logfile.txt
+2020-09-12 15:54:38.8207 Debug Creating file appender: C:/Users/Sahand/source/repos/AccountOwnerServer/AccountOwnerServer/logs/2020-09-12_logfile.txt
+2020-09-12 15:54:38.8207 Trace Opening C:/Users/Sahand/source/repos/AccountOwnerServer/AccountOwnerServer/logs/2020-09-12_logfile.txt with allowFileSharedWriting=False
+2020-09-12 15:54:38.8500 Error FileTarget(Name=logfile): Failed write to file 'C:/Users/Sahand/source/repos/AccountOwnerServer/AccountOwnerServer/logs/2020-09-12_logfile.txt'. Exception: System.UnauthorizedAccessException: Access to the path 'C:\Users\Sahand\source\repos\AccountOwnerServer\AccountOwnerServer\logs' is denied.
+   at System.IO.FileSystem.CreateDirectory(String fullPath, Byte[] securityDescriptor)
+   at System.IO.Directory.CreateDirectory(String path)
+   at NLog.Internal.FileAppenders.BaseFileAppender.CreateFileStream(Boolean allowFileSharedWriting, Int32 overrideBufferSize)
+   at NLog.Internal.FileAppenders.RetryingMultiProcessFileAppender.Write(Byte[] bytes, Int32 offset, Int32 count)
+   at NLog.Targets.FileTarget.WriteToFile(String fileName, ArraySegment`1 bytes, Boolean initializedNewFile)
+2020-09-12 15:54:38.8500 Debug FileAppender Closing Invalidate - C:/Users/Sahand/source/repos/AccountOwnerServer/AccountOwnerServer/logs/2020-09-12_logfile.txt
+2020-09-12 15:54:38.8990 Debug Creating file appender: C:/Users/Sahand/source/repos/AccountOwnerServer/AccountOwnerServer/logs/2020-09-12_logfile.txt
+2020-09-12 15:54:38.8990 Trace Opening C:/Users/Sahand/source/repos/AccountOwnerServer/AccountOwnerServer/logs/2020-09-12_logfile.txt with allowFileSharedWriting=False
+2020-09-12 15:54:38.9167 Error FileTarget(Name=logfile): Failed write to file 'C:/Users/Sahand/source/repos/AccountOwnerServer/AccountOwnerServer/logs/2020-09-12_logfile.txt'. Exception: System.UnauthorizedAccessException: Access to the path 'C:\Users\Sahand\source\repos\AccountOwnerServer\AccountOwnerServer\logs' is denied.
+   at System.IO.FileSystem.CreateDirectory(String fullPath, Byte[] securityDescriptor)
+   at System.IO.Directory.CreateDirectory(String path)
+   at NLog.Internal.FileAppenders.BaseFileAppender.CreateFileStream(Boolean allowFileSharedWriting, Int32 overrideBufferSize)
+   at NLog.Internal.FileAppenders.RetryingMultiProcessFileAppender.Write(Byte[] bytes, Int32 offset, Int32 count)
+   at NLog.Targets.FileTarget.WriteToFile(String fileName, ArraySegment`1 bytes, Boolean initializedNewFile)
+2020-09-12 15:54:38.9257 Debug FileAppender Closing Invalidate - C:/Users/Sahand/source/repos/AccountOwnerServer/AccountOwnerServer/logs/2020-09-12_logfile.txt
+2020-09-12 15:54:38.9524 Debug Creating file appender: C:/Users/Sahand/source/repos/AccountOwnerServer/AccountOwnerServer/logs/2020-09-12_logfile.txt
+2020-09-12 15:54:38.9634 Trace Opening C:/Users/Sahand/source/repos/AccountOwnerServer/AccountOwnerServer/logs/2020-09-12_logfile.txt with allowFileSharedWriting=False
+2020-09-12 15:54:38.9774 Error FileTarget(Name=logfile): Failed write to file 'C:/Users/Sahand/source/repos/AccountOwnerServer/AccountOwnerServer/logs/2020-09-12_logfile.txt'. Exception: System.UnauthorizedAccessException: Access to the path 'C:\Users\Sahand\source\repos\AccountOwnerServer\AccountOwnerServer\logs' is denied.
+   at System.IO.FileSystem.CreateDirectory(String fullPath, Byte[] securityDescriptor)
+   at System.IO.Directory.CreateDirectory(String path)
+   at NLog.Internal.FileAppenders.BaseFileAppender.CreateFileStream(Boolean allowFileSharedWriting, Int32 overrideBufferSize)
+   at NLog.Internal.FileAppenders.RetryingMultiProcessFileAppender.Write(Byte[] bytes, Int32 offset, Int32 count)
+   at NLog.Targets.FileTarget.WriteToFile(String fileName, ArraySegment`1 bytes, Boolean initializedNewFile)
+2020-09-12 15:54:38.9904 Debug FileAppender Closing Invalidate - C:/Users/Sahand/source/repos/AccountOwnerServer/AccountOwnerServer/logs/2020-09-12_logfile.txt
+2020-09-12 15:55:29.9652 Debug ScanAssembly('NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c')
+2020-09-12 15:55:30.2570 Debug Found assembly location directory: 'C:\project\OnilneShop\OnlineShop\bin\Debug\netcoreapp3.1' (NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c)
+2020-09-12 15:55:30.2676 Debug Search for auto loading files in location: C:\project\OnilneShop\OnlineShop\bin\Debug\netcoreapp3.1
+2020-09-12 15:55:30.2845 Debug Start auto loading, location: C:\project\OnilneShop\OnlineShop\bin\Debug\netcoreapp3.1
+2020-09-12 15:55:30.2845 Info Auto loading assembly file: C:\project\OnilneShop\OnlineShop\bin\Debug\netcoreapp3.1\NLog.Extensions.Logging.dll
+2020-09-12 15:55:30.3031 Info Loading assembly file: C:\project\OnilneShop\OnlineShop\bin\Debug\netcoreapp3.1\NLog.Extensions.Logging.dll
+2020-09-12 15:55:30.3778 Info NLog.Extensions.Logging, Version=1.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 1.6.5.1409. Product version: 1.6.5+c05b105d8cd52581a50da2af91ebacf8d4bc8f0d. GlobalAssemblyCache: False
+2020-09-12 15:55:30.3778 Debug ScanAssembly('NLog.Extensions.Logging, Version=1.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c')
+2020-09-12 15:55:30.3943 Info Auto loading assembly file: C:\project\OnilneShop\OnlineShop\bin\Debug\netcoreapp3.1\NLog.Extensions.Logging.dll succeeded!
+2020-09-12 15:55:30.3943 Trace Assembly 'Microsoft.Extensions.Logging, Version=3.1.8.0, Culture=neutral, PublicKeyToken=adb9793829ddae60' will be hidden in callsite stacktrace
+2020-09-12 15:55:30.4141 Trace Assembly 'Microsoft.Extensions.Logging.Abstractions, Version=3.1.8.0, Culture=neutral, PublicKeyToken=adb9793829ddae60' will be hidden in callsite stacktrace
+2020-09-12 15:55:30.4141 Trace Assembly 'NLog.Extensions.Logging, Version=1.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c' will be hidden in callsite stacktrace
+2020-09-12 15:55:30.4300 Debug Auto loading done
+2020-09-12 15:55:30.4300 Info Message Template Auto Format enabled
+2020-09-12 15:55:30.4724 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2020-09-12 15:55:30.4724 Trace Scanning LongDateLayoutRenderer 'Layout Renderer: ${longdate}'
+2020-09-12 15:55:30.5026 Debug Setting 'NLog.LayoutRenderers.Wrappers.UppercaseLayoutRendererWrapper.uppercase' to 'true'
+2020-09-12 15:55:30.5026 Trace Wrapping NLog.LayoutRenderers.LevelLayoutRenderer with NLog.LayoutRenderers.Wrappers.UppercaseLayoutRendererWrapper
+2020-09-12 15:55:30.5187 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2020-09-12 15:55:30.5187 Trace Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2020-09-12 15:55:30.5385 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2020-09-12 15:55:30.5385 Trace Scanning UppercaseLayoutRendererWrapper 'Layout Renderer: ${uppercase}'
+2020-09-12 15:55:30.5561 Trace  Scanning Property Inner 'SimpleLayout=Layout Renderer: ${level}' NLog.Layouts
+2020-09-12 15:55:30.5648 Trace  Scanning SimpleLayout 'SimpleLayout=Layout Renderer: ${level}'
+2020-09-12 15:55:30.5648 Trace   Scanning Property Renderers 'System.Collections.ObjectModel.ReadOnlyCollection`1[NLog.LayoutRenderers.LayoutRenderer]' System.Collections.ObjectModel
+2020-09-12 15:55:30.5825 Trace   Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2020-09-12 15:55:30.5825 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2020-09-12 15:55:30.5989 Trace Scanning LoggerNameLayoutRenderer 'Layout Renderer: ${logger}'
+2020-09-12 15:55:30.5989 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2020-09-12 15:55:30.6152 Trace Scanning MessageLayoutRenderer 'Layout Renderer: ${message}'
+2020-09-12 15:55:30.6330 Debug Setting 'NLog.Targets.FileTarget.name' to 'logfile'
+2020-09-12 15:55:30.6330 Debug Setting 'NLog.Targets.FileTarget.fileName' to 'C:/Users/Sahand/source/repos/AccountOwnerServer/AccountOwnerServer/logs/${shortdate}_logfile.txt'
+2020-09-12 15:55:30.6483 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2020-09-12 15:55:30.6483 Trace Scanning ShortDateLayoutRenderer 'Layout Renderer: ${shortdate}'
+2020-09-12 15:55:30.6674 Debug Setting 'NLog.Targets.FileTarget.layout' to '${longdate} ${level:uppercase=true} ${message}'
+2020-09-12 15:55:30.6743 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2020-09-12 15:55:30.6743 Trace Scanning LongDateLayoutRenderer 'Layout Renderer: ${longdate}'
+2020-09-12 15:55:30.6895 Debug Setting 'NLog.LayoutRenderers.Wrappers.UppercaseLayoutRendererWrapper.uppercase' to 'true'
+2020-09-12 15:55:30.6895 Trace Wrapping NLog.LayoutRenderers.LevelLayoutRenderer with NLog.LayoutRenderers.Wrappers.UppercaseLayoutRendererWrapper
+2020-09-12 15:55:30.7055 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2020-09-12 15:55:30.7055 Trace Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2020-09-12 15:55:30.7055 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2020-09-12 15:55:30.7264 Trace Scanning UppercaseLayoutRendererWrapper 'Layout Renderer: ${uppercase}'
+2020-09-12 15:55:30.7264 Trace  Scanning Property Inner 'SimpleLayout=Layout Renderer: ${level}' NLog.Layouts
+2020-09-12 15:55:30.7395 Trace  Scanning SimpleLayout 'SimpleLayout=Layout Renderer: ${level}'
+2020-09-12 15:55:30.7526 Trace   Scanning Property Renderers 'System.Collections.ObjectModel.ReadOnlyCollection`1[NLog.LayoutRenderers.LayoutRenderer]' System.Collections.ObjectModel
+2020-09-12 15:55:30.7526 Trace   Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2020-09-12 15:55:30.7696 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2020-09-12 15:55:30.7696 Trace Scanning MessageLayoutRenderer 'Layout Renderer: ${message}'
+2020-09-12 15:55:30.7865 Info Adding target FileTarget(Name=logfile)
+2020-09-12 15:55:30.7865 Debug Registered target logfile: NLog.Targets.FileTarget
+2020-09-12 15:55:30.8033 Trace ParseRulesElement
+2020-09-12 15:55:30.8353 Debug Watching path 'C:\project\OnilneShop\OnlineShop' filter 'nlog.config' for changes.
+2020-09-12 15:55:30.8353 Debug --- NLog configuration dump ---
+2020-09-12 15:55:30.8514 Debug Targets:
+2020-09-12 15:55:30.8514 Debug File Target[logfile]
+2020-09-12 15:55:30.8687 Debug Rules:
+2020-09-12 15:55:30.8777 Debug logNamePattern: (:All) levels: [ Debug Info Warn Error Fatal ] appendTo: [ logfile ]
+2020-09-12 15:55:30.8777 Debug --- End of NLog configuration dump ---
+2020-09-12 15:55:30.9003 Trace FindReachableObject<System.Object>:
+2020-09-12 15:55:30.9003 Trace Scanning LoggingRule 'logNamePattern: (:All) levels: [ Debug Info Warn Error Fatal ] appendTo: [ logfile ]'
+2020-09-12 15:55:30.9154 Trace  Scanning Property Targets 'System.Collections.Generic.List`1[NLog.Targets.Target]' System.Collections.Generic
+2020-09-12 15:55:30.9154 Trace  Scanning FileTarget 'File Target[logfile]'
+2020-09-12 15:55:30.9319 Trace   Scanning Property FileName ''C:/Users/Sahand/source/repos/AccountOwnerServer/AccountOwnerServer/logs/${shortdate}_logfile.txt'' NLog.Layouts
+2020-09-12 15:55:30.9319 Trace   Scanning SimpleLayout ''C:/Users/Sahand/source/repos/AccountOwnerServer/AccountOwnerServer/logs/${shortdate}_logfile.txt''
+2020-09-12 15:55:30.9458 Trace    Scanning Property Renderers 'System.Collections.ObjectModel.ReadOnlyCollection`1[NLog.LayoutRenderers.LayoutRenderer]' System.Collections.ObjectModel
+2020-09-12 15:55:30.9458 Trace    Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2020-09-12 15:55:30.9630 Trace    Scanning ShortDateLayoutRenderer 'Layout Renderer: ${shortdate}'
+2020-09-12 15:55:30.9630 Trace    Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2020-09-12 15:55:30.9784 Trace   Scanning Property Layout ''${longdate} ${level:uppercase=true} ${message}'' NLog.Layouts
+2020-09-12 15:55:30.9784 Trace   Scanning SimpleLayout ''${longdate} ${level:uppercase=true} ${message}''
+2020-09-12 15:55:30.9944 Trace    Scanning Property Renderers 'System.Collections.ObjectModel.ReadOnlyCollection`1[NLog.LayoutRenderers.LayoutRenderer]' System.Collections.ObjectModel
+2020-09-12 15:55:31.0022 Trace    Scanning LongDateLayoutRenderer 'Layout Renderer: ${longdate}'
+2020-09-12 15:55:31.0022 Trace    Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2020-09-12 15:55:31.0192 Trace    Scanning UppercaseLayoutRendererWrapper 'Layout Renderer: ${uppercase}'
+2020-09-12 15:55:31.0192 Trace     Scanning Property Inner 'SimpleLayout=Layout Renderer: ${level}' NLog.Layouts
+2020-09-12 15:55:31.0353 Trace     Scanning SimpleLayout 'SimpleLayout=Layout Renderer: ${level}'
+2020-09-12 15:55:31.0353 Trace      Scanning Property Renderers 'System.Collections.ObjectModel.ReadOnlyCollection`1[NLog.LayoutRenderers.LayoutRenderer]' System.Collections.ObjectModel
+2020-09-12 15:55:31.0498 Trace      Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2020-09-12 15:55:31.0498 Trace    Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2020-09-12 15:55:31.0667 Trace    Scanning MessageLayoutRenderer 'Layout Renderer: ${message}'
+2020-09-12 15:55:31.0667 Trace   Scanning Property LineEnding 'Default' NLog.Targets
+2020-09-12 15:55:31.0814 Trace  Scanning Property ChildRules 'System.Collections.Generic.List`1[NLog.Config.LoggingRule]' System.Collections.Generic
+2020-09-12 15:55:31.0814 Trace  Scanning Property Filters 'System.Collections.Generic.List`1[NLog.Filters.Filter]' System.Collections.Generic
+2020-09-12 15:55:31.0995 Info Validating config: TargetNames=logfile, ConfigItems=14, FilePath=C:\project\OnilneShop\OnlineShop/nlog.config
+2020-09-12 15:55:31.0995 Debug Unused target checking is started... Rule Count: 1, Target Count: 1
+2020-09-12 15:55:31.1246 Debug Unused target checking is completed. Total Rule Count: 1, Total Target Count: 1, Unused Target Count: 0
+2020-09-12 15:55:31.1339 Trace Initializing Layout Renderer: ${message}
+2020-09-12 15:55:31.1339 Trace Initializing Layout Renderer: ${literal}
+2020-09-12 15:55:31.1488 Trace Initializing Layout Renderer: ${level}
+2020-09-12 15:55:31.1488 Trace Initializing SimpleLayout=Layout Renderer: ${level}
+2020-09-12 15:55:31.1691 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2020-09-12 15:55:31.1763 Trace Scanning SimpleLayout 'SimpleLayout=Layout Renderer: ${level}'
+2020-09-12 15:55:31.1763 Trace  Scanning Property Renderers 'System.Collections.ObjectModel.ReadOnlyCollection`1[NLog.LayoutRenderers.LayoutRenderer]' System.Collections.ObjectModel
+2020-09-12 15:55:31.1915 Trace  Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2020-09-12 15:55:31.2066 Trace Initializing Layout Renderer: ${uppercase}
+2020-09-12 15:55:31.2066 Trace Initializing Layout Renderer: ${literal}
+2020-09-12 15:55:31.2313 Trace Initializing Layout Renderer: ${longdate}
+2020-09-12 15:55:31.2439 Trace Initializing '${longdate} ${level:uppercase=true} ${message}'
+2020-09-12 15:55:31.2535 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2020-09-12 15:55:31.2535 Trace Scanning SimpleLayout ''${longdate} ${level:uppercase=true} ${message}''
+2020-09-12 15:55:31.2679 Trace  Scanning Property Renderers 'System.Collections.ObjectModel.ReadOnlyCollection`1[NLog.LayoutRenderers.LayoutRenderer]' System.Collections.ObjectModel
+2020-09-12 15:55:31.2679 Trace  Scanning LongDateLayoutRenderer 'Layout Renderer: ${longdate}'
+2020-09-12 15:55:31.2679 Trace  Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2020-09-12 15:55:31.2891 Trace  Scanning UppercaseLayoutRendererWrapper 'Layout Renderer: ${uppercase}'
+2020-09-12 15:55:31.2891 Trace   Scanning Property Inner 'SimpleLayout=Layout Renderer: ${level}' NLog.Layouts
+2020-09-12 15:55:31.3150 Trace   Scanning SimpleLayout 'SimpleLayout=Layout Renderer: ${level}'
+2020-09-12 15:55:31.3378 Trace    Scanning Property Renderers 'System.Collections.ObjectModel.ReadOnlyCollection`1[NLog.LayoutRenderers.LayoutRenderer]' System.Collections.ObjectModel
+2020-09-12 15:55:31.3533 Trace    Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2020-09-12 15:55:31.3533 Trace  Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2020-09-12 15:55:31.3665 Trace  Scanning MessageLayoutRenderer 'Layout Renderer: ${message}'
+2020-09-12 15:55:31.3665 Trace Initializing Layout Renderer: ${literal}
+2020-09-12 15:55:31.3809 Trace Initializing Layout Renderer: ${shortdate}
+2020-09-12 15:55:31.3809 Trace Initializing Layout Renderer: ${literal}
+2020-09-12 15:55:31.3947 Trace Initializing 'C:/Users/Sahand/source/repos/AccountOwnerServer/AccountOwnerServer/logs/${shortdate}_logfile.txt'
+2020-09-12 15:55:31.3947 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2020-09-12 15:55:31.4137 Trace Scanning SimpleLayout ''C:/Users/Sahand/source/repos/AccountOwnerServer/AccountOwnerServer/logs/${shortdate}_logfile.txt''
+2020-09-12 15:55:31.4137 Trace  Scanning Property Renderers 'System.Collections.ObjectModel.ReadOnlyCollection`1[NLog.LayoutRenderers.LayoutRenderer]' System.Collections.ObjectModel
+2020-09-12 15:55:31.4271 Trace  Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2020-09-12 15:55:31.4271 Trace  Scanning ShortDateLayoutRenderer 'Layout Renderer: ${shortdate}'
+2020-09-12 15:55:31.4438 Trace  Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2020-09-12 15:55:31.4438 Trace Initializing File Target[logfile]
+2020-09-12 15:55:31.4603 Trace FindReachableObject<NLog.Layouts.Layout>:
+2020-09-12 15:55:31.4603 Trace Scanning FileTarget 'File Target[logfile]'
+2020-09-12 15:55:31.4763 Trace  Scanning Property FileName ''C:/Users/Sahand/source/repos/AccountOwnerServer/AccountOwnerServer/logs/${shortdate}_logfile.txt'' NLog.Layouts
+2020-09-12 15:55:31.4763 Trace  Scanning SimpleLayout ''C:/Users/Sahand/source/repos/AccountOwnerServer/AccountOwnerServer/logs/${shortdate}_logfile.txt''
+2020-09-12 15:55:31.4916 Trace  Scanning Property Layout ''${longdate} ${level:uppercase=true} ${message}'' NLog.Layouts
+2020-09-12 15:55:31.4916 Trace  Scanning SimpleLayout ''${longdate} ${level:uppercase=true} ${message}''
+2020-09-12 15:55:31.5072 Trace  Scanning Property LineEnding 'Default' NLog.Targets
+2020-09-12 15:55:31.5072 Trace File Target[logfile] has 2 layouts
+2020-09-12 15:55:31.5247 Trace FileTarget(Name=logfile): Using appenderFactory: NLog.Internal.FileAppenders.RetryingMultiProcessFileAppender+Factory
+2020-09-12 15:55:40.3858 Debug Targets for LoggerService.LoggerManager by level:
+2020-09-12 15:55:40.4004 Debug Trace =>
+2020-09-12 15:55:40.4107 Debug Debug => logfile
+2020-09-12 15:55:40.4107 Debug Info => logfile
+2020-09-12 15:55:40.4337 Debug Warn => logfile
+2020-09-12 15:55:40.4441 Debug Error => logfile
+2020-09-12 15:55:40.4441 Debug Fatal => logfile
+2020-09-12 15:55:40.4894 Debug FileTarget(Name=logfile): Preparing for new file 'C:/Users/Sahand/source/repos/AccountOwnerServer/AccountOwnerServer/logs/2020-09-12_logfile.txt'
+2020-09-12 15:55:40.5075 Debug Creating file appender: C:/Users/Sahand/source/repos/AccountOwnerServer/AccountOwnerServer/logs/2020-09-12_logfile.txt
+2020-09-12 15:55:40.5181 Trace Opening C:/Users/Sahand/source/repos/AccountOwnerServer/AccountOwnerServer/logs/2020-09-12_logfile.txt with allowFileSharedWriting=False
+2020-09-12 15:55:40.5452 Error FileTarget(Name=logfile): Failed write to file 'C:/Users/Sahand/source/repos/AccountOwnerServer/AccountOwnerServer/logs/2020-09-12_logfile.txt'. Exception: System.UnauthorizedAccessException: Access to the path 'C:\Users\Sahand\source\repos\AccountOwnerServer\AccountOwnerServer\logs' is denied.
+   at System.IO.FileSystem.CreateDirectory(String fullPath, Byte[] securityDescriptor)
+   at System.IO.Directory.CreateDirectory(String path)
+   at NLog.Internal.FileAppenders.BaseFileAppender.CreateFileStream(Boolean allowFileSharedWriting, Int32 overrideBufferSize)
+   at NLog.Internal.FileAppenders.RetryingMultiProcessFileAppender.Write(Byte[] bytes, Int32 offset, Int32 count)
+   at NLog.Targets.FileTarget.WriteToFile(String fileName, ArraySegment`1 bytes, Boolean initializedNewFile)
+2020-09-12 15:55:40.6516 Debug FileAppender Closing Invalidate - C:/Users/Sahand/source/repos/AccountOwnerServer/AccountOwnerServer/logs/2020-09-12_logfile.txt
+2020-09-12 15:55:40.8777 Debug Creating file appender: C:/Users/Sahand/source/repos/AccountOwnerServer/AccountOwnerServer/logs/2020-09-12_logfile.txt
+2020-09-12 15:55:40.8777 Trace Opening C:/Users/Sahand/source/repos/AccountOwnerServer/AccountOwnerServer/logs/2020-09-12_logfile.txt with allowFileSharedWriting=False
+2020-09-12 15:55:40.8989 Error FileTarget(Name=logfile): Failed write to file 'C:/Users/Sahand/source/repos/AccountOwnerServer/AccountOwnerServer/logs/2020-09-12_logfile.txt'. Exception: System.UnauthorizedAccessException: Access to the path 'C:\Users\Sahand\source\repos\AccountOwnerServer\AccountOwnerServer\logs' is denied.
+   at System.IO.FileSystem.CreateDirectory(String fullPath, Byte[] securityDescriptor)
+   at System.IO.Directory.CreateDirectory(String path)
+   at NLog.Internal.FileAppenders.BaseFileAppender.CreateFileStream(Boolean allowFileSharedWriting, Int32 overrideBufferSize)
+   at NLog.Internal.FileAppenders.RetryingMultiProcessFileAppender.Write(Byte[] bytes, Int32 offset, Int32 count)
+   at NLog.Targets.FileTarget.WriteToFile(String fileName, ArraySegment`1 bytes, Boolean initializedNewFile)
+2020-09-12 15:55:40.8989 Debug FileAppender Closing Invalidate - C:/Users/Sahand/source/repos/AccountOwnerServer/AccountOwnerServer/logs/2020-09-12_logfile.txt
+2020-09-12 15:55:41.0023 Debug Creating file appender: C:/Users/Sahand/source/repos/AccountOwnerServer/AccountOwnerServer/logs/2020-09-12_logfile.txt
+2020-09-12 15:55:41.0023 Trace Opening C:/Users/Sahand/source/repos/AccountOwnerServer/AccountOwnerServer/logs/2020-09-12_logfile.txt with allowFileSharedWriting=False
+2020-09-12 15:55:41.0183 Error FileTarget(Name=logfile): Failed write to file 'C:/Users/Sahand/source/repos/AccountOwnerServer/AccountOwnerServer/logs/2020-09-12_logfile.txt'. Exception: System.UnauthorizedAccessException: Access to the path 'C:\Users\Sahand\source\repos\AccountOwnerServer\AccountOwnerServer\logs' is denied.
+   at System.IO.FileSystem.CreateDirectory(String fullPath, Byte[] securityDescriptor)
+   at System.IO.Directory.CreateDirectory(String path)
+   at NLog.Internal.FileAppenders.BaseFileAppender.CreateFileStream(Boolean allowFileSharedWriting, Int32 overrideBufferSize)
+   at NLog.Internal.FileAppenders.RetryingMultiProcessFileAppender.Write(Byte[] bytes, Int32 offset, Int32 count)
+   at NLog.Targets.FileTarget.WriteToFile(String fileName, ArraySegment`1 bytes, Boolean initializedNewFile)
+2020-09-12 15:55:41.0183 Debug FileAppender Closing Invalidate - C:/Users/Sahand/source/repos/AccountOwnerServer/AccountOwnerServer/logs/2020-09-12_logfile.txt
+2020-09-12 15:55:41.0674 Debug Creating file appender: C:/Users/Sahand/source/repos/AccountOwnerServer/AccountOwnerServer/logs/2020-09-12_logfile.txt
+2020-09-12 15:55:41.0674 Trace Opening C:/Users/Sahand/source/repos/AccountOwnerServer/AccountOwnerServer/logs/2020-09-12_logfile.txt with allowFileSharedWriting=False
+2020-09-12 15:55:41.0852 Error FileTarget(Name=logfile): Failed write to file 'C:/Users/Sahand/source/repos/AccountOwnerServer/AccountOwnerServer/logs/2020-09-12_logfile.txt'. Exception: System.UnauthorizedAccessException: Access to the path 'C:\Users\Sahand\source\repos\AccountOwnerServer\AccountOwnerServer\logs' is denied.
+   at System.IO.FileSystem.CreateDirectory(String fullPath, Byte[] securityDescriptor)
+   at System.IO.Directory.CreateDirectory(String path)
+   at NLog.Internal.FileAppenders.BaseFileAppender.CreateFileStream(Boolean allowFileSharedWriting, Int32 overrideBufferSize)
+   at NLog.Internal.FileAppenders.RetryingMultiProcessFileAppender.Write(Byte[] bytes, Int32 offset, Int32 count)
+   at NLog.Targets.FileTarget.WriteToFile(String fileName, ArraySegment`1 bytes, Boolean initializedNewFile)
+2020-09-12 15:55:41.0852 Debug FileAppender Closing Invalidate - C:/Users/Sahand/source/repos/AccountOwnerServer/AccountOwnerServer/logs/2020-09-12_logfile.txt
+2020-09-12 15:55:41.1193 Debug Creating file appender: C:/Users/Sahand/source/repos/AccountOwnerServer/AccountOwnerServer/logs/2020-09-12_logfile.txt
+2020-09-12 15:55:41.1281 Trace Opening C:/Users/Sahand/source/repos/AccountOwnerServer/AccountOwnerServer/logs/2020-09-12_logfile.txt with allowFileSharedWriting=False
+2020-09-12 15:55:41.1281 Error FileTarget(Name=logfile): Failed write to file 'C:/Users/Sahand/source/repos/AccountOwnerServer/AccountOwnerServer/logs/2020-09-12_logfile.txt'. Exception: System.UnauthorizedAccessException: Access to the path 'C:\Users\Sahand\source\repos\AccountOwnerServer\AccountOwnerServer\logs' is denied.
+   at System.IO.FileSystem.CreateDirectory(String fullPath, Byte[] securityDescriptor)
+   at System.IO.Directory.CreateDirectory(String path)
+   at NLog.Internal.FileAppenders.BaseFileAppender.CreateFileStream(Boolean allowFileSharedWriting, Int32 overrideBufferSize)
+   at NLog.Internal.FileAppenders.RetryingMultiProcessFileAppender.Write(Byte[] bytes, Int32 offset, Int32 count)
+   at NLog.Targets.FileTarget.WriteToFile(String fileName, ArraySegment`1 bytes, Boolean initializedNewFile)
+2020-09-12 15:55:41.1464 Debug FileAppender Closing Invalidate - C:/Users/Sahand/source/repos/AccountOwnerServer/AccountOwnerServer/logs/2020-09-12_logfile.txt
+2020-09-12 15:55:41.3476 Debug Creating file appender: C:/Users/Sahand/source/repos/AccountOwnerServer/AccountOwnerServer/logs/2020-09-12_logfile.txt
+2020-09-12 15:55:41.3476 Trace Opening C:/Users/Sahand/source/repos/AccountOwnerServer/AccountOwnerServer/logs/2020-09-12_logfile.txt with allowFileSharedWriting=False
+2020-09-12 15:55:41.3688 Error FileTarget(Name=logfile): Failed write to file 'C:/Users/Sahand/source/repos/AccountOwnerServer/AccountOwnerServer/logs/2020-09-12_logfile.txt'. Exception: System.UnauthorizedAccessException: Access to the path 'C:\Users\Sahand\source\repos\AccountOwnerServer\AccountOwnerServer\logs' is denied.
+   at System.IO.FileSystem.CreateDirectory(String fullPath, Byte[] securityDescriptor)
+   at System.IO.Directory.CreateDirectory(String path)
+   at NLog.Internal.FileAppenders.BaseFileAppender.CreateFileStream(Boolean allowFileSharedWriting, Int32 overrideBufferSize)
+   at NLog.Internal.FileAppenders.RetryingMultiProcessFileAppender.Write(Byte[] bytes, Int32 offset, Int32 count)
+   at NLog.Targets.FileTarget.WriteToFile(String fileName, ArraySegment`1 bytes, Boolean initializedNewFile)
+2020-09-12 15:55:41.3771 Debug FileAppender Closing Invalidate - C:/Users/Sahand/source/repos/AccountOwnerServer/AccountOwnerServer/logs/2020-09-12_logfile.txt
+2020-09-12 15:55:41.5156 Debug Creating file appender: C:/Users/Sahand/source/repos/AccountOwnerServer/AccountOwnerServer/logs/2020-09-12_logfile.txt
+2020-09-12 15:55:41.5232 Trace Opening C:/Users/Sahand/source/repos/AccountOwnerServer/AccountOwnerServer/logs/2020-09-12_logfile.txt with allowFileSharedWriting=False
+2020-09-12 15:55:41.5357 Error FileTarget(Name=logfile): Failed write to file 'C:/Users/Sahand/source/repos/AccountOwnerServer/AccountOwnerServer/logs/2020-09-12_logfile.txt'. Exception: System.UnauthorizedAccessException: Access to the path 'C:\Users\Sahand\source\repos\AccountOwnerServer\AccountOwnerServer\logs' is denied.
+   at System.IO.FileSystem.CreateDirectory(String fullPath, Byte[] securityDescriptor)
+   at System.IO.Directory.CreateDirectory(String path)
+   at NLog.Internal.FileAppenders.BaseFileAppender.CreateFileStream(Boolean allowFileSharedWriting, Int32 overrideBufferSize)
+   at NLog.Internal.FileAppenders.RetryingMultiProcessFileAppender.Write(Byte[] bytes, Int32 offset, Int32 count)
+   at NLog.Targets.FileTarget.WriteToFile(String fileName, ArraySegment`1 bytes, Boolean initializedNewFile)
+2020-09-12 15:55:41.5357 Debug FileAppender Closing Invalidate - C:/Users/Sahand/source/repos/AccountOwnerServer/AccountOwnerServer/logs/2020-09-12_logfile.txt
+2020-09-12 15:55:41.5661 Debug Creating file appender: C:/Users/Sahand/source/repos/AccountOwnerServer/AccountOwnerServer/logs/2020-09-12_logfile.txt
+2020-09-12 15:55:41.5661 Trace Opening C:/Users/Sahand/source/repos/AccountOwnerServer/AccountOwnerServer/logs/2020-09-12_logfile.txt with allowFileSharedWriting=False
+2020-09-12 15:55:41.5833 Error FileTarget(Name=logfile): Failed write to file 'C:/Users/Sahand/source/repos/AccountOwnerServer/AccountOwnerServer/logs/2020-09-12_logfile.txt'. Exception: System.UnauthorizedAccessException: Access to the path 'C:\Users\Sahand\source\repos\AccountOwnerServer\AccountOwnerServer\logs' is denied.
+   at System.IO.FileSystem.CreateDirectory(String fullPath, Byte[] securityDescriptor)
+   at System.IO.Directory.CreateDirectory(String path)
+   at NLog.Internal.FileAppenders.BaseFileAppender.CreateFileStream(Boolean allowFileSharedWriting, Int32 overrideBufferSize)
+   at NLog.Internal.FileAppenders.RetryingMultiProcessFileAppender.Write(Byte[] bytes, Int32 offset, Int32 count)
+   at NLog.Targets.FileTarget.WriteToFile(String fileName, ArraySegment`1 bytes, Boolean initializedNewFile)
+2020-09-12 15:55:41.5833 Debug FileAppender Closing Invalidate - C:/Users/Sahand/source/repos/AccountOwnerServer/AccountOwnerServer/logs/2020-09-12_logfile.txt
+2020-09-12 15:55:41.6131 Debug Creating file appender: C:/Users/Sahand/source/repos/AccountOwnerServer/AccountOwnerServer/logs/2020-09-12_logfile.txt
+2020-09-12 15:55:41.6131 Trace Opening C:/Users/Sahand/source/repos/AccountOwnerServer/AccountOwnerServer/logs/2020-09-12_logfile.txt with allowFileSharedWriting=False
+2020-09-12 15:55:41.6322 Error FileTarget(Name=logfile): Failed write to file 'C:/Users/Sahand/source/repos/AccountOwnerServer/AccountOwnerServer/logs/2020-09-12_logfile.txt'. Exception: System.UnauthorizedAccessException: Access to the path 'C:\Users\Sahand\source\repos\AccountOwnerServer\AccountOwnerServer\logs' is denied.
+   at System.IO.FileSystem.CreateDirectory(String fullPath, Byte[] securityDescriptor)
+   at System.IO.Directory.CreateDirectory(String path)
+   at NLog.Internal.FileAppenders.BaseFileAppender.CreateFileStream(Boolean allowFileSharedWriting, Int32 overrideBufferSize)
+   at NLog.Internal.FileAppenders.RetryingMultiProcessFileAppender.Write(Byte[] bytes, Int32 offset, Int32 count)
+   at NLog.Targets.FileTarget.WriteToFile(String fileName, ArraySegment`1 bytes, Boolean initializedNewFile)
+2020-09-12 15:55:41.6322 Debug FileAppender Closing Invalidate - C:/Users/Sahand/source/repos/AccountOwnerServer/AccountOwnerServer/logs/2020-09-12_logfile.txt
+2020-09-12 15:55:41.6631 Debug Creating file appender: C:/Users/Sahand/source/repos/AccountOwnerServer/AccountOwnerServer/logs/2020-09-12_logfile.txt
+2020-09-12 15:55:41.6631 Trace Opening C:/Users/Sahand/source/repos/AccountOwnerServer/AccountOwnerServer/logs/2020-09-12_logfile.txt with allowFileSharedWriting=False
+2020-09-12 15:55:41.6825 Error FileTarget(Name=logfile): Failed write to file 'C:/Users/Sahand/source/repos/AccountOwnerServer/AccountOwnerServer/logs/2020-09-12_logfile.txt'. Exception: System.UnauthorizedAccessException: Access to the path 'C:\Users\Sahand\source\repos\AccountOwnerServer\AccountOwnerServer\logs' is denied.
+   at System.IO.FileSystem.CreateDirectory(String fullPath, Byte[] securityDescriptor)
+   at System.IO.Directory.CreateDirectory(String path)
+   at NLog.Internal.FileAppenders.BaseFileAppender.CreateFileStream(Boolean allowFileSharedWriting, Int32 overrideBufferSize)
+   at NLog.Internal.FileAppenders.RetryingMultiProcessFileAppender.Write(Byte[] bytes, Int32 offset, Int32 count)
+   at NLog.Targets.FileTarget.WriteToFile(String fileName, ArraySegment`1 bytes, Boolean initializedNewFile)
+2020-09-12 15:55:41.6903 Debug FileAppender Closing Invalidate - C:/Users/Sahand/source/repos/AccountOwnerServer/AccountOwnerServer/logs/2020-09-12_logfile.txt
+2020-09-12 15:55:41.7111 Debug Creating file appender: C:/Users/Sahand/source/repos/AccountOwnerServer/AccountOwnerServer/logs/2020-09-12_logfile.txt
+2020-09-12 15:55:41.7111 Trace Opening C:/Users/Sahand/source/repos/AccountOwnerServer/AccountOwnerServer/logs/2020-09-12_logfile.txt with allowFileSharedWriting=False
+2020-09-12 15:55:41.7303 Error FileTarget(Name=logfile): Failed write to file 'C:/Users/Sahand/source/repos/AccountOwnerServer/AccountOwnerServer/logs/2020-09-12_logfile.txt'. Exception: System.UnauthorizedAccessException: Access to the path 'C:\Users\Sahand\source\repos\AccountOwnerServer\AccountOwnerServer\logs' is denied.
+   at System.IO.FileSystem.CreateDirectory(String fullPath, Byte[] securityDescriptor)
+   at System.IO.Directory.CreateDirectory(String path)
+   at NLog.Internal.FileAppenders.BaseFileAppender.CreateFileStream(Boolean allowFileSharedWriting, Int32 overrideBufferSize)
+   at NLog.Internal.FileAppenders.RetryingMultiProcessFileAppender.Write(Byte[] bytes, Int32 offset, Int32 count)
+   at NLog.Targets.FileTarget.WriteToFile(String fileName, ArraySegment`1 bytes, Boolean initializedNewFile)
+2020-09-12 15:55:41.7382 Debug FileAppender Closing Invalidate - C:/Users/Sahand/source/repos/AccountOwnerServer/AccountOwnerServer/logs/2020-09-12_logfile.txt
+2020-09-12 15:55:41.7611 Debug Creating file appender: C:/Users/Sahand/source/repos/AccountOwnerServer/AccountOwnerServer/logs/2020-09-12_logfile.txt
+2020-09-12 15:55:41.7695 Trace Opening C:/Users/Sahand/source/repos/AccountOwnerServer/AccountOwnerServer/logs/2020-09-12_logfile.txt with allowFileSharedWriting=False
+2020-09-12 15:55:41.7695 Error FileTarget(Name=logfile): Failed write to file 'C:/Users/Sahand/source/repos/AccountOwnerServer/AccountOwnerServer/logs/2020-09-12_logfile.txt'. Exception: System.UnauthorizedAccessException: Access to the path 'C:\Users\Sahand\source\repos\AccountOwnerServer\AccountOwnerServer\logs' is denied.
+   at System.IO.FileSystem.CreateDirectory(String fullPath, Byte[] securityDescriptor)
+   at System.IO.Directory.CreateDirectory(String path)
+   at NLog.Internal.FileAppenders.BaseFileAppender.CreateFileStream(Boolean allowFileSharedWriting, Int32 overrideBufferSize)
+   at NLog.Internal.FileAppenders.RetryingMultiProcessFileAppender.Write(Byte[] bytes, Int32 offset, Int32 count)
+   at NLog.Targets.FileTarget.WriteToFile(String fileName, ArraySegment`1 bytes, Boolean initializedNewFile)
+2020-09-12 15:55:41.7893 Debug FileAppender Closing Invalidate - C:/Users/Sahand/source/repos/AccountOwnerServer/AccountOwnerServer/logs/2020-09-12_logfile.txt
+2020-09-12 15:55:41.8235 Debug Creating file appender: C:/Users/Sahand/source/repos/AccountOwnerServer/AccountOwnerServer/logs/2020-09-12_logfile.txt
+2020-09-12 15:55:41.8338 Trace Opening C:/Users/Sahand/source/repos/AccountOwnerServer/AccountOwnerServer/logs/2020-09-12_logfile.txt with allowFileSharedWriting=False
+2020-09-12 15:55:41.8503 Error FileTarget(Name=logfile): Failed write to file 'C:/Users/Sahand/source/repos/AccountOwnerServer/AccountOwnerServer/logs/2020-09-12_logfile.txt'. Exception: System.UnauthorizedAccessException: Access to the path 'C:\Users\Sahand\source\repos\AccountOwnerServer\AccountOwnerServer\logs' is denied.
+   at System.IO.FileSystem.CreateDirectory(String fullPath, Byte[] securityDescriptor)
+   at System.IO.Directory.CreateDirectory(String path)
+   at NLog.Internal.FileAppenders.BaseFileAppender.CreateFileStream(Boolean allowFileSharedWriting, Int32 overrideBufferSize)
+   at NLog.Internal.FileAppenders.RetryingMultiProcessFileAppender.Write(Byte[] bytes, Int32 offset, Int32 count)
+   at NLog.Targets.FileTarget.WriteToFile(String fileName, ArraySegment`1 bytes, Boolean initializedNewFile)
+2020-09-12 15:55:41.8742 Debug FileAppender Closing Invalidate - C:/Users/Sahand/source/repos/AccountOwnerServer/AccountOwnerServer/logs/2020-09-12_logfile.txt
+2020-09-12 15:57:46.0498 Debug Creating file appender: C:/Users/Sahand/source/repos/AccountOwnerServer/AccountOwnerServer/logs/2020-09-12_logfile.txt
+2020-09-12 15:57:46.0498 Trace Opening C:/Users/Sahand/source/repos/AccountOwnerServer/AccountOwnerServer/logs/2020-09-12_logfile.txt with allowFileSharedWriting=False
+2020-09-12 15:57:46.0751 Error FileTarget(Name=logfile): Failed write to file 'C:/Users/Sahand/source/repos/AccountOwnerServer/AccountOwnerServer/logs/2020-09-12_logfile.txt'. Exception: System.UnauthorizedAccessException: Access to the path 'C:\Users\Sahand\source\repos\AccountOwnerServer\AccountOwnerServer\logs' is denied.
+   at System.IO.FileSystem.CreateDirectory(String fullPath, Byte[] securityDescriptor)
+   at System.IO.Directory.CreateDirectory(String path)
+   at NLog.Internal.FileAppenders.BaseFileAppender.CreateFileStream(Boolean allowFileSharedWriting, Int32 overrideBufferSize)
+   at NLog.Internal.FileAppenders.RetryingMultiProcessFileAppender.Write(Byte[] bytes, Int32 offset, Int32 count)
+   at NLog.Targets.FileTarget.WriteToFile(String fileName, ArraySegment`1 bytes, Boolean initializedNewFile)
+2020-09-12 15:57:46.0929 Debug FileAppender Closing Invalidate - C:/Users/Sahand/source/repos/AccountOwnerServer/AccountOwnerServer/logs/2020-09-12_logfile.txt
+2020-09-12 15:57:46.1378 Debug Creating file appender: C:/Users/Sahand/source/repos/AccountOwnerServer/AccountOwnerServer/logs/2020-09-12_logfile.txt
+2020-09-12 15:57:46.1456 Trace Opening C:/Users/Sahand/source/repos/AccountOwnerServer/AccountOwnerServer/logs/2020-09-12_logfile.txt with allowFileSharedWriting=False
+2020-09-12 15:57:46.1771 Error FileTarget(Name=logfile): Failed write to file 'C:/Users/Sahand/source/repos/AccountOwnerServer/AccountOwnerServer/logs/2020-09-12_logfile.txt'. Exception: System.UnauthorizedAccessException: Access to the path 'C:\Users\Sahand\source\repos\AccountOwnerServer\AccountOwnerServer\logs' is denied.
+   at System.IO.FileSystem.CreateDirectory(String fullPath, Byte[] securityDescriptor)
+   at System.IO.Directory.CreateDirectory(String path)
+   at NLog.Internal.FileAppenders.BaseFileAppender.CreateFileStream(Boolean allowFileSharedWriting, Int32 overrideBufferSize)
+   at NLog.Internal.FileAppenders.RetryingMultiProcessFileAppender.Write(Byte[] bytes, Int32 offset, Int32 count)
+   at NLog.Targets.FileTarget.WriteToFile(String fileName, ArraySegment`1 bytes, Boolean initializedNewFile)
+2020-09-12 15:57:46.1771 Debug FileAppender Closing Invalidate - C:/Users/Sahand/source/repos/AccountOwnerServer/AccountOwnerServer/logs/2020-09-12_logfile.txt
+2020-09-12 15:57:46.2144 Debug Creating file appender: C:/Users/Sahand/source/repos/AccountOwnerServer/AccountOwnerServer/logs/2020-09-12_logfile.txt
+2020-09-12 15:57:46.2242 Trace Opening C:/Users/Sahand/source/repos/AccountOwnerServer/AccountOwnerServer/logs/2020-09-12_logfile.txt with allowFileSharedWriting=False
+2020-09-12 15:57:46.2242 Error FileTarget(Name=logfile): Failed write to file 'C:/Users/Sahand/source/repos/AccountOwnerServer/AccountOwnerServer/logs/2020-09-12_logfile.txt'. Exception: System.UnauthorizedAccessException: Access to the path 'C:\Users\Sahand\source\repos\AccountOwnerServer\AccountOwnerServer\logs' is denied.
+   at System.IO.FileSystem.CreateDirectory(String fullPath, Byte[] securityDescriptor)
+   at System.IO.Directory.CreateDirectory(String path)
+   at NLog.Internal.FileAppenders.BaseFileAppender.CreateFileStream(Boolean allowFileSharedWriting, Int32 overrideBufferSize)
+   at NLog.Internal.FileAppenders.RetryingMultiProcessFileAppender.Write(Byte[] bytes, Int32 offset, Int32 count)
+   at NLog.Targets.FileTarget.WriteToFile(String fileName, ArraySegment`1 bytes, Boolean initializedNewFile)
+2020-09-12 15:57:46.2434 Debug FileAppender Closing Invalidate - C:/Users/Sahand/source/repos/AccountOwnerServer/AccountOwnerServer/logs/2020-09-12_logfile.txt
+2020-09-12 15:57:46.2669 Debug Creating file appender: C:/Users/Sahand/source/repos/AccountOwnerServer/AccountOwnerServer/logs/2020-09-12_logfile.txt
+2020-09-12 15:57:46.2746 Trace Opening C:/Users/Sahand/source/repos/AccountOwnerServer/AccountOwnerServer/logs/2020-09-12_logfile.txt with allowFileSharedWriting=False
+2020-09-12 15:57:46.2838 Error FileTarget(Name=logfile): Failed write to file 'C:/Users/Sahand/source/repos/AccountOwnerServer/AccountOwnerServer/logs/2020-09-12_logfile.txt'. Exception: System.UnauthorizedAccessException: Access to the path 'C:\Users\Sahand\source\repos\AccountOwnerServer\AccountOwnerServer\logs' is denied.
+   at System.IO.FileSystem.CreateDirectory(String fullPath, Byte[] securityDescriptor)
+   at System.IO.Directory.CreateDirectory(String path)
+   at NLog.Internal.FileAppenders.BaseFileAppender.CreateFileStream(Boolean allowFileSharedWriting, Int32 overrideBufferSize)
+   at NLog.Internal.FileAppenders.RetryingMultiProcessFileAppender.Write(Byte[] bytes, Int32 offset, Int32 count)
+   at NLog.Targets.FileTarget.WriteToFile(String fileName, ArraySegment`1 bytes, Boolean initializedNewFile)
+2020-09-12 15:57:46.2838 Debug FileAppender Closing Invalidate - C:/Users/Sahand/source/repos/AccountOwnerServer/AccountOwnerServer/logs/2020-09-12_logfile.txt
+2020-09-12 15:57:46.3163 Debug Creating file appender: C:/Users/Sahand/source/repos/AccountOwnerServer/AccountOwnerServer/logs/2020-09-12_logfile.txt
+2020-09-12 15:57:46.3163 Trace Opening C:/Users/Sahand/source/repos/AccountOwnerServer/AccountOwnerServer/logs/2020-09-12_logfile.txt with allowFileSharedWriting=False
+2020-09-12 15:57:46.3333 Error FileTarget(Name=logfile): Failed write to file 'C:/Users/Sahand/source/repos/AccountOwnerServer/AccountOwnerServer/logs/2020-09-12_logfile.txt'. Exception: System.UnauthorizedAccessException: Access to the path 'C:\Users\Sahand\source\repos\AccountOwnerServer\AccountOwnerServer\logs' is denied.
+   at System.IO.FileSystem.CreateDirectory(String fullPath, Byte[] securityDescriptor)
+   at System.IO.Directory.CreateDirectory(String path)
+   at NLog.Internal.FileAppenders.BaseFileAppender.CreateFileStream(Boolean allowFileSharedWriting, Int32 overrideBufferSize)
+   at NLog.Internal.FileAppenders.RetryingMultiProcessFileAppender.Write(Byte[] bytes, Int32 offset, Int32 count)
+   at NLog.Targets.FileTarget.WriteToFile(String fileName, ArraySegment`1 bytes, Boolean initializedNewFile)
+2020-09-12 15:57:46.3333 Debug FileAppender Closing Invalidate - C:/Users/Sahand/source/repos/AccountOwnerServer/AccountOwnerServer/logs/2020-09-12_logfile.txt
+2020-09-12 15:57:46.4611 Debug Creating file appender: C:/Users/Sahand/source/repos/AccountOwnerServer/AccountOwnerServer/logs/2020-09-12_logfile.txt
+2020-09-12 15:57:46.4611 Trace Opening C:/Users/Sahand/source/repos/AccountOwnerServer/AccountOwnerServer/logs/2020-09-12_logfile.txt with allowFileSharedWriting=False
+2020-09-12 15:57:46.4790 Error FileTarget(Name=logfile): Failed write to file 'C:/Users/Sahand/source/repos/AccountOwnerServer/AccountOwnerServer/logs/2020-09-12_logfile.txt'. Exception: System.UnauthorizedAccessException: Access to the path 'C:\Users\Sahand\source\repos\AccountOwnerServer\AccountOwnerServer\logs' is denied.
+   at System.IO.FileSystem.CreateDirectory(String fullPath, Byte[] securityDescriptor)
+   at System.IO.Directory.CreateDirectory(String path)
+   at NLog.Internal.FileAppenders.BaseFileAppender.CreateFileStream(Boolean allowFileSharedWriting, Int32 overrideBufferSize)
+   at NLog.Internal.FileAppenders.RetryingMultiProcessFileAppender.Write(Byte[] bytes, Int32 offset, Int32 count)
+   at NLog.Targets.FileTarget.WriteToFile(String fileName, ArraySegment`1 bytes, Boolean initializedNewFile)
+2020-09-12 15:57:46.4909 Debug FileAppender Closing Invalidate - C:/Users/Sahand/source/repos/AccountOwnerServer/AccountOwnerServer/logs/2020-09-12_logfile.txt
+2020-09-12 15:57:46.5107 Debug Creating file appender: C:/Users/Sahand/source/repos/AccountOwnerServer/AccountOwnerServer/logs/2020-09-12_logfile.txt
+2020-09-12 15:57:46.5180 Trace Opening C:/Users/Sahand/source/repos/AccountOwnerServer/AccountOwnerServer/logs/2020-09-12_logfile.txt with allowFileSharedWriting=False
+2020-09-12 15:57:46.5180 Error FileTarget(Name=logfile): Failed write to file 'C:/Users/Sahand/source/repos/AccountOwnerServer/AccountOwnerServer/logs/2020-09-12_logfile.txt'. Exception: System.UnauthorizedAccessException: Access to the path 'C:\Users\Sahand\source\repos\AccountOwnerServer\AccountOwnerServer\logs' is denied.
+   at System.IO.FileSystem.CreateDirectory(String fullPath, Byte[] securityDescriptor)
+   at System.IO.Directory.CreateDirectory(String path)
+   at NLog.Internal.FileAppenders.BaseFileAppender.CreateFileStream(Boolean allowFileSharedWriting, Int32 overrideBufferSize)
+   at NLog.Internal.FileAppenders.RetryingMultiProcessFileAppender.Write(Byte[] bytes, Int32 offset, Int32 count)
+   at NLog.Targets.FileTarget.WriteToFile(String fileName, ArraySegment`1 bytes, Boolean initializedNewFile)
+2020-09-12 15:57:46.5372 Debug FileAppender Closing Invalidate - C:/Users/Sahand/source/repos/AccountOwnerServer/AccountOwnerServer/logs/2020-09-12_logfile.txt
+2020-09-12 15:57:46.5583 Debug Creating file appender: C:/Users/Sahand/source/repos/AccountOwnerServer/AccountOwnerServer/logs/2020-09-12_logfile.txt
+2020-09-12 15:57:46.5659 Trace Opening C:/Users/Sahand/source/repos/AccountOwnerServer/AccountOwnerServer/logs/2020-09-12_logfile.txt with allowFileSharedWriting=False
+2020-09-12 15:57:46.5659 Error FileTarget(Name=logfile): Failed write to file 'C:/Users/Sahand/source/repos/AccountOwnerServer/AccountOwnerServer/logs/2020-09-12_logfile.txt'. Exception: System.UnauthorizedAccessException: Access to the path 'C:\Users\Sahand\source\repos\AccountOwnerServer\AccountOwnerServer\logs' is denied.
+   at System.IO.FileSystem.CreateDirectory(String fullPath, Byte[] securityDescriptor)
+   at System.IO.Directory.CreateDirectory(String path)
+   at NLog.Internal.FileAppenders.BaseFileAppender.CreateFileStream(Boolean allowFileSharedWriting, Int32 overrideBufferSize)
+   at NLog.Internal.FileAppenders.RetryingMultiProcessFileAppender.Write(Byte[] bytes, Int32 offset, Int32 count)
+   at NLog.Targets.FileTarget.WriteToFile(String fileName, ArraySegment`1 bytes, Boolean initializedNewFile)
+2020-09-12 15:57:46.5831 Debug FileAppender Closing Invalidate - C:/Users/Sahand/source/repos/AccountOwnerServer/AccountOwnerServer/logs/2020-09-12_logfile.txt
+2020-09-12 15:57:46.6051 Debug Creating file appender: C:/Users/Sahand/source/repos/AccountOwnerServer/AccountOwnerServer/logs/2020-09-12_logfile.txt
+2020-09-12 15:57:46.6122 Trace Opening C:/Users/Sahand/source/repos/AccountOwnerServer/AccountOwnerServer/logs/2020-09-12_logfile.txt with allowFileSharedWriting=False
+2020-09-12 15:57:46.6122 Error FileTarget(Name=logfile): Failed write to file 'C:/Users/Sahand/source/repos/AccountOwnerServer/AccountOwnerServer/logs/2020-09-12_logfile.txt'. Exception: System.UnauthorizedAccessException: Access to the path 'C:\Users\Sahand\source\repos\AccountOwnerServer\AccountOwnerServer\logs' is denied.
+   at System.IO.FileSystem.CreateDirectory(String fullPath, Byte[] securityDescriptor)
+   at System.IO.Directory.CreateDirectory(String path)
+   at NLog.Internal.FileAppenders.BaseFileAppender.CreateFileStream(Boolean allowFileSharedWriting, Int32 overrideBufferSize)
+   at NLog.Internal.FileAppenders.RetryingMultiProcessFileAppender.Write(Byte[] bytes, Int32 offset, Int32 count)
+   at NLog.Targets.FileTarget.WriteToFile(String fileName, ArraySegment`1 bytes, Boolean initializedNewFile)
+2020-09-12 15:57:46.6290 Debug FileAppender Closing Invalidate - C:/Users/Sahand/source/repos/AccountOwnerServer/AccountOwnerServer/logs/2020-09-12_logfile.txt
+2020-09-12 15:57:46.6521 Debug Creating file appender: C:/Users/Sahand/source/repos/AccountOwnerServer/AccountOwnerServer/logs/2020-09-12_logfile.txt
+2020-09-12 15:57:46.6635 Trace Opening C:/Users/Sahand/source/repos/AccountOwnerServer/AccountOwnerServer/logs/2020-09-12_logfile.txt with allowFileSharedWriting=False
+2020-09-12 15:57:46.6750 Error FileTarget(Name=logfile): Failed write to file 'C:/Users/Sahand/source/repos/AccountOwnerServer/AccountOwnerServer/logs/2020-09-12_logfile.txt'. Exception: System.UnauthorizedAccessException: Access to the path 'C:\Users\Sahand\source\repos\AccountOwnerServer\AccountOwnerServer\logs' is denied.
+   at System.IO.FileSystem.CreateDirectory(String fullPath, Byte[] securityDescriptor)
+   at System.IO.Directory.CreateDirectory(String path)
+   at NLog.Internal.FileAppenders.BaseFileAppender.CreateFileStream(Boolean allowFileSharedWriting, Int32 overrideBufferSize)
+   at NLog.Internal.FileAppenders.RetryingMultiProcessFileAppender.Write(Byte[] bytes, Int32 offset, Int32 count)
+   at NLog.Targets.FileTarget.WriteToFile(String fileName, ArraySegment`1 bytes, Boolean initializedNewFile)
+2020-09-12 15:57:46.6750 Debug FileAppender Closing Invalidate - C:/Users/Sahand/source/repos/AccountOwnerServer/AccountOwnerServer/logs/2020-09-12_logfile.txt
+2020-09-12 15:57:46.7096 Debug Creating file appender: C:/Users/Sahand/source/repos/AccountOwnerServer/AccountOwnerServer/logs/2020-09-12_logfile.txt
+2020-09-12 15:57:46.7096 Trace Opening C:/Users/Sahand/source/repos/AccountOwnerServer/AccountOwnerServer/logs/2020-09-12_logfile.txt with allowFileSharedWriting=False
+2020-09-12 15:57:46.7265 Error FileTarget(Name=logfile): Failed write to file 'C:/Users/Sahand/source/repos/AccountOwnerServer/AccountOwnerServer/logs/2020-09-12_logfile.txt'. Exception: System.UnauthorizedAccessException: Access to the path 'C:\Users\Sahand\source\repos\AccountOwnerServer\AccountOwnerServer\logs' is denied.
+   at System.IO.FileSystem.CreateDirectory(String fullPath, Byte[] securityDescriptor)
+   at System.IO.Directory.CreateDirectory(String path)
+   at NLog.Internal.FileAppenders.BaseFileAppender.CreateFileStream(Boolean allowFileSharedWriting, Int32 overrideBufferSize)
+   at NLog.Internal.FileAppenders.RetryingMultiProcessFileAppender.Write(Byte[] bytes, Int32 offset, Int32 count)
+   at NLog.Targets.FileTarget.WriteToFile(String fileName, ArraySegment`1 bytes, Boolean initializedNewFile)
+2020-09-12 15:57:46.7265 Debug FileAppender Closing Invalidate - C:/Users/Sahand/source/repos/AccountOwnerServer/AccountOwnerServer/logs/2020-09-12_logfile.txt
+2020-09-12 15:57:46.7555 Debug Creating file appender: C:/Users/Sahand/source/repos/AccountOwnerServer/AccountOwnerServer/logs/2020-09-12_logfile.txt
+2020-09-12 15:57:46.7555 Trace Opening C:/Users/Sahand/source/repos/AccountOwnerServer/AccountOwnerServer/logs/2020-09-12_logfile.txt with allowFileSharedWriting=False
+2020-09-12 15:57:46.7726 Error FileTarget(Name=logfile): Failed write to file 'C:/Users/Sahand/source/repos/AccountOwnerServer/AccountOwnerServer/logs/2020-09-12_logfile.txt'. Exception: System.UnauthorizedAccessException: Access to the path 'C:\Users\Sahand\source\repos\AccountOwnerServer\AccountOwnerServer\logs' is denied.
+   at System.IO.FileSystem.CreateDirectory(String fullPath, Byte[] securityDescriptor)
+   at System.IO.Directory.CreateDirectory(String path)
+   at NLog.Internal.FileAppenders.BaseFileAppender.CreateFileStream(Boolean allowFileSharedWriting, Int32 overrideBufferSize)
+   at NLog.Internal.FileAppenders.RetryingMultiProcessFileAppender.Write(Byte[] bytes, Int32 offset, Int32 count)
+   at NLog.Targets.FileTarget.WriteToFile(String fileName, ArraySegment`1 bytes, Boolean initializedNewFile)
+2020-09-12 15:57:46.7726 Debug FileAppender Closing Invalidate - C:/Users/Sahand/source/repos/AccountOwnerServer/AccountOwnerServer/logs/2020-09-12_logfile.txt
+2020-09-12 15:57:46.8078 Debug Creating file appender: C:/Users/Sahand/source/repos/AccountOwnerServer/AccountOwnerServer/logs/2020-09-12_logfile.txt
+2020-09-12 15:57:46.8147 Trace Opening C:/Users/Sahand/source/repos/AccountOwnerServer/AccountOwnerServer/logs/2020-09-12_logfile.txt with allowFileSharedWriting=False
+2020-09-12 15:57:46.8147 Error FileTarget(Name=logfile): Failed write to file 'C:/Users/Sahand/source/repos/AccountOwnerServer/AccountOwnerServer/logs/2020-09-12_logfile.txt'. Exception: System.UnauthorizedAccessException: Access to the path 'C:\Users\Sahand\source\repos\AccountOwnerServer\AccountOwnerServer\logs' is denied.
+   at System.IO.FileSystem.CreateDirectory(String fullPath, Byte[] securityDescriptor)
+   at System.IO.Directory.CreateDirectory(String path)
+   at NLog.Internal.FileAppenders.BaseFileAppender.CreateFileStream(Boolean allowFileSharedWriting, Int32 overrideBufferSize)
+   at NLog.Internal.FileAppenders.RetryingMultiProcessFileAppender.Write(Byte[] bytes, Int32 offset, Int32 count)
+   at NLog.Targets.FileTarget.WriteToFile(String fileName, ArraySegment`1 bytes, Boolean initializedNewFile)
+2020-09-12 15:57:46.8327 Debug FileAppender Closing Invalidate - C:/Users/Sahand/source/repos/AccountOwnerServer/AccountOwnerServer/logs/2020-09-12_logfile.txt
+2020-09-12 16:00:05.4113 Debug Creating file appender: C:/Users/Sahand/source/repos/AccountOwnerServer/AccountOwnerServer/logs/2020-09-12_logfile.txt
+2020-09-12 16:00:05.4113 Trace Opening C:/Users/Sahand/source/repos/AccountOwnerServer/AccountOwnerServer/logs/2020-09-12_logfile.txt with allowFileSharedWriting=False
+2020-09-12 16:00:05.4344 Error FileTarget(Name=logfile): Failed write to file 'C:/Users/Sahand/source/repos/AccountOwnerServer/AccountOwnerServer/logs/2020-09-12_logfile.txt'. Exception: System.UnauthorizedAccessException: Access to the path 'C:\Users\Sahand\source\repos\AccountOwnerServer\AccountOwnerServer\logs' is denied.
+   at System.IO.FileSystem.CreateDirectory(String fullPath, Byte[] securityDescriptor)
+   at System.IO.Directory.CreateDirectory(String path)
+   at NLog.Internal.FileAppenders.BaseFileAppender.CreateFileStream(Boolean allowFileSharedWriting, Int32 overrideBufferSize)
+   at NLog.Internal.FileAppenders.RetryingMultiProcessFileAppender.Write(Byte[] bytes, Int32 offset, Int32 count)
+   at NLog.Targets.FileTarget.WriteToFile(String fileName, ArraySegment`1 bytes, Boolean initializedNewFile)
+2020-09-12 16:00:05.4471 Debug FileAppender Closing Invalidate - C:/Users/Sahand/source/repos/AccountOwnerServer/AccountOwnerServer/logs/2020-09-12_logfile.txt
+2020-09-12 16:00:05.4803 Debug Creating file appender: C:/Users/Sahand/source/repos/AccountOwnerServer/AccountOwnerServer/logs/2020-09-12_logfile.txt
+2020-09-12 16:00:05.5010 Trace Opening C:/Users/Sahand/source/repos/AccountOwnerServer/AccountOwnerServer/logs/2020-09-12_logfile.txt with allowFileSharedWriting=False
+2020-09-12 16:00:05.5128 Error FileTarget(Name=logfile): Failed write to file 'C:/Users/Sahand/source/repos/AccountOwnerServer/AccountOwnerServer/logs/2020-09-12_logfile.txt'. Exception: System.UnauthorizedAccessException: Access to the path 'C:\Users\Sahand\source\repos\AccountOwnerServer\AccountOwnerServer\logs' is denied.
+   at System.IO.FileSystem.CreateDirectory(String fullPath, Byte[] securityDescriptor)
+   at System.IO.Directory.CreateDirectory(String path)
+   at NLog.Internal.FileAppenders.BaseFileAppender.CreateFileStream(Boolean allowFileSharedWriting, Int32 overrideBufferSize)
+   at NLog.Internal.FileAppenders.RetryingMultiProcessFileAppender.Write(Byte[] bytes, Int32 offset, Int32 count)
+   at NLog.Targets.FileTarget.WriteToFile(String fileName, ArraySegment`1 bytes, Boolean initializedNewFile)
+2020-09-12 16:00:05.5216 Debug FileAppender Closing Invalidate - C:/Users/Sahand/source/repos/AccountOwnerServer/AccountOwnerServer/logs/2020-09-12_logfile.txt
+2020-09-12 16:00:06.0040 Debug Creating file appender: C:/Users/Sahand/source/repos/AccountOwnerServer/AccountOwnerServer/logs/2020-09-12_logfile.txt
+2020-09-12 16:00:06.0040 Trace Opening C:/Users/Sahand/source/repos/AccountOwnerServer/AccountOwnerServer/logs/2020-09-12_logfile.txt with allowFileSharedWriting=False
+2020-09-12 16:00:06.0233 Error FileTarget(Name=logfile): Failed write to file 'C:/Users/Sahand/source/repos/AccountOwnerServer/AccountOwnerServer/logs/2020-09-12_logfile.txt'. Exception: System.UnauthorizedAccessException: Access to the path 'C:\Users\Sahand\source\repos\AccountOwnerServer\AccountOwnerServer\logs' is denied.
+   at System.IO.FileSystem.CreateDirectory(String fullPath, Byte[] securityDescriptor)
+   at System.IO.Directory.CreateDirectory(String path)
+   at NLog.Internal.FileAppenders.BaseFileAppender.CreateFileStream(Boolean allowFileSharedWriting, Int32 overrideBufferSize)
+   at NLog.Internal.FileAppenders.RetryingMultiProcessFileAppender.Write(Byte[] bytes, Int32 offset, Int32 count)
+   at NLog.Targets.FileTarget.WriteToFile(String fileName, ArraySegment`1 bytes, Boolean initializedNewFile)
+2020-09-12 16:00:06.0233 Debug FileAppender Closing Invalidate - C:/Users/Sahand/source/repos/AccountOwnerServer/AccountOwnerServer/logs/2020-09-12_logfile.txt
+2020-09-12 16:00:06.0840 Debug Creating file appender: C:/Users/Sahand/source/repos/AccountOwnerServer/AccountOwnerServer/logs/2020-09-12_logfile.txt
+2020-09-12 16:00:06.0952 Trace Opening C:/Users/Sahand/source/repos/AccountOwnerServer/AccountOwnerServer/logs/2020-09-12_logfile.txt with allowFileSharedWriting=False
+2020-09-12 16:00:06.0952 Error FileTarget(Name=logfile): Failed write to file 'C:/Users/Sahand/source/repos/AccountOwnerServer/AccountOwnerServer/logs/2020-09-12_logfile.txt'. Exception: System.UnauthorizedAccessException: Access to the path 'C:\Users\Sahand\source\repos\AccountOwnerServer\AccountOwnerServer\logs' is denied.
+   at System.IO.FileSystem.CreateDirectory(String fullPath, Byte[] securityDescriptor)
+   at System.IO.Directory.CreateDirectory(String path)
+   at NLog.Internal.FileAppenders.BaseFileAppender.CreateFileStream(Boolean allowFileSharedWriting, Int32 overrideBufferSize)
+   at NLog.Internal.FileAppenders.RetryingMultiProcessFileAppender.Write(Byte[] bytes, Int32 offset, Int32 count)
+   at NLog.Targets.FileTarget.WriteToFile(String fileName, ArraySegment`1 bytes, Boolean initializedNewFile)
+2020-09-12 16:00:06.1129 Debug FileAppender Closing Invalidate - C:/Users/Sahand/source/repos/AccountOwnerServer/AccountOwnerServer/logs/2020-09-12_logfile.txt
+2020-09-12 16:00:07.7779 Debug Creating file appender: C:/Users/Sahand/source/repos/AccountOwnerServer/AccountOwnerServer/logs/2020-09-12_logfile.txt
+2020-09-12 16:00:07.7966 Trace Opening C:/Users/Sahand/source/repos/AccountOwnerServer/AccountOwnerServer/logs/2020-09-12_logfile.txt with allowFileSharedWriting=False
+2020-09-12 16:00:07.8470 Error FileTarget(Name=logfile): Failed write to file 'C:/Users/Sahand/source/repos/AccountOwnerServer/AccountOwnerServer/logs/2020-09-12_logfile.txt'. Exception: System.UnauthorizedAccessException: Access to the path 'C:\Users\Sahand\source\repos\AccountOwnerServer\AccountOwnerServer\logs' is denied.
+   at System.IO.FileSystem.CreateDirectory(String fullPath, Byte[] securityDescriptor)
+   at System.IO.Directory.CreateDirectory(String path)
+   at NLog.Internal.FileAppenders.BaseFileAppender.CreateFileStream(Boolean allowFileSharedWriting, Int32 overrideBufferSize)
+   at NLog.Internal.FileAppenders.RetryingMultiProcessFileAppender.Write(Byte[] bytes, Int32 offset, Int32 count)
+   at NLog.Targets.FileTarget.WriteToFile(String fileName, ArraySegment`1 bytes, Boolean initializedNewFile)
+2020-09-12 16:00:07.8470 Debug FileAppender Closing Invalidate - C:/Users/Sahand/source/repos/AccountOwnerServer/AccountOwnerServer/logs/2020-09-12_logfile.txt
