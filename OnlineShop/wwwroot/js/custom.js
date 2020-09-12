@@ -101,10 +101,10 @@ $("#product-tab .product_carousel_tab").owlCarousel({
 /*---------------------------------------------------
     Categories Accordion
 ----------------------------------------------------- */
-$('#cat_accordion').cutomAccordion({
-		saveState: false,
-		autoExpand: true
-	});
+//$('#cat_accordion').cutomAccordion({
+//		saveState: false,
+//		autoExpand: true
+//	});
 
 /*---------------------------------------------------
     Main Menu

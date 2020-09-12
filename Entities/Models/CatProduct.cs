@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text.Json.Serialization;
 
 namespace Entities.Models
 {
@@ -28,7 +29,7 @@ namespace Entities.Models
         public long? Mdate { get; set; }
         public string DaUserId { get; set; }
         public long? DaDate { get; set; }
-
+        [JsonIgnore]
         public virtual CatProduct P { get; set; }
         public virtual ICollection<CatProductParameters> CatProductParameters { get; set; }
         public virtual ICollection<CatProduct> InverseP { get; set; }
