@@ -18,30 +18,34 @@ function RenderCart() {
     //    CartList = JSON.parse(list);
     //}
     let totalPrice = 0;
+    let totalCount = 0;
+    let totalPriceAfterOffer = 0;
     let html = '';
     jQuery.each(CartList, function (i, item) {
 
         html += `<tr>
                             <td class="text-center"><a href="product.html"><img class="img-thumbnail" title="${item.Name}" alt="کفش راحتی مردانه" src="${item.CoverImageURL}" style="width:75px;height:75px;"></a></td>
                             <td class="text-left"><a href="product.html">${item.Name}</a></td>
-                            <td class="text-right">1 عدد</td>
+                            <td class="text-right">${item.Count} عدد</td>
                             <td class="text-right">${item.Price} تومان</td>
                             <td class="text-center"><button class="btn btn-danger btn-xs remove RemoveCartItem" productid="${item.ProductId}" title="حذف"  type="button"><i class="fa fa-times"></i></button></td>
                         </tr>`;
-        totalPrice += item.Price;
+        totalPrice += (item.Count * item.Price);
+        totalCount += item.Count;
+        totalPriceAfterOffer += (item.Count * item.PriceAfterOffer);
+       
 
     });
 
     $('#CartTableBody').html(html);
+    let totalOffer = totalPrice - totalPriceAfterOffer;
+    let totaltax = totalPriceAfterOffer * 0.09;
+    let topay = (totalPriceAfterOffer + totaltax);
 
-    let totaltax = totalPrice * 0.09;
-    let totaloffer = 0;
-    let topay = (totalPrice + totaltax) - totaloffer;
 
-
-    $('#cart-total').html(`${CartList.length} آیتم - ${totalPrice} تومان`);
+    $('#cart-total').html(`${totalCount} آیتم - ${topay} تومان`);
     $('#TotalPrice').html(`${totalPrice} تومان`);
-    $('#TotalOffer').html(`0 تومان`);
+    $('#TotalOffer').html(`${totalOffer} تومان`);
     $('#TotalTax').html(`${totaltax} تومان`);
     $('#ToPay').html(`${topay} تومان`);
 }
@@ -51,7 +55,7 @@ function AddToCart() {
 
     jQuery.ajax({
         type: "Get",
-        url: `/api/Product/GetProductById?productId=${productId}`,
+        url: `/api/Product/GetFullInfoProductById?productId=${productId}`,
         data: "",
         async: false,
         contentType: "application/json; charset=utf-8",
@@ -64,11 +68,23 @@ function AddToCart() {
                 ProductId: response.id,
                 Name: response.name,
                 Price: response.price,
+                OfferValue: response.offerValue,
+                PriceAfterOffer: response.priceAfterOffer,
                 Count: 1,
                 CoverImageURL: response.coverImageUrl
             }
+            debugger;
+            var isExist = CartList.filter(x => x.ProductId == response.id);
 
-            CartList.push(item);
+            if (isExist.length == 0) {
+                CartList.push(item);
+            }
+            else {
+                item.Count = isExist[0].Count + 1
+                CartList = CartList.filter(x => x.ProductId != isExist[0].ProductId)
+                CartList.push(item);
+            }
+
             Cookies.set('CartItems', JSON.stringify(CartList));
 
             RenderCart();
@@ -109,14 +125,14 @@ function GenerateProductCategory() {
 
             let html = ``;
             let MajaorList = response.filter(c => c.pid == null);
-        
+
             jQuery.each(MajaorList, function (i, item) {
 
                 html += ` <li><a href="/Home/category/${item.id}">${item.name}</a> <span class="down"></span>
                             <ul>`;
 
                 let MinorList = response.filter(c => c.pid == item.id);
-       
+
                 jQuery.each(MinorList, function (j, itemmm) {
 
                     html += `<li><a href="/Home/category/${itemmm.id}">${itemmm.name}</a></li>`;

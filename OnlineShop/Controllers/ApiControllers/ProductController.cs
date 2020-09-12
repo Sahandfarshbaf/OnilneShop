@@ -377,5 +377,36 @@ namespace OnlineShop.Controllers.ApiControllers
         }
 
 
+        [HttpGet]
+        [Route("Product/GetFullInfoProductById")]
+        public IActionResult GetFullInfoProductById(long productId)
+        {
+            try
+            {
+                var product = _repository.Product.FindByCondition(c => c.Id.Equals(productId))
+                                    .Include(p => p.CatProduct)
+                                    .Include(p => p.ProductCustomerRate)
+                                    .Include(p => p.ProductOffer)
+                                    .FirstOrDefault();
+                if (product.Equals(null))
+                {
+                    _logger.LogError($"Product with id: {productId}, hasn't been found in db.");
+                    return NotFound();
+                }
+                var result = _mapper.Map<ProductByOfferRate>(product);
+                _logger.LogInfo($"Returned product with id: {productId}");
+
+                return Ok(result);
+            }
+            catch (Exception e)
+            {
+
+                _logger.LogError($"Something went wrong inside GetProductById action: {e.Message}");
+                return BadRequest("Internal server error");
+            }
+
+        }
+
+
     }
 }
