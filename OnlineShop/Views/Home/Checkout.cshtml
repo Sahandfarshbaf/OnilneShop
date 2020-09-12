@@ -1,8 +1,17 @@
-﻿
+﻿@using Microsoft.AspNetCore.Identity;
+@using System.Security.Claims;
+@inject SignInManager<User> SignInManager
 @{
     ViewData["Title"] = "Checkout";
     Layout = "~/Views/Shared/_Shop.cshtml";
+
+    var firstname = User.Claims.Where(c => c.Type == "firstname").Select(x => x.Value).SingleOrDefault();
+    var lastname = User.Claims.Where(c => c.Type == "lastname").Select(x => x.Value).SingleOrDefault();
+    var email= User.Claims.Where(c => c.Type == ClaimTypes.Name).Select(x => x.Value).SingleOrDefault();
+    var mobile = User.Claims.Where(c => c.Type == "mobile").Select(x => x.Value).SingleOrDefault();
+
 }
+
 
 <div id="container">
     <div class="container">
@@ -28,24 +37,21 @@
                                 <fieldset id="account">
                                     <div class="form-group required">
                                         <label for="input-payment-firstname" class="control-label">نام</label>
-                                        <input type="text" class="form-control" id="input-payment-firstname" placeholder="نام" value="" name="firstname">
+                                        <input type="text" class="form-control" id="input-payment-firstname" placeholder="نام" disabled value="@firstname" name="firstname">
                                     </div>
                                     <div class="form-group required">
                                         <label for="input-payment-lastname" class="control-label">نام خانوادگی</label>
-                                        <input type="text" class="form-control" id="input-payment-lastname" placeholder="نام خانوادگی" value="" name="lastname">
+                                        <input type="text" class="form-control" id="input-payment-lastname" placeholder="نام خانوادگی" disabled value="@lastname" name="lastname">
                                     </div>
                                     <div class="form-group required">
                                         <label for="input-payment-email" class="control-label">آدرس ایمیل</label>
-                                        <input type="text" class="form-control" id="input-payment-email" placeholder="آدرس ایمیل" value="" name="email">
+                                        <input type="text" class="form-control" id="input-payment-email" disabled placeholder="آدرس ایمیل" value="@email" name="email">
                                     </div>
                                     <div class="form-group required">
                                         <label for="input-payment-telephone" class="control-label">شماره تلفن</label>
-                                        <input type="text" class="form-control" id="input-payment-telephone" placeholder="شماره تلفن" value="" name="telephone">
+                                        <input type="text" class="form-control" id="input-payment-telephone" placeholder="شماره تلفن" disabled value="@mobile" name="telephone">
                                     </div>
-                                    <div class="form-group">
-                                        <label for="input-payment-fax" class="control-label">فکس</label>
-                                        <input type="text" class="form-control" id="input-payment-fax" placeholder="فکس" value="" name="fax">
-                                    </div>
+                                    
                                 </fieldset>
                             </div>
                         </div>
@@ -471,25 +477,7 @@
                                         <h4 class="panel-title"><i class="fa fa-credit-card"></i> شیوه پرداخت</h4>
                                     </div>
                                     <div class="panel-body" id="PaymentTypeDiv">
-                                       
-                                        <div class="radio">
-                                            <label>
-                                                <input type="radio" checked="checked" name="Cash On Delivery">
-                                                پرداخت هنگام تحویل
-                                            </label>
-                                        </div>
-                                        <div class="radio">
-                                            <label>
-                                                <input type="radio" name="Bank Transfer">
-                                                واریز به حساب
-                                            </label>
-                                        </div>
-                                        <div class="radio">
-                                            <label>
-                                                <input type="radio" name="Paypal">
-                                                پی پال
-                                            </label>
-                                        </div>
+
                                     </div>
                                 </div>
                             </div>
@@ -542,43 +530,29 @@
                                                         <td class="text-right">کل</td>
                                                     </tr>
                                                 </thead>
-                                                <tbody>
-                                                    <tr>
-                                                        <td class="text-center"><a href="product.html"><img src="image/product/sony_vaio_1-50x75.jpg" alt="کفش راحتی مردانه" title="کفش راحتی مردانه" class="img-thumbnail"></a></td>
-                                                        <td class="text-left"><a href="product.html">کفش راحتی مردانه</a></td>
-                                                        <td class="text-left">
-                                                            <div class="input-group btn-block" style="max-width: 200px;">
-                                                                <input type="text" name="quantity" value="1" size="1" class="form-control">
-                                                                <span class="input-group-btn">
-                                                                    <button type="submit" data-toggle="tooltip" title="بروزرسانی" class="btn btn-primary"><i class="fa fa-refresh"></i></button>
-                                                                    <button type="button" data-toggle="tooltip" title="حذف" class="btn btn-danger" onClick=""><i class="fa fa-times-circle"></i></button>
-                                                                </span>
-                                                            </div>
-                                                        </td>
-                                                        <td class="text-right">32000 تومان</td>
-                                                        <td class="text-right">32000 تومان</td>
-                                                    </tr>
+                                                <tbody id="CartGridBody">
+                                                    
                                                 </tbody>
                                                 <tfoot>
                                                     <tr>
                                                         <td class="text-right" colspan="4"><strong>جمع کل:</strong></td>
-                                                        <td class="text-right">75000 تومان</td>
+                                                        <td class="text-right" id="TotalPriceGrid">0 تومان</td>
                                                     </tr>
                                                     <tr>
                                                         <td class="text-right" colspan="4"><strong>هزینه ارسال ثابت :</strong></td>
-                                                        <td class="text-right">5000 تومان</td>
+                                                        <td class="text-right" id="postprice">0 تومان</td>
                                                     </tr>
                                                     <tr>
                                                         <td class="text-right" colspan="4"><strong>کسر هدیه:</strong></td>
-                                                        <td class="text-right">4000 تومان</td>
+                                                        <td class="text-right" id="TotalOfferGrid">0 تومان</td>
                                                     </tr>
                                                     <tr>
                                                         <td class="text-right" colspan="4"><strong>مالیات:</strong></td>
-                                                        <td class="text-right">15100 تومان</td>
+                                                        <td class="text-right" id="TotalTaxGrid">0 تومان</td>
                                                     </tr>
                                                     <tr>
                                                         <td class="text-right" colspan="4"><strong>کل :</strong></td>
-                                                        <td class="text-right">91000 تومان</td>
+                                                        <td class="text-right" id="ToPayGrid">0 تومان</td>
                                                     </tr>
                                                 </tfoot>
                                             </table>
@@ -600,7 +574,7 @@
                                         </label>
                                         <div class="buttons">
                                             <div class="pull-right">
-                                                <input type="button" class="btn btn-primary" id="button-confirm" value="تایید سفارش">
+                                                <div class="pull-right"><a class="btn btn-primary" asp-controller="Dargah" asp-action="peyment">تایید سفارش</a></div>
                                             </div>
                                         </div>
                                     </div>

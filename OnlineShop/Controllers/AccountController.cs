@@ -96,6 +96,8 @@ namespace OnlineShop.Controllers
                 identity.AddClaim(new Claim(ClaimTypes.Name, user.UserName));
                 identity.AddClaim(new Claim("firstname", user.FirstName));
                 identity.AddClaim(new Claim("lastname", user.LastName));
+                identity.AddClaim(new Claim("mobile", user.PhoneNumber));
+
                 await HttpContext.SignInAsync(IdentityConstants.ApplicationScheme,
                     new ClaimsPrincipal(identity));
                 return RedirectToAction(nameof(HomeController.Index), "Home");
