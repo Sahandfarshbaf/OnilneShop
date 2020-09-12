@@ -64,7 +64,7 @@ function AddToCart() {
                 ProductId: response.id,
                 Name: response.name,
                 Price: response.price,
-                Count:1,
+                Count: 1,
                 CoverImageURL: response.coverImageUrl
             }
 
@@ -96,12 +96,61 @@ function RemoveFromCart() {
     RenderCart();
 }
 
+function GenerateProductCategory() {
+
+    jQuery.ajax({
+        type: "Get",
+        url: `/api/CatProduct/GetCatProductList`,
+        data: "",
+        async: false,
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        success: function (response) {
+
+            let html = ``;
+            let MajaorList = response.filter(c => c.pid == null);
+        
+            jQuery.each(MajaorList, function (i, item) {
+
+                html += ` <li><a href="/Home/category/${item.id}">${item.name}</a> <span class="down"></span>
+                            <ul>`;
+
+                let MinorList = response.filter(c => c.pid == item.id);
+       
+                jQuery.each(MinorList, function (j, itemmm) {
+
+                    html += `<li><a href="/Home/category/${itemmm.id}">${itemmm.name}</a></li>`;
+                });
+                html += `     </ul>
+                         </li>`;
+            });
+
+
+            $('#cat_accordion').html(html);
+
+        },
+        error: function (response) {
+
+            console.log(response);
+
+        },
+        complete: function () {
+
+            $('#cat_accordion').cutomAccordion({
+                saveState: false,
+                autoExpand: true
+            });
+        }
+    });
+}
+
 
 
 $(document).ready(() => {
 
 
     RenderCart();
+    GenerateProductCategory();
 
     $(document.body).on('click', '.cartt', function () {
 

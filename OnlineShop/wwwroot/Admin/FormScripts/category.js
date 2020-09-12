@@ -50,8 +50,8 @@ function GetProductVige() {
 
 function category() {
 
-    let Id = parseInt(window.location.pathname.replace('/Home/category/', ''));
-    console.log(Id);
+   
+  
     let cateHtml = ``;
 
     jQuery.ajax({
@@ -112,7 +112,7 @@ function category() {
 
 
 $(document).ready(() => {
-    
+     Id = parseInt(window.location.pathname.replace('/Home/category/', ''));
     GetProductVige();
     category();
 });
