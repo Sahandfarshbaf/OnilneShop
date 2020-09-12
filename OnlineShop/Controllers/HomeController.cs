@@ -2,12 +2,15 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+
 
 namespace OnlineShop.Controllers
 {
     public class HomeController : Controller
     {
+        
         public IActionResult Index()
         {
             return View();
@@ -16,11 +19,11 @@ namespace OnlineShop.Controllers
         {
             return View();
         }
-     public IActionResult product()
+        public IActionResult product()
         {
             return View();
         }
-  public IActionResult category()
+        public IActionResult category()
         {
             return View();
         }
@@ -44,5 +47,6 @@ namespace OnlineShop.Controllers
         {
             return View();
         }
+      
     }
 }
