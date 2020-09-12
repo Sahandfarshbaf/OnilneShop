@@ -27,6 +27,10 @@ namespace OnlineShop.Controllers
         {
             return View();
         }
+        public IActionResult blog()
+        {
+            return View();
+        }
         public IActionResult login()
         {
             return View();
