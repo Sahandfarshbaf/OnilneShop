@@ -51,6 +51,11 @@ namespace OnlineShop.Controllers
         {
             return View();
         }
-      
+
+        public IActionResult CartFinalStep()
+        {
+            return View();
+        }
+
     }
 }

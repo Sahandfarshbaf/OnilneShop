@@ -20,7 +20,7 @@ namespace OnlineShop.Controllers.ApiControllers
         private ILoggerManager _logger;
         private IRepositoryWrapper _repository;
         private IMapper _mapper;
-        private readonly string userid;
+        
         private readonly long timeTick;
 
         public CustomerOrderController(ILoggerManager logger, IRepositoryWrapper repository, IMapper mapper)
@@ -36,10 +36,12 @@ namespace OnlineShop.Controllers.ApiControllers
 
         [HttpPost]
         [Route("CustomerOrder/InsertCustomerOrder")]
-        public IActionResult InsertCustomerOrder(CustomerOrder customerOrder)
+        public IActionResult InsertCustomerOrder(List<CustomerOrderProduct> customerOrderProductlist)
         {
             try
             {
+                CustomerOrder customerOrder = new CustomerOrder();
+                var userid= User.Claims.Where(c => c.Type == ClaimTypes.NameIdentifier).Select(x => x.Value).SingleOrDefault();
                 var _customerId = _repository.Customer.FindByCondition(s => s.UserId.Equals(userid)).Select(c => c.Id).FirstOrDefault();
 
                 customerOrder.CuserId = userid;
@@ -47,19 +49,22 @@ namespace OnlineShop.Controllers.ApiControllers
                 customerOrder.CustomerId = _customerId;
                 customerOrder.OrderDate = timeTick;
                 customerOrder.OrderNo = timeTick;
-                var customerOrderProductList = customerOrder.CustomerOrderProduct.ToList();
-                customerOrderProductList.ForEach(x =>
+                customerOrder.CustomerId = _customerId;
+
+
+                customerOrderProductlist.ForEach(x =>
                 {
                     x.Cdate = timeTick;
                     x.CuserId = userid;
 
                 });
 
-                customerOrder.CustomerOrderProduct = customerOrderProductList;
+                customerOrder.CustomerOrderProduct = customerOrderProductlist;
 
                 _repository.CustomerOrder.Create(customerOrder);
+                _repository.Save();
                 _logger.LogInfo($"InsertCustomerOrder To database.");
-                return Ok("");
+                return Ok(customerOrder.Id);
             }
             catch (Exception e)
             {
