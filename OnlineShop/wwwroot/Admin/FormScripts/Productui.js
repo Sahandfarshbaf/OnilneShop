@@ -49,6 +49,7 @@ function GetProductVige() {
 
 function Product() {
 
+
     let Id = parseInt(window.location.pathname.replace('/Home/Product/', ''));
     console.log(Id);
     let productHtml = ``;
@@ -61,27 +62,39 @@ function Product() {
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         success: function (response) {
-            
 
-            jQuery.each(response, function (i, item) {
-             
-                console.log(item);
-                productHtml += `<div class="col-sm-6">
-                            <div class="image"><img class="img-responsive" itemprop="image" id="zoom_01" src="` + item.coverImageUrl + `" title="` + item.name + `" alt="` + item.name + `" data-zoom-image="image/product/macbook_air_1-500x500.jpg" /> </div>
+            $('#titleLable').text(response.name);
+            
+                    productHtml += `<div class="col-sm-6">
+                            <div class="image"><img class="img-responsive" itemprop="image" id="zoom_01" src="${response.coverImageUrl}" title="` + response.name + `" alt="` + response.name + `" data-zoom-image="image/product/macbook_air_1-500x500.jpg" /> </div>
                         </div>
                         <div class="col-sm-6">
                             <ul class="list-unstyled description">
-                                <li><b>نام گروه :</b> <a href="#"><span itemprop="brand">` + item.catProductName + `</span></a></li>
-                                <li><b>کد محصول :</b> <span itemprop="mpn">` + item.id + `</span></li>
+                                <li><b>نام گروه :</b> <a href="#"><span itemprop="brand">` + response.catProductName + `</span></a></li>
+                                <li><b>کد محصول :</b> <span itemprop="mpn">` + response.id + `</span></li>
                                 <li><b>امتیازات خرید:</b> 700</li>
                                 <li><b>وضعیت موجودی :</b> <span class="instock">موجود</span></li>
                             </ul>
                             <ul class="price-box">
                                 <li class="price" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
-                                <span class="price-old">` + item.price + `</span>
-                                <span itemprop="price">` + item.price + `<span itemprop="availability" content="موجود"></span></span></li>
+                                <span class="price-old">` + response.price + `</span>
+                                <span itemprop="price">` + response.price + `<span itemprop="availability" content="موجود"></span></span></li>
                                 <li></li>                                
                             </ul>
+                <div id="product">
+                  
+                  <div class="cart">
+                    <div>
+                      
+                      <button class="btn-primary cartt" type="button"  productid="` + response.id + `" ><span>افزودن به سبد</span></button>
+                    </div>
+                    <div>
+                      <button type="button" class="wishlist" onClick=""><i class="fa fa-heart"></i> افزودن به علاقه مندی ها</button>
+                      <br />
+                      <button type="button" class="wishlist" onClick=""><i class="fa fa-exchange"></i> مقایسه این محصول</button>
+                    </div>
+                  </div>
+                </div>
                             <div class="rating" itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating">
                                 <meta itemprop="ratingValue" content="0" />
                                 <p><span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i></span> <a onClick="$('a[href=\'#tab-review\']').trigger('click'); return false;" href=""><span itemprop="reviewCount">1 بررسی</span></a> / <a onClick="$('a[href=\'#tab-review\']').trigger('click'); return false;" href="">یک بررسی بنویسید</a></p>
@@ -92,12 +105,12 @@ function Product() {
 
                         </div>`;
 
-                 
-            });
-            console.log(productHtml);
-            $('.productkol').html(productHtml);
 
+               
+               
+                $('#productkol').html(productHtml);
 
+             
         },
         error: function (response) {
 
@@ -160,7 +173,7 @@ function GetProductTopSel() {
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         success: function (response) {
-
+            console.log(response);
             jQuery.each(response, function (i, item) {
                 ss += `<div class="product-thumb clearfix">
                         <div class="image"><a href="Home/Product/` + item.id + `"><img src="` + item.coverImageUrl + `" alt="` + item.name + `" title="` + item.name + `" class="img-responsive" /></a></div>
