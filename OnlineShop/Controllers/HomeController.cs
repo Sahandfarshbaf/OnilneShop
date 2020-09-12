@@ -52,7 +52,7 @@ namespace OnlineShop.Controllers
             return View();
         }
 
-        public IActionResult CartFinalStep()
+        public IActionResult Checkout()
         {
             return View();
         }
