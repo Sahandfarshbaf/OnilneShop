@@ -1,0 +1,18 @@
+﻿
+@using Entities.Models
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<User> SignInManager
+@inject UserManager<User> UserManager
+
+
+@if (SignInManager.IsSignedIn(User))
+{
+
+    <a asp-controller="Home" asp-action="Cart" class="btn btn-primary"><i class="fa fa-shopping-cart"></i> مشاهده سبد</a>
+}
+else
+{
+    <a asp-controller="Account" asp-action="Login" class="btn btn-success"><i class="fa fa-sign-in"> ورود به سیستم </i></a>
+}
+
+

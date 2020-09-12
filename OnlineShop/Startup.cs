@@ -15,7 +15,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using NLog;
 using OnlineShop.Extensions;
-using OnlineShop.Tools;
+
 
 namespace OnlineShop
 {
@@ -30,6 +30,7 @@ namespace OnlineShop
         public IConfiguration Configuration { get; }
         public void ConfigureServices(IServiceCollection services)
         {
+           
             services.ConfigureCors();
             services.ConfigureIISIntegration();
             services.ConfigureLoggerService();
@@ -37,10 +38,13 @@ namespace OnlineShop
             services.ConfigureRepositoryWrapper();
             services.AddControllers();
             services.AddAutoMapper(typeof(Startup));
-            services.ConfigureApplicationCookie(o => o.LoginPath = "/Authentication/Login");
-            services.AddScoped<IUserClaimsPrincipalFactory<User>, CustomClaimsFactory>();
+            services.ConfigureApplicationCookie(o => o.LoginPath = "/Account/Login");
+         
+            services.AddControllersWithViews();
             services.AddRazorPages()
                 .AddRazorRuntimeCompilation();
+            services.AddMemoryCache();
+            services.AddSession();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -53,7 +57,7 @@ namespace OnlineShop
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-
+            app.UseSession();
             app.UseCors("CorsPolicy");
 
             app.UseForwardedHeaders(new ForwardedHeadersOptions

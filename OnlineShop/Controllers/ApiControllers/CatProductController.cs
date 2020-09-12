@@ -23,16 +23,36 @@ namespace OnlineShop.Controllers.ApiControllers
         {
             _logger = logger;
             _repository = repository;
-            _mapper = mapper;   
+            _mapper = mapper;
         }
 
         [HttpGet]
         [Route("CatProduct/GetCatProductList")]
         public IActionResult GetCatProductList()
         {
-            var catProduct = _repository.CatProduct.FindAll().Include(c=>c.InverseP).ToList();
+            var catProduct = _repository.CatProduct.FindAll().Include(c => c.InverseP).ToList();
             _logger.LogInfo($"Returned all CatProduct from database.");
             return Ok(catProduct);
+        }
+
+        [HttpGet]
+        [Route("CatProduct/GetTopCatProductList")]
+        public IActionResult GetTopCatProductList()
+        {
+            try
+            {
+                var catProduct = _repository.CatProduct.FindAll()
+                    .OrderByDescending(c => c.Product.Count)
+                    .Select(c => new { c.Id, c.Name }).ToList().Take(7);
+                _logger.LogInfo($"Returned all CatProduct from database.");
+                return Ok(catProduct);
+            }
+            catch (Exception e)
+            {
+                _logger.LogError($"Something went wrong inside GetTopCatProductList  To database: {e.Message}");
+                return BadRequest("Internal server error");
+            }
+           
         }
     }
 }

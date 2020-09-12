@@ -4,6 +4,7 @@ using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using AutoMapper;
+using Contracts;
 using Entities.BusinessModel;
 using Entities.Models;
 using Microsoft.AspNetCore.Authentication;
@@ -13,7 +14,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace OnlineShop.Controllers
 {
-   
+
     public class AccountController : Controller
     {
 
@@ -21,13 +22,15 @@ namespace OnlineShop.Controllers
         private readonly IMapper _mapper;
         private readonly UserManager<User> _userManager;
         private readonly SignInManager<User> _signInManager;
+        private IRepositoryWrapper _repository;
 
 
-        public AccountController(IMapper mapper, UserManager<User> userManager, SignInManager<User> signInManager)
+        public AccountController(IMapper mapper, UserManager<User> userManager, SignInManager<User> signInManager, IRepositoryWrapper repository)
         {
             _mapper = mapper;
             _userManager = userManager;
             _signInManager = signInManager;
+            _repository = repository;
         }
 
         [HttpGet]
@@ -46,6 +49,15 @@ namespace OnlineShop.Controllers
             }
             var user = _mapper.Map<User>(userModel);
             var result = await _userManager.CreateAsync(user, userModel.Password);
+            Customer customer = new Customer();
+            customer.Cdate = DateTime.Now.Ticks;
+            customer.CuserId = user.Id;
+            //customer.Mobile = user.PhoneNumber;
+            customer.Name = user.FirstName;
+            customer.Email = user.NormalizedEmail;
+            customer.UserId = user.Id;
+            _repository.Customer.Create(customer);
+            _repository.Save();
             if (!result.Succeeded)
             {
                 foreach (var error in result.Errors)
@@ -82,6 +94,8 @@ namespace OnlineShop.Controllers
                 var identity = new ClaimsIdentity(IdentityConstants.ApplicationScheme);
                 identity.AddClaim(new Claim(ClaimTypes.NameIdentifier, user.Id));
                 identity.AddClaim(new Claim(ClaimTypes.Name, user.UserName));
+                identity.AddClaim(new Claim("firstname", user.FirstName));
+                identity.AddClaim(new Claim("lastname", user.LastName));
                 await HttpContext.SignInAsync(IdentityConstants.ApplicationScheme,
                     new ClaimsPrincipal(identity));
                 return RedirectToAction(nameof(HomeController.Index), "Home");

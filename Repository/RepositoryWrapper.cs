@@ -29,6 +29,10 @@ namespace Repository
         private ISliderRepository _slider;
         private ICustomerRepository _customer;
         private ICustomerOrderRepository _customerOrder;
+        private ICustomerOrderProductRepository _customerOrderProduct;
+        private ICustomerOfferRepository _customerOffer;
+        private IPostTypeRepository _postType;
+        private IPaymentTypeRepository _paymentType;
 
 
 
@@ -67,7 +71,7 @@ namespace Repository
 
                 return _seller;
             }
-        } 
+        }
         public IProductImageRepository ProductImage
         {
             get
@@ -272,13 +276,59 @@ namespace Repository
                 return _customerOrder;
             }
         }
+        public ICustomerOrderProductRepository CustomerOrderProduct
+        {
+            get
+            {
+                if (_customerOrderProduct == null)
+                {
+                    _customerOrderProduct = new CustomerOrderProductRepository(_repoContext);
+                }
 
+                return _customerOrderProduct;
+            }
+        }
+        public ICustomerOfferRepository CustomerOffer
+        {
+            get
+            {
+                if (_customerOffer == null)
+                {
+                    _customerOffer = new CustomerOfferRepository(_repoContext);
+                }
 
+                return _customerOffer;
+            }
+        }
+        public IPostTypeRepository PostType
+        {
+            get
+            {
+                if (_postType == null)
+                {
+                    _postType = new PostTypeRepository(_repoContext);
+                }
+
+                return _postType;
+            }
+        }
+        public IPaymentTypeRepository PaymentType
+        {
+            get
+            {
+                if (_paymentType == null)
+                {
+                    _paymentType = new PaymentTypeRepository(_repoContext);
+                }
+
+                return _paymentType;
+            }
+        }
 
         public RepositoryWrapper(RepositoryContext repositoryContext)
         {
             _repoContext = repositoryContext;
-            
+
         }
 
         public void Save()

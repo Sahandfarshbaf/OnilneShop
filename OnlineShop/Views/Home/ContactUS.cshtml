@@ -1,0 +1,89 @@
+﻿
+@{
+    ViewData["Title"] = "ContactUS";
+    Layout = "~/Views/Shared/_Shop.cshtml";
+}
+    <div id="container">
+        <div class="container">
+            <!-- Breadcrumb Start-->
+            <ul class="breadcrumb">
+                <li><a asp-controller="Home" asp-action="index"><i class="fa fa-home"></i></a></li>
+                <li><a asp-controller="Home" asp-action="ContactUS">تماس با ما</a></li>
+            </ul>
+            <!-- Breadcrumb End-->
+            <div class="row">
+                <!--Middle Part Start-->
+                <div id="content" class="col-sm-9">
+                    <h1 class="title">تماس با ما</h1>
+                    <h3 class="subtitle">محل ما</h3>
+                    <div class="row">
+                       
+                        <div class="col-sm-5">
+                            <strong>شرکت طلایه داران آذربایجان</strong><br />
+                                                                       <address>
+                                                                           تبریز ،<br />
+                                                                           خیابان علامه طباطبایی(چایکنار)،<br />
+                                                                           نرسیده به بیمه تامین اجتماعی کوی امیر،<br />
+                                                                           پلاک 2
+                                                                       </address>
+                        </div>
+                        <div class="col-sm-3">
+                            <strong>شماره تلفن</strong><br>
+                            041-33251200<br />
+                            <br />
+                            <strong>فکس</strong><br>
+                            041-33251200
+                        </div>
+                        <div class="col-sm-4">
+                            <strong>ساعات کار</strong><br />
+                            8 صبح تا 9 شب<br />
+                            <br />
+                            @*<strong>دیدگاه ها</strong><br />
+                            در اینجا توضیحات دلخواه خود را قرار دهید. فروشگاه چک قبول نمیکند!*@
+                        </div>
+                    </div>
+                    <form class="form-horizontal">
+                        <fieldset>
+                            <h3 class="subtitle">با ما ارتباط برقرار کنید</h3>
+                            <div class="form-group required">
+                                <label class="col-md-2 col-sm-3 control-label" for="input-name">نام شما</label>
+                                <div class="col-md-10 col-sm-9">
+                                    <input type="text" name="name" value="" id="input-name" class="form-control" />
+                                </div>
+                            </div>
+                            <div class="form-group required">
+                                <label class="col-md-2 col-sm-3 control-label" for="input-email">آدرس ایمیل</label>
+                                <div class="col-md-10 col-sm-9">
+                                    <input type="text" name="email" value="" id="input-email" class="form-control" />
+                                </div>
+                            </div>
+                            <div class="form-group required">
+                                <label class="col-md-2 col-sm-3 control-label" for="input-enquiry">پرسش</label>
+                                <div class="col-md-10 col-sm-9">
+                                    <textarea name="enquiry" rows="10" id="input-enquiry" class="form-control"></textarea>
+                                </div>
+                            </div>
+                        </fieldset>
+                        <div class="buttons">
+                            <div class="pull-right">
+                                <input class="btn btn-primary" type="submit" value="ارسال" />
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <aside id="column-right" class="col-sm-3 hidden-xs">
+                    <div class="list-group text-justify ">
+                        <h2 class="subtitle">درباره ما</h2>
+                        <p>بازارچه اینترنتی صنایع دستی آذربایجان توسط شرکت طلایه داران در سال 1399 با حمایت اداره کل میراث فرهنگی ،گردشگری و صنایع دستی آذربایجان شرقی طراحی و پیاده سازی گردیده است تا فضای خالی بین صنعتگران حوزه صنایع دستی و بازار فروش این محصولات به کمک ابزار فناوری اطلاعات و تجارت الکترونیک به مرور زمان از میان برداشته شود .</p>
+                       <p>بر آنیم تا بتوانیم محتوای انحصاری ، جذاب و واقعی در راستای معرفی این صنعتگران و آثار فاخرشان بتوانیم محصولات صنایع دستی استان را در سبد هدیه و خرید خانوارها قرار داده و رونق اقتصادی را به این حوزه برگردانیم.</p>  <p></p>
+                    </div>
+                    @*<div class="banner owl-carousel">
+                        <div class="item"> <a href="#"><img src="~/image/banner/small-banner-265x350.jpg" alt="small banner" class="img-responsive" /></a> </div>
+                        <div class="item"> <a href="#"><img src="~/image/banner/small-banner1-265x350.jpg" alt="small banner1" class="img-responsive" /></a> </div>
+                    </div>*@
+                </aside>
+                <!--Middle Part End -->
+            </div>
+        </div>
+    </div>
+
