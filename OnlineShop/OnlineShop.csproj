@@ -32,11 +32,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Areas\admin\Data\" />
-    <Folder Include="Areas\admin\Models\" />
     <Folder Include="Extensions\" />
-    <Folder Include="wwwroot\Admin\images\flags\" />
-    <Folder Include="wwwroot\Admin\plugins\" />
   </ItemGroup>
 
 </Project>

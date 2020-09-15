@@ -5,20 +5,22 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace HandiCraft.Areas.admin.Controllers
+namespace Cama_Energy.Areas.Admin.Controllers
 {
     [Area("Admin")]
-
+    //[Authorize]
     public class HomeController : Controller
     {
 
-        public IActionResult product()
+        public IActionResult Index()
         {
             return View();
         }
-        public IActionResult login()
+
+        public IActionResult Product()
         {
             return View();
         }
+
     }
 }
