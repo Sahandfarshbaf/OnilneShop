@@ -2,17 +2,49 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
+using Contracts;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using ZarinPal;
 using ZarinPal.Class;
 
-namespace OnlineShop.Controllers
-{
-    public class DargahController : Controller
+namespace OnlineShop.Controllers.ApiControllers
+{     
+    [Route("api/")]
+    [ApiController]
+    public class DargahController : ControllerBase
     {
-        [Authorize]
+        private ILoggerManager _logger;
+        private IRepositoryWrapper _repository;
+        private IMapper _mapper;
+
+        public DargahController(ILoggerManager logger, IRepositoryWrapper repository, IMapper mapper)
+        {
+            _logger = logger;
+            _repository = repository;
+            _mapper = mapper;
+        }
+
+        [HttpGet]
+        [Route("ZarinPal/ConectDargah")]
         public IActionResult peyment()
+        {
+            try
+            {
+                var result = _repository.PaymentType.FindByCondition(c => c.DaUserId.Equals(null) && c.DuserId.Equals(null))
+                      .Select(c => new { c.Id, c.Title, c.Icon, c.Description }).ToList();
+                _logger.LogInfo($"Returned PaymentType List");
+                return Ok(result);
+            }
+            catch (Exception e)
+            {
+                _logger.LogError($"Something went wrong inside GetPaymentTypeList action: {e.Message}");
+                return BadRequest("Internal server error");
+            }
+        }
+
+        public IActionResult peyment1()
         {
             //var peyment = new Payment();
             //var res = peyment.Request($"پرداخت شماره فاکتور{14566}", "https://localhost:5001/Dargah/OnlinePeyment/" + 123, "fa.azari.a@gmail.com", "09142334363");
