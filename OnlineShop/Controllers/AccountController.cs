@@ -11,6 +11,7 @@ using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using OnlineShop.Tools;
 
 namespace OnlineShop.Controllers
 {
@@ -36,6 +37,7 @@ namespace OnlineShop.Controllers
         [HttpGet]
         public IActionResult Register()
         {
+ 
             return View();
         }
 
@@ -43,6 +45,7 @@ namespace OnlineShop.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Register(UserRegistrationModel userModel)
         {
+         
             if (!ModelState.IsValid)
             {
                 return View(userModel);
@@ -57,7 +60,7 @@ namespace OnlineShop.Controllers
             customer.Email = user.NormalizedEmail;
             customer.UserId = user.Id;
             _repository.Customer.Create(customer);
-            _repository.Save();
+           
             if (!result.Succeeded)
             {
                 foreach (var error in result.Errors)
@@ -66,7 +69,11 @@ namespace OnlineShop.Controllers
                 }
                 return View(userModel);
             }
+            _repository.Save();
             await _userManager.AddToRoleAsync(user, "CUSTOMER");
+            SendSMS sendSms = new SendSMS();
+            var smsresult = sendSms.SendRegisterSMS(userModel.PhoneNumber, userModel.Email, userModel.Password);
+
             return RedirectToAction(nameof(HomeController.Index), "Home");
         }
 
