@@ -24,7 +24,7 @@ function RenderCart() {
     jQuery.each(CartList, function (i, item) {
 
         html += `<tr>
-                            <td class="text-center"><a href="product.html"><img class="img-thumbnail" title="${item.Name}" alt="کفش راحتی مردانه" src="${item.CoverImageURL}" style="width:75px;height:75px;"></a></td>
+                            <td class="text-center"><a href="product.html"><img class="img-thumbnail" title="${item.Name}" alt="${item.Name}" src="${item.CoverImageURL}" style="width:75px;height:75px;"></a></td>
                             <td class="text-left"><a href="product.html">${item.Name}</a></td>
                             <td class="text-right">${item.Count} عدد</td>
                             <td class="text-right">${item.Price} تومان</td>
