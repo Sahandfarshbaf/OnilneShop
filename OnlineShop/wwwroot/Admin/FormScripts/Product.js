@@ -106,13 +106,13 @@ function GetAllCatProduct() {
 function AddProduct() {
 
     //alert(parseInt($('#cmbCategory').val()))
-    $('#txtOnvaneProduct').val('');
-    $('#txtEnProduct').val('');
-    $('#txtCodeProduct').val('');
-    $('#txtPriceProduct').val('');
-    $('#MojodiProduct').val('');
-    $('#elm1').val('');
-    $('#txtLinkAparat').val('');
+    //$('#txtOnvaneProduct').val('');
+    //$('#txtEnProduct').val('');
+    //$('#txtCodeProduct').val('');
+    //$('#txtPriceProduct').val('');
+    //$('#MojodiProduct').val('');
+    //$('#elm1').val('');
+    //$('#txtLinkAparat').val('');
 
 
     let Product = {
@@ -125,7 +125,7 @@ function AddProduct() {
         FirstCount: $('#MojodiProduct').val(),
         ProductImages: '',
         ProductMeterId: parseInt($('#cmbVahed').val()),
-        MatneProduct: tinyMCE.activeEditor.getContent()
+        MatneProduct: ''
     }
     var myfile = $("#FaileZamime");
     var formData = new FormData();
