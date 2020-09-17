@@ -2,7 +2,7 @@
 let Id = 0;
 function Bind_cmbVahedKala() {
 
-    var Html_Dg = ''  
+    var Html_Dg = ''
     $.ajax({
         type: "Get",
         async: false,
@@ -16,15 +16,15 @@ function Bind_cmbVahedKala() {
             jQuery.each(a, function (i, item) {
                 Html_Dg += ' <option class="lbl" value="' + item.id + '">' + item.name + '</option>'
             });
-            Html_Dg += ' </select>';           
-            jQuery('#cmbVahed').html(Html_Dg); 
+            Html_Dg += ' </select>';
+            jQuery('#cmbVahed').html(Html_Dg);
         },
         failure: function (result) {
 
         },
         complete: function () {
-            jQuery('#cmbVahed').selectpicker('refresh');            
- 
+            jQuery('#cmbVahed').selectpicker('refresh');
+
         }
     });
 
@@ -57,7 +57,7 @@ function GetAllProduct() {
         dataType: "json",
         success: function (response) {
             alert("2")
-            console.log(response);        
+            console.log(response);
             let Id = 0;
 
             jQuery.each(response, function (i, item) {
@@ -78,12 +78,12 @@ function GetAllProduct() {
             $('.TblList').html(Html);
 
         },
-      
+
 
     });
 }
 function GetAllCatProduct() {
-  
+
     jQuery.ajax({
         type: "Get",
         url: "/api/CatProduct/GetCatProductList",
@@ -115,18 +115,50 @@ function AddProduct() {
     //$('#txtLinkAparat').val('');
 
 
+    //let Product = {
+    //    Id: 0,
+    //    Name: $('#txtOnvaneProduct').val(),
+    //    EnName: $('#txtEnProduct').val(),
+    //    CatProductId: 1,
+    //    Coding: $('#txtCodeProduct').val(),
+    //    Price: $('#txtPriceProduct').val(),
+    //    FirstCount: $('#MojodiProduct').val(),
+    //    ProductImages: '',
+    //    ProductMeterId: parseInt($('#cmbVahed').val()),
+    //    MatneProduct: ''
+    //}
+
     let Product = {
         Id: 0,
-        Name: $('#txtOnvaneProduct').val(),
-        EnName: $('#txtEnProduct').val(),
+        SellerId: null,
         CatProductId: 1,
-        Coding: $('#txtCodeProduct').val(),
-        Price: $('#txtPriceProduct').val(),
-        FirstCount: $('#MojodiProduct').val(),
-        ProductImages: '',
-        ProductMeterId: parseInt($('#cmbVahed').val()),
-        MatneProduct: ''
+        ProductMeterId: 1,
+        Name: "sad",
+        EnName: "asd",
+        Rkey: null,
+        Coding: 1321,
+        Price: 2123,
+        FinalStatusId: null,
+        FirstCount: 232,
+        Count: 65,
+        CoverImageUrl: "",
+        CoverImageHurl: "",
+        SeenCount: null,
+        LastSeenDate: null,
+        Description: null,
+        AparatUrl: null,
+        Weight: null,
+        CuserId: null,
+        Cdate: null,
+        DuserId: null,
+        Ddate: null,
+        MuserId: null,
+        Mdate: null,
+        DaUserId: null,
+        DaDate: null
     }
+
+
     var myfile = $("#FaileZamime");
     var formData = new FormData();
 
@@ -143,7 +175,7 @@ function AddProduct() {
         contentType: false,
         processData: false,
         success: function (response) {
-   
+
 
             GetAllProduct();
             $('#InsertModal').hide();
@@ -184,13 +216,13 @@ function GetProductById() {
 
         },
         error: function (response) {
-      
+
             console.log(response);
 
         },
         complete: function () {
 
-    
+
         }
     });
 }
@@ -228,12 +260,12 @@ function UpdateProduct() {
                 'success'
             );
             GetAllAbout();
-            $('#txtTitleProduct').val('');            
+            $('#txtTitleProduct').val('');
             $('#InsertModal').hide();
             $('#PnlList').show();
         },
         error: function (response) {
-            console.log(response);           
+            console.log(response);
 
         },
         complete: function () {
@@ -245,7 +277,7 @@ function UpdateProduct() {
 
 
 $(document).ready(() => {
-  
+
     GetAllCatProduct();
     Bind_cmbVahedKala();
     GetAllProduct();
@@ -291,13 +323,13 @@ $(document).ready(() => {
 
         //    });
         //} else {
-        
-            if (Id === 0) {
-                AddProduct();
-            } else {
-                alert("1");
-                UpdateProduct();
-            }
+
+        if (Id === 0) {
+            AddProduct();
+        } else {
+            alert("1");
+            UpdateProduct();
+        }
 
         //}
 
@@ -333,5 +365,5 @@ $(document).ready(() => {
 
     //});
 
-  
+
 });
