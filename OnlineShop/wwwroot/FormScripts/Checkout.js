@@ -164,7 +164,12 @@ $(document).ready(() => {
     GetPostTypeList();
     GetPaymentTypeList();
     BindGrid();
+    $(document.body).on('click', '.Paymentt', function () {
 
+        postprice =parseInt($(this).attr('price'));
+        Payment();
+
+    });
     $(document.body).on('click', '.postRadio', function () {
 
         postprice =parseInt($(this).attr('price'));
