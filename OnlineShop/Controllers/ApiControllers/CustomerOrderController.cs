@@ -152,6 +152,7 @@ namespace OnlineShop.Controllers.ApiControllers
             {
                 var order = _repository.CustomerOrder.FindByCondition(c => c.Id == customerOrderId)
                     .Include(x=>x.CustomerOrderProduct)
+                    .ThenInclude(c=>c.Product)
                     .FirstOrDefault();
 
                 return Ok(order);

@@ -500,22 +500,6 @@
                             <div class="col-sm-12">
                                 <div class="panel panel-default">
                                     <div class="panel-heading">
-                                        <h4 class="panel-title"><i class="fa fa-gift"></i> استفاده از کارت هدیه</h4>
-                                    </div>
-                                    <div class="panel-body">
-                                        <label for="input-voucher" class="col-sm-3 control-label">کد کارت هدیه خود را وارد کنید</label>
-                                        <div class="input-group">
-                                            <input type="text" class="form-control" id="input-voucher" placeholder="کد کارت هدیه خود را در اینجا وارد کنید" value="" name="voucher">
-                                            <span class="input-group-btn">
-                                                <input type="submit" class="btn btn-primary" data-loading-text="بارگذاری ..." id="button-voucher" value="اعمال کارت هدیه">
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-12">
-                                <div class="panel panel-default">
-                                    <div class="panel-heading">
                                         <h4 class="panel-title"><i class="fa fa-shopping-cart"></i> سبد خرید</h4>
                                     </div>
                                     <div class="panel-body">
@@ -539,16 +523,21 @@
                                                         <td class="text-right" id="TotalPriceGrid">0 تومان</td>
                                                     </tr>
                                                     <tr>
-                                                        <td class="text-right" colspan="4"><strong>هزینه ارسال ثابت :</strong></td>
-                                                        <td class="text-right" id="postprice">0 تومان</td>
+                                                        <td class="text-right" colspan="4"><strong>هزینه ارسال  :</strong></td>
+                                                        <td class="text-right text-danger" id="postprice">0 تومان</td>
                                                     </tr>
                                                     <tr>
-                                                        <td class="text-right" colspan="4"><strong>کسر تخفیف:</strong></td>
-                                                        <td class="text-right" id="TotalOfferGrid">0 تومان</td>
+                                                        <td class="text-right" colspan="4"><strong>کسر تخفیف کالا:</strong></td>
+                                                        <td class="text-right text-success" id="TotalOfferGrid">0 تومان</td>
                                                     </tr>
+                                                    <tr>
+                                                        <td class="text-right" colspan="4"><strong>کسر تخفیف کد تخفیف:</strong></td>
+                                                        <td class="text-right text-success"  id="CopunOfferGrid">0 تومان</td>
+                                                    </tr>
+                                                    
                                                     <tr>
                                                         <td class="text-right" colspan="4"><strong>مالیات:</strong></td>
-                                                        <td class="text-right" id="TotalTaxGrid">0 تومان</td>
+                                                        <td class="text-right text-danger" id="TotalTaxGrid">0 تومان</td>
                                                     </tr>
                                                     <tr>
                                                         <td class="text-right" colspan="4"><strong>کل :</strong></td>
