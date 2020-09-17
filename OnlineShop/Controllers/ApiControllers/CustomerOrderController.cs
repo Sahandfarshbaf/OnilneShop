@@ -20,7 +20,7 @@ namespace OnlineShop.Controllers.ApiControllers
         private ILoggerManager _logger;
         private IRepositoryWrapper _repository;
         private IMapper _mapper;
-        
+
         private readonly long timeTick;
 
         public CustomerOrderController(ILoggerManager logger, IRepositoryWrapper repository, IMapper mapper)
@@ -41,7 +41,7 @@ namespace OnlineShop.Controllers.ApiControllers
             try
             {
                 CustomerOrder customerOrder = new CustomerOrder();
-                var userid= User.Claims.Where(c => c.Type == ClaimTypes.NameIdentifier).Select(x => x.Value).SingleOrDefault();
+                var userid = User.Claims.Where(c => c.Type == ClaimTypes.NameIdentifier).Select(x => x.Value).SingleOrDefault();
                 var _customerId = _repository.Customer.FindByCondition(s => s.UserId.Equals(userid)).Select(c => c.Id).FirstOrDefault();
 
                 customerOrder.CuserId = userid;
@@ -140,6 +140,26 @@ namespace OnlineShop.Controllers.ApiControllers
             {
                 _logger.LogError($"Something went wrong inside FinalOrderInsert  To database: {e.Message}");
                 return BadRequest("Internal server error");
+            }
+        }
+
+
+        [HttpGet]
+        [Route("CustomerOrder/GetCustomerOrderById")]
+        public IActionResult GetCustomerOrderById(long customerOrderId)
+        {
+            try
+            {
+                var order = _repository.CustomerOrder.FindByCondition(c => c.Id == customerOrderId)
+                    .Include(x=>x.CustomerOrderProduct)
+                    .FirstOrDefault();
+
+                return Ok(order);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
             }
         }
 
