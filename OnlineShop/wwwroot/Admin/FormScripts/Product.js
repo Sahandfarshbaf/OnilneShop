@@ -130,17 +130,17 @@ function AddProduct() {
 
     let Product = {
         Id: 0,
-        SellerId: null,
+        SellerId: 1,
         CatProductId: 1,
         ProductMeterId: 1,
-        Name: "sad",
-        EnName: "asd",
+        Name: $('#txtOnvaneProduct').val(),
+        EnName: $('#txtEnProduct').val(),
         Rkey: null,
-        Coding: 1321,
-        Price: 2123,
+        Coding: parseInt($('#txtCodeProduct').val()),
+        Price: parseInt($('#txtPriceProduct').val()),
         FinalStatusId: null,
-        FirstCount: 232,
-        Count: 65,
+        FirstCount: parseInt($('#txtMojodiProduct').val()),
+        Count: parseInt($('#txtMojodiProduct').val()),
         CoverImageUrl: "",
         CoverImageHurl: "",
         SeenCount: null,
@@ -182,7 +182,7 @@ function AddProduct() {
             $('#PnlList').show();
             Swal.fire(
                 'ثبت شد !',
-                'درباره ما با موفقیت ثبت شد',
+                'محصول با موفقیت ثبت شد',
                 'success'
             );
         },
