@@ -16,6 +16,10 @@
     <link href="/Admin/dist/css/ionicons.min.css" rel="stylesheet" />
     <!-- Theme style -->
     <link href="/Admin/dist/css/adminlte.css" rel="stylesheet" />
+    <!-- bootstrap wysihtml5 - text editor -->
+  <link rel="stylesheet" href="/Admin/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
+
+
     <!-- iCheck -->
     <link href="/Admin/plugins/iCheck/flat/blue.css" rel="stylesheet" />
     <!-- Date Picker -->
@@ -25,7 +29,7 @@
     <!-- bootstrap rtl -->
     <link href="~/Admin/dist/css/bootstrap-rtl.min.css" rel="stylesheet" />
     <!-- template rtl version -->
-    <link href="/Admin/dist/css/custom-style.css" rel="stylesheet" />
+    <link href="~/Admin/dist/css/custom-style.css" rel="stylesheet" />
 
 
     <link href="~/Admin/dist/css/persian-datepicker.min.css" rel="stylesheet" />
@@ -64,9 +68,29 @@
     <script src="~/Admin/dist/js/sweetalert2.all.min.js"></script>
 
 
-    <!--Wysiwig js-->
-    <script src="~/Admin/plugins/tinymce/tinymce.min.js"></script>
-    <script src="~/Admin/pages/jquery.form-editor.init.js"></script>
+    <script src="~/Admin/plugins/ckeditor/ckeditor.js"></script>
+<!-- Bootstrap WYSIHTML5 -->
+<script src="~/Admin/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
+<script>
+  $(function () {
+    // Replace the <textarea id="editor1"> with a CKEditor
+    // instance, using default configuration.
+    ClassicEditor
+      .create(document.querySelector('#editor1'))
+      .then(function (editor) {
+        // The editor instance
+      })
+      .catch(function (error) {
+        console.error(error)
+      })
+
+    // bootstrap WYSIHTML5 - text editor
+
+      $('.textarea').wysihtml5({
+          toolbar: { fa: true }
+      })
+  })
+</script>
 
 
     <script type="text/javascript">
@@ -120,7 +144,7 @@
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <!-- Brand Logo -->
             <a href="index3.html" class="brand-link">
-                <img src="img/logo-meghna.png"
+                <img src="~/image/logotype1.png"
                      alt="AdminLTE Logo"
                      class="brand-image  elevation-3"
                      style="opacity: .8" />
@@ -152,9 +176,9 @@
                             with font-awesome or any other icon font library -->
 
                             <li class="nav-item">
-                                <a asp-area="Admin" asp-controller="Home" asp-action="Products" class="nav-link">
+                                <a asp-area="Admin" asp-controller="Home" asp-action="Product" class="nav-link">
                                     <i class="nav-icon fa fa-object-group"></i>
-                                    <p>محصولات</p>
+                                    <p>مدیریت محصولات</p>
                                 </a>
                             </li>
                             <li class="nav-item">

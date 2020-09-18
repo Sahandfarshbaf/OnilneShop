@@ -55,31 +55,25 @@ function GetAllProduct() {
         async: false,
         contentType: "application/json; charset=utf-8",
         dataType: "json",
-        success: function (response) {
-            alert("2")
+        success: function (response) { 
             console.log(response);
-            let Id = 0;
-
-            jQuery.each(response, function (i, item) {
-
+            let Id = 0; 
+            jQuery.each(response, function (i, item) { 
                 Html += `<tr>
                             <td>${i + 1}</td>                            
                             <td>`+ $(this).attr('name') + `</td>
                             <td>`+ item.price + `</td>
                             <td>${item.firstCount}</td>
                             <td>${item.count}</td>
-                            <td>${item.coverImageUrl}</td>  
-                            <td class="tdTextCenter"><span class="Edit" BlogID=${item.id} ><i class="fa fa-edit text text-info"></i></span></td>
-                            <td class="tdTextCenter"><span class="Trash" BlogID=${item.id} ><i class="fa fa-trash text text-danger"></i></span></td>
+                            <td>${item.coverImageUrl}</td> 
+                            <td class="tdTextCenter"><span class="vaz" ProductID=${item.id} ><i class="fa fa-edit text text-info"></i></span></td>
+                            <td class="tdTextCenter"><span class="Edit" ProductID=${item.id} ><i class="fa fa-edit text text-info"></i></span></td>
+                            <td class="tdTextCenter"><span class="Trash" ProductID=${item.id} ><i class="fa fa-trash text text-danger"></i></span></td>
                        </tr>`;
             });
-            Html += `</tbody></table>`;
-
-            $('.TblList').html(Html);
-
-        },
-
-
+            Html += `</tbody></table>`; 
+            $('.TblList').html(Html); 
+        }, 
     });
 }
 function GetAllCatProduct() {
@@ -91,48 +85,19 @@ function GetAllCatProduct() {
         async: false,
         contentType: "application/json; charset=utf-8",
         dataType: "json",
-        success: function (response) {
-            alert("2")
+        success: function (response) { 
             console.log(response);
-            let Id = 0;
-
-
+            let Id = 0; 
         },
-
-
     });
 }
 
 function AddProduct() {
-
-    //alert(parseInt($('#cmbCategory').val()))
-    //$('#txtOnvaneProduct').val('');
-    //$('#txtEnProduct').val('');
-    //$('#txtCodeProduct').val('');
-    //$('#txtPriceProduct').val('');
-    //$('#MojodiProduct').val('');
-    //$('#elm1').val('');
-    //$('#txtLinkAparat').val('');
-
-
-    //let Product = {
-    //    Id: 0,
-    //    Name: $('#txtOnvaneProduct').val(),
-    //    EnName: $('#txtEnProduct').val(),
-    //    CatProductId: 1,
-    //    Coding: $('#txtCodeProduct').val(),
-    //    Price: $('#txtPriceProduct').val(),
-    //    FirstCount: $('#MojodiProduct').val(),
-    //    ProductImages: '',
-    //    ProductMeterId: parseInt($('#cmbVahed').val()),
-    //    MatneProduct: ''
-    //}
-
     let Product = {
         Id: 0,
         SellerId: 1,
         CatProductId: 1,
-        ProductMeterId: 1,
+        ProductMeterId: parseInt($('#cmbVahed').val()),
         Name: $('#txtOnvaneProduct').val(),
         EnName: $('#txtEnProduct').val(),
         Rkey: null,
@@ -160,9 +125,7 @@ function AddProduct() {
 
 
     var myfile = $("#FaileZamime");
-    var formData = new FormData();
-
-
+    var formData = new FormData(); 
 
     formData.append('ImageFile', myfile[0].files[0]);
     formData.append('Product', JSON.stringify(Product));
@@ -179,6 +142,50 @@ function AddProduct() {
 
             GetAllProduct();
             $('#InsertModal').hide();
+            $('#PnlListTasvir').hide();
+            $('#PnlList').show();
+            Swal.fire(
+                'ثبت شد !',
+                'محصول با موفقیت ثبت شد',
+                'success'
+            );
+        },
+        error: function (response) {
+
+            console.log(response);
+        },
+        complete: function () {
+        }
+    });
+}
+function AddImaage() {
+    let Image = {
+        Id: 0,
+        SellerId: 1,
+        CatProductId: 1,
+        ProductMeterId: parseInt($('#cmbVahed').val())
+    }
+
+
+    var myfile = $("#FaileZamime");
+    var formData = new FormData(); 
+
+    formData.append('ImageFile', myfile[0].files[0]);
+    formData.append('Product', JSON.stringify(Product));
+
+
+    jQuery.ajax({
+        type: "Post",
+        url: "/api/Product/InsertProduct",
+        data: formData,
+        contentType: false,
+        processData: false,
+        success: function (response) {
+
+
+            GetAllProduct();
+            $('#InsertModal').hide();
+            $('#PnlListTasvir').hide();
             $('#PnlList').show();
             Swal.fire(
                 'ثبت شد !',
@@ -195,21 +202,22 @@ function AddProduct() {
     });
 }
 function GetProductById() {
-
     jQuery.ajax({
         type: "Get",
-        url: `/api/Product/GetProductById?id=${Id}`,
+        url: `/api/Product/GetProductById?productId=${Id}`,
         data: "",
         async: false,
         contentType: "application/json; charset=utf-8",
         dataType: "json",
-        success: function (response) {
+        success: function (response) { 
+            
 
-
-
-            $('#txtTitleProduct').val("gbcv");
-
-
+            $('#cmbVahed').val(response.productMeterId);
+            $('#txtOnvaneProduct').val(response.name);
+            $('#txtEnProduct').val(response.enName);
+            $('#txtCodeProduct').val(response.coding);
+            $('#txtPriceProduct').val(response.price);
+            $('#txtMojodiProduct').val(response.count);
 
             $('#InsertModal').show();
             $('#PnlList').hide();
@@ -230,24 +238,56 @@ function GetProductById() {
 function UpdateProduct() {
     alert("jj");
 
-    let Product = {
-        ID: Id,
-        TitleProduct: $('#txtTitleProduct').val(),
+    let Product = {       
+        Id: Id,
+        SellerId: 1,
+        CatProductId: 1,
+        ProductMeterId: parseInt($('#cmbVahed').val()),
         Name: $('#txtOnvaneProduct').val(),
         EnName: $('#txtEnProduct').val(),
-        CatProductId: 1,
-        Coding: $('#txtCodeProduct').val(),
-        Price: $('#txtPriceProduct').val(),
-        FirstCount: $('#MojodiProduct').val(),
-        ProductImages: '',
-        ProductMeterId: parseInt($('#cmbVahed').val()),
-        MatneProduct: tinyMCE.activeEditor.getContent()
+        Rkey: null,
+        Coding: parseInt($('#txtCodeProduct').val()),
+        Price: parseInt($('#txtPriceProduct').val()),
+        FinalStatusId: null,
+        FirstCount: parseInt($('#txtMojodiProduct').val()),
+        Count: parseInt($('#txtMojodiProduct').val()),
+        CoverImageUrl: "",
+        CoverImageHurl: "",
+        SeenCount: null,
+        LastSeenDate: null,
+        Description: null,
+        AparatUrl: null,
+        Weight: null,
+        CuserId: null,
+        Cdate: null,
+        DuserId: null,
+        Ddate: null,
+        MuserId: null,
+        Mdate: null,
+        DaUserId: null,
+        DaDate: null
     }
+
+
+
+
+    //jQuery.ajax({
+    //    type: "Put",
+    //    url: "/api/Employe/UpdateEmploye",
+    //    data: JSON.stringify(Employe),
+    //    async: false,
+    //    contentType: "application/json; charset=utf-8",
+    //    dataType: "json",
+    //    success: function (response) {
+
+
+
+
 
     alert("hj");
     jQuery.ajax({
         type: "put",
-        url: "api/Product/EditProduct",
+        url: `/api/Product/EditProduct?productId=${Id}`,
         data: JSON.stringify(Product),
         async: false,
         contentType: "application/json; charset=utf-8",
@@ -256,10 +296,10 @@ function UpdateProduct() {
             alert("i");
             Swal.fire(
                 'ثبت شد !',
-                'درباره ما با موفقیت بروز رسانی شد',
+                'محصول با موفقیت بروز رسانی شد',
                 'success'
             );
-            GetAllAbout();
+            GetAllCatProduct();
             $('#txtTitleProduct').val('');
             $('#InsertModal').hide();
             $('#PnlList').show();
@@ -289,7 +329,7 @@ $(document).ready(() => {
         $('#txtCodeProduct').val('');
         $('#txtPriceProduct').val('');
         $('#MojodiProduct').val('');
-        $('#elm1').val('');
+        $('#editor1').val('');
         $('#txtLinkAparat').val('');
 
         $('#InsertModal').show();
@@ -297,58 +337,67 @@ $(document).ready(() => {
     });
 
     $(document.body).on('click', '#btnSabt', () => {
+        let textalert = "";
 
-        //let textalert = "";
+        if ($('#txtOnvaneProduct').val().length === 0) {
+            textalert += `عنوان را وارد نمایید`;
+        }
+        else if ($('#FaileZamime').val().length === 0 && Id === 0) {
+            textalert += `فایلی جهت بارگذاری انتخاب نشده است !`;
+            Swal.fire({
+                icon: 'error',
+                title: 'فیلدهای اجباری را وارد نمایید !',
+                text: textalert
 
-        //if ($('#txtTitle').val().length === 0) {
-        //    textalert += `عنوان را وارد نمایید`;
-        //}
-        //else if ($('#exampleInputFile').val().length === 0 && Id === 0) {
-        //    textalert += `فایلی جهت بارگذاری انتخاب نشده است !`;
-        //    Swal.fire({
-        //        icon: 'error',
-        //        title: 'فیلدهای اجباری را وارد نمایید !',
-        //        text: textalert
+            });
+        }
+        if (textalert !== "") {
 
-        //    });
-        //}
+            Swal.fire({
+                icon: 'error',
+                title: 'فیلدهای اجباری را وارد نمایید !',
+                text: textalert
 
-
-        //if (textalert !== "") {
-
-        //    Swal.fire({
-        //        icon: 'error',
-        //        title: 'فیلدهای اجباری را وارد نمایید !',
-        //        text: textalert
-
-        //    });
-        //} else {
-
-        if (Id === 0) {
-            AddProduct();
+            });
         } else {
-            alert("1");
-            UpdateProduct();
+
+            if (Id === 0) {
+                AddProduct();
+            } else {
+                UpdateProduct();
+            }
+
         }
 
-        //}
 
-
+    });
+    $(document.body).on('click', '#btnSabtTasvir', () => {
+        if (Id === 0) {
+            AddImaage();
+        } else {
+            UpdateImaage();
+        }
     });
     $(document.body).on('click', '.Edit', function () {
 
         Id = parseInt($(this).attr('ProductID'));
         alert("1");
+        $('#InsertModal').show();
+        $('#PnlList').hide();
         GetProductById();
 
     });
 
     $(document.body).on('click', '#btnEnseraf', function () {
 
+
+        //var vv = $('#editor1').data("wysihtml5").editor;
+        //alert(vv.getvalue());
         $('#InsertModal').hide();
         $('#PnlList').show();
     });
-
+   
+    
     //$('#txtAzTarikh').persianDatepicker({
     //    observer: true,
     //    format: 'YYYY/MM/DD',
