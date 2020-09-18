@@ -82,7 +82,7 @@ namespace OnlineShop.Controllers.ApiControllers
         public IActionResult EditProduct(long productId)
         {
 
-
+            
             Product _product = JsonSerializer.Deserialize<Product>(HttpContext.Request.Form["Product"]);
             var product = _repository.Product.FindByCondition(c => c.Id.Equals(productId)).FirstOrDefault();
             if (product == null)
