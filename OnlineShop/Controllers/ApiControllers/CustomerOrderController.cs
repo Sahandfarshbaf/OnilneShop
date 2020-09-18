@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using AutoMapper;
 using Contracts;
 using Entities.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -33,13 +34,14 @@ namespace OnlineShop.Controllers.ApiControllers
 
         }
 
-
+       
         [HttpPost]
         [Route("CustomerOrder/InsertCustomerOrder")]
         public IActionResult InsertCustomerOrder(List<CustomerOrderProduct> customerOrderProductlist)
         {
             try
             {
+
                 CustomerOrder customerOrder = new CustomerOrder();
                 var userid = User.Claims.Where(c => c.Type == ClaimTypes.NameIdentifier).Select(x => x.Value).SingleOrDefault();
                 var _customerId = _repository.Customer.FindByCondition(s => s.UserId.Equals(userid)).Select(c => c.Id).FirstOrDefault();
@@ -74,7 +76,7 @@ namespace OnlineShop.Controllers.ApiControllers
 
         }
 
-
+        //[Authorize(Roles = "Costomer")]
         [HttpPut]
         [Route("CustomerOrder/FinalOrderInsert")]
         public IActionResult FinalOrderInsert(long customerOrderId, long postTypeId, long paymentTypeId, string customerDescription, string offerCode)
@@ -151,8 +153,8 @@ namespace OnlineShop.Controllers.ApiControllers
             try
             {
                 var order = _repository.CustomerOrder.FindByCondition(c => c.Id == customerOrderId)
-                    .Include(x=>x.CustomerOrderProduct)
-                    .ThenInclude(c=>c.Product)
+                    .Include(x => x.CustomerOrderProduct)
+                    .ThenInclude(c => c.Product)
                     .FirstOrDefault();
 
                 return Ok(order);
@@ -161,6 +163,27 @@ namespace OnlineShop.Controllers.ApiControllers
             {
                 Console.WriteLine(e);
                 throw;
+            }
+        }
+
+        //[Authorize(Roles = "CUSTOMER")]
+        [HttpGet]
+        [Route("CustomerOrder/GetCustomerOrderListByCustomerId")]
+        public IActionResult GetCustomerOrderListByCustomerId()
+        {
+            try
+            {
+                var userid = User.Claims.Where(c => c.Type == ClaimTypes.NameIdentifier).Select(x => x.Value).SingleOrDefault();
+                var customerId = _repository.Customer.FindByCondition(s => s.UserId.Equals(userid)).Select(c => c.Id).FirstOrDefault();
+                var result = _repository.CustomerOrder.FindByCondition(c => c.CustomerId == customerId)
+                      .Include(c => c.CustomerOrderProduct).ThenInclude(c => c.Product).ToList();
+
+                return Ok(result);
+            }
+            catch (Exception e)
+            {
+                _logger.LogError($"Something went wrong inside GetCustomerOrderListByCustomerId: {e.Message}");
+                return BadRequest("Internal server error");
             }
         }
 
