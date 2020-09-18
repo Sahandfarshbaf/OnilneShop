@@ -17,6 +17,7 @@ namespace Entities
         {
         }
 
+
         public virtual DbSet<CatProduct> CatProduct { get; set; }
         public virtual DbSet<CatProductParameters> CatProductParameters { get; set; }
         public virtual DbSet<CatStatus> CatStatus { get; set; }
@@ -54,6 +55,7 @@ namespace Entities
         {
             base.OnModelCreating(modelBuilder);
 
+          
             modelBuilder.Entity<CatProduct>(entity =>
             {
                 entity.HasIndex(e => e.Pid);

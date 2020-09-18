@@ -11,6 +11,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using OnlineShop.Factory;
 using Repository;
 
 
@@ -31,7 +32,7 @@ namespace OnlineShop.Extensions
             });
         }
 
-        
+
         public static void ConfigureIISIntegration(this IServiceCollection services)
         {
             services.Configure<IISOptions>(options =>
@@ -40,7 +41,7 @@ namespace OnlineShop.Extensions
             });
         }
 
-   
+
         public static void ConfigureLoggerService(this IServiceCollection services)
         {
             services.AddSingleton<ILoggerManager, LoggerManager>();
@@ -60,11 +61,13 @@ namespace OnlineShop.Extensions
 
                 })
                 .AddEntityFrameworkStores<RepositoryContext>()
-                .AddDefaultTokenProviders();
-            
+                .AddDefaultTokenProviders()
+                .AddRoles<IdentityRole>();
+            services.AddScoped<IUserClaimsPrincipalFactory<User>, CustomClaimsFactory>();
+
         }
 
-     
+
         public static void ConfigureRepositoryWrapper(this IServiceCollection services)
         {
             services.AddScoped<IRepositoryWrapper, RepositoryWrapper>();

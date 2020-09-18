@@ -9,7 +9,9 @@ using Contracts;
 using Entities.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.SignalR;
 using Microsoft.EntityFrameworkCore;
 
 namespace OnlineShop.Controllers.ApiControllers
@@ -28,13 +30,12 @@ namespace OnlineShop.Controllers.ApiControllers
         {
             _logger = logger;
             _repository = repository;
-            _mapper = mapper;
-            // userid = User.Claims.Where(c => c.Type == ClaimTypes.NameIdentifier).Select(x => x.Value).SingleOrDefault();
-            timeTick = DateTime.Now.Ticks;
 
+            _mapper = mapper;
+            this.timeTick = DateTime.Now.Ticks;
         }
 
-       
+        [Authorize("Customer")]
         [HttpPost]
         [Route("CustomerOrder/InsertCustomerOrder")]
         public IActionResult InsertCustomerOrder(List<CustomerOrderProduct> customerOrderProductlist)
@@ -44,14 +45,16 @@ namespace OnlineShop.Controllers.ApiControllers
 
                 CustomerOrder customerOrder = new CustomerOrder();
                 var userid = User.Claims.Where(c => c.Type == ClaimTypes.NameIdentifier).Select(x => x.Value).SingleOrDefault();
-                var _customerId = _repository.Customer.FindByCondition(s => s.UserId.Equals(userid)).Select(c => c.Id).FirstOrDefault();
+                var customerId = _repository.Customer.FindByCondition(s => s.UserId.Equals(userid)).Select(c => c.Id).FirstOrDefault();
+
+
 
                 customerOrder.CuserId = userid;
                 customerOrder.Cdate = timeTick;
-                customerOrder.CustomerId = _customerId;
+                customerOrder.CustomerId = customerId;
                 customerOrder.OrderDate = timeTick;
                 customerOrder.OrderNo = timeTick;
-                customerOrder.CustomerId = _customerId;
+                customerOrder.CustomerId = customerId;
 
 
                 customerOrderProductlist.ForEach(x =>
@@ -76,7 +79,7 @@ namespace OnlineShop.Controllers.ApiControllers
 
         }
 
-        //[Authorize(Roles = "Costomer")]
+        [Authorize("Customer")]
         [HttpPut]
         [Route("CustomerOrder/FinalOrderInsert")]
         public IActionResult FinalOrderInsert(long customerOrderId, long postTypeId, long paymentTypeId, string customerDescription, string offerCode)
@@ -112,29 +115,35 @@ namespace OnlineShop.Controllers.ApiControllers
 
                 custumerOrder.Weight = custumerOrderProduct.Sum(c => (c.Weight * c.OrderCount));
                 custumerOrder.TaxValue = 9;
-                custumerOrder.OrderPrice = custumerOrderProduct.Sum(c => (c.OrderCount * c.ProductPrice));
-                custumerOrder.TaxPrice = (long?)custumerOrderProduct.Sum(c => ((c.ProductPrice * 0.09) * c.OrderCount));
+                custumerOrder.OrderPrice = custumerOrderProduct.Where(c => c.Ddate.Equals(null))
+                                                                .Sum(c => (c.OrderCount * (c.ProductPrice - c.ProductOfferPrice)));
 
 
-                var a = _repository.CustomerOffer
-                    .FindByCondition(c => c.CustomerId == costomerId && c.FromDate <= timeTick && timeTick <= c.ToDate)
+
+                var customerOfferRecord = _repository.CustomerOffer
+                    .FindByCondition(c => c.CustomerId == costomerId && c.FromDate <= timeTick && timeTick <= c.ToDate && c.OfferCode == offerCode &&
+                                                                string.IsNullOrWhiteSpace(c.DuserId) && string.IsNullOrWhiteSpace(c.DaUserId))
                     .FirstOrDefault();
-                custumerOrder.OfferValue = a != null ? (int?)a.Value : 0;
-
-                custumerOrder.OfferPrice = (custumerOrder.OrderPrice + custumerOrder.TaxPrice) *
-                                           (custumerOrder.OfferValue / 100);
-                custumerOrder.OrderPrice =
-                    custumerOrder.CustomerOrderProduct.Where(c => c.Ddate.Equals(null)).Sum(c => (c.ProductPrice * c.OrderCount));
-                var b = _repository.PostType.FindByCondition(c => c.Rkey.Equals(postTypeId)).FirstOrDefault();
-                custumerOrder.PostPrice = b != null ? b.Price : 0;
+                custumerOrder.OfferValue = customerOfferRecord != null ? (int?)customerOfferRecord.Value / 100 : 0;
+                custumerOrder.OfferPrice = (custumerOrder.OrderPrice) * (custumerOrder.OfferValue / 100);
+                custumerOrder.TaxPrice = (long?)((custumerOrder.OrderPrice - custumerOrder.OfferPrice) * 0.09);
 
 
-
+                var postTypeRecord = _repository.PostType.FindByCondition(c => c.Rkey.Equals(postTypeId)).FirstOrDefault();
+                custumerOrder.PostPrice = postTypeRecord != null ? postTypeRecord.Price : 0;
 
                 custumerOrder.FinalPrice =
-                    (custumerOrder.OrderPrice + custumerOrder.TaxPrice + custumerOrder.PostPrice) - custumerOrder.OfferPrice;
+                    ((custumerOrder.OrderPrice - custumerOrder.OfferPrice) + custumerOrder.TaxPrice + custumerOrder.PostPrice);
 
                 _repository.CustomerOrder.Update(custumerOrder);
+                if (customerOfferRecord != null)
+                {
+                    var userid = User.Claims.Where(c => c.Type == ClaimTypes.NameIdentifier).Select(x => x.Value).SingleOrDefault();
+                    customerOfferRecord.DaUserId = userid;
+                    customerOfferRecord.DaDate = timeTick;
+                    _repository.CustomerOffer.Update(customerOfferRecord);
+                }
+
                 _repository.Save();
                 return Ok("");
             }
@@ -145,7 +154,7 @@ namespace OnlineShop.Controllers.ApiControllers
             }
         }
 
-
+        [Authorize("Customer")]
         [HttpGet]
         [Route("CustomerOrder/GetCustomerOrderById")]
         public IActionResult GetCustomerOrderById(long customerOrderId)
@@ -166,7 +175,7 @@ namespace OnlineShop.Controllers.ApiControllers
             }
         }
 
-        //[Authorize(Roles = "CUSTOMER")]
+        [Authorize("Customer")]
         [HttpGet]
         [Route("CustomerOrder/GetCustomerOrderListByCustomerId")]
         public IActionResult GetCustomerOrderListByCustomerId()

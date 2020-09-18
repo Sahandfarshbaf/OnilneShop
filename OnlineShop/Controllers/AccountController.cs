@@ -88,32 +88,25 @@ namespace OnlineShop.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Login(UserLoginModel userModel)
+        public async Task<IActionResult> Login(UserLoginModel userModel, string returnUrl = null)
         {
             if (!ModelState.IsValid)
             {
                 return View(userModel);
             }
-            var user = await _userManager.FindByEmailAsync(userModel.Email);
-            if (user != null &&
-                await _userManager.CheckPasswordAsync(user, userModel.Password))
-            {
-                var identity = new ClaimsIdentity(IdentityConstants.ApplicationScheme);
-                identity.AddClaim(new Claim(ClaimTypes.NameIdentifier, user.Id));
-                identity.AddClaim(new Claim(ClaimTypes.Name, user.UserName));
-                identity.AddClaim(new Claim("firstname", user.FirstName));
-                identity.AddClaim(new Claim("lastname", user.LastName));
-                identity.AddClaim(new Claim("mobile", user.PhoneNumber));
 
-                await HttpContext.SignInAsync(IdentityConstants.ApplicationScheme,
-                    new ClaimsPrincipal(identity));
-                return RedirectToAction(nameof(HomeController.Index), "Home");
+            var result = await _signInManager.PasswordSignInAsync(userModel.Email, userModel.Password, userModel.RememberMe, false);
+            if (result.Succeeded)
+            {
+                return RedirectToLocal(returnUrl);
             }
             else
             {
                 ModelState.AddModelError("", "Invalid UserName or Password");
                 return View();
             }
+
+
         }
 
 

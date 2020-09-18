@@ -30,7 +30,7 @@ namespace OnlineShop
         public IConfiguration Configuration { get; }
         public void ConfigureServices(IServiceCollection services)
         {
-           
+
             services.ConfigureCors();
             services.ConfigureIISIntegration();
             services.ConfigureLoggerService();
@@ -39,12 +39,22 @@ namespace OnlineShop
             services.AddControllers();
             services.AddAutoMapper(typeof(Startup));
             services.ConfigureApplicationCookie(o => o.LoginPath = "/Account/Login");
-         
+
             services.AddControllersWithViews();
             services.AddRazorPages()
                 .AddRazorRuntimeCompilation();
             services.AddMemoryCache();
             services.AddSession();
+            services.AddAuthorization(options =>
+            {
+
+                options.AddPolicy("Customer", policy =>
+                    policy.RequireClaim("Role", "Customer"));
+                options.AddPolicy("Seller", policy =>
+                    policy.RequireClaim("Role", "Seller"));
+                options.AddPolicy("Admin", policy =>
+                    policy.RequireClaim("Role", "Admin"));
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -73,6 +83,7 @@ namespace OnlineShop
             app.UseAuthentication();
             app.UseAuthorization();
 
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
@@ -86,7 +97,7 @@ namespace OnlineShop
             });
 
 
-           
+
         }
     }
 }
