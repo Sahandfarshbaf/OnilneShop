@@ -238,98 +238,97 @@ function GetProductById() {
 function UpdateProduct() {
     alert("jj");
 
-    //let Product = {       
+    let Product = {       
+        Id: Id,
+        SellerId: null,
+        CatProductId: 1,
+        ProductMeterId: parseInt($('#cmbVahed').val()),
+        Name: $('#txtOnvaneProduct').val(),
+        EnName: $('#txtEnProduct').val(),
+        Rkey: null,
+        Coding: parseInt($('#txtCodeProduct').val()),
+        Price: parseInt($('#txtPriceProduct').val()),
+        FinalStatusId: null,
+        FirstCount: parseInt($('#txtMojodiProduct').val()),
+        Count:null,
+        CoverImageUrl: "",
+        CoverImageHurl: null,
+        SeenCount: null,
+        LastSeenDate: null,
+        Description: "",
+        AparatUrl: null,
+        Weight: null,
+        CuserId: null,
+        Cdate: null,
+        DuserId: null,
+        Ddate: null,
+        MuserId: null,
+        Mdate: null,
+        DaUserId: null,
+        DaDate: null
+    }
+
+    //let Product = {
     //    Id: Id,
     //    SellerId: 1,
     //    CatProductId: 1,
-    //    ProductMeterId: parseInt($('#cmbVahed').val()),
-    //    Name: $('#txtOnvaneProduct').val(),
-    //    EnName: $('#txtEnProduct').val(),
-    //    Rkey: null,
-    //    Coding: parseInt($('#txtCodeProduct').val()),
-    //    Price: parseInt($('#txtPriceProduct').val()),
-    //    FinalStatusId: null,
-    //    FirstCount: parseInt($('#txtMojodiProduct').val()),
-    //    Count: parseInt($('#txtMojodiProduct').val()),
+    //    ProductMeterId: 1,
+    //    Name: "asd",
+    //    EnName: "asd",
+    //    Rkey: 1,
+    //    Coding: 1,
+    //    Price: 42,
+    //    FinalStatusId: 1,
+    //    FirstCount:2,
+    //    Count: 2,
     //    CoverImageUrl: "",
     //    CoverImageHurl: "",
-    //    SeenCount: null,
-    //    LastSeenDate: null,
+    //    SeenCount: 1,
+    //    LastSeenDate: 1,
     //    Description: null,
     //    AparatUrl: null,
-    //    Weight: null,
+    //    Weight: 1,
     //    CuserId: null,
-    //    Cdate: null,
+    //    Cdate: 1,
     //    DuserId: null,
-    //    Ddate: null,
+    //    Ddate: 1,
     //    MuserId: null,
-    //    Mdate: null,
+    //    Mdate: 1,
     //    DaUserId: null,
-    //    DaDate: null
+    //    DaDate: 1
     //}
 
-    let Product = {
-        Id: Id,
-        SellerId: 1,
-        CatProductId: 1,
-        ProductMeterId: 1,
-        Name: "asd",
-        EnName: "asd",
-        Rkey: 1,
-        Coding: 1,
-        Price: 42,
-        FinalStatusId: 1,
-        FirstCount:2,
-        Count: 2,
-        CoverImageUrl: "",
-        CoverImageHurl: "",
-        SeenCount: 1,
-        LastSeenDate: 1,
-        Description: null,
-        AparatUrl: null,
-        Weight: 1,
-        CuserId: null,
-        Cdate: 1,
-        DuserId: null,
-        Ddate: 1,
-        MuserId: null,
-        Mdate: 1,
-        DaUserId: null,
-        DaDate: 1
-    }
 
 
+    var myfile = $("#FaileZamime");
+    var formData = new FormData();
 
-    //jQuery.ajax({
-    //    type: "Put",
-    //    url: "/api/Employe/UpdateEmploye",
-    //    data: JSON.stringify(Employe),
-    //    async: false,
-    //    contentType: "application/json; charset=utf-8",
-    //    dataType: "json",
-    //    success: function (response) {
+    formData.append('ImageFile', myfile[0].files[0]);
+    formData.append('Product', JSON.stringify(Product));
 
 
-
-
-
-    alert("hj");
     jQuery.ajax({
         type: "put",
         url: `/api/Product/EditProduct?productId=${Id}`,
-        data: JSON.stringify(Product),
-        async: false,
-        contentType: "application/json; charset=utf-8",
-        dataType: "json",
-        success: function (response) {
-            alert("i");
+        data: formData,
+        contentType: false,
+        processData: false,
+        success: function (response) {            
             Swal.fire(
                 'ثبت شد !',
                 'محصول با موفقیت بروز رسانی شد',
                 'success'
             );
             GetAllCatProduct();
-            $('#txtTitleProduct').val('');
+            
+            $('#txtOnvaneProduct').val('');
+            $('#txtEnProduct').val('');                      
+            $('#txtCodeProduct').val('');
+            $('#txtPriceProduct').val('');                                 
+            $('#txtMojodiProduct').val('');
+            $('#editor1').val('');
+            $('#txtLinkAparat').val('');
+
             $('#InsertModal').hide();
             $('#PnlList').show();
         },
