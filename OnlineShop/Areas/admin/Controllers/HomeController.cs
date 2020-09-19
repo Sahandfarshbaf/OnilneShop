@@ -21,6 +21,9 @@ namespace Cama_Energy.Areas.Admin.Controllers
         {
             return View();
         }
-
+        public IActionResult login()
+        {
+            return View();
+        }
     }
 }
