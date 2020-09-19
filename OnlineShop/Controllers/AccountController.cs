@@ -37,7 +37,7 @@ namespace OnlineShop.Controllers
         [HttpGet]
         public IActionResult Register()
         {
- 
+
             return View();
         }
 
@@ -45,7 +45,7 @@ namespace OnlineShop.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Register(UserRegistrationModel userModel)
         {
-         
+
             if (!ModelState.IsValid)
             {
                 return View(userModel);
@@ -60,7 +60,7 @@ namespace OnlineShop.Controllers
             customer.Email = user.NormalizedEmail;
             customer.UserId = user.Id;
             _repository.Customer.Create(customer);
-           
+
             if (!result.Succeeded)
             {
                 foreach (var error in result.Errors)
@@ -99,6 +99,47 @@ namespace OnlineShop.Controllers
             if (result.Succeeded)
             {
                 return RedirectToLocal(returnUrl);
+            }
+            else
+            {
+                ModelState.AddModelError("", "Invalid UserName or Password");
+                return View();
+            }
+
+
+        }
+
+        [HttpGet]
+        public IActionResult AdminLogin(string returnUrl = null)
+        {
+            ViewData["ReturnUrl"] = returnUrl;
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> AdminLogin(UserLoginModel userModel, string returnUrl = null)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(userModel);
+            }
+
+            var result = await _signInManager.PasswordSignInAsync(userModel.Email, userModel.Password, userModel.RememberMe, false);
+            if (result.Succeeded)
+            {
+                var Role = User.Claims.Where(c => c.Type == "Role").Select(x => x.Value).SingleOrDefault();
+                if (Role == "Admin")
+                {
+                    return RedirectToLocal(returnUrl);
+                }
+                else
+                {
+                    ModelState.AddModelError("", "Invalid UserName or Password");
+                    return View();
+            
+                }
+
             }
             else
             {
