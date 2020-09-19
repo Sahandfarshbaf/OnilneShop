@@ -27,5 +27,22 @@ namespace OnlineShop.Controllers.ApiControllers
             this.userid = userid;
             this.timeTick = DateTime.Now.Ticks;
         }
+
+
+        [HttpGet]
+        [Route("Customer/GetLastestCustomerList")]
+        public IActionResult GetLastestCustomerList()
+        {
+            try
+            {
+               var result= _repository.Customer.FindAll().OrderByDescending(c => c.Cdate).Take(10).ToList();
+               return Ok(result);
+            }
+            catch (Exception e)
+            {
+                _logger.LogError($"Something went wrong inside GetLastestCustomerList: {e.Message}");
+                return BadRequest("Internal server error");
+            }
+        }
     }
 }

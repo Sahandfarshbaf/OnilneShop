@@ -47,11 +47,12 @@ namespace OnlineShop.Controllers
         {
             return View();
         }
+       [Authorize("Customer")]
         public IActionResult Cart()
         {
             return View();
         }
-
+        [Authorize("Customer")]
         public IActionResult Checkout()
         {
             return View();
