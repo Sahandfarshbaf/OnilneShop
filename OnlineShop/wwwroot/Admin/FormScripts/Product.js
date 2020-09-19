@@ -238,36 +238,65 @@ function GetProductById() {
 function UpdateProduct() {
     alert("jj");
 
-    let Product = {       
+    //let Product = {       
+    //    Id: Id,
+    //    SellerId: 1,
+    //    CatProductId: 1,
+    //    ProductMeterId: parseInt($('#cmbVahed').val()),
+    //    Name: $('#txtOnvaneProduct').val(),
+    //    EnName: $('#txtEnProduct').val(),
+    //    Rkey: null,
+    //    Coding: parseInt($('#txtCodeProduct').val()),
+    //    Price: parseInt($('#txtPriceProduct').val()),
+    //    FinalStatusId: null,
+    //    FirstCount: parseInt($('#txtMojodiProduct').val()),
+    //    Count: parseInt($('#txtMojodiProduct').val()),
+    //    CoverImageUrl: "",
+    //    CoverImageHurl: "",
+    //    SeenCount: null,
+    //    LastSeenDate: null,
+    //    Description: null,
+    //    AparatUrl: null,
+    //    Weight: null,
+    //    CuserId: null,
+    //    Cdate: null,
+    //    DuserId: null,
+    //    Ddate: null,
+    //    MuserId: null,
+    //    Mdate: null,
+    //    DaUserId: null,
+    //    DaDate: null
+    //}
+
+    let Product = {
         Id: Id,
         SellerId: 1,
         CatProductId: 1,
-        ProductMeterId: parseInt($('#cmbVahed').val()),
-        Name: $('#txtOnvaneProduct').val(),
-        EnName: $('#txtEnProduct').val(),
-        Rkey: null,
-        Coding: parseInt($('#txtCodeProduct').val()),
-        Price: parseInt($('#txtPriceProduct').val()),
-        FinalStatusId: null,
-        FirstCount: parseInt($('#txtMojodiProduct').val()),
-        Count: parseInt($('#txtMojodiProduct').val()),
+        ProductMeterId: 1,
+        Name: "asd",
+        EnName: "asd",
+        Rkey: 1,
+        Coding: 1,
+        Price: 42,
+        FinalStatusId: 1,
+        FirstCount:2,
+        Count: 2,
         CoverImageUrl: "",
         CoverImageHurl: "",
-        SeenCount: null,
-        LastSeenDate: null,
+        SeenCount: 1,
+        LastSeenDate: 1,
         Description: null,
         AparatUrl: null,
-        Weight: null,
+        Weight: 1,
         CuserId: null,
-        Cdate: null,
+        Cdate: 1,
         DuserId: null,
-        Ddate: null,
+        Ddate: 1,
         MuserId: null,
-        Mdate: null,
+        Mdate: 1,
         DaUserId: null,
-        DaDate: null
+        DaDate: 1
     }
-
 
 
 
