@@ -13,6 +13,8 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SignalR;
 using Microsoft.EntityFrameworkCore;
+using OnlineShop.Tools.Zarinpal;
+using ZarinPal = OnlineShop.Tools.ZarinPal.ZarinPal;
 
 namespace OnlineShop.Controllers.ApiControllers
 {
@@ -190,6 +192,29 @@ namespace OnlineShop.Controllers.ApiControllers
                 return Ok(result);
             }
             catch (Exception e)
+            {
+                _logger.LogError($"Something went wrong inside GetCustomerOrderListByCustomerId: {e.Message}");
+                return BadRequest("Internal server error");
+            }
+        }
+
+        [HttpGet]
+        [Route("CustomerOrder/ZarinPalPeymentRequest")]
+        public IActionResult ZarinPalPeymentRequest()
+        {
+            try
+            {
+                ZarinPallRequest request = new ZarinPallRequest();
+               request.amount = 5000;
+                request.description="test";
+                request.metadata.email = "sahand.farshbaf@gmail.com";
+                request.metadata.mobile = "09353407341";
+                Tools.ZarinPal.ZarinPal zarinPal = new Tools.ZarinPal.ZarinPal();
+                var res = zarinPal.Request(request);
+
+                return Ok(res);
+            }
+             catch (Exception e)
             {
                 _logger.LogError($"Something went wrong inside GetCustomerOrderListByCustomerId: {e.Message}");
                 return BadRequest("Internal server error");

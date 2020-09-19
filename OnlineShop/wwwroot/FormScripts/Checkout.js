@@ -151,18 +151,19 @@ function Payment() {
         merchant_id: "82f5b82a-3422-4f9e-bb4d-0182c4dbf5a6",
         amount: "50000",
         description: "تستی",
-        metadata: "434",
-        mobile: "09142334363",
-        email: "fa.azari.a@gmail.com",
+        metadata: {
+            mobile: "09142334363",
+            email: "fa.azari.a@gmail.com",
+        },
         callback_url: "https://localhost:5001/Dargah/OnlinePeyment/"
     }
 
-
+    console.log(JSON.stringify(param));
 
     jQuery.ajax({
         type: "POST",
         url: "https://api.zarinpal.com/pg/v4/payment/request.json",
-        data: JSON.stringify(about),
+        data: JSON.stringify(param),
         async: false,
         contentType: "application/json; charset=utf-8",
         dataType: "json",
