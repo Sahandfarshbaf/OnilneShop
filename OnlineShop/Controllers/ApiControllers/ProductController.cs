@@ -107,7 +107,7 @@ namespace OnlineShop.Controllers.ApiControllers
                     product.FirstCount = _product.FirstCount;
                     product.ProductMeterId = _product.ProductMeterId;
                     product.CoverImageUrl = uploadFileStatus.Path;
-                    product.Weight = _product.Weight;
+                    product.Description = _product.Description;
                     _repository.Product.Update(product);
                     try
                     {
@@ -141,7 +141,7 @@ namespace OnlineShop.Controllers.ApiControllers
                 product.Price = _product.Price;
                 product.FirstCount = _product.FirstCount;
                 product.ProductMeterId = _product.ProductMeterId;
-                product.Weight = _product.Weight;
+                product.Description = _product.Description;
                 _repository.Product.Update(product);
                 try
                 {
