@@ -24,6 +24,7 @@ namespace OnlineShop.Factory
             identity.AddClaim(new Claim("mobile", user.PhoneNumber));
             var a = await UserManager.GetRolesAsync(user);
             identity.AddClaim(new Claim("Role", a.DefaultIfEmpty("Visitor").FirstOrDefault()));
+          
 
             return identity;
         }

@@ -126,16 +126,21 @@ namespace OnlineShop.Controllers
             }
 
             var result = await _signInManager.PasswordSignInAsync(userModel.Email, userModel.Password, userModel.RememberMe, false);
+         
+
+
             if (result.Succeeded)
             {
-                var Role = User.Claims.Where(c => c.Type == "Role").Select(x => x.Value).SingleOrDefault();
-                if (Role == "Admin")
+                var user = await _userManager.FindByEmailAsync(userModel.Email);
+                var roles = await _userManager.GetRolesAsync(user);
+                
+                if (roles.FirstOrDefault() == "Admin")
                 {
-                    return RedirectToLocal(returnUrl);
+                    return RedirectToAction("Index", "Home", new { area = "Admin" });
                 }
                 else
                 {
-                    ModelState.AddModelError("", "Invalid UserName or Password");
+                    ModelState.AddModelError("", "نام کاربری یا کلمه عبور صحیح نمی باشد.");
                     return View();
             
                 }
@@ -143,7 +148,7 @@ namespace OnlineShop.Controllers
             }
             else
             {
-                ModelState.AddModelError("", "Invalid UserName or Password");
+                ModelState.AddModelError("", "نام کاربری یا کلمه عبور صحیح نمی باشد.");
                 return View();
             }
 
