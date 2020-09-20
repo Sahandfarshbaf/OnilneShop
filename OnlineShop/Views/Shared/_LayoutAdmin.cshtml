@@ -67,31 +67,9 @@
 
     <script src="~/Admin/dist/js/sweetalert2.all.min.js"></script>
 
-
-    <script src="~/Admin/plugins/ckeditor/ckeditor.js"></script>
-<!-- Bootstrap WYSIHTML5 -->
-<script src="~/Admin/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
-<script>
-  $(function () {
-    // Replace the <textarea id="editor1"> with a CKEditor
-    // instance, using default configuration.
-    ClassicEditor
-      .create(document.querySelector('#editor1'))
-      .then(function (editor) {
-        // The editor instance
-      })
-      .catch(function (error) {
-        console.error(error)
-      })
-
-    // bootstrap WYSIHTML5 - text editor
-
-      $('.textarea').wysihtml5({
-          toolbar: { fa: true }
-      })
-  })
-</script>
-
+    <!-- editor -->
+    <script src="~/Admin/js/jquery.form-editor.init.js"></script>
+    <script src="~/Admin/plugins/tinymce/tinymce.min.js"></script>
 
     <script type="text/javascript">
         var ShowLoader = () => {
