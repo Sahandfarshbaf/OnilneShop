@@ -16,8 +16,10 @@ namespace OnlineShop.Tools.ZarinPal
         public ZarinPalRequestResponse Request(ZarinPallRequest zarinPallRequest)
         {
             zarinPallRequest.merchant_id = merchant_id;
-            zarinPallRequest.callback_url = "";
-            
+            zarinPallRequest.callback_url = "https://localhost:44357/Home/OnlinePaymentResult";
+            zarinPallRequest.metadata.mobile = "09353407341";
+            zarinPallRequest.metadata.email = "sahand.farshbaf@gmail.com";
+
             var body = JsonSerializer.Serialize(zarinPallRequest);
 
             var client = new RestClient("https://api.zarinpal.com/pg/v4/payment/request.json");
@@ -40,6 +42,21 @@ namespace OnlineShop.Tools.ZarinPal
 
           
           
+        }
+
+        public ZarinPalVerifyResponse VerifyPayment(ZarinPalVerifyRequest verifyRequest)
+        {
+            verifyRequest.merchant_id = merchant_id;
+            var body = JsonSerializer.Serialize(verifyRequest);
+            var client = new RestClient("https://api.zarinpal.com/pg/v4/payment/verify.json");
+            var request = new RestRequest(Method.POST);
+            request.AddJsonBody(body);
+
+            IRestResponse response = client.Execute(request);
+            var data = ((Newtonsoft.Json.Linq.JContainer)JObject.Parse(response.Content).First).First.ToString();
+            var result = JsonSerializer.Deserialize<ZarinPalVerifyResponse>(data);
+            return result;
+
         }
 
     }

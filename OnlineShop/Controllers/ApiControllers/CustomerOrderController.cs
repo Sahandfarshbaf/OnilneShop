@@ -146,6 +146,31 @@ namespace OnlineShop.Controllers.ApiControllers
                     _repository.CustomerOffer.Update(customerOfferRecord);
                 }
 
+               
+
+                if (custumerOrder.PaymentTypeId == 2)
+                {
+
+                    ZarinPallRequest request = new ZarinPallRequest();
+                    request.amount = (int)custumerOrder.FinalPrice.Value;
+                    request.description = "order NO: " + custumerOrder.OrderNo;
+                    Tools.ZarinPal.ZarinPal zarinPal = new Tools.ZarinPal.ZarinPal();
+                    var res = zarinPal.Request(request);
+
+                    CustomerOrderPayment customerOrderPayment = new CustomerOrderPayment();
+                    customerOrderPayment.CustomerOrderId = customerOrderId;
+                    customerOrderPayment.OrderNo = custumerOrder.OrderNo.ToString();
+                    customerOrderPayment.TraceNo = res.authority;
+                    customerOrderPayment.TransactionPrice = custumerOrder.FinalPrice;
+                    customerOrderPayment.Cdate = timeTick;
+                    customerOrderPayment.CuserId= User.Claims.Where(c => c.Type == ClaimTypes.NameIdentifier).Select(x => x.Value).SingleOrDefault();
+                    _repository.CustomerOrderPayment.Create(customerOrderPayment);
+
+
+                    _repository.Save();
+                    return Ok("https://www.zarinpal.com/pg/StartPay/" + res.authority);
+
+                }
                 _repository.Save();
                 return Ok("");
             }
@@ -198,28 +223,7 @@ namespace OnlineShop.Controllers.ApiControllers
             }
         }
 
-        [HttpGet]
-        [Route("CustomerOrder/ZarinPalPeymentRequest")]
-        public IActionResult ZarinPalPeymentRequest()
-        {
-            try
-            {
-                ZarinPallRequest request = new ZarinPallRequest();
-               request.amount = 5000;
-                request.description="test";
-                request.metadata.email = "sahand.farshbaf@gmail.com";
-                request.metadata.mobile = "09353407341";
-                Tools.ZarinPal.ZarinPal zarinPal = new Tools.ZarinPal.ZarinPal();
-                var res = zarinPal.Request(request);
 
-                return Ok(res);
-            }
-             catch (Exception e)
-            {
-                _logger.LogError($"Something went wrong inside GetCustomerOrderListByCustomerId: {e.Message}");
-                return BadRequest("Internal server error");
-            }
-        }
 
     }
 }

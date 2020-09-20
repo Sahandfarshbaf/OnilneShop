@@ -58,5 +58,10 @@ namespace OnlineShop.Controllers
             return View();
         }
 
+        public IActionResult OnlinePaymentResult()
+        {
+            return View();
+        }
+
     }
 }

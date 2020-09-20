@@ -33,6 +33,7 @@ namespace Repository
         private ICustomerOfferRepository _customerOffer;
         private IPostTypeRepository _postType;
         private IPaymentTypeRepository _paymentType;
+        private ICustomerOrderPaymentRepository _customerOrderPayment;
 
 
 
@@ -324,7 +325,18 @@ namespace Repository
                 return _paymentType;
             }
         }
+        public ICustomerOrderPaymentRepository CustomerOrderPayment
+        {
+            get
+            {
+                if (_customerOrderPayment == null)
+                {
+                    _customerOrderPayment = new CustomerOrderPaymentRepository(_repoContext);
+                }
 
+                return _customerOrderPayment;
+            }
+        }
         public RepositoryWrapper(RepositoryContext repositoryContext)
         {
             _repoContext = repositoryContext;

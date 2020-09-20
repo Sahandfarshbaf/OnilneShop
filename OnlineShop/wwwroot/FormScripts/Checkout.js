@@ -147,40 +147,35 @@ function BindGrid() {
 }
 
 function Payment() {
-    let param = {
-        merchant_id: "82f5b82a-3422-4f9e-bb4d-0182c4dbf5a6",
-        amount: "50000",
-        description: "تستی",
-        metadata: {
-            mobile: "09142334363",
-            email: "fa.azari.a@gmail.com",
-        },
-        callback_url: "https://localhost:5001/Dargah/OnlinePeyment/"
-    }
-
-    console.log(JSON.stringify(param));
 
     jQuery.ajax({
-        type: "POST",
-        url: "https://api.zarinpal.com/pg/v4/payment/request.json",
-        data: JSON.stringify(param),
+        type: "Put",
+        url: `/api/CustomerOrder/FinalOrderInsert?customerOrderId=${Id}&postTypeId=${$("input[name=postRadio]:checked").attr('posttypeid')}
+                                                                    &paymentTypeId=${$("input[name=postRadio]:checked").attr('posttypeid')}
+                                                                    &customerDescription=${$("#confirm_comment").val()}
+                                                                    &offerCode=${$('#input-coupon').val()}`,
+        data: "",
         async: false,
         contentType: "application/json; charset=utf-8",
-        dataType: "json",
-        success: function (param) {
+        dataType: "text",
+        success: function(response) {
+            debugger 
+            if (response != "") {
+                window.location = response;
+            }
+            
+        },
+        error: function(response) {
+
             console.log(response);
 
 
         },
-        error: function (response) {
-
-            console.log(response);
-
-        },
-        complete: function () {
+        complete: function() {
 
         }
     });
+
 }
 
 function GetCoupenValue(Code) {

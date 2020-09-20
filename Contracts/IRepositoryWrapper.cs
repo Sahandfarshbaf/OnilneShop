@@ -31,6 +31,7 @@ namespace Contracts
         ICustomerOfferRepository CustomerOffer { get; }
         IPostTypeRepository PostType { get; }
         IPaymentTypeRepository PaymentType { get; }
+        ICustomerOrderPaymentRepository CustomerOrderPayment { get; }
 
         void Save();
     }
