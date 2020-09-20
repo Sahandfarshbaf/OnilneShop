@@ -31,7 +31,7 @@ namespace OnlineShop.Controllers.ApiControllers
             try
             {
                 var result = _repository.Color.FindAll()
-                                            .Where(c => !string.IsNullOrWhiteSpace(c.DaUserId) && !string.IsNullOrWhiteSpace(c.DuserId))
+                                            .Where(c => string.IsNullOrWhiteSpace(c.DaUserId) && string.IsNullOrWhiteSpace(c.DuserId))
                                             .Select(p => new { p.Id, p.Name }).ToList();
                 _logger.LogInfo($"Returned all Color from database.");
                 return Ok(result);

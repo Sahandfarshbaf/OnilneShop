@@ -30,7 +30,37 @@ function Bind_cmbVahedKala() {
 
 
 };
+function Bind_cmbColor() {
 
+    var Html_Dg = ''
+    $.ajax({
+        type: "Get",
+        async: false,
+        url: "/api/Color/GetColorList",
+        data: "",
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        success: function (result) {
+            console.log(result);
+            var a = result;;
+            Html_Dg += ' <option class="lbl" value="-1">انتخاب کنید</option>'
+            jQuery.each(a, function (i, item) {
+                Html_Dg += ' <option class="lbl" value="' + item.id + '">' + item.name + '</option>'
+            });
+            Html_Dg += ' </select>';
+            jQuery('#CmbColor').html(Html_Dg);
+        },
+        failure: function (result) {
+
+        },
+        complete: function () {
+            jQuery('#CmbColor').selectpicker('refresh');
+
+        }
+    });
+
+
+};
 function GetAllProduct() {
     let Html = `<table id="example2" class="table">
                <thead>
@@ -65,7 +95,8 @@ function GetAllProduct() {
                             <td>`+ item.price + `</td>
                             <td>${item.firstCount}</td>
                             <td>${item.count}</td>
-                            <td>${item.coverImageUrl}</td> 
+                            <td><img src=${item.coverImageUrl} alt=` + $(this).attr('name') + ` title=` + $(this).attr('name') + ` class="img-responsive"   style="width:50px;height:50px" /></td> 
+
                             <td class="tdTextCenter"><span class="vaz" ProductID=${item.id} ><i class="fa fa-edit text text-info"></i></span></td>
                             <td class="tdTextCenter"><span class="Edit" ProductID=${item.id} ><i class="fa fa-edit text text-info"></i></span></td>
                             <td class="tdTextCenter"><span class="Trash" ProductID=${item.id} ><i class="fa fa-trash text text-danger"></i></span></td>
@@ -91,7 +122,41 @@ function GetAllCatProduct() {
         },
     });
 }
+function GetAllImage() {
+    let Html = `<table id="example2" class="table">
+               <thead>
+                  <tr>
+                    <th> ردیف </th>
+                     <th> عکس </th>
+                     <th> رنگ </th>
+                     <th>حذف</th>
+                  </tr>
+               </thead>
+             <tbody>`;
 
+    jQuery.ajax({
+        type: "Get",
+        url: `/api/ProductImage/GetImageList?productId=${Id}`,
+        data: "",
+        async: false,
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        success: function (response) { 
+            console.log(response);
+            let Id = 0; 
+            jQuery.each(response, function (i, item) { 
+                Html += `<tr>
+                            <td>${i + 1}</td>                            
+                            <td><img src=${item.imageURL}   class="img-responsive"   style="width:50px;height:50px" /></td>                            
+                            <td>${item.colorName}</td> 
+                            <td class="tdTextCenter"><span class="Trash" ProductID=${item.productImageId} ><i class="fa fa-trash text text-danger"></i></span></td>
+                       </tr>`;
+            });
+            Html += `</tbody></table>`; 
+            $('.TblListTasvir').html(Html); 
+        }, 
+    });
+}
 function AddProduct() {
     let Product = {
         Id: 0,
@@ -110,7 +175,7 @@ function AddProduct() {
         CoverImageHurl: "",
         SeenCount: null,
         LastSeenDate: null,
-        Description: null,
+        Description: tinyMCE.activeEditor.getContent(),
         AparatUrl: null,
         Weight: null,
         CuserId: null,
@@ -159,37 +224,30 @@ function AddProduct() {
     });
 }
 function AddImaage() {
-    let Image = {
-        Id: 0,
-        SellerId: 1,
-        CatProductId: 1,
-        ProductMeterId: parseInt($('#cmbVahed').val())
-    }
-
-
-    var myfile = $("#FaileZamime");
+ 
+    var myfile = $("#FaileZamimeTasvir");
+    console.log(myfile);
     var formData = new FormData(); 
 
     formData.append('ImageFile', myfile[0].files[0]);
-    formData.append('Product', JSON.stringify(Product));
+ 
+ 
 
-
+    ShowLoader();
     jQuery.ajax({
         type: "Post",
-        url: "/api/Product/InsertProduct",
+        url: `/api/ProductImage/InsertProductImage?productId=${Id}&colorId=${parseInt($('#CmbColor').val())}`,
         data: formData,
         contentType: false,
         processData: false,
         success: function (response) {
+            EndLoader();
 
+            GetAllImage();
 
-            GetAllProduct();
-            $('#InsertModal').hide();
-            $('#PnlListTasvir').hide();
-            $('#PnlList').show();
             Swal.fire(
                 'ثبت شد !',
-                'محصول با موفقیت ثبت شد',
+                'تصویر محصول  با موفقیت ثبت شد',
                 'success'
             );
         },
@@ -210,7 +268,7 @@ function GetProductById() {
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         success: function (response) { 
-            
+            console.log(response);
 
             $('#cmbVahed').val(response.productMeterId);
             $('#txtOnvaneProduct').val(response.name);
@@ -218,11 +276,13 @@ function GetProductById() {
             $('#txtCodeProduct').val(response.coding);
             $('#txtPriceProduct').val(response.price);
             $('#txtMojodiProduct').val(response.count);
-
+           
             $('#InsertModal').show();
             $('#PnlList').hide();
-
+            GetAllImage(); 
+ tinymce.get("elm1").setContent(response.Description);
         },
+
         error: function (response) {
 
             console.log(response);
@@ -255,7 +315,7 @@ function UpdateProduct() {
         CoverImageHurl: null,
         SeenCount: null,
         LastSeenDate: null,
-        Description: "",
+        Description: tinyMCE.activeEditor.getContent(),
         AparatUrl: null,
         Weight: null,
         CuserId: null,
@@ -320,7 +380,7 @@ function UpdateProduct() {
                 'success'
             );
             GetAllCatProduct();
-            
+            GetAllImage();
             $('#txtOnvaneProduct').val('');
             $('#txtEnProduct').val('');                      
             $('#txtCodeProduct').val('');
@@ -348,6 +408,7 @@ $(document).ready(() => {
 
     GetAllCatProduct();
     Bind_cmbVahedKala();
+    Bind_cmbColor();
     GetAllProduct();
 
     $(document.body).on('click', '#btnJadid', () => {
@@ -359,7 +420,8 @@ $(document).ready(() => {
         $('#MojodiProduct').val('');
         $('#editor1').val('');
         $('#txtLinkAparat').val('');
-
+        $('#elm1').val('');
+        $('#txtMojodiProduct').val('');
         $('#InsertModal').show();
         $('#PnlList').hide();
     });
@@ -399,12 +461,15 @@ $(document).ready(() => {
 
 
     });
+    //$(document.body).on('click', '#btnJadidTasvir', () => {
+    //    IdImage = 0;  
+    //});
     $(document.body).on('click', '#btnSabtTasvir', () => {
-        if (Id === 0) {
+        //if (IdImage === 0) {
             AddImaage();
-        } else {
-            UpdateImaage();
-        }
+        //} else {
+        //    UpdateImaage();
+        //}
     });
     $(document.body).on('click', '.Edit', function () {
 

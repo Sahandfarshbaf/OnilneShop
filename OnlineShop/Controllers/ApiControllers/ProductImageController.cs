@@ -37,7 +37,7 @@ namespace OnlineShop.Controllers.ApiControllers
         {
             try
             {
-                var imagelist = _repository.ProductImage.GetProductImageWithDetails(productId).Where(c=>!string.IsNullOrWhiteSpace(c.DaUserId) && !string.IsNullOrWhiteSpace(c.DuserId)).ToList();
+                var imagelist = _repository.ProductImage.GetProductImageWithDetails(productId).Where(c=>string.IsNullOrWhiteSpace(c.DaUserId) && string.IsNullOrWhiteSpace(c.DuserId)).ToList();
                 if (imagelist.Count == 0)
                 {
                     _logger.LogError($"ProductImage with id: {productId}, hasn't been found in db.");
