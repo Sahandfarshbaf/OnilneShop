@@ -399,7 +399,7 @@ function GenerateProductCategory() {
         dataType: "json",
         success: function (response) {
 
-            let html = `<select data-placeholder="Select an Account" id="cash_account">`;
+            let html = `<select data-placeholder="Select an Account"  class="select2 form-control mb-3 custom-select" style="width: 100%; height:36px;"  id="cash_account">`;
             let MajaorList = response.filter(c => c.pid == null);
 
             jQuery.each(MajaorList, function (i, item) {
@@ -462,7 +462,7 @@ function GenerateProductCategory() {
 
 $(document).ready(() => {
     GenerateProductCategory();
-    GetAllCatProduct();
+
     Bind_cmbVahedKala();
     Bind_cmbColor();
     GetAllProduct();
