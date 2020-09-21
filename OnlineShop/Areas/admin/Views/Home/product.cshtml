@@ -1,16 +1,19 @@
 ﻿
 @{
-  
+
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-
-<script src="~/Admin/js/jquery.min.js"></script>
-<script src="~/Admin/FormScripts/Product.js"></script>
  
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
+
+<script src="~/Admin/FormScripts/Product.js"></script>
+
 @*<script src="~/Admin/PersianData/NewFolder/persian-date.min.js"></script>
-<link href="~/Admin/PersianData/NewFolder/persian-datepicker.min.css" rel="stylesheet" />
-<script src="~/Admin/PersianData/NewFolder/persian-datepicker.min.js"></script>*@
+    <link href="~/Admin/PersianData/NewFolder/persian-datepicker.min.css" rel="stylesheet" />
+    <script src="~/Admin/PersianData/NewFolder/persian-datepicker.min.js"></script>*@
 <script src="~/Admin/js/Custom.js"></script>
 
 <!-- Content Header (Page header) -->
@@ -52,7 +55,7 @@
 </div>
 <div id="InsertModal">
     <div class="row">
-       
+
         <div class="col-lg-12">
             <div class="card">
 
@@ -72,6 +75,9 @@
                             <div><span id="TitleProduct1" class="text-danger"></span></div>
                             <input id="txtEnProduct" type="text" class="form-control input-sm" />
 
+                        </div> 
+                        <div class="col-md-4" id="CmbCategory">
+ 
                         </div>
                         <div class="col-md-4">
                             <label class="mb-3">کد محصول</label>
@@ -121,7 +127,7 @@
                             <div><span id="txtLinkAparat1" class="text-danger"></span></div>
                             <input id="txtLinkAparat" type="text" class="form-control input-sm" />
                         </div>
-
+                      
                     </div>
                     <br />
                     <div class="card-body">
@@ -165,7 +171,7 @@
 
 
 
-<div id="PnlListTasvir"  >
+<div id="PnlListTasvir">
     <div class="card-header">
         <h3 class="card-title">لیست تصاویر محصول</h3>
     </div>

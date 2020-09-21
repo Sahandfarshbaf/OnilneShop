@@ -107,21 +107,7 @@ function GetAllProduct() {
         }, 
     });
 }
-function GetAllCatProduct() {
-
-    jQuery.ajax({
-        type: "Get",
-        url: "/api/CatProduct/GetCatProductList",
-        data: "",
-        async: false,
-        contentType: "application/json; charset=utf-8",
-        dataType: "json",
-        success: function (response) { 
-            console.log(response);
-            let Id = 0; 
-        },
-    });
-}
+ 
 function GetAllImage() {
     let Html = `<table id="example2" class="table">
                <thead>
@@ -161,7 +147,7 @@ function AddProduct() {
     let Product = {
         Id: 0,
         SellerId: 1,
-        CatProductId: 1,
+        CatProductId: parseInt($('#CmbCategory').val()),
         ProductMeterId: parseInt($('#cmbVahed').val()),
         Name: $('#txtOnvaneProduct').val(),
         EnName: $('#txtEnProduct').val(),
@@ -276,7 +262,8 @@ function GetProductById() {
             $('#txtCodeProduct').val(response.coding);
             $('#txtPriceProduct').val(response.price);
             $('#txtMojodiProduct').val(response.count);
-           
+            $('#CmbCategory').val(response.CatProductId);
+            
             $('#InsertModal').show();
             $('#PnlList').hide();
             GetAllImage(); 
@@ -294,7 +281,6 @@ function GetProductById() {
         }
     });
 }
-
 function UpdateProduct() {
     alert("jj");
 
@@ -401,11 +387,81 @@ function UpdateProduct() {
         }
     });
 }
+function GenerateProductCategory() {
+
+
+    jQuery.ajax({
+        type: "Get",
+        url: `/api/CatProduct/GetCatProductList`,
+        data: "",
+        async: false,
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        success: function (response) {
+
+            let html = `<select data-placeholder="Select an Account" id="cash_account">`;
+            let MajaorList = response.filter(c => c.pid == null);
+
+            jQuery.each(MajaorList, function (i, item) {
+
+                html += ` <optgroup label=${item.name}> `;
+
+                let MinorList = response.filter(c => c.pid == item.id);
+
+                jQuery.each(MinorList, function (j, itemmm) {
+
+                    html += `<option value=${itemmm.id} alt=${itemmm.name}>${itemmm.name}</option>`;
+                });
+                html += ` </optgroup>`;
+            });
+
+
+            $('#CmbCategory').html(html);
+
+        },
+        error: function (response) {
+
+            console.log(response);
+
+        },
+        complete: function () {
+
+            $('#CmbCategory').cutomAccordion({
+                saveState: false,
+                autoExpand: true
+            });
+        }
+    });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    (function () {
+        $(function () {
+            return $('select').select2({
+                width: 'resolve'
+            });
+
+        });
+
+    }).call(this);
+
+}
 
 
 
 $(document).ready(() => {
-
+    GenerateProductCategory();
     GetAllCatProduct();
     Bind_cmbVahedKala();
     Bind_cmbColor();
@@ -491,21 +547,6 @@ $(document).ready(() => {
     });
    
     
-    //$('#txtAzTarikh').persianDatepicker({
-    //    observer: true,
-    //    format: 'YYYY/MM/DD',
-    //    altField: '#AzTarikhObserver',
-    //    autoClose: true
-
-    //});
-
-    //$('#txtTaTarikh').persianDatepicker({
-    //    observer: true,
-    //    format: 'YYYY/MM/DD',
-    //    altField: '#TaTarikhObserver',
-    //    autoClose: true
-
-    //});
-
+  
 
 });
