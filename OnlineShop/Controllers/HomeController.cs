@@ -66,6 +66,14 @@ namespace OnlineShop.Controllers
         {
             return View();
         }
+  public IActionResult listSefaresh()
+        {
+            return View();
+        }
 
+        public IActionResult سفارش()
+        {
+            return View();
+        }
     }
 }

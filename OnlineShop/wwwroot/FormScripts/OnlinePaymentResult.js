@@ -32,7 +32,12 @@ function VerifyPayment() {
         success: function (response) {
 
            
-            alert(response);
+            alert(1)
+            if (response === "error") {
+                 alert(1);
+            } else {
+                alert(2);  
+            }
 
         },
         error: function (response) {

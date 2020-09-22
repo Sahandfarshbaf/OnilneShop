@@ -158,26 +158,25 @@ function Payment() {
         async: false,
         contentType: "application/json; charset=utf-8",
         dataType: "text",
-        success: function(response) {
-            debugger 
+        success: function (response) {
+            debugger
             if (response != "") {
                 window.location = response;
             }
-            
+
         },
-        error: function(response) {
+        error: function (response) {
 
             console.log(response);
 
 
         },
-        complete: function() {
+        complete: function () {
 
         }
     });
 
 }
-
 function GetCoupenValue(Code) {
 
 

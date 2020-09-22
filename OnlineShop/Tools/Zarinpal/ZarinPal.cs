@@ -16,7 +16,7 @@ namespace OnlineShop.Tools.ZarinPal
         public ZarinPalRequestResponse Request(ZarinPallRequest zarinPallRequest)
         {
             zarinPallRequest.merchant_id = merchant_id;
-            zarinPallRequest.callback_url = "https://localhost:44357/Home/OnlinePaymentResult";
+            zarinPallRequest.callback_url = "https://localhost:5001/Home/OnlinePaymentResult";
             zarinPallRequest.metadata.mobile = "09353407341";
             zarinPallRequest.metadata.email = "sahand.farshbaf@gmail.com";
 
