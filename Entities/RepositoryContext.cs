@@ -458,6 +458,10 @@ namespace Entities
             {
                 entity.Property(e => e.Id).HasColumnName("ID");
 
+                entity.Property(e => e.CardPan)
+                    .HasColumnName("card_pan")
+                    .HasMaxLength(50);
+
                 entity.Property(e => e.Cdate).HasColumnName("CDate");
 
                 entity.Property(e => e.CuserId)
@@ -505,6 +509,11 @@ namespace Entities
                 entity.Property(e => e.TransactionDate).HasComment("تاریخ تراکنش");
 
                 entity.Property(e => e.TransactionPrice).HasComment("مبلغ تراکنش");
+
+                entity.HasOne(d => d.CustomerOrder)
+                    .WithMany(p => p.CustomerOrderPayment)
+                    .HasForeignKey(d => d.CustomerOrderId)
+                    .HasConstraintName("FK_CustomerOrderPayment_CustomerOrder");
             });
 
             modelBuilder.Entity<CustomerOrderProduct>(entity =>

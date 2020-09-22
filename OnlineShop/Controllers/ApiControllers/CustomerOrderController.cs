@@ -6,6 +6,7 @@ using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
 using AutoMapper;
 using Contracts;
+using Entities.DataTransferObjects;
 using Entities.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
@@ -146,7 +147,7 @@ namespace OnlineShop.Controllers.ApiControllers
                     _repository.CustomerOffer.Update(customerOfferRecord);
                 }
 
-               
+
 
                 if (custumerOrder.PaymentTypeId == 2)
                 {
@@ -163,7 +164,7 @@ namespace OnlineShop.Controllers.ApiControllers
                     customerOrderPayment.TraceNo = res.authority;
                     customerOrderPayment.TransactionPrice = custumerOrder.FinalPrice;
                     customerOrderPayment.Cdate = timeTick;
-                    customerOrderPayment.CuserId= User.Claims.Where(c => c.Type == ClaimTypes.NameIdentifier).Select(x => x.Value).SingleOrDefault();
+                    customerOrderPayment.CuserId = User.Claims.Where(c => c.Type == ClaimTypes.NameIdentifier).Select(x => x.Value).SingleOrDefault();
                     _repository.CustomerOrderPayment.Create(customerOrderPayment);
 
 
@@ -211,8 +212,10 @@ namespace OnlineShop.Controllers.ApiControllers
             {
                 var userid = User.Claims.Where(c => c.Type == ClaimTypes.NameIdentifier).Select(x => x.Value).SingleOrDefault();
                 var customerId = _repository.Customer.FindByCondition(s => s.UserId.Equals(userid)).Select(c => c.Id).FirstOrDefault();
+
                 var result = _repository.CustomerOrder.FindByCondition(c => c.CustomerId == customerId)
                       .Include(c => c.CustomerOrderProduct).ThenInclude(c => c.Product).ToList();
+
 
                 return Ok(result);
             }
@@ -223,7 +226,28 @@ namespace OnlineShop.Controllers.ApiControllers
             }
         }
 
+        [Authorize("Customer")]
+        [HttpGet]
+        [Route("CustomerOrder/GetCustomerOrderShortListByCustomerId")]
+        public IActionResult GetCustomerOrderShortListByCustomerId()
+        {
+            try
+            {
+                var userid = User.Claims.Where(c => c.Type == ClaimTypes.NameIdentifier).Select(x => x.Value).SingleOrDefault();
+                var customerId = _repository.Customer.FindByCondition(s => s.UserId.Equals(userid)).Select(c => c.Id).FirstOrDefault();
 
+                var productList = _repository.CustomerOrder.FindByCondition(c => c.CustomerId == customerId)
+                    .Include(c => c.CustomerOrderProduct).ToList();
+
+                var result = _mapper.Map<List<CustomerOrderListDto>>(productList);
+                return Ok(result);
+            }
+            catch (Exception e)
+            {
+                _logger.LogError($"Something went wrong inside GetCustomerOrderListByCustomerId: {e.Message}");
+                return BadRequest("Internal server error");
+            }
+        }
 
     }
 }

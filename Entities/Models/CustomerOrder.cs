@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text.Json.Serialization;
 
 namespace Entities.Models
 {
@@ -8,6 +7,7 @@ namespace Entities.Models
     {
         public CustomerOrder()
         {
+            CustomerOrderPayment = new HashSet<CustomerOrderPayment>();
             CustomerOrderProduct = new HashSet<CustomerOrderProduct>();
         }
 
@@ -45,6 +45,7 @@ namespace Entities.Models
         public virtual Status FinalStatus { get; set; }
         public virtual PaymentType PaymentType { get; set; }
         public virtual PostType PostType { get; set; }
+        public virtual ICollection<CustomerOrderPayment> CustomerOrderPayment { get; set; }
         public virtual ICollection<CustomerOrderProduct> CustomerOrderProduct { get; set; }
     }
 }
