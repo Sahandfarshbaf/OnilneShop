@@ -237,7 +237,7 @@ namespace OnlineShop.Controllers.ApiControllers
                 var customerId = _repository.Customer.FindByCondition(s => s.UserId.Equals(userid)).Select(c => c.Id).FirstOrDefault();
 
                 var productList = _repository.CustomerOrder.FindByCondition(c => c.CustomerId == customerId)
-                    .Include(c => c.CustomerOrderProduct).ToList();
+                    .Include(c => c.CustomerOrderProduct).Include(c=>c.CustomerOrderPayment).ToList();
 
                 var result = _mapper.Map<List<CustomerOrderListDto>>(productList);
                 return Ok(result);
@@ -245,6 +245,35 @@ namespace OnlineShop.Controllers.ApiControllers
             catch (Exception e)
             {
                 _logger.LogError($"Something went wrong inside GetCustomerOrderListByCustomerId: {e.Message}");
+                return BadRequest("Internal server error");
+            }
+        }
+
+        [Authorize("Customer")]
+        [HttpGet]
+        [Route("CustomerOrder/GetCustomerOrderProductList")]
+        public IActionResult GetCustomerOrderProductList(long customerOrderId)
+        {
+            try
+            {
+                var userid = User.Claims.Where(c => c.Type == ClaimTypes.NameIdentifier).Select(x => x.Value).SingleOrDefault();
+                var customerId = _repository.Customer.FindByCondition(s => s.UserId.Equals(userid)).Select(c => c.Id).FirstOrDefault();
+                var allowed = _repository.CustomerOrder
+                    .FindByCondition(c => c.Id == customerOrderId && c.CustomerId == customerId).Any();
+                if (!allowed)
+                {
+                    return Forbid();
+                }
+
+                var productList = _repository.CustomerOrderProduct.FindByCondition(c => c.CustomerOrderId == customerOrderId)
+                    .Include(c => c.Product).ThenInclude(c => c.Seller).ToList();
+
+                var result = _mapper.Map<List<CustomerOrderProductDto>>(productList);
+                return Ok(result);
+            }
+            catch (Exception e)
+            {
+                _logger.LogError($"Something went wrong inside GetCustomerOrderProductList: {e.Message}");
                 return BadRequest("Internal server error");
             }
         }

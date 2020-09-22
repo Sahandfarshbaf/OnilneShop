@@ -40,6 +40,15 @@ namespace OnlineShop
                             : "پرداخت ناموفق"));
 
 
+            CreateMap<CustomerOrderProduct, CustomerOrderProductDto>()
+                .ForMember(u => u.CustomerOrderProductId, opt => opt.MapFrom(x => x.Id))
+                .ForMember(u => u.CoverImageUrl, opt => opt.MapFrom(x => x.Product.CoverImageUrl))
+                .ForMember(u => u.SellerName,
+                    opt => opt.MapFrom(x => x.Product.Seller.Name + " " + x.Product.Seller.Fname));
+
+
+
+
         }
     }
 }
