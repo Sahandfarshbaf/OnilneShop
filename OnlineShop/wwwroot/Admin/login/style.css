@@ -8482,13 +8482,14 @@ hr.thick {
   color: #9ba7ca;
 }
 
-.account-body.accountbg {
-  background-image: url("../images/acount-page.jpg");
-  background-size: cover;
-  background-position: center center;
-  width: 100%;
-  height: 100vh;
-}
+    .account-body.accountbg {
+        background-image: url("images/Newfolder/coming-soon990526.jpg");
+
+        background-size: cover;
+        background-position: center center;
+        width: 100%;
+        height: 100vh;
+    }
 
 .account-body.accountbg .account-title {
   width: 500px;

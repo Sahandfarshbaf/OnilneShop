@@ -70,22 +70,28 @@
                             <input id="txtOnvaneProduct" type="text" class="form-control input-sm" />
                         </div>
                         <div class="col-md-4">
-                            <label class="mb-3">نام لاتین محصول</label>
-
-                            <div><span id="TitleProduct1" class="text-danger"></span></div>
-                            <input id="txtEnProduct" type="text" class="form-control input-sm" />
-
-                        </div> 
+                            <label class="mb-3">عنوان فروشنده</label>
+                            <div><span id="TitleProduct31" class="text-danger"></span></div>
+                            <div id="CmbSeller">
+                            </div>
+                        </div>
                         <div class="col-md-4">
                             <label class="mb-3">عنوان دسته بندی</label>
                             <div><span id="TitleProduct31" class="text-danger"></span></div>
                             <div id="CmbCategory">
                             </div>
                         </div>
-                      
+
                     </div>
                     <br />
                     <div class="row">
+                        <div class="col-md-4">
+                            <label class="mb-3">نام لاتین محصول</label>
+
+                            <div><span id="TitleProduct1" class="text-danger"></span></div>
+                            <input id="txtEnProduct" type="text" class="form-control input-sm" />
+
+                        </div>
                         <div class="col-md-4">
                             <label class="mb-3">کد محصول</label>
 
@@ -93,7 +99,7 @@
                             <input id="txtCodeProduct" type="text" class="form-control input-sm" />
 
                         </div>
-                      
+
                         <div class="col-md-4">
                             <label class="mb-3">موجودی اولیه</label>
 
@@ -101,6 +107,10 @@
                             <input id="txtMojodiProduct" type="text" class="form-control input-sm" />
 
                         </div>
+
+                    </div>
+                    <br />
+                    <div class="row">
                         <div class="col-md-4">
                             <label class="mb-3">عکس کالا</label>
 
@@ -109,9 +119,6 @@
                             <input id="FaileZamime" type="file" />
 
                         </div>
-                    </div>
-                    <br />
-                    <div class="row">
                         <div class="col-md-4">
                             <label class="mb-3">قیمت</label>
 
@@ -123,47 +130,52 @@
                             <select class="select2 form-control mb-3 custom-select" style="width: 100%; height:36px;" id="cmbVahed">
                             </select>
                         </div>
-
-                        <div class="col-md-4">
-                            <label class="mb-3">لینک آپارات</label>
-
-                            <div><span id="txtLinkAparat1" class="text-danger"></span></div>
-                            <input id="txtLinkAparat" type="text" class="form-control input-sm" />
-                        </div>
-
                     </div>
                     <br />
+
                     <div class="card-body">
                         <div class="row">
-                            <div class="col-md-12">
-                                <label class="mb-3">متن بلاگ</label>
-                                <div><span id="MatneBlog" class="text-danger"></span></div>
+                            <div class="col-md-4">
+                                <label class="mb-3">لینک آپارات</label>
 
-
-                                <textarea id="elm1" name="area"></textarea>
-
+                                <div><span id="txtLinkAparat1" class="text-danger"></span></div>
+                                <input id="txtLinkAparat" type="text" class="form-control input-sm" />
                             </div>
+
                         </div>
                     </div>
+                        <br />
+
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label class="mb-3">متن بلاگ</label>
+                                    <div><span id="MatneBlog" class="text-danger"></span></div>
 
 
+                                    <textarea id="elm1" name="area"></textarea>
 
-                    <div class="card-body">
-                        <div class="row text-center">
-                            <div class="col-md-4"></div>
-                            <div class="col-md-4">
-                                <button type="button" id="btnSabt" class="btn btn-success"><i class="fa fa-check"></i>&nbsp; ثبت</button>
-                                <button type="button" class="btn btn-warning" id="btnEnseraf"><i class="fa fa-remove"></i>&nbsp; انصراف</button>
-                                <hr>
-
+                                </div>
                             </div>
-                            <div class="col-md-4"></div>
                         </div>
+
+
+                        <div class="card-body">
+                            <div class="row text-center">
+                                <div class="col-md-4"></div>
+                                <div class="col-md-4">
+                                    <button type="button" id="btnSabt" class="btn btn-success"><i class="fa fa-check"></i>&nbsp; ثبت</button>
+                                    <button type="button" class="btn btn-warning" id="btnEnseraf"><i class="fa fa-remove"></i>&nbsp; انصراف</button>
+                                    <hr>
+
+                                </div>
+                                <div class="col-md-4"></div>
+                            </div>
+                        </div>
+
                     </div>
 
                 </div>
-
-            </div>
 
         </div>
 

@@ -30,6 +30,36 @@ function Bind_cmbVahedKala() {
 
 
 };
+function Bind_CmbSeller() {
+
+    var Html_Dg = ''
+    $.ajax({
+        type: "Get",
+        async: false,
+        url: "/api/Seller/GetSellerList",
+        data: "",
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        success: function (result) {
+            var a = result;;
+            Html_Dg += ' <option class="lbl" value="-1">انتخاب کنید</option>'
+            jQuery.each(a, function (i, item) {
+                Html_Dg += ' <option class="lbl" value="' + item.id + '">' + item.name + '</option>'
+            });
+            Html_Dg += ' </select>';
+            jQuery('#CmbSeller').html(Html_Dg);
+        },
+        failure: function (result) {
+
+        },
+        complete: function () {
+            jQuery('#CmbSeller').selectpicker('refresh');
+
+        }
+    });
+
+
+};
 function Bind_cmbColor() {
 
     var Html_Dg = ''
@@ -466,7 +496,7 @@ $(document).ready(() => {
     Bind_cmbVahedKala();
     Bind_cmbColor();
     GetAllProduct();
-
+    Bind_CmbSeller();
     $(document.body).on('click', '#btnJadid', () => {
         Id = 0;
         $('#txtOnvaneProduct').val('');
