@@ -60,7 +60,7 @@ namespace OnlineShop.Controllers.ApiControllers
                     orderpeymnt.FinalStatusId = 100;
                     orderpeymnt.RefNum = result.ref_id.ToString();
                     orderpeymnt.TransactionDate = timeTick;
-                    orderpeymnt.card_pan = result.card_pan;
+                    orderpeymnt.CardPan = result.card_pan;
                     _repository.CustomerOrderPayment.Update(orderpeymnt);
                     _repository.Save();
                     SendSMS sendSMS = new SendSMS();
