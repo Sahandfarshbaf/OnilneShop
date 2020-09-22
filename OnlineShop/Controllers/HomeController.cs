@@ -23,6 +23,10 @@ namespace OnlineShop.Controllers
         {
             return View();
         }
+            public IActionResult productwer()
+        {
+            return View();
+        }
         public IActionResult category()
         {
             return View();
