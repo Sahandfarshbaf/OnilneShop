@@ -151,7 +151,7 @@ function Payment() {
     jQuery.ajax({
         type: "Put",
         url: `/api/CustomerOrder/FinalOrderInsert?customerOrderId=${Id}&postTypeId=${$("input[name=postRadio]:checked").attr('posttypeid')}
-                                                                    &paymentTypeId=${$("input[name=postRadio]:checked").attr('posttypeid')}
+                                                                    &paymentTypeId=${$("input[name=paymentRadio]:checked").attr('PaymentTypeId')}
                                                                     &customerDescription=${$("#confirm_comment").val()}
                                                                     &offerCode=${$('#input-coupon').val()}`,
         data: "",

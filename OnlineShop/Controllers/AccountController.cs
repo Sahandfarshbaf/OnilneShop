@@ -55,8 +55,9 @@ namespace OnlineShop.Controllers
             Customer customer = new Customer();
             customer.Cdate = DateTime.Now.Ticks;
             customer.CuserId = user.Id;
-            //customer.Mobile = user.PhoneNumber;
+            customer.Mobile =long.Parse(user.PhoneNumber.Substring(1,10));
             customer.Name = user.FirstName;
+            customer.Fname = user.LastName;
             customer.Email = user.NormalizedEmail;
             customer.UserId = user.Id;
             _repository.Customer.Create(customer);

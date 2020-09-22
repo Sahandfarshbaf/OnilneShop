@@ -54,8 +54,17 @@ namespace OnlineShop.Tools.ZarinPal
 
             IRestResponse response = client.Execute(request);
             var data = ((Newtonsoft.Json.Linq.JContainer)JObject.Parse(response.Content).First).First.ToString();
-            var result = JsonSerializer.Deserialize<ZarinPalVerifyResponse>(data);
-            return result;
+            var error = ((Newtonsoft.Json.Linq.JContainer)JObject.Parse(response.Content).First).Next.First.ToString();
+            if (data == "[]")
+            {
+                var result = JsonSerializer.Deserialize<ZarinPalVerifyResponse>(error);
+                return result;
+            }
+            else
+            {
+                var result = JsonSerializer.Deserialize<ZarinPalVerifyResponse>(data);
+                return result;
+            }
 
         }
 

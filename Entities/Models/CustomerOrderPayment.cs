@@ -16,6 +16,7 @@ namespace Entities.Models
         public long? TerminalNo { get; set; }
         public string RefNum { get; set; }
         public string TraceNo { get; set; }
+        public string card_pan { get; set; }
         public long? FinalStatusId { get; set; }
         public string CuserId { get; set; }
         public long? Cdate { get; set; }
