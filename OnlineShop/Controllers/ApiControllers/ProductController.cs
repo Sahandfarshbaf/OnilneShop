@@ -48,7 +48,13 @@ namespace OnlineShop.Controllers.ApiControllers
             if (uploadFileStatus.Status == 200)
             {
                 _product.CoverImageUrl = uploadFileStatus.Path;
-                _product.SellerId = _repository.Seller.FindByCondition(c => c.UserId == userid).FirstOrDefault().Id;
+
+                userid = User.Claims.Where(c => c.Type == ClaimTypes.NameIdentifier).Select(x => x.Value).SingleOrDefault();
+                if (_product.SellerId == null || _product.SellerId == 0)
+                {
+                    _product.SellerId = _repository.Seller.FindByCondition(c => c.UserId == userid).FirstOrDefault().Id;
+
+                }
                 _product.CuserId = userid;
                 _product.Cdate = timeTick;
                 _repository.Product.Create(_product);
@@ -82,7 +88,7 @@ namespace OnlineShop.Controllers.ApiControllers
         public IActionResult EditProduct(long productId)
         {
 
-            
+
             Product _product = JsonSerializer.Deserialize<Product>(HttpContext.Request.Form["Product"]);
             var product = _repository.Product.FindByCondition(c => c.Id.Equals(productId)).FirstOrDefault();
             if (product == null)
