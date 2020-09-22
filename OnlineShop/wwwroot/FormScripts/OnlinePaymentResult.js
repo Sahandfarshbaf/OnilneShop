@@ -28,11 +28,11 @@ function VerifyPayment() {
         data: "",
         async: false,
         contentType: "application/json; charset=utf-8",
-        dataType: "json",
+        dataType: "text",
         success: function (response) {
 
            
-
+            alert(response);
 
         },
         error: function (response) {
@@ -54,7 +54,8 @@ $(document).ready(() => {
 
 
      Authority = getUrlParameter('Authority');
-     Status = getUrlParameter('Status');
+    Status = getUrlParameter('Status');
+    VerifyPayment();
    
 
 });

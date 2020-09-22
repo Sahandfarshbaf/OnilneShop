@@ -7,6 +7,7 @@ namespace OnlineShop.Tools.Zarinpal
 {
     public class ZarinPalVerifyResponse
     {
+        public int code { set; get; }
         public int merchacodent_id { set; get; }
         public int ref_id { set; get; }
         public string card_pan { set; get; }
