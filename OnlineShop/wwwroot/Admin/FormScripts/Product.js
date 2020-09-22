@@ -44,7 +44,7 @@ function Bind_CmbSeller() {
             var a = result;;
             Html_Dg += ' <option class="lbl" value="-1">انتخاب کنید</option>'
             jQuery.each(a, function (i, item) {
-                Html_Dg += ' <option class="lbl" value="' + item.id + '">' + item.name + '</option>'
+                Html_Dg += ' <option class="lbl" value="' + item.id + '">' + item.sellername + '</option>'
             });
             Html_Dg += ' </select>';
             jQuery('#CmbSeller').html(Html_Dg);
@@ -176,7 +176,7 @@ function GetAllImage() {
 function AddProduct() {
     let Product = {
         Id: 0,
-        SellerId: 1,
+        SellerId: parseInt($('#CmbSeller').val()),
         CatProductId: parseInt($('#CmbCategory').val()),
         ProductMeterId: parseInt($('#cmbVahed').val()),
         Name: $('#txtOnvaneProduct').val(),
@@ -312,12 +312,12 @@ function GetProductById() {
     });
 }
 function UpdateProduct() {
-    alert("jj");
+   
 
     let Product = {       
         Id: Id,
         SellerId: null,
-        CatProductId: 1,
+        CatProductId: parseInt($('#CmbSeller').val()),
         ProductMeterId: parseInt($('#cmbVahed').val()),
         Name: $('#txtOnvaneProduct').val(),
         EnName: $('#txtEnProduct').val(),
