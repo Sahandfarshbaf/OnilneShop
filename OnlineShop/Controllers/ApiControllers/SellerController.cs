@@ -18,12 +18,12 @@ namespace OnlineShop.Controllers.ApiControllers
         private IMapper _mapper;
         private long timeTick;
 
-        public SellerController(ILoggerManager logger, IRepositoryWrapper repository, IMapper mapper, long timeTick)
+        public SellerController(ILoggerManager logger, IRepositoryWrapper repository, IMapper mapper)
         {
             _logger = logger;
             _repository = repository;
             _mapper = mapper;
-            this.timeTick = timeTick;
+            timeTick = DateTime.Now.Ticks;
         }
 
         [HttpGet]
