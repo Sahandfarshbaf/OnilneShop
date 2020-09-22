@@ -41,10 +41,26 @@ namespace OnlineShop.Controllers.ApiControllers
                 return BadRequest("Internal server error");
             }
         }
+
+        [HttpGet]
+        [Route("Seller/GetSellerList")]
+        public IActionResult GetSellerList()
+        {
+            try
+            {
+                var result = _repository.Seller.FindByCondition(c => string.IsNullOrEmpty(c.DuserId) && string.IsNullOrEmpty(c.DaUserId)).Select(c => new { c.Id, sellername = (c.Name + c.Fname) }).ToList();
+                return Ok(result);
+            }
+            catch (Exception e)
+            {
+                _logger.LogError($"Something went wrong inside GetSellerList: {e.Message}");
+                return BadRequest("Internal server error");
+            }
+        }
     }
 
 
 
 
-  
+
 }
