@@ -67,29 +67,29 @@ function category() {
             jQuery.each(response, function (i, item) {
              
 
-                cateHtml += `<div class="product-layout product-list col-xs-12">
-                        <div class="product-thumb">
-                            <div class="image"><a href="product.html"><img src="~/image/product/macbook_pro_1-200x200.jpg" alt=" کتاب آموزش باغبانی " title=" کتاب آموزش باغبانی " class="img-responsive" /></a></div>
-                            <div>
-                                <div class="caption">
-                                    <h4><a href="product.html"> کتاب آموزش باغبانی </a></h4>
-                                    <p class="description">
-                                        آخرین دستاورد های روز دنیا
+                //cateHtml += `<div class="product-layout product-list col-xs-12">
+                //        <div class="product-thumb">
+                //            <div class="image"><a href="product.html"><img src="~/image/product/macbook_pro_1-200x200.jpg" alt=" کتاب آموزش باغبانی " title=" کتاب آموزش باغبانی " class="img-responsive" /></a></div>
+                //            <div>
+                //                <div class="caption">
+                //                    <h4><a href="product.html"> کتاب آموزش باغبانی </a></h4>
+                //                    <p class="description">
+                //                        آخرین دستاورد های روز دنیا
 
-                                        شامل تمام اطلاعاتی که به آن نیاز خواهید داشت ...
-                                    </p>
-                                    <p class="price"> <span class="price-new">98000 تومان</span> <span class="price-old">120000 تومان</span> <span class="saving">-26%</span> <span class="price-tax">بدون مالیات : 90000 تومان</span> </p>
-                                </div>
-                                <div class="button-group">
-                                    <button class="btn-primary" type="button" onClick=""><span>افزودن به سبد</span></button>
-                                    <div class="add-to-links">
-                                        <button type="button" data-toggle="tooltip" title="افزودن به علاقه مندی ها" onClick=""><i class="fa fa-heart"></i> <span>افزودن به علاقه مندی ها</span></button>
-                                        <button type="button" data-toggle="tooltip" title="مقایسه این محصول" onClick=""><i class="fa fa-exchange"></i> <span>مقایسه این محصول</span></button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>`;
+                //                        شامل تمام اطلاعاتی که به آن نیاز خواهید داشت ...
+                //                    </p>
+                //                    <p class="price"> <span class="price-new">98000 تومان</span> <span class="price-old">120000 تومان</span> <span class="saving">-26%</span> <span class="price-tax">بدون مالیات : 90000 تومان</span> </p>
+                //                </div>
+                //                <div class="button-group">
+                //                    <button class="btn-primary" type="button" onClick=""><span>افزودن به سبد</span></button>
+                //                    <div class="add-to-links">
+                //                        <button type="button" data-toggle="tooltip" title="افزودن به علاقه مندی ها" onClick=""><i class="fa fa-heart"></i> <span>افزودن به علاقه مندی ها</span></button>
+                //                        <button type="button" data-toggle="tooltip" title="مقایسه این محصول" onClick=""><i class="fa fa-exchange"></i> <span>مقایسه این محصول</span></button>
+                //                    </div>
+                //                </div>
+                //            </div>
+                //        </div>
+                //    </div>`;
 
                  
             });

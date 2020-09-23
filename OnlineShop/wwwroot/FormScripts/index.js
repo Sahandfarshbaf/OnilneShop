@@ -26,7 +26,7 @@ function GetProductVige() {
                                 </a>
                             </div>
                             <div class="caption">
-                                 <h4><a href="Home\Product?` + item.id + `">` + item.name + `</a></h4>
+                                 <h4><a href="Home/Product/` + item.id + `">` + item.name + `</a></h4>
                                  <p class="price">
                                     <span class="price-new">` + item.price + ` تومان</span> 
                                     
@@ -67,9 +67,9 @@ function GetProductTopSel() {
                 ss += `<div class="product-thumb clearfix">
                         <div class="image"><a href="Home/Product/` + item.id + `"><img src="` + item.coverImageUrl + `" alt="` + item.name + `" title="` + item.name + `" class="img-responsive" /></a></div>
                         <div class="caption">
-                            <h4><a href="Home\Product">` + item.name + ` </a></h4>
+                            <h4><a href="Home/Product/` + item.id + `">` + item.name + ` </a></h4>
                             <p class="price">` + item.price + ` تومان</p>
-                            <div class="rating"> <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span> </div>
+                            
                         </div>
                         <div class="button-group">
                             <button class="btn-primary cartt" type="button"  productid="` + item.id + `" ><span>افزودن به سبد</span></button>
@@ -117,7 +117,7 @@ function GetProductTopNew() {
                 newpro += `<div class="product-thumb clearfix">
                         <div class="image"><a href="Home/Product/` + item.id + `"><img src="` + item.coverImageUrl + `" alt="` + item.name + `" title="` + item.name + `" class="img-responsive" /></a></div>
                         <div class="caption">
-                            <h4><a href="Home\Product">` + item.name + ` </a></h4>
+                            <h4><a href="Home/Product/` + item.id + `">` + item.name + ` </a></h4>
                             <p class="price">` + item.price + ` تومان</p>
                         </div>
                         <div class="button-group">
@@ -166,9 +166,9 @@ function GetProductTopBazdid() {
                 Bazdid += `            <div class="product-thumb">
                 <div class="image"><a href="Home/Product/` + item.id + `"><img src="` + item.coverImageUrl + `" alt="` + item.name + `" title="` + item.name + `" class="img-responsive" /></a></div>
                 <div class="caption">
-                    <h4><a href="Home\Product">` + item.name + ` </a></h4>
+                    <h4><a href="Home/Product/` + item.id + `">` + item.name + ` </a></h4>
                     <p class="price">` + item.price + `  تومان </p>
-                    <div class="rating"> <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span> </div>
+                   
                 </div>
                 <div class="button-group">
                      <button class="btn-primary cartt" type="button"  productid="` + item.id + `" ><span>افزودن به سبد</span></button>
@@ -219,7 +219,7 @@ function GetProductTopTaze() {
                 Bazdid += `                      <div class="product-thumb clearfix">
                 <div class="image"><a href="Home/Product/` + item.id + `"><img src="` + item.coverImageUrl + `" alt="` + item.name + `" title="` + item.name + `" class="img-responsive" /></a></div>
                 <div class="caption">
-                    <h4><a href="Home\Product">` + item.name + `</a></h4>
+                    <h4><a href="Home/Product/` + item.id + `">` + item.name + `</a></h4>
                     <p class="price"> ` + item.price + ` تومان </p>
                       </div>
             </div>`;
@@ -342,9 +342,9 @@ function Getsubcatid(catidd) {
                                         <a href="Home/Product/` + item.id + `"><img src="` + item.coverImageUrl + `" alt="` + item.name + `" title="` + item.name + `" class="img-responsive" /></a>
                                     </div>
                                     <div class="caption">
-                                        <h4><a href="Home\Product">` + item.name + `</a></h4>
+                                        <h4><a href="Home/Product/` + item.id + `">` + item.name + `</a></h4>
                                         <p class="price"> <span class="price-new">` + item.price + ` تومان</span> <span class="price-old">` + item.price + ` تومان</span> <span class="saving">` + item.offerValue + `%</span> </p>
-                                        <div class="rating"> <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span> </div>
+                                        
                                     </div>
                                     <div class="button-group">
                                         <button class="btn-primary  cartt" type="button" productid="` + item.id + `" ><span>افزودن به سبد</span></button>

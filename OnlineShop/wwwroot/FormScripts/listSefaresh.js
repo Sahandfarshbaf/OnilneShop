@@ -11,6 +11,7 @@ function GetCustomerOrderList() {
                                     <td class="text-left">تاریخ سفارش</td>
                                     <td class="text-right">مبلغ سفارش</td>
                                     <td class="text-right">وضعیت سفارش</td>
+                                    <td class="text-right">تعداد محصول</td>
                                     <td class="text-right">جزئیات</td>
                                 </tr>
                             </thead>
@@ -18,7 +19,7 @@ function GetCustomerOrderList() {
 
     jQuery.ajax({
         type: "Get",
-        url: "/api/CustomerOrder/GetCustomerOrderListByCustomerId",
+        url: "/api/CustomerOrder/GetCustomerOrderShortListByCustomerId",
         data: "",
         async: false,
         contentType: "application/json; charset=utf-8",
@@ -28,18 +29,15 @@ function GetCustomerOrderList() {
             console.log(response);
             jQuery.each(response, function (i, item) {
                 
-                Html += `
-                                <tr>
-                                    <td class="text-center">` + item.orderPrice + `</td>
-                                    <td class="text-left"><a href="product.html">` + item.orderPrice + `</a></td>
-                                    <td class="text-left">محصول 20</td>
-                                    <td class="text-right">موجود</td>
-                                    <td class="text-right"><div class="price"> 400000 تومان </div></td>
-                                    <td class="text-right">
-                                        <button class="btn btn-primary" title="" data-toggle="tooltip" onClick="cart.add('48');" type="button" data-original-title="افزودن به سبد"><i class="fa fa-shopping-cart"></i></button>
-                                        <a class="btn btn-danger" title="" data-toggle="tooltip" href=" " data-original-title="حذف"><i class="fa fa-times"></i></a>
-                                    </td>
-                                </tr>`;
+                Html += `  < tr >
+                    <td>${i + 1}</td>
+                    <td>`+ item.id + `</td>
+                    <td>`+ item.orderDate + `</td>
+                    <td><div class="price">${item.orderPrice}</div></td>
+                    <td>${item.paymentStatus}</td>
+                    <td>${item.productCount}</td>
+                    <td class="tdTextCenter"><span class="vaz" OrderID=${item.id} ><i class="fa fa-edit text text-info"></i></span></td>
+                    </tr>`;
             });
             Html += `</tbody></table>`;
  

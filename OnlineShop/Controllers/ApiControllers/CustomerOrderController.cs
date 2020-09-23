@@ -149,7 +149,7 @@ namespace OnlineShop.Controllers.ApiControllers
 
 
 
-                if (custumerOrder.PaymentTypeId == 2)
+                if (custumerOrder.PaymentTypeId == 1)
                 {
 
                     ZarinPallRequest request = new ZarinPallRequest();

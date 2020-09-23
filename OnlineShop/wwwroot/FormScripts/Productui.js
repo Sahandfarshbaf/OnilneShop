@@ -18,12 +18,12 @@ function GetProductVige() {
             jQuery.each(response, function (i, item) {
                 Html += `<div class="product-thumb clearfix vighe">
                             <div class="image">
-                                <a href="/` + item.id + `">
+                                <a href="Home\Product` + item.id + `">
                                        <img src="` + item.coverImageUrl + `" alt="` + item.name + `" title="` + item.name + `" class="img-responsive" />
                                 </a>
                             </div>
                             <div class="caption">
-                                 <h4><a href="Home\Product?` + item.id + `">` + item.name + `</a></h4>
+                                 <h4><a href="Home\Product` + item.id + `">` + item.name + `</a></h4>
                                  <p class="price">
                                     <span class="price-new">` + item.price + ` تومان</span> 
                                    
@@ -180,10 +180,9 @@ function GetProductTopSel() {
                 ss += `<div class="product-thumb clearfix">
                         <div class="image"><a href="Home/Product/` + item.id + `"><img src="` + item.coverImageUrl + `" alt="` + item.name + `" title="` + item.name + `" class="img-responsive" /></a></div>
                         <div class="caption">
-                            <h4><a href="Home\Product">` + item.name + ` </a></h4>
+                            <h4><a href="Home\Product` + item.id + `">` + item.name + ` </a></h4>
                             <p class="price">` + item.price + ` تومان</p>
-                            <div class="rating"> <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span> </div>
-                        </div>
+                                                    </div>
                         <div class="button-group">
                             <button class="btn-primary cartt" type="button"  productid="` + item.id + `" ><span>افزودن به سبد</span></button>
                             <div class="add-to-links">
