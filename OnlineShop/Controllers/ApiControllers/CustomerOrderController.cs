@@ -104,7 +104,7 @@ namespace OnlineShop.Controllers.ApiControllers
                     c.ProductOfferCode = c.Product.ProductOffer
                         .Where(x => x.FromDate <= timeTick && timeTick <= x.ToDate).Select(x => x.OfferCode)
                         .FirstOrDefault();
-                    c.ProductOfferPrice = (long?)(c.ProductPrice - ((c.ProductOfferValue / 100) * c.ProductPrice));
+                    c.ProductOfferPrice = (long?)(c.ProductOfferValue / 100) * c.ProductPrice;
                     c.Weight = c.Product.Weight;
                     c.ProductCode = c.Product.Coding;
                 });
@@ -237,7 +237,7 @@ namespace OnlineShop.Controllers.ApiControllers
                 var customerId = _repository.Customer.FindByCondition(s => s.UserId.Equals(userid)).Select(c => c.Id).FirstOrDefault();
 
                 var productList = _repository.CustomerOrder.FindByCondition(c => c.CustomerId == customerId)
-                    .Include(c => c.CustomerOrderProduct).Include(c=>c.CustomerOrderPayment).ToList();
+                    .Include(c => c.CustomerOrderProduct).Include(c => c.CustomerOrderPayment).ToList();
 
                 var result = _mapper.Map<List<CustomerOrderListDto>>(productList);
                 return Ok(result);
