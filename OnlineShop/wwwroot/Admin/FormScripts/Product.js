@@ -560,7 +560,7 @@ $(document).ready(() => {
     $(document.body).on('click', '.Edit', function () {
 
         Id = parseInt($(this).attr('ProductID'));
-        alert("1");
+       
         $('#InsertModal').show();
         $('#PnlList').hide();
         GetProductById();

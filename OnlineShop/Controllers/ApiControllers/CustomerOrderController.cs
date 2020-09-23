@@ -184,7 +184,7 @@ namespace OnlineShop.Controllers.ApiControllers
 
         [Authorize("Customer")]
         [HttpGet]
-        [Route("CustomerOrder/GetCustomerOrderById")]
+        [Route("CustomerOrder/GetCustomerOrderById")]  
         public IActionResult GetCustomerOrderById(long customerOrderId)
         {
             try
