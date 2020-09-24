@@ -45,6 +45,8 @@ namespace OnlineShop.Controllers.ApiControllers
 
             FileManeger.UploadFileStatus uploadFileStatus = FileManeger.FileUploader(coverImageUrl, 1, "ProductImages");
 
+            Seller seller = new Seller();
+
             if (uploadFileStatus.Status == 200)
             {
                 _product.CoverImageUrl = uploadFileStatus.Path;
@@ -52,9 +54,22 @@ namespace OnlineShop.Controllers.ApiControllers
                 userid = User.Claims.Where(c => c.Type == ClaimTypes.NameIdentifier).Select(x => x.Value).SingleOrDefault();
                 if (_product.SellerId == null || _product.SellerId == 0)
                 {
-                    _product.SellerId = _repository.Seller.FindByCondition(c => c.UserId == userid).FirstOrDefault().Id;
-
+                    seller = _repository.Seller.FindByCondition(c => c.UserId == userid).FirstOrDefault();
                 }
+                else
+                {
+                    seller = _repository.Seller.FindByCondition(c => c.Id == _product.SellerId).FirstOrDefault();
+                }
+
+                _product.SellerId = seller.Id;
+
+                var catProduct = _repository.CatProduct.FindByCondition(c => c.Id == _product.CatProductId)
+                    .FirstOrDefault();
+                var counter = (_repository.Product
+                                  .FindByCondition(c => c.SellerId == seller.Id && c.CatProductId == catProduct.Id)
+                                  .Count() + 1).ToString();
+                counter = counter.PadLeft(3, '0');
+                _product.Coding = long.Parse(seller.SellerCode.ToString() + catProduct.Coding.ToString() + counter);
                 _product.CuserId = userid;
                 _product.Cdate = timeTick;
                 _repository.Product.Create(_product);
@@ -90,12 +105,48 @@ namespace OnlineShop.Controllers.ApiControllers
 
 
             Product _product = JsonSerializer.Deserialize<Product>(HttpContext.Request.Form["Product"]);
+            Seller seller = new Seller();
+            userid = User.Claims.Where(c => c.Type == ClaimTypes.NameIdentifier).Select(x => x.Value).SingleOrDefault();
+
             var product = _repository.Product.FindByCondition(c => c.Id.Equals(productId)).FirstOrDefault();
             if (product == null)
             {
                 _logger.LogError($"Product with id: {productId}, hasn't been found in db.");
                 return NotFound();
             }
+
+            if (_product.SellerId == null || _product.SellerId == 0)
+            {
+                seller = _repository.Seller.FindByCondition(c => c.UserId == userid).FirstOrDefault();
+            }
+            else
+            {
+                seller = _repository.Seller.FindByCondition(c => c.Id == _product.SellerId).FirstOrDefault();
+            }
+
+            if (product.SellerId != seller.Id || product.CatProductId != _product.CatProductId)
+            {
+                var catProduct = _repository.CatProduct.FindByCondition(c => c.Id == _product.CatProductId)
+                    .FirstOrDefault();
+                var counter = (_repository.Product
+                                   .FindByCondition(c => c.SellerId == seller.Id && c.CatProductId == catProduct.Id)
+                                   .Count() + 1).ToString();
+                counter = counter.PadLeft(3, '0');
+                product.Coding = long.Parse(seller.SellerCode.ToString() + catProduct.Coding.ToString() + counter);
+
+            }
+
+            product.Name = _product.Name;
+            product.EnName = _product.EnName;
+            product.CatProductId = _product.CatProductId;
+            product.Coding = _product.Coding;
+            product.Price = _product.Price;
+            product.FirstCount = _product.FirstCount;
+            product.ProductMeterId = _product.ProductMeterId;
+            product.Description = _product.Description;
+            product.SellerId = seller.Id;
+            product.MuserId = userid;
+            product.Mdate = timeTick;
 
             if (HttpContext.Request.Form.Files.Count > 0)
             {
@@ -105,15 +156,7 @@ namespace OnlineShop.Controllers.ApiControllers
                 if (uploadFileStatus.Status == 200)
                 {
 
-                    product.Name = _product.Name;
-                    product.EnName = _product.EnName;
-                    product.CatProductId = _product.CatProductId;
-                    product.Coding = _product.Coding;
-                    product.Price = _product.Price;
-                    product.FirstCount = _product.FirstCount;
-                    product.ProductMeterId = _product.ProductMeterId;
                     product.CoverImageUrl = uploadFileStatus.Path;
-                    product.Description = _product.Description;
                     _repository.Product.Update(product);
                     try
                     {
@@ -140,14 +183,6 @@ namespace OnlineShop.Controllers.ApiControllers
             else
             {
 
-                product.Name = _product.Name;
-                product.EnName = _product.EnName;
-                product.CatProductId = _product.CatProductId;
-                product.Coding = _product.Coding;
-                product.Price = _product.Price;
-                product.FirstCount = _product.FirstCount;
-                product.ProductMeterId = _product.ProductMeterId;
-                product.Description = _product.Description;
                 _repository.Product.Update(product);
                 try
                 {
