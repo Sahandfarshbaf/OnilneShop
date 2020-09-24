@@ -128,14 +128,14 @@ function GenerateProductCategory() {
 
             jQuery.each(MajaorList, function (i, item) {
 
-                html += ` <li><a href="/Home/category/${item.id}">${item.name}</a> <span class="down"></span>
+                html += ` <li><a href="/Home/Category/${item.id}">${item.name}</a> <span class="down"></span>
                             <ul>`;
 
                 let MinorList = response.filter(c => c.pid == item.id);
 
                 jQuery.each(MinorList, function (j, itemmm) {
 
-                    html += `<li><a href="/Home/category/${itemmm.id}">${itemmm.name}</a></li>`;
+                    html += `<li><a href="/Home/Category/${itemmm.id}">${itemmm.name}</a></li>`;
                 });
                 html += `     </ul>
                          </li>`;

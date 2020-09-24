@@ -52,7 +52,18 @@ namespace OnlineShop.Controllers.ApiControllers
                 _logger.LogError($"Something went wrong inside GetTopCatProductList  To database: {e.Message}");
                 return BadRequest("Internal server error");
             }
-           
+
+        }
+
+        [HttpGet]
+        [Route("CatProduct/GetCatProductListByParentId")]
+        public IActionResult GetCatProductListByParentId(long catId)
+        {
+            var catProduct = _repository.CatProduct.FindByCondition(c => c.Pid == catId)
+                .Include(c => c.InverseP)
+                .Include(c => c.Product).Select(c => new { c.Id, c.Name, c.Icon, ProductCount = c.Product.Count() }).ToList();
+            _logger.LogInfo($"Returned all CatProduct from database.");
+            return Ok(catProduct);
         }
     }
 }

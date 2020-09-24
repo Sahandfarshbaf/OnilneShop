@@ -27,7 +27,7 @@ namespace OnlineShop.Controllers
         {
             return View();
         }
-        public IActionResult category()
+        public IActionResult Category()
         {
             return View();
         }

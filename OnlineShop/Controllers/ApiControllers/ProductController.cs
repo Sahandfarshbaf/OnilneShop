@@ -414,6 +414,30 @@ namespace OnlineShop.Controllers.ApiControllers
 
         }
 
+        [HttpGet] //لیست محصولات بر اساس دسته بندی و زیرمجموعه
+        [Route("Product/GetProductByParentCatId")]
+        public IActionResult GetProductByParentCatId(long catId)
+        {
+
+            try
+            {
+                var productList = _repository.Product.GetProductListByParentCatId(catId)
+                    .ToList();
+
+                var result = _mapper.Map<List<ProductByOfferRate>>(productList);
+
+                _logger.LogInfo($" Product list ByCatId Return");
+                return Ok(result);
+            }
+            catch (Exception e)
+            {
+
+                _logger.LogError($"Something went wrong inside GetProductByCatId action: {e.Message}");
+                return BadRequest("Internal server error");
+            }
+
+        }
+
 
     }
 }

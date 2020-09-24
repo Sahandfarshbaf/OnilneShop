@@ -54,5 +54,15 @@ namespace Repository
                 .OrderByDescending(p => p.Id)
                 .ToList();
         }
+
+        public List<Product> GetProductListByParentCatId(long catId)
+        {
+            return FindByCondition(p => p.CatProduct.Id.Equals(catId) || p.CatProduct.Pid==catId)
+                .Include(p => p.CatProduct)
+                .Include(p => p.ProductOffer)
+                .Include(p => p.ProductCustomerRate)
+                .OrderByDescending(p => p.Id)
+                .ToList();
+        }
     }
 }
