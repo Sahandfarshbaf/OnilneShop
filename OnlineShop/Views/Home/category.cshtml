@@ -1,15 +1,15 @@
 ﻿
 @{
-    ViewData["Title"] = "category";
+    ViewData["Title"] = "Category";
     Layout = "~/Views/Shared/_Shop.cshtml";
 }
 <div id="container">
     <div class="container">
         <!-- Breadcrumb Start-->
-        <ul class="breadcrumb">
-            <li><a href="index.html"><i class="fa fa-home"></i></a></li>
-            <li><a href="category.html">الکترونیکی</a></li>
-        </ul>
+        @*<ul class="breadcrumb">
+            <li><a href="/Home/index"><i class="fa fa-home"></i></a></li>
+            <li><a href="#" id="navname"></a></li>
+        </ul>*@
         <!-- Breadcrumb End-->
         <div class="row">
             <!--Left Part Start -->
@@ -27,61 +27,18 @@
 
                 </div>
 
-                @*<div class="banner owl-carousel">
-                        <div class="item"> <a href="#"><img src="~/image/banner/small-banner1-265x350.jpg" alt="small banner" class="img-responsive" /></a> </div>
-                        <div class="item"> <a href="#"><img src="~/image/banner/small-banner-265x350.jpg" alt="small banner1" class="img-responsive" /></a> </div>
-                    </div>*@
             </aside>
             <!--Left Part End -->
             <!--Middle Part Start-->
             <div id="content" class="col-sm-9">
-                <h1 class="title" id="titleLable">دسته بندی</h1>
+                <h1 class="title" id="titleLable">لیست محصولات</h1>
                 <div id="ImproveSearch">
                     <h3 class="subtitle">بهبود جستجو</h3>
                     <div class="category-list-thumb row">
                        
                     </div>
                 </div>
-                <div class="product-filter">
-                    <div class="row">
-                        @*<div class="col-md-4 col-sm-5">
-                                <div class="btn-group">
-                                    <button type="button" id="list-view" class="btn btn-default" data-toggle="tooltip" title="List"><i class="fa fa-th-list"></i></button>
-                                    <button type="button" id="grid-view" class="btn btn-default" data-toggle="tooltip" title="Grid"><i class="fa fa-th"></i></button>
-                                </div>
-                                <a href="compare.html" id="compare-total">محصولات مقایسه (0)</a>
-                            </div>
-                            <div class="col-sm-2 text-right">
-                                <label class="control-label" for="input-sort">مرتب سازی :</label>
-                            </div>
-                            <div class="col-md-3 col-sm-2 text-right">
-                                <select id="input-sort" class="form-control col-sm-3">
-                                    <option value="" selected="selected">پیشفرض</option>
-                                    <option value="">نام (الف - ی)</option>
-                                    <option value="">نام (ی - الف)</option>
-                                    <option value="">قیمت (کم به زیاد)</option>
-                                    <option value="">قیمت (زیاد به کم)</option>
-                                    <option value="">امتیاز (بیشترین)</option>
-                                    <option value="">امتیاز (کمترین)</option>
-                                    <option value="">مدل (A - Z)</option>
-                                    <option value="">مدل (Z - A)</option>
-                                </select>
-                            </div>
-                            <div class="col-sm-1 text-right">
-                                <label class="control-label" for="input-limit">نمایش :</label>
-                            </div>
-                            <div class="col-sm-2 text-right">
-                                <select id="input-limit" class="form-control">
-                                    <option value="" selected="selected">20</option>
-                                    <option value="">25</option>
-                                    <option value="">50</option>
-                                    <option value="">75</option>
-                                    <option value="">100</option>
-                                </select>
-                            </div>*@
-                    </div>
-                </div>
-                <br />
+
                 <div class="product-filter">
                     <div class="row">
                         <div class="col-md-4 col-sm-5">
@@ -96,15 +53,10 @@
                         </div>
                         <div class="col-md-3 col-sm-2 text-right">
                             <select id="input-sort" class="form-control ">
-                                <option value="" selected="selected">پیشفرض</option>
-                                <option value="">نام (الف - ی)</option>
-                                <option value="">نام (ی - الف)</option>
-                                <option value="">قیمت (کم به زیاد)</option>
-                                <option value="">قیمت (زیاد به کم)</option>
-                                <option value="">امتیاز (بیشترین)</option>
-                                <option value="">امتیاز (کمترین)</option>
-                                <option value="">مدل (A - Z)</option>
-                                <option value="">مدل (Z - A)</option>
+                                <option value="1">نام (الف - ی)</option>
+                                <option value="2">نام (ی - الف)</option>
+                                <option value="3">قیمت (کم به زیاد)</option>
+                                <option value="4">قیمت (زیاد به کم)</option>
                             </select>
                         </div>
                         <div class="col-sm-1 text-right">
@@ -112,11 +64,10 @@
                         </div>
                         <div class="col-sm-2 text-right">
                             <select id="input-limit" class="form-control">
-                                <option value="" selected="selected">20</option>
-                                <option value="">25</option>
-                                <option value="">50</option>
-                                <option value="">75</option>
-                                <option value="">100</option>
+                                <option value="25">25</option>
+                                <option value="50">50</option>
+                                <option value="75">75</option>
+                                <option value="100">100</option>
                             </select>
                         </div>
                     </div>
@@ -128,13 +79,10 @@
                 <div class="row">
                     <div class="col-sm-6 text-left">
                         <ul class="pagination">
-                            <li class="active"><span>1</span></li>
-                            <li><a href="#">2</a></li>
-                            <li><a href="#">&gt;</a></li>
-                            <li><a href="#">&gt;|</a></li>
+                            
                         </ul>
                     </div>
-                    <div class="col-sm-6 text-right">نمایش 1 تا 12 از 15 (مجموع 2 صفحه)</div>
+                    <div class="col-sm-6 text-right" id="recordindicator"></div>
                 </div>
             </div>
             <!--Middle Part End -->
