@@ -25,8 +25,8 @@ function BindGrid() {
                                </span>
                             </div>
                         </td>
-                        <td class="text-right">${item.Price} تومان</td>
-                        <td class="text-right">${item.Price * item.Count} تومان</td>
+                        <td class="text-right">${Currency(item.Price)} تومان</td>
+                        <td class="text-right">${Currency((item.Price * item.Count))} تومان</td>
                     </tr>`;
 
         totalPrice += (item.Count * item.Price);
@@ -40,10 +40,10 @@ function BindGrid() {
     let topay = (totalPriceAfterOffer + totaltax);
 
 
-    $('#TotalPriceGrid').html(`${totalPrice} تومان`);
-    $('#TotalOfferGrid').html(`${totalOffer} تومان`);
-    $('#TotalTaxGrid').html(`${totaltax} تومان`);
-    $('#ToPayGrid').html(`${topay} تومان`);
+    $('#TotalPriceGrid').html(`${Currency(totalPrice)} تومان`);
+    $('#TotalOfferGrid').html(`${Currency(totalOffer)} تومان`);
+    $('#TotalTaxGrid').html(`${Currency(totaltax)} تومان`);
+    $('#ToPayGrid').html(`${Currency(topay)} تومان`);
 
     $('#CartGridBody').html(html);
 

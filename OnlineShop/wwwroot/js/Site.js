@@ -27,13 +27,13 @@ function RenderCart() {
                             <td class="text-center"><a href="product.html"><img class="img-thumbnail" title="${item.Name}" alt="${item.Name}" src="${item.CoverImageURL}" style="width:75px;height:75px;"></a></td>
                             <td class="text-left"><a href="product.html">${item.Name}</a></td>
                             <td class="text-right">${item.Count} عدد</td>
-                            <td class="text-right">${item.Price} تومان</td>
+                            <td class="text-right">${Currency(item.Price)} تومان</td>
                             <td class="text-center"><button class="btn btn-danger btn-xs remove RemoveCartItem" productid="${item.ProductId}" title="حذف"  type="button"><i class="fa fa-times"></i></button></td>
                         </tr>`;
         totalPrice += (item.Count * item.Price);
         totalCount += item.Count;
         totalPriceAfterOffer += (item.Count * item.PriceAfterOffer);
-       
+
 
     });
 
@@ -43,11 +43,11 @@ function RenderCart() {
     let topay = (totalPriceAfterOffer + totaltax);
 
 
-    $('#cart-total').html(`${totalCount} آیتم - ${topay} تومان`);
-    $('#TotalPrice').html(`${totalPrice} تومان`);
-    $('#TotalOffer').html(`${totalOffer} تومان`);
-    $('#TotalTax').html(`${totaltax} تومان`);
-    $('#ToPay').html(`${topay} تومان`);
+    $('#cart-total').html(`${totalCount} آیتم - ${Currency(topay)} تومان`);
+    $('#TotalPrice').html(`${Currency(totalPrice)} تومان`);
+    $('#TotalOffer').html(`${Currency(totalOffer)} تومان`);
+    $('#TotalTax').html(`${Currency(totaltax)} تومان`);
+    $('#ToPay').html(`${Currency(topay)} تومان`);
 }
 
 function AddToCart() {
@@ -73,7 +73,7 @@ function AddToCart() {
                 Count: 1,
                 CoverImageURL: response.coverImageUrl
             }
-           
+
             var isExist = CartList.filter(x => x.ProductId == response.id);
 
             if (isExist.length == 0) {
@@ -160,6 +160,10 @@ function GenerateProductCategory() {
     });
 }
 
+function Currency(money) {
+
+  return  money.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+}
 
 
 $(document).ready(() => {

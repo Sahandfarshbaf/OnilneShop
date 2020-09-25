@@ -28,7 +28,7 @@ function GetPostTypeList() {
                 html += `<div class="radio">
                              <label>
                                <input type="radio" class="postRadio" id="postRadio${item.id}"  PostTypeId=${item.id}  price="${item.price}" name="postRadio">
-                                                ${item.title} - ${item.price} تومان
+                                                ${item.title} - ${Currency(item.price)} تومان
                               </label>
                           </div>`;
 
@@ -116,8 +116,8 @@ function BindGrid() {
                                
                             </div>
                         </td>
-                        <td class="text-right">${item.productPrice} تومان</td>
-                        <td class="text-right">${item.productPrice * item.orderCount} تومان</td>
+                        <td class="text-right">${Currency(item.productPrice)} تومان</td>
+                        <td class="text-right">${Currency(item.productPrice * item.orderCount)} تومان</td>
                     </tr>`;
 
                 totalPrice += (item.orderCount * item.productPrice);
@@ -218,12 +218,12 @@ function Calculator() {
 
 
 
-    $('#TotalPriceGrid').html(`${totalPrice} تومان`);
-    $('#TotalOfferGrid').html(`${totalOffer} تومان`);
-    $('#CopunOfferGrid').html(`${OfferCodePrice} تومان`);
-    $('#TotalTaxGrid').html(`${totaltax} تومان`);
-    $('#ToPayGrid').html(`${topay} تومان`);
-    $('#postprice').html(`${postprice} تومان`);
+    $('#TotalPriceGrid').html(`${Currency(totalPrice)} تومان`);
+    $('#TotalOfferGrid').html(`${Currency(totalOffer)} تومان`);
+    $('#CopunOfferGrid').html(`${Currency(OfferCodePrice)} تومان`);
+    $('#TotalTaxGrid').html(`${Currency(totaltax)} تومان`);
+    $('#ToPayGrid').html(`${Currency(topay)} تومان`);
+    $('#postprice').html(`${Currency(postprice)} تومان`);
 }
 
 

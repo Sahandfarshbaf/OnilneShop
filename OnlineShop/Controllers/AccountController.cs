@@ -183,7 +183,7 @@ namespace OnlineShop.Controllers
                 var user = await _userManager.FindByEmailAsync(userModel.Email);
                 var roles = await _userManager.GetRolesAsync(user);
                 
-                if (roles.FirstOrDefault() == "Admin")
+                if (roles.FirstOrDefault() == "Admin" || roles.FirstOrDefault() == "Seller")
                 {
                     return RedirectToAction("Index", "Home", new { area = "Admin" });
                 }

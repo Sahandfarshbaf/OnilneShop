@@ -28,7 +28,7 @@ function GetProductVige() {
                             <div class="caption">
                                  <h4><a href="Home/Product/` + item.id + `">` + item.name + `</a></h4>
                                  <p class="price">
-                                    <span class="price-new">` + item.price + ` تومان</span> 
+                                    <span class="price-new">${Currency(item.price)} تومان</span> 
                                     
                                      
                                  </p>
@@ -68,7 +68,7 @@ function GetProductTopSel() {
                         <div class="image"><a href="Home/Product/` + item.id + `"><img src="` + item.coverImageUrl + `" alt="` + item.name + `" title="` + item.name + `" class="img-responsive" /></a></div>
                         <div class="caption">
                             <h4><a href="Home/Product/` + item.id + `">` + item.name + ` </a></h4>
-                            <p class="price">` + item.price + ` تومان</p>
+                            <p class="price">${Currency(item.price)} تومان</p>
                             
                         </div>
                         <div class="button-group">
@@ -118,7 +118,7 @@ function GetProductTopNew() {
                         <div class="image"><a href="Home/Product/` + item.id + `"><img src="` + item.coverImageUrl + `" alt="` + item.name + `" title="` + item.name + `" class="img-responsive" /></a></div>
                         <div class="caption">
                             <h4><a href="Home/Product/` + item.id + `">` + item.name + ` </a></h4>
-                            <p class="price">` + item.price + ` تومان</p>
+                            <p class="price">${Currency(item.price)} تومان</p>
                         </div>
                         <div class="button-group">
                              <button class="btn-primary cartt" type="button"  productid="` + item.id + `" ><span>افزودن به سبد</span></button>
@@ -167,7 +167,7 @@ function GetProductTopBazdid() {
                 <div class="image"><a href="Home/Product/` + item.id + `"><img src="` + item.coverImageUrl + `" alt="` + item.name + `" title="` + item.name + `" class="img-responsive" /></a></div>
                 <div class="caption">
                     <h4><a href="Home/Product/` + item.id + `">` + item.name + ` </a></h4>
-                    <p class="price">` + item.price + `  تومان </p>
+                    <p class="price">${Currency(item.price)}  تومان </p>
                    
                 </div>
                 <div class="button-group">
@@ -220,7 +220,7 @@ function GetProductTopTaze() {
                 <div class="image"><a href="Home/Product/` + item.id + `"><img src="` + item.coverImageUrl + `" alt="` + item.name + `" title="` + item.name + `" class="img-responsive" /></a></div>
                 <div class="caption">
                     <h4><a href="Home/Product/` + item.id + `">` + item.name + `</a></h4>
-                    <p class="price"> ` + item.price + ` تومان </p>
+                    <p class="price">${Currency(item.price)} تومان </p>
                       </div>
             </div>`;
 
@@ -343,7 +343,7 @@ function Getsubcatid(catidd) {
                                     </div>
                                     <div class="caption">
                                         <h4><a href="Home/Product/` + item.id + `">` + item.name + `</a></h4>
-                                        <p class="price"> <span class="price-new">` + item.price + ` تومان</span> <span class="price-old">` + item.price + ` تومان</span> <span class="saving">` + item.offerValue + `%</span> </p>
+                                        <p class="price"> <span class="price-new">${Currency(item.price)} تومان</span> <span class="price-old">${Currency(item.price)} تومان</span> <span class="saving">` + item.offerValue + `%</span> </p>
                                         
                                     </div>
                                     <div class="button-group">
