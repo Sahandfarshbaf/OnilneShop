@@ -40,6 +40,11 @@ namespace OnlineShop.Controllers
 
             return View();
         }
+        public IActionResult فروشنده()
+        {
+
+            return View();
+        }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
