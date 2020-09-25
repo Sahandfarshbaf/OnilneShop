@@ -35,321 +35,37 @@ namespace Repository
         private IPaymentTypeRepository _paymentType;
         private ICustomerOrderPaymentRepository _customerOrderPayment;
         private ICustomerAddressRepository _customerAddress;
+        private ILocationRepository _location;
 
 
 
-        public ICatProductRepository CatProduct
-        {
-            get
-            {
-                if (_catProduct == null)
-                {
-                    _catProduct = new CatProductRepository(_repoContext);
-                }
-
-                return _catProduct;
-            }
-        }
-        public IProductRepository Product
-        {
-            get
-            {
-                if (_product == null)
-                {
-                    _product = new ProductRepository(_repoContext);
-                }
-
-                return _product;
-            }
-        }
-        public ISellerRepository Seller
-        {
-            get
-            {
-                if (_seller == null)
-                {
-                    _seller = new SellerRepository(_repoContext);
-                }
-
-                return _seller;
-            }
-        }
-        public IProductImageRepository ProductImage
-        {
-            get
-            {
-                if (_productImage == null)
-                {
-                    _productImage = new ProductImageRepository(_repoContext);
-                }
-
-                return _productImage;
-            }
-        }
-        public IColorRepository Color
-        {
-            get
-            {
-                if (_color == null)
-                {
-                    _color = new ColorRepository(_repoContext);
-                }
-
-                return _color;
-            }
-        }
-        public IProductMeterRepository ProductMeter
-        {
-            get
-            {
-                if (_productMeter == null)
-                {
-                    _productMeter = new ProductMeterRepository(_repoContext);
-                }
-
-                return _productMeter;
-            }
-        }
-        public IProductOfferRepository ProductOffer
-        {
-            get
-            {
-                if (_productOffer == null)
-                {
-                    _productOffer = new ProductOfferRepository(_repoContext);
-                }
-
-                return _productOffer;
-            }
-        }
-        public IProductCustomerCommentsRepository ProductCustomerComments
-        {
-            get
-            {
-                if (_productCustmerComments == null)
-                {
-                    _productCustmerComments = new ProductCustomerCommentsRepository(_repoContext);
-                }
-
-                return _productCustmerComments;
-            }
-        }
-        public IProductCustomerRateRepositry ProductCustomerRate
-        {
-            get
-            {
-                if (_productCustomerRate == null)
-                {
-                    _productCustomerRate = new ProductCustomerRateRepository(_repoContext);
-                }
-
-                return _productCustomerRate;
-            }
-        }
-        public IProductParametersRepository ProductParameters
-        {
-            get
-            {
-                if (_productParameters == null)
-                {
-                    _productParameters = new ProductParametersRepository(_repoContext);
-                }
-
-                return _productParameters;
-            }
-        }
-        public ISellerCatProductRepository SellerCatProduct
-        {
-            get
-            {
-                if (_sellerCatProduct == null)
-                {
-                    _sellerCatProduct = new SellerCatProductRepository(_repoContext);
-                }
-
-                return _sellerCatProduct;
-            }
-        }
-        public IStatusRepository Status
-        {
-            get
-            {
-                if (_status == null)
-                {
-                    _status = new StatusRepository(_repoContext);
-                }
-
-                return _status;
-            }
-        }
-        public IStatusTypeRepository StatusType
-        {
-            get
-            {
-                if (_statusType == null)
-                {
-                    _statusType = new StatusTypeRepository(_repoContext);
-                }
-
-                return _statusType;
-            }
-        }
-        public ISystemsRepository Systems
-        {
-            get
-            {
-                if (_systems == null)
-                {
-                    _systems = new SystemsRepository(_repoContext);
-                }
-
-                return _systems;
-            }
-        }
-        public ITablesRepository Tables
-        {
-            get
-            {
-                if (_tables == null)
-                {
-                    _tables = new TablesRepository(_repoContext);
-                }
-
-                return _tables;
-            }
-        }
-        public ICatProductParametersRepository CatProductParameters
-        {
-            get
-            {
-                if (_catProductParameters == null)
-                {
-                    _catProductParameters = new CatProductParametersRepository(_repoContext);
-                }
-
-                return _catProductParameters;
-            }
-        }
-        public ISliderPlaceTypeRepository SliderPlaceType
-        {
-            get
-            {
-                if (_sliderPlaceType == null)
-                {
-                    _sliderPlaceType = new SliderPlaceTypeRepository(_repoContext);
-                }
-
-                return _sliderPlaceType;
-            }
-        }
-        public ISliderRepository Slider
-        {
-            get
-            {
-                if (_slider == null)
-                {
-                    _slider = new SliderRepository(_repoContext);
-                }
-
-                return _slider;
-            }
-        }
-        public ICustomerRepository Customer
-        {
-            get
-            {
-                if (_customer == null)
-                {
-                    _customer = new CustomerRepository(_repoContext);
-                }
-
-                return _customer;
-            }
-        }
-        public ICustomerOrderRepository CustomerOrder
-        {
-            get
-            {
-                if (_customerOrder == null)
-                {
-                    _customerOrder = new CustomerOrderRepository(_repoContext);
-                }
-
-                return _customerOrder;
-            }
-        }
-        public ICustomerOrderProductRepository CustomerOrderProduct
-        {
-            get
-            {
-                if (_customerOrderProduct == null)
-                {
-                    _customerOrderProduct = new CustomerOrderProductRepository(_repoContext);
-                }
-
-                return _customerOrderProduct;
-            }
-        }
-        public ICustomerOfferRepository CustomerOffer
-        {
-            get
-            {
-                if (_customerOffer == null)
-                {
-                    _customerOffer = new CustomerOfferRepository(_repoContext);
-                }
-
-                return _customerOffer;
-            }
-        }
-        public IPostTypeRepository PostType
-        {
-            get
-            {
-                if (_postType == null)
-                {
-                    _postType = new PostTypeRepository(_repoContext);
-                }
-
-                return _postType;
-            }
-        }
-        public IPaymentTypeRepository PaymentType
-        {
-            get
-            {
-                if (_paymentType == null)
-                {
-                    _paymentType = new PaymentTypeRepository(_repoContext);
-                }
-
-                return _paymentType;
-            }
-        }
-        public ICustomerOrderPaymentRepository CustomerOrderPayment
-        {
-            get
-            {
-                if (_customerOrderPayment == null)
-                {
-                    _customerOrderPayment = new CustomerOrderPaymentRepository(_repoContext);
-                }
-
-                return _customerOrderPayment;
-            }
-        }
-        public ICustomerAddressRepository CustomerAddress
-        {
-            get
-            {
-                if (_customerAddress == null)
-                {
-                    _customerAddress = new CustomerAddressRepository(_repoContext);
-                }
-
-                return _customerAddress;
-            }
-        }
+        public ICatProductRepository CatProduct => _catProduct ??= new CatProductRepository(_repoContext);
+        public IProductRepository Product => _product ??= new ProductRepository(_repoContext);
+        public ISellerRepository Seller => _seller ??= new SellerRepository(_repoContext);
+        public IProductImageRepository ProductImage => _productImage ??= new ProductImageRepository(_repoContext);
+        public IColorRepository Color => _color ??= new ColorRepository(_repoContext);
+        public IProductMeterRepository ProductMeter => _productMeter ??= new ProductMeterRepository(_repoContext);
+        public IProductOfferRepository ProductOffer => _productOffer ??= new ProductOfferRepository(_repoContext);
+        public IProductCustomerCommentsRepository ProductCustomerComments => _productCustmerComments ??= new ProductCustomerCommentsRepository(_repoContext);
+        public IProductCustomerRateRepositry ProductCustomerRate => _productCustomerRate ??= new ProductCustomerRateRepository(_repoContext);
+        public IProductParametersRepository ProductParameters => _productParameters ??= new ProductParametersRepository(_repoContext);
+        public ISellerCatProductRepository SellerCatProduct => _sellerCatProduct ??= new SellerCatProductRepository(_repoContext);
+        public IStatusRepository Status => _status ??= new StatusRepository(_repoContext);
+        public IStatusTypeRepository StatusType => _statusType ??= new StatusTypeRepository(_repoContext);
+        public ISystemsRepository Systems => _systems ??= new SystemsRepository(_repoContext);
+        public ITablesRepository Tables => _tables ??= new TablesRepository(_repoContext);
+        public ICatProductParametersRepository CatProductParameters => _catProductParameters ??= new CatProductParametersRepository(_repoContext);
+        public ISliderPlaceTypeRepository SliderPlaceType => _sliderPlaceType ??= new SliderPlaceTypeRepository(_repoContext);
+        public ISliderRepository Slider => _slider ??= new SliderRepository(_repoContext);
+        public ICustomerRepository Customer => _customer ??= new CustomerRepository(_repoContext);
+        public ICustomerOrderRepository CustomerOrder => _customerOrder ??= new CustomerOrderRepository(_repoContext);
+        public ICustomerOrderProductRepository CustomerOrderProduct => _customerOrderProduct ??= new CustomerOrderProductRepository(_repoContext);
+        public ICustomerOfferRepository CustomerOffer => _customerOffer ??= new CustomerOfferRepository(_repoContext);
+        public IPostTypeRepository PostType => _postType ??= new PostTypeRepository(_repoContext);
+        public IPaymentTypeRepository PaymentType => _paymentType ??= new PaymentTypeRepository(_repoContext);
+        public ICustomerOrderPaymentRepository CustomerOrderPayment => _customerOrderPayment ??= new CustomerOrderPaymentRepository(_repoContext);
+        public ICustomerAddressRepository CustomerAddress => _customerAddress ??= new CustomerAddressRepository(_repoContext);
+        public ILocationRepository Location => _location ??= new LocationRepository(_repoContext);
 
         public RepositoryWrapper(RepositoryContext repositoryContext)
         {

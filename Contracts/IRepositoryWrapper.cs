@@ -33,6 +33,7 @@ namespace Contracts
         IPaymentTypeRepository PaymentType { get; }
         ICustomerOrderPaymentRepository CustomerOrderPayment { get; }
         ICustomerAddressRepository CustomerAddress { get; }
+        ILocationRepository Location { get; }
 
         void Save();
     }
