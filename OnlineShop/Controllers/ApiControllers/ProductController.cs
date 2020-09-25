@@ -289,7 +289,7 @@ namespace OnlineShop.Controllers.ApiControllers
 
         }
 
-        [HttpGet] //محولاتی که بیشترین امتیاز را دارند
+        [HttpGet] //محصولاتی که بیشترین امتیاز را دارند
         [Route("Product/GetTopProductListWithRate")]
         public IActionResult GetTopProductListWithRate()
         {
@@ -418,7 +418,6 @@ namespace OnlineShop.Controllers.ApiControllers
 
         }
 
-
         [HttpGet]
         [Route("Product/GetFullInfoProductById")]
         public IActionResult GetFullInfoProductById(long productId)
@@ -468,6 +467,39 @@ namespace OnlineShop.Controllers.ApiControllers
             {
 
                 _logger.LogError($"Something went wrong inside GetProductByCatId action: {e.Message}");
+                return BadRequest("Internal server error");
+            }
+
+        }
+
+        [HttpGet]
+        [Route("Product/GetSimilarProductsByProductId")]
+        public IActionResult GetSimilarProductsByProductId(long productId)
+        {
+            try
+            {
+                var product = _repository.Product.FindByCondition(c => c.Id.Equals(productId)).FirstOrDefault();
+
+                if (product == null)
+                {
+                    _logger.LogError($"Product with id: {productId}, hasn't been found in db.");
+                    return NotFound();
+                }
+                var productlist = _repository.Product.FindByCondition(c => c.CatProductId == product.CatProductId)
+                    .Include(p => p.CatProduct)
+                    .Include(p => p.ProductCustomerRate)
+                    .Include(p => p.ProductOffer)
+                    .ToList();
+
+                var result = _mapper.Map<List<ProductByOfferRate>>(productlist);
+                _logger.LogInfo($"Returned product with id: {productId}");
+
+                return Ok(result);
+            }
+            catch (Exception e)
+            {
+
+                _logger.LogError($"Something went wrong inside GetProductById action: {e.Message}");
                 return BadRequest("Internal server error");
             }
 

@@ -8,6 +8,7 @@ namespace Entities.Models
         public Customer()
         {
             CustomerActivation = new HashSet<CustomerActivation>();
+            CustomerAddress = new HashSet<CustomerAddress>();
             CustomerOffer = new HashSet<CustomerOffer>();
             CustomerOrder = new HashSet<CustomerOrder>();
             ProductCustomerComments = new HashSet<ProductCustomerComments>();
@@ -41,6 +42,7 @@ namespace Entities.Models
         public virtual Status FinalStatus { get; set; }
         public virtual Location Location { get; set; }
         public virtual ICollection<CustomerActivation> CustomerActivation { get; set; }
+        public virtual ICollection<CustomerAddress> CustomerAddress { get; set; }
         public virtual ICollection<CustomerOffer> CustomerOffer { get; set; }
         public virtual ICollection<CustomerOrder> CustomerOrder { get; set; }
         public virtual ICollection<ProductCustomerComments> ProductCustomerComments { get; set; }

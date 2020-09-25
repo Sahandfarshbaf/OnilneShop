@@ -153,7 +153,7 @@ namespace OnlineShop.Controllers.ApiControllers
                 {
 
                     ZarinPallRequest request = new ZarinPallRequest();
-                    request.amount = (int)custumerOrder.FinalPrice.Value;
+                    request.amount = ((int)custumerOrder.FinalPrice.Value) * 10;
                     request.description = "order NO: " + custumerOrder.OrderNo;
                     Tools.ZarinPal.ZarinPal zarinPal = new Tools.ZarinPal.ZarinPal();
                     var res = zarinPal.Request(request);
@@ -184,7 +184,7 @@ namespace OnlineShop.Controllers.ApiControllers
 
         [Authorize("Customer")]
         [HttpGet]
-        [Route("CustomerOrder/GetCustomerOrderById")]  
+        [Route("CustomerOrder/GetCustomerOrderById")]
         public IActionResult GetCustomerOrderById(long customerOrderId)
         {
             try

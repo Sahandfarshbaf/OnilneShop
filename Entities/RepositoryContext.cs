@@ -24,6 +24,7 @@ namespace Entities
         public virtual DbSet<Color> Color { get; set; }
         public virtual DbSet<Customer> Customer { get; set; }
         public virtual DbSet<CustomerActivation> CustomerActivation { get; set; }
+        public virtual DbSet<CustomerAddress> CustomerAddress { get; set; }
         public virtual DbSet<CustomerOffer> CustomerOffer { get; set; }
         public virtual DbSet<CustomerOrder> CustomerOrder { get; set; }
         public virtual DbSet<CustomerOrderPayment> CustomerOrderPayment { get; set; }
@@ -51,11 +52,12 @@ namespace Entities
         public virtual DbSet<Tables> Tables { get; set; }
 
 
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
 
-          
+
             modelBuilder.Entity<CatProduct>(entity =>
             {
                 entity.HasIndex(e => e.Pid);
@@ -310,6 +312,64 @@ namespace Entities
                     .HasConstraintName("FK_CustomerActivation_Customer");
             });
 
+            modelBuilder.Entity<CustomerAddress>(entity =>
+            {
+                entity.Property(e => e.Id).HasColumnName("ID");
+
+                entity.Property(e => e.Address).HasMaxLength(512);
+
+                entity.Property(e => e.Cdate).HasColumnName("CDate");
+
+                entity.Property(e => e.CityId).HasColumnName("CityID");
+
+                entity.Property(e => e.CuserId)
+                    .HasColumnName("CUserID")
+                    .HasMaxLength(450);
+
+                entity.Property(e => e.CustomerId).HasColumnName("CustomerID");
+
+                entity.Property(e => e.DaUserId)
+                    .HasColumnName("DaUserID")
+                    .HasMaxLength(450);
+
+                entity.Property(e => e.Ddate).HasColumnName("DDate");
+
+                entity.Property(e => e.DuserId)
+                    .HasColumnName("DUserID")
+                    .HasMaxLength(450);
+
+                entity.Property(e => e.Mdate).HasColumnName("MDate");
+
+                entity.Property(e => e.MuserId)
+                    .HasColumnName("MUserID")
+                    .HasMaxLength(450);
+
+                entity.Property(e => e.ProvinceId).HasColumnName("ProvinceID");
+
+                entity.Property(e => e.Xgps)
+                    .HasColumnName("XGPS")
+                    .HasMaxLength(128);
+
+                entity.Property(e => e.Ygps)
+                    .HasColumnName("YGPS")
+                    .HasMaxLength(128);
+
+                entity.HasOne(d => d.City)
+                    .WithMany(p => p.CustomerAddressCity)
+                    .HasForeignKey(d => d.CityId)
+                    .HasConstraintName("FK_CustomerAddress_Location1");
+
+                entity.HasOne(d => d.Customer)
+                    .WithMany(p => p.CustomerAddress)
+                    .HasForeignKey(d => d.CustomerId)
+                    .HasConstraintName("FK_CustomerAddress_Customer");
+
+                entity.HasOne(d => d.Province)
+                    .WithMany(p => p.CustomerAddressProvince)
+                    .HasForeignKey(d => d.ProvinceId)
+                    .HasConstraintName("FK_CustomerAddress_Location");
+            });
+
             modelBuilder.Entity<CustomerOffer>(entity =>
             {
                 entity.HasIndex(e => e.CustomerId);
@@ -370,6 +430,8 @@ namespace Entities
                 entity.Property(e => e.CuserId)
                     .HasColumnName("CUserID")
                     .HasMaxLength(450);
+
+                entity.Property(e => e.CustomerAddressId).HasColumnName("CustomerAddressID");
 
                 entity.Property(e => e.CustomerDescription).HasMaxLength(2048);
 
@@ -432,6 +494,11 @@ namespace Entities
                 entity.Property(e => e.TaxValue).HasComment("9% همیشه");
 
                 entity.Property(e => e.Weight).HasComment("جمع وزن تمامی محصولات سفارش  ( تعداد * وزن محصول از جدول Product) ");
+
+                entity.HasOne(d => d.CustomerAddress)
+                    .WithMany(p => p.CustomerOrder)
+                    .HasForeignKey(d => d.CustomerAddressId)
+                    .HasConstraintName("FK_CustomerOrder_CustomerAddress");
 
                 entity.HasOne(d => d.Customer)
                     .WithMany(p => p.CustomerOrder)
