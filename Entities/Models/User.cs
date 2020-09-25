@@ -12,9 +12,6 @@ namespace Entities.Models
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public long NationalCode { get; set; }
-        public long PostalCode { get; set; }
-        public long ProvinceId { get; set; }
-        public long CityId { get; set; }
         public string ProfilePic { get; set; }
         public long BirthDate { get; set; }
 

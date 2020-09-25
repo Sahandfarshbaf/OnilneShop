@@ -74,6 +74,8 @@ namespace OnlineShop.Controllers
             await _userManager.AddToRoleAsync(user, "CUSTOMER");
             SendSMS sendSms = new SendSMS();
             var smsresult = sendSms.SendRegisterSMS(userModel.PhoneNumber, userModel.Email, userModel.Password);
+            SendEmail sendEmail=new SendEmail();
+            sendEmail.SendRegisterEmail(userModel.Password,userModel.Email);
 
             return RedirectToAction(nameof(HomeController.Index), "Home");
         }

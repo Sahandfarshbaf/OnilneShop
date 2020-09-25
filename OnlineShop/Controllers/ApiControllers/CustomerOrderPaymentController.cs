@@ -67,6 +67,9 @@ namespace OnlineShop.Controllers.ApiControllers
                    
                     var mobileNo = User.Claims.Where(c => c.Type == "mobile").Select(x => x.Value).SingleOrDefault();
                     sendSMS.SendSuccessOrderPayment(mobileNo, orderpeymnt.OrderNo, CustomerOrderId.Value);
+                    SendEmail sendEmail = new SendEmail();
+                    var email = User.Claims.Where(c => c.Type == ClaimTypes.Name).Select(x=>x.Value).SingleOrDefault();
+                    sendEmail.SendSuccessOrderPayment(email,orderpeymnt.OrderNo,CustomerOrderId.Value);
                     return Ok("success");
                 }
                 else
