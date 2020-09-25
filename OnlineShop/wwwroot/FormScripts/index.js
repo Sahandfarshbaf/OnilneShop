@@ -21,19 +21,29 @@ function GetProductVige() {
             jQuery.each(response, function (i, item) {
                 Html += `<div class="product-thumb clearfix vighe">
                             <div class="image">
-                                <a href="Home/Product/` + item.id + `">
-                                       <img src="` + item.coverImageUrl + `" alt="` + item.name + `" title="` + item.name + `" class="img-responsive" />
+                                <a href="/Home/Product/${item.id}">
+                                       <img src="${item.coverImageUrl}" alt="${item.name}" title="${item.name}" class="img-responsive" />
                                 </a>
                             </div>
                             <div class="caption">
-                                 <h4><a href="Home/Product/` + item.id + `">` + item.name + `</a></h4>
-                                 <p class="price">
-                                    <span class="price-new">${Currency(item.price)} تومان</span> 
-                                    
-                                     
+                                 <h4><a href="Home\Product?${item.id}">${item.name}</a></h4>                      
+                                 <p class="price">`;
+                if (item.offerValue !== 0) {
+
+                    Html += `   <span class="price-new">${item.priceAfterOffer} تومان</span> 
+                                    <span class="price-old">${item.price}تومان</span> 
+                                    <span class="saving">${item.offerValue} %</span> 
                                  </p>
                             </div>
                         </div>`;
+
+                } else {
+
+                    Html += `   <span class="price-new">${item.price} تومان</span> 
+                                 </p>
+                            </div>
+                        </div>`;
+                }
             });
 
             $('.vighe').html(Html);
@@ -64,23 +74,37 @@ function GetProductTopSel() {
         success: function (response) {
 
             jQuery.each(response, function (i, item) {
-                ss += `<div class="product-thumb clearfix">
-                        <div class="image"><a href="Home/Product/` + item.id + `"><img src="` + item.coverImageUrl + `" alt="` + item.name + `" title="` + item.name + `" class="img-responsive" /></a></div>
-                        <div class="caption">
-                            <h4><a href="Home/Product/` + item.id + `">` + item.name + ` </a></h4>
-                            <p class="price">${Currency(item.price)} تومان</p>
-                            
-                        </div>
-                        <div class="button-group">
-                            <button class="btn-primary cartt" type="button"  productid="` + item.id + `" ><span>افزودن به سبد</span></button>
-                            <div class="add-to-links">
-                                <button type="button" data-toggle="tooltip" title="Add to Wish List" onClick=""><i class="fa fa-heart"></i></button>
-                                <button type="button" data-toggle="tooltip" title="مقایسه this محصولات" onClick=""><i class="fa fa-exchange"></i></button>
-                            </div>
-                        </div>
-                    </div>`;
+   
+
+                ss += ` <div class="product-thumb clearfix">
+                                    <div class="image">
+                                        <a href="Home/Product/${item.id}"><img src="${item.coverImageUrl}" alt="${item.name}" title="${item.name}" class="img-responsive" /></a>
+                                    </div>
+                                    <div class="caption">
+                                        <h4><a href="Home/Product/${item.id}">${item.name}</a></h4>`;
+                if (item.offerValue !== 0 && item.offerValue !== null) {
+                    ss += `  <p class="price"> <span class="price-new">${Currency(item.priceAfterOffer)
+                        } تومان</span> <span class="price-old">${Currency(item.price)
+                        } تومان</span> <span class="saving">${item.offerValue} %</span> </p>`;
+
+                } else {
+                    ss += `  <p class="price"> <span class="price-new">${Currency(item.price)}`;
+                }
+
+                ss += `   </div>
+                                    <div class="button-group">
+                                        <button class="btn-primary  cartt" type="button" productid="${item.id}" ><span>افزودن به سبد</span></button>
+                                        <div class="add-to-links">
+                                            <button type="button" data-toggle="tooltip" title="افزودن به علاقه مندی" onClick=""><i class="fa fa-heart"></i></button>
+                                            <button type="button" data-toggle="tooltip" title="افزودن به مقایسه" onClick=""><i class="fa fa-exchange"></i></button>
+                                        </div>
+                                    </div>
+                                </div>`;
+
+
 
             });
+
 
 
 
@@ -102,7 +126,7 @@ function GetProductTopSel() {
 }
 
 function GetProductTopNew() {
-    let newpro = ``;
+    let ss = ``;
 
     jQuery.ajax({
         type: "Get",
@@ -114,26 +138,38 @@ function GetProductTopNew() {
         success: function (response) {
 
             jQuery.each(response, function (i, item) {
-                newpro += `<div class="product-thumb clearfix">
-                        <div class="image"><a href="Home/Product/` + item.id + `"><img src="` + item.coverImageUrl + `" alt="` + item.name + `" title="` + item.name + `" class="img-responsive" /></a></div>
-                        <div class="caption">
-                            <h4><a href="Home/Product/` + item.id + `">` + item.name + ` </a></h4>
-                            <p class="price">${Currency(item.price)} تومان</p>
-                        </div>
-                        <div class="button-group">
-                             <button class="btn-primary cartt" type="button"  productid="` + item.id + `" ><span>افزودن به سبد</span></button>
-                            <div class="add-to-links">
-                                <button type="button" data-toggle="tooltip" title="Add to Wish List" onClick=""><i class="fa fa-heart"></i></button>
-                                <button type="button" data-toggle="tooltip" title="مقایسه this محصولات" onClick=""><i class="fa fa-exchange"></i></button>
-                            </div>
-                        </div>
-                    </div>`;
+                ss += ` <div class="product-thumb clearfix">
+                                    <div class="image">
+                                        <a href="Home/Product/${item.id}"><img src="${item.coverImageUrl}" alt="${item.name}" title="${item.name}" class="img-responsive" /></a>
+                                    </div>
+                                    <div class="caption">
+                                        <h4><a href="Home/Product/${item.id}">${item.name}</a></h4>`;
+                if (item.offerValue !== 0 && item.offerValue !== null) {
+                    ss += `  <p class="price"> <span class="price-new">${Currency(item.priceAfterOffer)
+                        } تومان</span> <span class="price-old">${Currency(item.price)
+                        } تومان</span> <span class="saving">${item.offerValue} %</span> </p>`;
+
+                } else {
+                    ss += `  <p class="price"> <span class="price-new">${Currency(item.price)}`;
+                }
+
+                ss += `   </div>
+                                    <div class="button-group">
+                                        <button class="btn-primary  cartt" type="button" productid="${item.id}" ><span>افزودن به سبد</span></button>
+                                        <div class="add-to-links">
+                                            <button type="button" data-toggle="tooltip" title="افزودن به علاقه مندی" onClick=""><i class="fa fa-heart"></i></button>
+                                            <button type="button" data-toggle="tooltip" title="افزودن به مقایسه" onClick=""><i class="fa fa-exchange"></i></button>
+                                        </div>
+                                    </div>
+                                </div>`;
+
+
 
             });
 
 
 
-            $('#DivMahsulatjadid').html(newpro);
+            $('#DivMahsulatjadid').html(ss);
 
         },
         error: function (response) {
@@ -151,7 +187,7 @@ function GetProductTopNew() {
 }
 
 function GetProductTopBazdid() {
-    let Bazdid = ``;
+    let ss = ``;
 
     jQuery.ajax({
         type: "Get",
@@ -161,32 +197,41 @@ function GetProductTopBazdid() {
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         success: function (response) {
-
+            console.log(response);
             jQuery.each(response, function (i, item) {
-                Bazdid += `            <div class="product-thumb">
-                <div class="image"><a href="Home/Product/` + item.id + `"><img src="` + item.coverImageUrl + `" alt="` + item.name + `" title="` + item.name + `" class="img-responsive" /></a></div>
-                <div class="caption">
-                    <h4><a href="Home/Product/` + item.id + `">` + item.name + ` </a></h4>
-                    <p class="price">${Currency(item.price)}  تومان </p>
-                   
-                </div>
-                <div class="button-group">
-                     <button class="btn-primary cartt" type="button"  productid="` + item.id + `" ><span>افزودن به سبد</span></button>
-                    <div class="add-to-links">
-                        <button type="button" data-toggle="tooltip" title="افزودن به علاقه مندی" onClick=""><i class="fa fa-heart"></i></button>
-                        <button type="button" data-toggle="tooltip" title="افزودن به مقایسه" onClick=""><i class="fa fa-exchange"></i></button>
-                    </div>
-                </div>
-            </div>`;
+
+                ss += ` <div class="product-thumb clearfix">
+                                    <div class="image">
+                                        <a href="Home/Product/${item.id}"><img src="${item.coverImageUrl}" alt="${item.name}" title="${item.name}" class="img-responsive" /></a>
+                                    </div>
+                                    <div class="caption">
+                                        <h4><a href="Home/Product/${item.id}">${item.name}</a></h4>`;
+                debugger 
+                if (item.offerValue !== 0 && item.offerValue !== null) {
+
+                    ss += `  <p class="price"> <span class="price-new">${Currency(item.priceAfterOffer)} تومان</span> <span class="price-old">${Currency(item.price)} تومان</span> <span class="saving">${item.offerValue} %</span> </p>`;
+
+                } else {
+
+                    ss += `  <p class="price"> <span class="price-new">${Currency(item.price)}`;
+                }
+
+                ss += `   </div>
+                                    <div class="button-group">
+                                        <button class="btn-primary  cartt" type="button" productid="${item.id}" ><span>افزودن به سبد</span></button>
+                                        <div class="add-to-links">
+                                            <button type="button" data-toggle="tooltip" title="افزودن به علاقه مندی" onClick=""><i class="fa fa-heart"></i></button>
+                                            <button type="button" data-toggle="tooltip" title="افزودن به مقایسه" onClick=""><i class="fa fa-exchange"></i></button>
+                                        </div>
+                                    </div>
+                                </div>`;
+
+
 
             });
 
 
-
-
-
-
-            $('#DivMahsulatTopBazdid').html(Bazdid);
+            $('#DivMahsulatTopBazdid').html(ss);
 
         },
         error: function (response) {
@@ -204,7 +249,7 @@ function GetProductTopBazdid() {
 }
 
 function GetProductTopTaze() {
-    let Bazdid = ``;
+    let Html = ``;
 
     jQuery.ajax({
         type: "Get",
@@ -216,13 +261,32 @@ function GetProductTopTaze() {
         success: function (response) {
 
             jQuery.each(response, function (i, item) {
-                Bazdid += `                      <div class="product-thumb clearfix">
-                <div class="image"><a href="Home/Product/` + item.id + `"><img src="` + item.coverImageUrl + `" alt="` + item.name + `" title="` + item.name + `" class="img-responsive" /></a></div>
-                <div class="caption">
-                    <h4><a href="Home/Product/` + item.id + `">` + item.name + `</a></h4>
-                    <p class="price">${Currency(item.price)} تومان </p>
-                      </div>
-            </div>`;
+
+            Html += `<div class="product-thumb clearfix vighe">
+                            <div class="image">
+                                <a href="/Home/Product/${item.id}">
+                                       <img src="${item.coverImageUrl}" alt="${item.name}" title="${item.name}" class="img-responsive" />
+                                </a>
+                            </div>
+                            <div class="caption">
+                                 <h4><a href="Home\Product?${item.id}">${item.name}</a></h4>                      
+                                 <p class="price">`;
+            if (item.offerValue !== 0) {
+
+                Html += `   <span class="price-new">${item.priceAfterOffer} تومان</span> 
+                                    <span class="price-old">${item.price}تومان</span> 
+                                    <span class="saving">${item.offerValue} %</span> 
+                                 </p>
+                            </div>
+                        </div>`;
+
+            } else {
+
+                Html += `   <span class="price-new">${item.price} تومان</span> 
+                                 </p>
+                            </div>
+                        </div>`;
+            }
 
             });
 
@@ -230,7 +294,7 @@ function GetProductTopTaze() {
 
 
 
-            $('#DivMahsolatTaze').html(Bazdid);
+            $('#DivMahsolatTaze').html(Html);
 
         },
         error: function (response) {
@@ -254,7 +318,7 @@ function GetProductTopTaze() {
 }
 
 function Getsubcat() {
- 
+
     let tabs = ' <ul id="sub-cat" class="tabs" >';
 
 
@@ -280,7 +344,7 @@ function Getsubcat() {
 
                 Getsubcatid(item.id);
             });
-            
+
 
         },
         error: function (response) {
@@ -334,20 +398,27 @@ function Getsubcatid(catidd) {
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         success: function (response) {
-
+           
             jQuery.each(response, function (i, item) {
 
                 subcat += ` <div class="product-thumb">
                                     <div class="image">
-                                        <a href="Home/Product/` + item.id + `"><img src="` + item.coverImageUrl + `" alt="` + item.name + `" title="` + item.name + `" class="img-responsive" /></a>
+                                        <a href="Home/Product/${item.id}"><img src="${item.coverImageUrl}" alt="${item.name}" title="${item.name}" class="img-responsive" /></a>
                                     </div>
                                     <div class="caption">
-                                        <h4><a href="Home/Product/` + item.id + `">` + item.name + `</a></h4>
-                                        <p class="price"> <span class="price-new">${Currency(item.price)} تومان</span> <span class="price-old">${Currency(item.price)} تومان</span> <span class="saving">` + item.offerValue + `%</span> </p>
-                                        
-                                    </div>
+                                        <h4><a href="Home/Product/${item.id}">${item.name}</a></h4>`;
+                if (item.offerValue !== 0 && item.offerValue !== null) {
+                    subcat += `  <p class="price"> <span class="price-new">${Currency(item.priceAfterOffer)
+                        } تومان</span> <span class="price-old">${Currency(item.price)
+                        } تومان</span> <span class="saving">${item.offerValue} %</span> </p>`;
+
+                } else {
+                    subcat += `  <p class="price"> <span class="price-new">${Currency(item.price)}`;
+                }
+
+                subcat += `   </div>
                                     <div class="button-group">
-                                        <button class="btn-primary  cartt" type="button" productid="` + item.id + `" ><span>افزودن به سبد</span></button>
+                                        <button class="btn-primary  cartt" type="button" productid="${item.id}" ><span>افزودن به سبد</span></button>
                                         <div class="add-to-links">
                                             <button type="button" data-toggle="tooltip" title="افزودن به علاقه مندی" onClick=""><i class="fa fa-heart"></i></button>
                                             <button type="button" data-toggle="tooltip" title="افزودن به مقایسه" onClick=""><i class="fa fa-exchange"></i></button>
@@ -363,7 +434,7 @@ function Getsubcatid(catidd) {
 
 
             $('#DivCategory').append(subcat);
-      
+
         },
         error: function (response) {
 
