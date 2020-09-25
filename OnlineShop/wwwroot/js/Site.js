@@ -73,7 +73,7 @@ function AddToCart() {
                 Count: 1,
                 CoverImageURL: response.coverImageUrl
             }
-            debugger;
+           
             var isExist = CartList.filter(x => x.ProductId == response.id);
 
             if (isExist.length == 0) {

@@ -79,7 +79,7 @@ function InsertCustomerOrder() {
     var CartList = GetCartItems();
 
     let ProductList = new Array();
-
+  
     $.each(CartList, function (i, item) {
 
         let product = {
@@ -91,7 +91,7 @@ function InsertCustomerOrder() {
             ProductPrice: item.Price,
             ProductOfferValue: item.OfferValue,
             ProductOfferCode: '',
-            ProductOfferPrice: 0,
+            ProductOfferPrice: item.Price - item.PriceAfterOffer,
             FinalStatusId: null,
             OrderCount: item.Count,
             Weight: null,
@@ -120,8 +120,8 @@ function InsertCustomerOrder() {
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         success: function (response) {
-            
-            window.location = '../Home/CheckOut/'+response;
+
+            window.location = '../Home/CheckOut/' + response;
         },
         error: function (response) {
 

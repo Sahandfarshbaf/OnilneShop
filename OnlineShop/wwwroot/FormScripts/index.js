@@ -363,7 +363,7 @@ function Getsubcatid(catidd) {
 
 
             $('#DivCategory').append(subcat);
-            console.log(catidd);
+      
         },
         error: function (response) {
 

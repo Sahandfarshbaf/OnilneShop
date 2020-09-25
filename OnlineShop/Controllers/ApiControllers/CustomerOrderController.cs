@@ -97,13 +97,20 @@ namespace OnlineShop.Controllers.ApiControllers
                 custumerOrderProduct.ForEach(c =>
                 {
                     c.ProductPrice = c.Product.Price;
+
                     c.ProductOfferValue = c.Product.ProductOffer
                         .Where(x => x.FromDate <= timeTick && timeTick <= x.ToDate).Select(x => x.Value)
                         .DefaultIfEmpty(0).FirstOrDefault();
+
+
                     c.ProductOfferCode = c.Product.ProductOffer
                         .Where(x => x.FromDate <= timeTick && timeTick <= x.ToDate).Select(x => x.OfferCode)
                         .FirstOrDefault();
-                    c.ProductOfferPrice = (long?)(c.ProductOfferValue / 100) * c.ProductPrice;
+
+
+                    c.ProductOfferPrice = Convert.ToInt64((c.ProductOfferValue / 100) * c.Product.Price);
+
+
                     c.Weight = c.Product.Weight;
                     c.ProductCode = c.Product.Coding;
                 });

@@ -103,7 +103,7 @@ function BindGrid() {
         dataType: "json",
         success: function (response) {
 
-
+        
             jQuery.each(response.customerOrderProduct, function (i, item) {
                 html += ` <tr>
                        <td class="text-center"><a href="/Home/Product/${item.productId}"><img style="width:50px;height:50px;" src="${item.product.coverImageUrl}" alt="${item.productName}" title="${item.productName}" class="img-thumbnail" /></a></td>
@@ -159,7 +159,7 @@ function Payment() {
         contentType: "application/json; charset=utf-8",
         dataType: "text",
         success: function (response) {
-            debugger
+          
             if (response != "") {
                 window.location = response;
             }
