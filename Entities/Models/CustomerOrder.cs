@@ -13,6 +13,7 @@ namespace Entities.Models
 
         public long Id { get; set; }
         public long? CustomerId { get; set; }
+        public long? CustomerAddressId { get; set; }
         public long? OrderDate { get; set; }
         public long? OrderNo { get; set; }
         public long? FinalStatusId { get; set; }
@@ -42,6 +43,7 @@ namespace Entities.Models
         public long? DaDate { get; set; }
 
         public virtual Customer Customer { get; set; }
+        public virtual CustomerAddress CustomerAddress { get; set; }
         public virtual Status FinalStatus { get; set; }
         public virtual PaymentType PaymentType { get; set; }
         public virtual PostType PostType { get; set; }

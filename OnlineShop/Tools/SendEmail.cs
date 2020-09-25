@@ -38,7 +38,7 @@ namespace OnlineShop.Tools
             {
                 using var smtp = new MailKit.Net.Smtp.SmtpClient();
 
-                smtp.Connect("tabrizhandicrafts.com", 587, SecureSocketOptions.StartTls);
+                smtp.Connect("tabrizhandicrafts.com", 587, SecureSocketOptions.Auto);
 
                 // hotmail
                 //smtp.Connect("smtp.live.com", 587, SecureSocketOptions.StartTls);

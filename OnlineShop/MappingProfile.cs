@@ -46,6 +46,11 @@ namespace OnlineShop
                 .ForMember(u => u.SellerName,
                     opt => opt.MapFrom(x => x.Product.Seller.Name + " " + x.Product.Seller.Fname));
 
+            CreateMap<CustomerAddress, CustomerAddressDto>()
+                .ForMember(u => u.CityName, opt => opt.MapFrom(x => x.City.Name))
+                .ForMember(u => u.ProvinceName, opt => opt.MapFrom(x => x.Province.Name));
+
+
 
 
 
