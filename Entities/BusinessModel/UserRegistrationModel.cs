@@ -14,11 +14,7 @@ namespace Entities.BusinessModel
         [Required(ErrorMessage = "شماره موبایل الزامی می باشد")]
         public string PhoneNumber { get; set; }
         public long NationalCode { get; set; }
-        public long PostalCode { get; set; }
-        public long ProvinceId { get; set; }
-        public long CityId { get; set; }
-        public string ProfilePic { get; set; }
-        public long BirthDate { get; set; }
+       public long BirthDate { get; set; }
 
         [Required(ErrorMessage = "آدرس ایمیل الزامی می باشد")]
         [EmailAddress]
