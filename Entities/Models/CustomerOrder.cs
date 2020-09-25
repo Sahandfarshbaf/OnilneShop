@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text.Json.Serialization;
 
 namespace Entities.Models
 {
@@ -41,7 +42,6 @@ namespace Entities.Models
         public long? Mdate { get; set; }
         public string DaUserId { get; set; }
         public long? DaDate { get; set; }
-
         public virtual Customer Customer { get; set; }
         public virtual CustomerAddress CustomerAddress { get; set; }
         public virtual Status FinalStatus { get; set; }
