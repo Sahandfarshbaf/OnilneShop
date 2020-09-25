@@ -33,7 +33,6 @@ namespace OnlineShop.Controllers.ApiControllers
         {
             _logger = logger;
             _repository = repository;
-
             _mapper = mapper;
             this.timeTick = DateTime.Now.Ticks;
         }
@@ -149,7 +148,7 @@ namespace OnlineShop.Controllers.ApiControllers
 
 
 
-                if (custumerOrder.PaymentTypeId == 1)
+                if (custumerOrder.PaymentTypeId == 2)
                 {
 
                     ZarinPallRequest request = new ZarinPallRequest();

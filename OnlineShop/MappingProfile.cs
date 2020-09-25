@@ -44,7 +44,8 @@ namespace OnlineShop
                 .ForMember(u => u.CustomerOrderProductId, opt => opt.MapFrom(x => x.Id))
                 .ForMember(u => u.CoverImageUrl, opt => opt.MapFrom(x => x.Product.CoverImageUrl))
                 .ForMember(u => u.SellerName,
-                    opt => opt.MapFrom(x => x.Product.Seller.Name + " " + x.Product.Seller.Fname));
+                    opt => opt.MapFrom(x => x.Product.Seller.Name + " " + x.Product.Seller.Fname))
+                .ForMember(u => u.Count, opt => opt.MapFrom(x => x.OrderCount));
 
             CreateMap<CustomerAddress, CustomerAddressDto>()
                 .ForMember(u => u.CityName, opt => opt.MapFrom(x => x.City.Name))

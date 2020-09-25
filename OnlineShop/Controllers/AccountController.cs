@@ -40,10 +40,51 @@ namespace OnlineShop.Controllers
 
             return View();
         }
+        [HttpGet]
         public IActionResult فروشنده()
         {
 
             return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> فروشنده(UserRegistrationModel userModel)
+        {
+
+            if (!ModelState.IsValid)
+            {
+                return View(userModel);
+            }
+            var user = _mapper.Map<User>(userModel);
+            var result = await _userManager.CreateAsync(user, userModel.Password);
+            Seller seller = new Seller();
+            seller.Cdate = DateTime.Now.Ticks;
+            seller.CuserId = user.Id;
+            seller.Mobile = long.Parse(user.PhoneNumber.Substring(1, 10));
+            seller.Name = user.FirstName;
+            seller.Fname = user.LastName;
+            seller.Email = user.NormalizedEmail;
+            seller.UserId = user.Id;
+            seller.MelliCode = user.NationalCode;
+            _repository.Seller.Create(seller);
+
+            if (!result.Succeeded)
+            {
+                foreach (var error in result.Errors)
+                {
+                    ModelState.TryAddModelError(error.Code, error.Description);
+                }
+                return View(userModel);
+            }
+            _repository.Save();
+            await _userManager.AddToRoleAsync(user, "SELLER");
+            SendSMS sendSms = new SendSMS();
+            var smsresult = sendSms.SendRegisterSMS(userModel.PhoneNumber, userModel.Email, userModel.Password);
+            SendEmail sendEmail = new SendEmail();
+            sendEmail.SendRegisterEmail(userModel.Password, userModel.Email);
+
+            return RedirectToAction(nameof(HomeController.Index), "Home");
         }
 
         [HttpPost]

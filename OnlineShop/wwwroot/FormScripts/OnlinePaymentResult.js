@@ -47,7 +47,7 @@ function VerifyPayment() {
 
         },
         complete: function () {
-            Calculator();
+          
         }
     });
 }
