@@ -34,9 +34,13 @@ function VerifyPayment() {
            
             alert(1)
             if (response === "error") {
-                 alert(1);
+                $('#listProduct1').hide();
+                $('#listSefarsh1').hide();
+
             } else {
-                alert(2);  
+                $('#listProduct1').hide();
+                $('#listSefarsh1').show();
+
             }
 
         },

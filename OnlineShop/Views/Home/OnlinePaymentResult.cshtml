@@ -18,10 +18,34 @@
                 @*<h1 class="title">درباره ما</h1>*@
                 <div class="list-group text-justify ">
                     <h2 class="subtitle">پرداخت نا موفق</h2>
-                   <p>پرداخت فاکتور شما با صورت موفق انجام نشده است لطفا نسبت به سفارش و پرداخت دوباره اقدام نمایید</p>  <p></p>
+                    <p>پرداخت فاکتور شما با صورت موفق انجام نشده است لطفا نسبت به سفارش و پرداخت دوباره اقدام نمایید</p>  <p></p>
                 </div>
 
-              
+                <div class="list-group text-justify ">
+                    <h2 class="subtitle">پرداخت  موفق</h2>
+                    <p>پرداخت فاکتور شما با صورت موفق انجام شده است شما می توانید لیست سفارشات خود را مشاهده نمایید</p>  <p></p>
+                </div>
+
+                <!-- لیست سفارشات-->
+                <div class="row" id="listSefarsh1">
+                    <div id="content" class="col-sm-12">
+                        <h1 class="title">لیست سفارشات من</h1>
+                        <div class="table-responsive" id="listSefarsh">
+                        </div>
+                    </div>
+                </div>
+                <!-- لیست سفارشات پایان-->
+                <!-- لیست محصولات سفارش-->
+                <div class="row" id="listProduct1">
+                    <div id="content" class="col-sm-12">
+                        <h1 class="title">لیست محصولات سفارش من</h1>
+                        <div class="table-responsive" id="listProduct">
+                        </div>
+                    </div>
+                </div>
+                <!-- لیست محصولات سفارش// -->
+
+
                 <br />
                 <br />
                 <div class="container">
@@ -64,6 +88,7 @@
 
 
 @section scripts {
+    <script src="~/FormScripts/listSefaresh.js"></script>
 
     <script src="~/FormScripts/OnlinePaymentResult.js"></script>
 }
