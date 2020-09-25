@@ -34,10 +34,14 @@ function VerifyPayment() {
            
             alert(1)
             if (response === "error") {
+                $('#ok').hide();
+                $('#nok').show();
                 $('#listProduct1').hide();
                 $('#listSefarsh1').hide();
 
             } else {
+                $('#ok').show();
+                $('#nok').hide();
                 $('#listProduct1').hide();
                 $('#listSefarsh1').show();
 
