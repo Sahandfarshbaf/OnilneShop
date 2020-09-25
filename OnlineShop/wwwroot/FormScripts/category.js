@@ -30,7 +30,7 @@ function GetProductVige() {
 
                     Html += `   <span class="price-new">${item.priceAfterOffer} تومان</span> 
                                     <span class="price-old">${item.price}تومان</span> 
-                                    <span class="saving">${item.offerValue}</span> 
+                                    <span class="saving">${item.offerValue} %</span> 
                                  </p>
                             </div>
                         </div>`;

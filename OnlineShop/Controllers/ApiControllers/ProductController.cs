@@ -339,7 +339,7 @@ namespace OnlineShop.Controllers.ApiControllers
         {
             try
             {
-                var productList = _repository.Product.FindAll().OrderByDescending(p => p.SeenCount).Take(10)
+                var productList = _repository.Product.FindAll().Include(c=>c.ProductOffer).OrderByDescending(p => p.SeenCount).Take(10)
                     .ToList();
                 var result = _mapper.Map<List<ProductByOfferRate>>(productList);
 
